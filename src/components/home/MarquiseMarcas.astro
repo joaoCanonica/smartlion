@@ -1,0 +1,34 @@
+---
+/**
+ * Marquise lenta com as marcas que a loja trabalha, SÓ em texto (Michroma, Aço), sem logotipos.
+ * Entram apenas marcas citadas na config (src/config/categorias.ts); o build falha se alguma
+ * deixar de constar lá. JBL, DJI e outras citadas no diagnóstico entram quando a config as confirmar.
+ * Acessível: a lista real é lida uma vez (sr-only); a faixa animada é decorativa.
+ * Pausa no hover e no foco; com reduced-motion fica estática.
+ */
+import { categorias } from '../../config/categorias';
+const marcas = ['Apple', 'Xiaomi', 'POCO', 'Redmi'];
+const textoConfig = JSON.stringify(categorias);
+for (const m of marcas) if (!textoConfig.includes(m)) throw new Error(`Marquise: a marca "${m}" não está na config.`);
+const sequencia = Array.from({ length: 4 }, () => marcas).flat();
+---
+<section class="marquise" aria-labelledby="titulo-marcas" tabindex="0">
+  <h2 id="titulo-marcas" class="sr-only">Marcas que a Smart Lion trabalha</h2>
+  <ul class="sr-only">{marcas.map(m => <li>{m}</li>)}</ul>
+  <div class="marquise-faixa" aria-hidden="true">
+    {[0, 1].map(copia => (
+      <p class:list={['marquise-trilho', { copia: copia === 1 }]}>{sequencia.map(m => <><span>{m}</span><span class="ponto">·</span></>)}</p>
+    ))}
+  </div>
+  <p class="marquise-trilho marquise-estatica" aria-hidden="true">{marcas.map((m, i) => <>{i > 0 && <span class="ponto">·</span>}<span>{m}</span></>)}</p>
+</section>
+<style>
+.marquise{overflow:hidden;border-block:1px solid var(--cor-borda);padding-block:clamp(18px,2.4vw,28px);outline-offset:-4px}
+.marquise-faixa{display:flex;width:max-content;animation:marquise 60s linear infinite}
+.marquise:hover .marquise-faixa,.marquise:focus-visible .marquise-faixa{animation-play-state:paused}
+.marquise-trilho{display:flex;align-items:center;gap:clamp(20px,3vw,44px);padding-right:clamp(20px,3vw,44px);margin:0;white-space:nowrap;font:400 clamp(1rem,.8rem + 1vw,1.6rem)/1 var(--fonte-rotulo);letter-spacing:.14em;text-transform:uppercase;color:var(--cor-texto-2)}
+.ponto{color:var(--cor-acento)}
+.marquise-estatica{display:none}
+@keyframes marquise{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.marquise-faixa{display:none}.marquise-estatica{display:flex;flex-wrap:wrap;justify-content:center;padding-inline:16px}}
+</style>

@@ -1,13 +1,70 @@
 ---
+/**
+ * Instagram na home: perfil, seguidores (com a data da contagem) e até 6 publicações.
+ * Cada item linka a publicação quando a URL existir na config (senão, o perfil).
+ * Regra da home: nenhuma foto repetida. Um item só mostra foto se ela ainda não aparece em
+ * outra seção (prop `fotosUsadas`). Hoje as 5 fotos dos posts já estão em uso acima, então
+ * em produção fica o bloco do perfil; em dev aparecem os 6 espaços como PROVISÓRIO.
+ */
 import { Picture } from 'astro:assets';
 import { loja } from '../../config/loja';
 import { midia } from '../../lib/midia';
-const capas = midia.capas;
-const laboratorio = midia.laboratorio;
-const bancada = midia.bancada;
-const fones = midia.fones;
-const caixas = midia.caixasDeSom;
-const imagens={capas:{src:capas,alt:'Capas de celular com textura de couro em três cores'},laboratorio:{src:laboratorio,alt:'Bancadas individuais no laboratório da Smart Lion'},bancada:{src:bancada,alt:'Microscópio e ferramentas na bancada de manutenção'},fones:{src:fones,alt:'Fone de ouvido azul fotografado na loja Smart Lion'},'caixas-de-som':{src:caixas,alt:'Caixa de som portátil fotografada no balcão da Smart Lion'}};
+import Rotulo from '../ui/Rotulo.astro';
+interface Props { fotosUsadas?: string[] }
+const { fotosUsadas = [] } = Astro.props;
+const imagens = {
+  capas: { src: midia.capas, alt: 'Capas de celular com textura de couro em três cores' },
+  laboratorio: { src: midia.laboratorio, alt: 'Bancadas individuais no laboratório da Smart Lion' },
+  bancada: { src: midia.bancada, alt: 'Microscópio e ferramentas na bancada de manutenção' },
+  fones: { src: midia.fones, alt: 'Fone de ouvido azul fotografado na loja Smart Lion' },
+  'caixas-de-som': { src: midia.caixasDeSom, alt: 'Caixa de som portátil fotografada no balcão da Smart Lion' },
+};
+const posts = loja.instagramPosts.map((p, i) => ({ ...p, i, img: (!fotosUsadas.includes(p.imagem) && imagens[p.imagem as keyof typeof imagens]) || null }));
+const comFoto = posts.filter(p => p.img);
+const dataSeguidores = loja.instagram.seguidoresEm.split('-').reverse().join('/');
 ---
-<section id="instagram" class="instagram-home light" aria-labelledby="titulo-instagram"><div class="container"><div class="cabecalho"><div><p class="eyebrow">De perto, no seu feed</p><h2 id="titulo-instagram">Acompanhe a Smart Lion.</h2><p>{loja.instagram.nome} · {loja.instagram.seguidoresExibicao} seguidores em <time datetime={loja.instagram.seguidoresEm}>28/10/2026</time>.</p></div><a class="button" href={loja.instagram.url}>Seguir no Instagram ↗</a></div><div class="fotos">{loja.instagramPosts.map(post=>{const img=imagens[post.imagem as keyof typeof imagens];return img ? <a href={post.url || loja.instagram.url} aria-label={`${img.alt}. ${post.url ? 'Ver publicação' : 'Ver perfil da Smart Lion'} no Instagram`}><Picture src={img.src} formats={['avif','webp']} widths={[240,400,600]} sizes="(max-width:600px) 45vw, 240px" alt={img.alt} loading="lazy"/><span>{post.url ? 'Ver publicação' : 'Ver perfil'} ↗</span></a> : import.meta.env.DEV && <div class="pendente">PENDENTE<br/>Foto e link do post</div>})}</div>{import.meta.env.DEV&&<p class="pendencia">PENDENTE: links das publicações e sexta imagem. Sem links confirmados, as fotos levam ao perfil.</p>}</div></section>
-<style>.instagram-home{padding:var(--space-chapter) 0;border-top:1px solid #c7c2b9}.cabecalho{display:flex;justify-content:space-between;align-items:center;gap:30px}.eyebrow{color:var(--text-dark);margin-bottom:16px}h2{font-size:clamp(1.8rem,3.3vw,3.3rem)}h2+p{margin-top:18px}.cabecalho>a{flex-shrink:0}.fotos{display:grid;grid-auto-flow:column;grid-auto-columns:240px;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:32px;padding-bottom:16px}.fotos a{scroll-snap-align:start}.fotos :global(img){width:100%;height:300px;object-fit:cover}.fotos span{display:block;padding:12px 0;font-size:.8rem}.pendente{background:#e4e4df;padding:36px;min-height:300px}.pendencia{font-size:.8rem;margin-top:18px}@media(max-width:800px){.cabecalho{display:block}.cabecalho>a{margin-top:24px}.fotos{grid-auto-columns:210px}}</style>
+<section id="instagram" class="instagram light" aria-labelledby="titulo-instagram">
+  <div class:list={['container', 'instagram-grade', { 'sem-posts': comFoto.length === 0 && !import.meta.env.DEV }]}>
+    <div class="instagram-perfil">
+      <Rotulo tom="ambar">De perto, no seu feed</Rotulo>
+      <h2 id="titulo-instagram">Acompanhe a Smart Lion.</h2>
+      <a class="instagram-handle" href={loja.instagram.url}><span class="instagram-nome">{loja.instagram.nome}</span>&nbsp;<span aria-hidden="true">↗</span></a>
+      <p class="instagram-seguidores">{loja.instagram.seguidoresExibicao} seguidores em <time datetime={loja.instagram.seguidoresEm}>{dataSeguidores}</time>.</p>
+      <a class="button button-primario" href={loja.instagram.url}>Seguir no Instagram ↗</a>
+    </div>
+    {comFoto.length > 0 && (
+      <ul class="instagram-posts">
+        {comFoto.slice(0, 6).map(p => (
+          <li><a href={p.url || loja.instagram.url} aria-label={`${p.img!.alt}. ${p.url ? 'Ver publicação' : 'Ver perfil da Smart Lion'} no Instagram`}>
+            <Picture src={p.img!.src} alt={p.img!.alt} formats={['avif', 'webp']} widths={[240, 400]} sizes="(max-width: 700px) 45vw, 200px" loading="lazy"/>
+          </a></li>
+        ))}
+      </ul>
+    )}
+    {import.meta.env.DEV && comFoto.length < 6 && (
+      <ul class="instagram-posts provisorio" aria-hidden="true">
+        {posts.filter(p => !p.img).map(p => <li class="pendente">PROVISÓRIO · post {p.i + 1}<br/>{p.imagem ? `foto "${p.imagem}" já usada na home` : 'sem foto'}{p.url ? '' : ' · sem link'}</li>)}
+      </ul>
+    )}
+  </div>
+</section>
+<style>
+.instagram{padding-block:var(--espaco-secao)}
+.instagram-grade{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(28px,5vw,80px);align-items:center}
+.instagram-perfil{display:grid;gap:16px;justify-items:start}
+.instagram-handle{font:var(--peso-titulo) clamp(1.9rem,.9rem + 3.6vw,4rem)/1 var(--fonte-titulo);white-space:nowrap;letter-spacing:-.04em;color:var(--cor-texto-escuro);overflow-wrap:anywhere}
+.instagram-handle:hover{color:var(--cor-acento-escuro);text-decoration:none}
+.instagram-seguidores{color:var(--cor-texto-2-escuro)}
+.instagram-posts{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.instagram-posts a{display:block;aspect-ratio:1;overflow:hidden;border-radius:var(--raio-md)}
+.instagram-posts :global(img){width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-saida)}
+.instagram-posts a:hover :global(img){transform:scale(1.04)}
+.pendente{display:grid;place-items:center;aspect-ratio:1;padding:10px;text-align:center;font-size:.7rem;background:#fff0c7;color:#633a00;border-radius:var(--raio-md)}
+.instagram-grade.sem-posts{grid-template-columns:1fr}
+.sem-posts .instagram-perfil{grid-template-columns:minmax(0,1fr) auto;align-items:end;column-gap:48px}
+.sem-posts .instagram-perfil>:global(*){grid-column:1}
+.sem-posts .instagram-seguidores,.sem-posts .button{grid-column:2;justify-self:end}
+.sem-posts .instagram-seguidores{grid-row:2;align-self:end}.sem-posts .button{grid-row:3}
+@media (max-width:800px){.instagram-grade{grid-template-columns:1fr}.sem-posts .instagram-perfil{grid-template-columns:1fr}.sem-posts .instagram-seguidores,.sem-posts .button{grid-column:1;grid-row:auto;justify-self:start}}
+@media (max-width:420px){.instagram-handle{white-space:normal}}
+</style>

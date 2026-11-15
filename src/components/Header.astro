@@ -169,4 +169,6 @@ summary{list-style:none}summary::-webkit-details-marker{display:none}
   .menu-botao[hidden],.menu-sem-js[hidden]{display:none}
 }
 @media(min-width:1025px){.menu-movel{display:none!important}}
+/* Telas muito estreitas (≤ 360 px): sem a legenda e com menos espaço, o logo e o "Menu" cabem. */
+@media(max-width:360px){.cabecalho-linha :global(.logo-compacto-legenda){display:none}.menu-botao,.menu-sem-js{padding:0 10px;gap:8px}.cabecalho-linha{gap:10px}}
 </style>

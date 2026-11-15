@@ -1,0 +1,36 @@
+---
+/**
+ * Nossa história na home: dois parágrafos confirmados + a linha do tempo resumida
+ * (componente editorial existente, só restilizado aqui) em trilho horizontal com marcos âmbar.
+ */
+import LinhaDoTempo from '../editorial/LinhaDoTempo.astro';
+import Rotulo from '../ui/Rotulo.astro';
+---
+<section class="historia" id="historia" aria-labelledby="titulo-historia">
+  <div class="container">
+    <header class="historia-cabecalho">
+      <Rotulo tom="ambar">Nossa história</Rotulo>
+      <h2 id="titulo-historia">Da escolha ao cuidado. Sempre com gente por perto.</h2>
+    </header>
+    <div class="historia-texto">
+      <p>A Smart Lion nasceu com a ideia de tornar a experiência com tecnologia segura e confiável. Produtos novos e seminovos, procedência e suporte fazem parte dessa relação.</p>
+      <p>Com o tempo, esse cuidado também ganhou espaço na manutenção e no ensino. Hoje, nossa loja reúne venda de importados, assistência técnica e treinamento de manutenção de celulares.</p>
+    </div>
+    <div class="historia-linha"><LinhaDoTempo resumida/></div>
+    <a class="link-editorial" href="/nossa-historia">Conheça nossa história ↗</a>
+  </div>
+</section>
+<style>
+.historia{padding-block:var(--espaco-secao)}
+.historia-cabecalho{display:grid;gap:14px;margin-bottom:28px}
+.historia-cabecalho h2{max-width:18ch}
+.historia-texto{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);max-width:1100px;color:var(--cor-texto-2);font-size:var(--texto-lg)}
+/* Linha do tempo resumida: marcos lado a lado sobre uma linha, com ponto âmbar. */
+.historia-linha :global(.linha-do-tempo.resumida){display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(20px,3vw,40px);margin:clamp(40px,5vw,64px) 0 28px;border-top:1px solid var(--cor-borda)}
+.historia-linha :global(.linha-do-tempo.resumida li){position:relative;display:grid;grid-template-columns:1fr;gap:12px;border:0;padding:28px 0 0}
+.historia-linha :global(.linha-do-tempo.resumida li::before){content:'';position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--cor-acento);box-shadow:0 0 0 4px rgb(227 168 87 / .15)}
+.historia-linha :global(.linha-do-tempo.resumida time){font:400 var(--texto-rotulo)/1.4 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-acento)}
+.historia-linha :global(.linha-do-tempo.resumida h3){font-size:var(--texto-h4);margin:0}
+.historia-linha :global(.linha-do-tempo.resumida p){color:var(--cor-texto-2);max-width:36ch}
+@media (max-width:700px){.historia-texto{grid-template-columns:1fr}}
+</style>

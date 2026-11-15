@@ -1,0 +1,61 @@
+---
+/**
+ * O que dizem: nota 5,0 gigante em Michroma (<NumeroContador>), total de avaliações no
+ * Google e o carrossel lento existente (scripts/carrossel-avaliacoes.ts: auto-avanço a cada
+ * 8 s, pausa no hover/foco/toque, desligado com reduced-motion), restilizado aqui.
+ * 6 relatos literais marcados como destaque (o verificador aceita de 3 a 6 na home).
+ */
+import { loja } from '../../config/loja';
+import { destaques, resumoAvaliacoes, atualizadoEm } from '../../lib/avaliacoes';
+import Depoimento from '../avaliacoes/Depoimento.astro';
+import MarcaGoogle from '../avaliacoes/MarcaGoogle.astro';
+import NumeroContador from '../ui/NumeroContador.astro';
+import Rotulo from '../ui/Rotulo.astro';
+const escolhidos = ['g-001', 'g-003', 'g-007', 'g-040', 'g-042', 'g-046'];
+const relatos = escolhidos.map(id => destaques.find(a => a.id === id)).filter(a => a !== undefined);
+---
+<section class="dizem light" id="depoimentos" aria-labelledby="titulo-dizem" data-carrossel>
+  <div class="container dizem-grade">
+    <div class="dizem-nota">
+      <Rotulo tom="ambar">O que dizem</Rotulo>
+      <p class="dizem-numero"><NumeroContador valor={resumoAvaliacoes.nota} casas={1}/><span class="sr-only"> de 5 no Google</span></p>
+      <a class="dizem-total" href={loja.googleMaps}><MarcaGoogle/><span><NumeroContador valor={resumoAvaliacoes.total}/> avaliações no Google</span> <span aria-hidden="true">↗</span></a>
+      <p class="dizem-coleta">Dados coletados em {atualizadoEm}.</p>
+    </div>
+    <div class="dizem-relatos">
+      <h2 id="titulo-dizem">A confiança tem muitas vozes.</h2>
+      <div class="controles" hidden>
+        <button type="button" data-anterior aria-controls="trilho-dizem">← Anterior</button>
+        <button type="button" data-pausa aria-controls="trilho-dizem">Pausar carrossel</button>
+        <button type="button" data-proximo aria-controls="trilho-dizem">Próxima →</button>
+      </div>
+      <div class="trilho" id="trilho-dizem" tabindex="0" role="region" aria-label="Relatos de clientes; role horizontalmente para ler" aria-roledescription="carrossel">
+        {relatos.map(a => <Depoimento avaliacao={a}/>)}
+      </div>
+      <p class="dizem-contexto">Seleção de relatos literais. Experiências e prazos citados são individuais, da época da avaliação.</p>
+      <a class="link-editorial" href="/avaliacoes">Ler mais avaliações ↗</a>
+    </div>
+  </div>
+</section>
+<script>import '../../scripts/carrossel-avaliacoes';</script>
+<style>
+.dizem{padding-block:var(--espaco-secao)}
+.dizem-grade{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,96px);align-items:start}
+.dizem-nota{position:sticky;top:110px;display:grid;gap:14px;justify-items:start}
+.dizem-numero{font:400 clamp(6rem,3rem + 10vw,12rem)/.9 var(--fonte-rotulo);letter-spacing:-.02em;color:var(--cor-texto-escuro);font-variant-numeric:tabular-nums}
+.dizem-total{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:var(--texto-lg);color:var(--cor-texto-escuro)}
+.dizem-total:hover{color:var(--cor-acento-escuro)}
+.dizem-coleta,.dizem-contexto{font-size:.8rem;color:var(--cor-texto-2-escuro)}
+.dizem-relatos{min-width:0}
+.dizem-relatos h2{font-size:var(--texto-h3);margin-bottom:20px;max-width:18ch}
+.controles{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.controles button{min-height:44px;padding:8px 14px;background:transparent;color:var(--cor-texto-escuro);border:1px solid var(--cor-texto-2-escuro);border-radius:var(--raio-sm);font-size:.85rem}
+.controles button:hover{border-color:var(--cor-texto-escuro)}
+.controles button:disabled{opacity:.6}
+.trilho{display:grid;grid-auto-flow:column;grid-auto-columns:min(420px,88%);gap:28px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;padding-bottom:16px;scrollbar-width:thin;scrollbar-color:var(--cor-borda-clara) transparent}
+.trilho :global(.depoimento){scroll-snap-align:start;border-top-color:var(--cor-texto-2-escuro)}
+.trilho :global(.depoimento strong){font-family:var(--fonte-titulo)}
+.trilho :global(.estrelas){color:var(--cor-acento-escuro)}
+.dizem-contexto{margin:12px 0 4px}
+@media (max-width:900px){.dizem-grade{grid-template-columns:1fr}.dizem-nota{position:static}}
+</style>

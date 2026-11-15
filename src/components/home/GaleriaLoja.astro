@@ -1,0 +1,82 @@
+---
+/**
+ * A loja: galeria com profundidade, sem buracos. Grade de 12 colunas: 1 foto grande,
+ * 2 médias e 1 faixa. A faixa fica reservada para a fachada; até a foto chegar, é uma faixa
+ * gráfica com o endereço e o convite para o tour (PROVISÓRIO em dev).
+ * Profundidade: parallax leve por scroll-driven animation, só onde há suporte
+ * (@supports animation-timeline) e sem prefers-reduced-motion. Nunca sequestra a rolagem.
+ */
+import { Picture } from 'astro:assets';
+import { loja } from '../../config/loja';
+import { midia } from '../../lib/midia';
+import Rotulo from '../ui/Rotulo.astro';
+const fotos = [
+  { classe: 'grande', src: midia.loja, alt: 'Interior da Smart Lion, com balcão de madeira e prateleiras iluminadas', legenda: '01 · A loja', sizes: '(max-width: 800px) 100vw, 64vw' },
+  { classe: 'media-1', src: midia.caixasDeSom, alt: 'Caixa de som portátil no balcão da Smart Lion', legenda: '02 · O balcão', sizes: '(max-width: 800px) 100vw, 32vw' },
+  { classe: 'media-2', src: midia.capas, alt: 'Capas de celular com textura de couro em três cores, na loja', legenda: '03 · Acessórios', sizes: '(max-width: 800px) 100vw, 32vw' },
+];
+---
+<section class="galeria-loja" id="ambiente" aria-labelledby="titulo-ambiente">
+  <div class="container">
+    <header class="galeria-cabecalho">
+      <div><Rotulo tom="ambar">A loja</Rotulo><h2 id="titulo-ambiente">Entre. Conheça nosso espaço.</h2></div>
+      <p>Da loja ao laboratório, produtos, cuidado técnico e aprendizado fazem parte do nosso dia a dia.</p>
+    </header>
+    <div class="galeria-grade">
+      {fotos.map(f => (
+        <figure class:list={['galeria-foto', f.classe]}>
+          <div class="galeria-quadro"><Picture src={f.src} alt={f.alt} formats={['avif', 'webp']} widths={[480, 800, 1200]} sizes={f.sizes} loading="lazy"/></div>
+          <figcaption>{f.legenda}</figcaption>
+        </figure>
+      ))}
+      <div class="galeria-faixa">
+        <div class="faixa-texto">
+          <p class="faixa-endereco">{loja.endereco.rua}, {loja.endereco.numero} · {loja.endereco.bairro}</p>
+          <p class="faixa-convite">Conheça de perto.</p>
+        </div>
+        <a class="button button-primario" href="/a-loja">Fazer o tour <span aria-hidden="true">↗</span></a>
+        {import.meta.env.DEV && !loja.fotoFachada && <p class="pendente">PROVISÓRIO: esta faixa recebe a foto da fachada quando chegar.</p>}
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+.galeria-loja{padding-block:var(--espaco-secao)}
+.galeria-cabecalho{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:clamp(28px,4vw,48px)}
+.galeria-cabecalho h2{margin-top:14px;max-width:14ch}
+.galeria-cabecalho>p{max-width:38ch;color:var(--cor-texto-2)}
+.galeria-grade{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto auto auto;gap:clamp(12px,1.6vw,20px)}
+.galeria-foto{margin:0;display:grid;grid-template-rows:1fr auto;gap:10px;min-width:0}
+.grande{grid-column:1 / span 8;grid-row:1 / span 2}
+.media-1{grid-column:9 / span 4;grid-row:1}
+.media-2{grid-column:9 / span 4;grid-row:2}
+.galeria-quadro{position:relative;overflow:hidden;border-radius:var(--raio-md);background:var(--cor-superficie);height:100%}
+/* A grande ocupa duas linhas e acompanha a altura das médias (sem proporção própria: sem buraco). */
+.grande .galeria-quadro{min-height:100%}
+.media-1 .galeria-quadro,.media-2 .galeria-quadro{aspect-ratio:4/3}
+.galeria-quadro :global(picture),.galeria-quadro :global(img){display:block;width:100%;height:100%}
+.galeria-quadro :global(img){object-fit:cover}
+figcaption{font:400 var(--texto-rotulo)/1.4 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-texto-2)}
+.galeria-faixa{grid-column:1 / -1;position:relative;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:clamp(24px,3vw,40px);border:1px solid var(--cor-borda);border-radius:var(--raio-md);background:repeating-linear-gradient(90deg,rgb(154 158 166 / .06) 0 1px,transparent 1px 28px),linear-gradient(90deg,var(--cor-superficie),var(--cor-fundo));overflow:hidden}
+.faixa-endereco{font:400 var(--texto-rotulo)/1.4 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-acento)}
+.faixa-convite{font:var(--peso-titulo) var(--texto-h3)/1.05 var(--fonte-titulo);letter-spacing:-.03em;margin-top:10px}
+.pendente{position:absolute;right:12px;top:12px;font-size:.75rem;background:#fff0c7;color:#633a00;padding:8px 10px}
+/* Profundidade só como melhoria progressiva: cada foto se move num ritmo diferente.
+   Zoom de 1,12 = 6% de folga por lado; o deslocamento máximo (5,5%) nunca mostra a borda. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .galeria-quadro :global(img){scale:1.12;animation:galeria-profundidade linear both;animation-timeline:view();animation-range:entry 0% exit 100%}
+    .media-1 .galeria-quadro :global(img){animation-name:galeria-profundidade-rapida}
+    .media-2 .galeria-quadro :global(img){animation-name:galeria-profundidade-lenta}
+  }
+}
+@keyframes galeria-profundidade{from{translate:0 -4%}to{translate:0 4%}}
+@keyframes galeria-profundidade-rapida{from{translate:0 -5.5%}to{translate:0 5.5%}}
+@keyframes galeria-profundidade-lenta{from{translate:0 -2.5%}to{translate:0 2.5%}}
+@media (max-width:800px){
+  .galeria-cabecalho{display:block}.galeria-cabecalho>p{margin-top:14px}
+  .galeria-grade{grid-template-columns:1fr 1fr}
+  .grande{grid-column:1 / -1;grid-row:auto}.grande .galeria-quadro{aspect-ratio:4/3}.media-1{grid-column:1;grid-row:auto}.media-2{grid-column:2;grid-row:auto}
+  .galeria-faixa{flex-direction:column;align-items:flex-start}
+}
+</style>

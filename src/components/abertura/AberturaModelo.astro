@@ -1,0 +1,44 @@
+---
+/**
+ * Abertura "O Rugido de Luz" · parte 2 (vai DEPOIS do hero, no fim do conteúdo da home).
+ *
+ * <template> inerte com o logo separado em partes animáveis (geometria.ts) e o
+ * módulo que roda a sequência sobre a camada criada pela parte 1. Fica depois do
+ * hero para não atrasar a descoberta da imagem do LCP. Sem a camada (reduced-motion,
+ * sem JS, visita repetida), o módulo não faz nada.
+ */
+import { marca } from '../../lib/marca';
+import { partesDoLeao, letrasDoNome, tracoDoAnel } from './geometria';
+const partes = partesDoLeao();
+const letras = letrasDoNome();
+const traco = tracoDoAnel();
+const [lx, ly, lw, lh] = marca.leao.viewBox.split(/\s+/).map(Number);
+// Faixa da varredura: retângulo 3× maior que o leão, com o gradiente na diagonal; o
+// script o atravessa do canto superior esquerdo ao inferior direito.
+const varredura = { x: lx - lw, y: ly - lh, w: lw * 3, h: lh * 3 };
+---
+<template id="rugido-modelo">
+  <svg class="rugido-logo" viewBox={marca.logo.viewBox} data-leao={marca.leao.viewBox} aria-hidden="true" focusable="false">
+    <defs>
+      <mask id="ab-mascara-anel" maskUnits="userSpaceOnUse" x="0" y="0" width="1400" height="1400">
+        <path class="ab-traco" d={traco.d} fill="none" stroke="#fff" stroke-width={traco.largura} stroke-linecap="butt" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>
+      </mask>
+      <clipPath id="ab-recorte-leao">{partes.map((_, i) => <use href={`#ab-parte-${i}`}/>)}</clipPath>
+      <linearGradient id="ab-gradiente-luz" x1="0" y1="0" x2="1" y2="1">
+        <stop offset=".40" stop-color="#E3A857" stop-opacity="0"/>
+        <stop offset=".47" stop-color="#E3A857" stop-opacity=".85"/>
+        <stop offset=".50" stop-color="#F5F6F7" stop-opacity="1"/>
+        <stop offset=".53" stop-color="#E3A857" stop-opacity=".85"/>
+        <stop offset=".60" stop-color="#E3A857" stop-opacity="0"/>
+      </linearGradient>
+    </defs>
+    <g class="ab-anel" mask="url(#ab-mascara-anel)"><path fill="currentColor" d={marca.logo.anel}/></g>
+    <g class="ab-nome" fill="currentColor">{letras.map(d => <path class="ab-letra" fill-rule="evenodd" d={d}/>)}</g>
+    <g class="ab-leao" fill="currentColor">{partes.map((p, i) => <path id={`ab-parte-${i}`} class="ab-parte" data-grupo={p.grupo} fill-rule="evenodd" clip-rule="evenodd" d={p.d}/>)}</g>
+    <g clip-path="url(#ab-recorte-leao)"><rect class="ab-varredura" x={varredura.x} y={varredura.y} width={varredura.w} height={varredura.h} fill="url(#ab-gradiente-luz)"/></g>
+  </svg>
+</template>
+<script>
+import { iniciarAbertura } from './sequencia';
+iniciarAbertura();
+</script>

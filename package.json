@@ -19,7 +19,8 @@
     "audit:contraste": "node scripts/auditoria-contraste.mjs",
     "qa:axe": "node scripts/qa-axe.mjs",
     "qa:lighthouse": "node scripts/qa-lighthouse.mjs",
-    "qa:teclado": "node scripts/qa-teclado-menu.mjs"
+    "qa:teclado": "node scripts/qa-teclado-menu.mjs",
+    "qa:abertura": "node scripts/qa-abertura.mjs"
   },
   "dependencies": {
     "@fontsource-variable/geist": "5.3.0",

@@ -1,4 +1,8 @@
-# Smart Lion — Fase 9
+# Smart Lion — Fase 9 · remodelagem premium em andamento
+
+Remodelagem premium "Leão de Aço": leia `AGENTS.md` (= `CLAUDE.md`) e `docs/PREMIUM_DIAGNOSTICO.md` antes de qualquer sessão. Linha de base em `docs/premium/linha-de-base.md`.
+
+Fotos originais ficam em `media-originais/` e são importadas só por `src/lib/midia.ts`. Contraste dos tokens: `pnpm audit:contraste`.
 
 Node 24.22.1 LTS; pnpm 11.25.0; Astro 7.4.3; TypeScript strict; saída estática.
 
@@ -12,7 +16,7 @@ pnpm build
 pnpm dev
 ```
 
-`SITE_URL` define a origem. `PUBLIC_INDEXABLE=false` por padrão. Para produção pública, somente após aprovação final, definir `PUBLIC_INDEXABLE=true`. Não existem scripts de analytics nem mapa na carga inicial.
+`SITE_URL` define a origem e é **obrigatório no build** (`SITE_URL=https://www.exemplo.com.br pnpm build`); sem ele o build falha. Na Vercel, definir `SITE_URL` em Production; prévias sem `SITE_URL` usam a própria `VERCEL_URL`. Em `dev`/`check`, sem `SITE_URL`, usa `http://localhost:4321`. `PUBLIC_INDEXABLE=false` por padrão. Para produção pública, somente após aprovação final, definir `PUBLIC_INDEXABLE=true`. Não existem scripts de analytics nem mapa na carga inicial.
 
 Conferir em 390px e 1440px: navegação horizontal das categorias, botão de WhatsApp, Instagram, foco por teclado, busca de produtos (17 pro max, seminovo, bateria), tabela de horários, 404 e links com JavaScript desativado.
 

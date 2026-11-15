@@ -1,0 +1,10 @@
+# build e cache
+dist/
+.astro/
+node_modules/
+# variáveis de ambiente
+.env
+.env.*
+!.env.example
+# saídas brutas de QA (os resumos vão para docs/)
+qa/

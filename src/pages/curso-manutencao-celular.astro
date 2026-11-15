@@ -4,7 +4,8 @@ import { loja,enderecoCompleto } from '../config/loja';
 import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
 import { mensagensWhatsApp } from '../config/whatsapp';
 import { Picture } from 'astro:assets';
-import foto from '../assets/home/laboratorio.jpg';
+import { midia } from '../lib/midia';
+const foto = midia.laboratorio;
 ---
 <Pagina editorial titulo="Curso de manutenção de celulares em Lages" descricao="Conheça o Centro Técnico Smart Lion em Lages. Laboratório com bancadas individuais e informações sobre as próximas turmas pelo WhatsApp." resposta={`O Centro Técnico da ${loja.nome} oferece treinamento em manutenção de celulares no laboratório anexo à loja, na ${enderecoCompleto}. Consulte a próxima turma e as condições pelo WhatsApp.`}>
 <BotaoWhatsApp slot="acao" texto={mensagensWhatsApp.curso()} rotulo="Quero saber da próxima turma"/>

@@ -5,10 +5,11 @@ import RevelacaoImagem from '../components/editorial/RevelacaoImagem.astro';
 import LojaHome from '../components/home/LojaHome.astro';
 import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
 import { loja,enderecoCompleto } from '../config/loja';
-import foto from '../assets/loja.jpg';
-import capas from '../assets/home/capas.jpg';
-import bancada from '../assets/home/bancada.jpg';
-import laboratorio from '../assets/home/laboratorio.jpg';
+import { midia } from '../lib/midia';
+const foto = midia.loja;
+const capas = midia.capas;
+const bancada = midia.bancada;
+const laboratorio = midia.laboratorio;
 ---
 <Pagina titulo="Entre. A casa é nossa, a conversa é com você." descricao="Conheça o espaço real da Smart Lion em Lages: loja, acessórios, bancada de assistência técnica e laboratório do Centro Técnico." resposta={`A ${loja.nome} reúne produtos, assistência técnica e ensino na ${enderecoCompleto}. Conheça os ambientes e fale com a gente pelo WhatsApp para planejar sua visita.`}>
 <BotaoWhatsApp slot="acao"/>

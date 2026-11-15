@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
-import foto from '../../assets/loja.jpg';
+import { midia } from '../../lib/midia';
+const foto = midia.loja;
 import { loja, enderecoCompleto } from '../../config/loja';
 import BotaoWhatsApp from '../BotaoWhatsApp.astro';
 import { formatarPeriodos } from '../../lib/horario';

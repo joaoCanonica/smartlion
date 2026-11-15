@@ -8,7 +8,8 @@ import Depoimento from '../components/avaliacoes/Depoimento.astro';
 import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
 import { loja,enderecoCompleto } from '../config/loja';
 import { avaliacoes } from '../lib/avaliacoes';
-import foto from '../assets/loja.jpg';
+import { midia } from '../lib/midia';
+const foto = midia.loja;
 const valores=[{titulo:'Confiança',texto:'Uma relação construída com explicação, escuta e cuidado.',id:'g-012'},{titulo:'Procedência',texto:'Produtos novos e seminovos com nota fiscal e orientação para escolher.',id:'g-020'},{titulo:'Atendimento sem pressão',texto:'A gente conversa sobre o que você precisa, no seu tempo.',id:'g-043'},{titulo:'Suporte depois da compra',texto:'A conversa continua quando você precisa de ajuda com o aparelho.',id:'g-035'}];
 ---
 <Pagina titulo="Nossa história é feita de gente." descricao="Conheça a ideia, os valores e os marcos confirmados da Smart Lion, em Lages. Produtos, assistência técnica e ensino no mesmo endereço." resposta={`Na ${loja.nome}, reunimos venda de tecnologia, assistência técnica e treinamento na ${enderecoCompleto}. Conheça a nossa história, visite a loja ou fale com a gente pelo WhatsApp.`}>

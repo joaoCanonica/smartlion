@@ -2,7 +2,8 @@
 import Pagina from '../layouts/PaginaInstitucional.astro';
 import { loja,enderecoCompleto } from '../config/loja';
 import { Picture } from 'astro:assets';
-import foto from '../assets/loja.jpg';
+import { midia } from '../lib/midia';
+const foto = midia.loja;
 ---
 <Pagina titulo="Tecnologia com atendimento de perto" descricao="Conheça a Smart Lion, loja de tecnologia, assistência e treinamento no Centro de Lages." resposta={`A ${loja.nome} reúne venda de tecnologia, assistência técnica e treinamento na ${enderecoCompleto}. Fale com a equipe pelo WhatsApp ou visite a loja para conhecer as opções.`}>
 <a slot="acao" class="button button-light" href="/nossa-historia">Conheça nossa história ↗</a>

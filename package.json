@@ -15,11 +15,18 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "verify:avaliacoes": "node scripts/verificar-avaliacoes.mjs",
-    "verify:catalogo": "node scripts/verificar-catalogo.mjs"
+    "verify:catalogo": "node scripts/verificar-catalogo.mjs",
+    "audit:contraste": "node scripts/auditoria-contraste.mjs",
+    "qa:axe": "node scripts/qa-axe.mjs",
+    "qa:lighthouse": "node scripts/qa-lighthouse.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/geist": "5.3.0",
+    "@fontsource-variable/inter-tight": "5.3.0",
+    "@fontsource-variable/sora": "5.3.0",
     "@fontsource/dm-sans": "5.3.0",
     "@fontsource/dm-serif-display": "5.3.0",
+    "@fontsource/michroma": "5.3.0",
     "@fontsource/outfit": "5.3.0",
     "@fontsource/young-serif": "5.3.0",
     "astro": "7.4.3"
@@ -27,6 +34,7 @@
   "devDependencies": {
     "@astrojs/check": "0.9.12",
     "@types/node": "^24.19.2",
+    "axe-core": "4.11.0",
     "typescript": "5.9.3",
     "vitest": "5.0.5"
   }

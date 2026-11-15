@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
-import foto from '../../assets/home/bancada.jpg';
+import { midia } from '../../lib/midia';
+const foto = midia.bancada;
 import { loja } from '../../config/loja';
 import { mensagensWhatsApp } from '../../config/whatsapp';
 import BotaoWhatsApp from '../BotaoWhatsApp.astro';

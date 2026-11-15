@@ -8,10 +8,22 @@ importers:
 
   .:
     dependencies:
+      '@fontsource-variable/geist':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource-variable/inter-tight':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource-variable/sora':
+        specifier: 5.3.0
+        version: 5.3.0
       '@fontsource/dm-sans':
         specifier: 5.3.0
         version: 5.3.0
       '@fontsource/dm-serif-display':
+        specifier: 5.3.0
+        version: 5.3.0
+      '@fontsource/michroma':
         specifier: 5.3.0
         version: 5.3.0
       '@fontsource/outfit':
@@ -30,6 +42,9 @@ importers:
       '@types/node':
         specifier: ^24.19.2
         version: 24.19.2
+      axe-core:
+        specifier: 4.11.0
+        version: 4.11.0
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -266,11 +281,23 @@ packages:
   '@emnapi/wasi-threads@1.2.3':
     resolution: {integrity: sha512-ELEBe8PsLvvJ6QMr0zLt8ffvOHW/dc1m3CEzNMg7aJUv3bMaoDtw2TXyDAwkYBuroxxuHEwhRTLJSe5sya547g==}
 
+  '@fontsource-variable/geist@5.3.0':
+    resolution: {integrity: sha512-j0m+vLQuG5XAYoHtGCVu0spvlGreR3EzpECUVzkFmI1mTVnAO38l/NEPDCFgZ177JxzYJCLSmTQibIiYPilGrA==}
+
+  '@fontsource-variable/inter-tight@5.3.0':
+    resolution: {integrity: sha512-ZhZZ29sNZ15P1K+cUt13GeBRYON0akgmNiftshUeDLos7X7zGcRgPzt434879Xhq1QbwlW3M/apBMk7jWabwvA==}
+
+  '@fontsource-variable/sora@5.3.0':
+    resolution: {integrity: sha512-h8kHta4Z8SkfUGeI82TUy1n3rbrKpBRGwuk4t4qCwto5oEHxlbOFD2yGP+Df5fbmTXwKGn+o667vYp0E4K8Whw==}
+
   '@fontsource/dm-sans@5.3.0':
     resolution: {integrity: sha512-lYJtMXXO28q1z+yz+z8XKd0s4hXaa9QdkETzkyD760sidCv5heI86weYA0sx0Nc4pAMAQTUuyf4gO44cYKKS9g==}
 
   '@fontsource/dm-serif-display@5.3.0':
     resolution: {integrity: sha512-ecRclUcYeto9fB7ghkB36H4MtUoaUYFjjornWYYeLCMHzaWEDPk2kIWgZOq0mKBNRxclRSieKcFeLonlMYDTKg==}
+
+  '@fontsource/michroma@5.3.0':
+    resolution: {integrity: sha512-9sbGD7ek1hGvq0TmgNPFbuI3k7qwXVdZ+zCDsTHDGRIQqfYrpYWwEYcwH2fzOtvn8uiGqzAoJ72vuFE3v/hDdg==}
 
   '@fontsource/outfit@5.3.0':
     resolution: {integrity: sha512-0AVHzTTVJSxWDOxPKSfMeHhZeBFDU3cmgrcOb76ZEyhGo0+xgyG3GsLF3h9+X8w0IX7G4jzjJgFQEBiWdX6VgA==}
@@ -737,6 +764,10 @@ packages:
     peerDependenciesMeta:
       '@astrojs/markdown-remark':
         optional: true
+
+  axe-core@4.11.0:
+    resolution: {integrity: sha512-ilYanEU8vxxBexpJd8cWM4ElSQq4QctCLKih0TSfjIfCQTeyH/6zVrmIJfLPrKTKJRbiG+cfnZbQIjAlJmF1jQ==}
+    engines: {node: '>=4'}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -1938,9 +1969,17 @@ snapshots:
     dependencies:
       tslib: 2.8.1
 
+  '@fontsource-variable/geist@5.3.0': {}
+
+  '@fontsource-variable/inter-tight@5.3.0': {}
+
+  '@fontsource-variable/sora@5.3.0': {}
+
   '@fontsource/dm-sans@5.3.0': {}
 
   '@fontsource/dm-serif-display@5.3.0': {}
+
+  '@fontsource/michroma@5.3.0': {}
 
   '@fontsource/outfit@5.3.0': {}
 
@@ -2398,6 +2437,8 @@ snapshots:
       - tsx
       - uploadthing
       - yaml
+
+  axe-core@4.11.0: {}
 
   axobject-query@4.1.0: {}
 

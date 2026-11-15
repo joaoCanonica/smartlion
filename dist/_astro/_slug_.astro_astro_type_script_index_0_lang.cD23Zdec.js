@@ -1,1 +1,0 @@
-import{n as e}from"./catalogo.BeYVQHiu.js";import{t}from"./produto.C1o5C3dF.js";var n=document.querySelector(`[data-produto-detalhes]`);if(n){let r=JSON.parse(n.dataset.produto).slug,i=t(n,t=>history.replaceState(history.state,``,e(r,t)));window.addEventListener(`popstate`,i.aplicarURL)}

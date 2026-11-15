@@ -3,7 +3,8 @@ import Pagina from '../../layouts/PaginaInstitucional.astro';
 import { loja,enderecoCompleto } from '../../config/loja';
 import { servicos } from '../../config/servicos';
 import { Picture } from 'astro:assets';
-import bancada from '../../assets/home/bancada.jpg';
+import { midia } from '../../lib/midia';
+const bancada = midia.bancada;
 import DecisaoHome from '../../components/home/DecisaoHome.astro';
 import Orcamento from '../../components/institucional/Orcamento.astro';
 ---

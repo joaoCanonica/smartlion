@@ -13,11 +13,12 @@ import LojaHome from '../components/home/LojaHome.astro';
 import { destaques, resumoAvaliacoes, atualizadoEm } from '../lib/avaliacoes';
 import { loja } from '../config/loja';
 import { categorias, caminhoCategoria } from '../config/categorias';
-import fotoLoja from '../assets/loja.jpg';
-import bancada from '../assets/home/bancada.jpg';
-import laboratorio from '../assets/home/laboratorio.jpg';
-import capas from '../assets/home/capas.jpg';
-import caixas from '../assets/home/caixas-de-som.jpg';
+import { midia } from '../lib/midia';
+const fotoLoja = midia.loja;
+const bancada = midia.bancada;
+const laboratorio = midia.laboratorio;
+const capas = midia.capas;
+const caixas = midia.caixasDeSom;
 const relatos=destaques.filter(a=>['g-001','g-003','g-007'].includes(a.id));
 const pilares=[
  {numero:'01',titulo:'Produtos para a sua rotina.',texto:'Apple, Xiaomi e importados. A gente conversa sobre o que você procura e ajuda na escolha.',href:'/produtos',link:'Conheça os produtos',foto:capas,alt:'Capas de celular com textura de couro fotografadas pela Smart Lion'},

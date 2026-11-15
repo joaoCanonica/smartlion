@@ -1,3 +1,152 @@
+/* ==========================================================================
+   Smart Lion · tokens · identidade "Leão de Aço" (premium P0)
+   --------------------------------------------------------------------------
+   Os tokens novos (--cor-*, --espaco-*, --raio-*, --sombra-*, --fonte-*,
+   --texto-*) são a base da remodelagem. As páginas passam a usá-los na P6.
+   Até lá, os nomes antigos continuam valendo, COM OS VALORES ANTIGOS, no
+   bloco "APELIDOS TEMPORÁRIOS" no fim do arquivo: assim a P0 não altera o
+   layout. Contraste validado por scripts/auditoria-contraste.mjs.
+   ========================================================================== */
+
+/* --- Fontes da identidade nova (self-host, subset latino) ----------------
+   Títulos: Sora · Texto: Inter Tight · Rótulos/números técnicos: Michroma.
+   Decisão e capturas em docs/premium/tipografia.md. As fontes só são baixadas
+   quando algum elemento as usa, então declarar aqui não pesa nas páginas
+   atuais. */
+@font-face{font-family:'Sora Variable';src:url('@fontsource-variable/sora/files/sora-latin-wght-normal.woff2') format('woff2-variations');font-style:normal;font-weight:100 800;font-display:swap}
+@font-face{font-family:'Inter Tight Variable';src:url('@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2') format('woff2-variations');font-style:normal;font-weight:100 900;font-display:swap}
+@font-face{font-family:'Michroma';src:url('@fontsource/michroma/files/michroma-latin-400-normal.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+
+/* --- Fontes antigas (saem na P6, junto com os apelidos) ------------------ */
 @font-face{font-family:'DM Serif Display';src:url('@fontsource/dm-serif-display/files/dm-serif-display-latin-400-normal.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
 @font-face{font-family:'DM Sans';src:url('@fontsource/dm-sans/files/dm-sans-latin-400-normal.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
-:root{--ink:#111214;--surface:#f5f3ef;--white:#fff;--muted:#bfc0c2;--line:#363739;--wood:#8a6a4f;--wood-light:#c6aa8f;--accent:#e0157a;--accent-light:#ff78bc;--focus-light:#a50050;--whatsapp:#25d366;--text-dark:#414246;--space-1:.5rem;--space-2:1rem;--space-3:1.5rem;--space-4:2rem;--space-5:3rem;--space-6:5rem;--space-chapter:clamp(4rem,8vw,8rem);--radius:.2rem;--shadow:0 12px 36px #0002;--font-body:'DM Sans',sans-serif;--font-heading:'DM Serif Display',Georgia,serif;--text-sm:.875rem;--text-base:1rem;--text-h1:clamp(2.6rem,5.5vw,5.6rem);--text-h2:clamp(2.15rem,4vw,4.3rem);--container:1320px}
+
+:root{
+  /* ---- Paleta base (valores de marca; não usar direto nos componentes) ---- */
+  --preto-leao:#0B0B0C;
+  --grafite:#17181B;
+  --grafite-2:#222429;
+  --aco:#9A9EA6;
+  --branco-gelo:#F5F6F7;
+  --ambar:#E3A857;
+  --verde-whatsapp:#25D366;
+
+  /* ---- Cores semânticas · capítulos escuros (padrão) ---- */
+  --cor-fundo:var(--preto-leao);
+  --cor-superficie:var(--grafite);
+  --cor-superficie-2:var(--grafite-2);
+  --cor-borda:var(--grafite-2);
+  --cor-linha:var(--aco);              /* linhas finas, divisores ativos */
+  --cor-texto:var(--branco-gelo);
+  --cor-texto-2:var(--aco);            /* texto secundário */
+  --cor-acento:var(--ambar);           /* números, foco, linha ativa, varredura */
+  --cor-foco:var(--ambar);
+  --cor-whatsapp:var(--verde-whatsapp);/* SÓ no botão de WhatsApp */
+  --cor-whatsapp-texto:#082B16;
+
+  /* ---- Cores semânticas · capítulos claros (Branco Gelo) ----
+     Aço e âmbar não passam AA sobre fundo claro; por isso há variantes. */
+  --cor-fundo-claro:var(--branco-gelo);
+  --cor-superficie-clara:#FFFFFF;
+  --cor-borda-clara:#D9DBDF;
+  --cor-texto-escuro:var(--preto-leao);
+  --cor-texto-2-escuro:#55595F;        /* aço escurecido, AA sobre gelo */
+  --cor-acento-escuro:#8A5B17;         /* âmbar escurecido, AA sobre gelo */
+
+  /* ---- Materiais ---- */
+  --vidro-bg:rgb(23 24 27 / .72);      /* grafite translúcido */
+  --vidro-borda:rgb(154 158 166 / .3); /* aço 30% */
+  --vidro-desfoque:blur(14px) saturate(120%);
+  --varredura:linear-gradient(105deg,transparent 30%,rgb(227 168 87 / .0) 38%,rgb(227 168 87 / .35) 46%,rgb(245 246 247 / .55) 50%,rgb(227 168 87 / .35) 54%,transparent 64%);
+  --grao:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  --grao-opacidade:.035;               /* ≤ 4% */
+
+  /* ---- Espaçamento (base 4 px) ---- */
+  --espaco-1:.25rem;  /* 4 */
+  --espaco-2:.5rem;   /* 8 */
+  --espaco-3:.75rem;  /* 12 */
+  --espaco-4:1rem;    /* 16 */
+  --espaco-5:1.5rem;  /* 24 */
+  --espaco-6:2rem;    /* 32 */
+  --espaco-7:3rem;    /* 48 */
+  --espaco-8:4rem;    /* 64 */
+  --espaco-9:6rem;    /* 96 */
+  --espaco-secao:clamp(4rem,3rem + 6vw,9rem);
+  --margem-lateral:clamp(1rem,.5rem + 3vw,3rem); /* 16 px no celular */
+  --largura-max:1320px;
+  --largura-texto:66ch;
+
+  /* ---- Raios (pequenos) ---- */
+  --raio-sm:4px;
+  --raio-md:6px;
+  --raio-lg:10px;
+
+  /* ---- Sombras escuras ---- */
+  --sombra-1:0 1px 2px rgb(0 0 0 / .5);
+  --sombra-2:0 8px 24px -8px rgb(0 0 0 / .6),0 2px 6px rgb(0 0 0 / .4);
+  --sombra-3:0 24px 64px -16px rgb(0 0 0 / .75),0 0 0 1px rgb(154 158 166 / .08);
+  --sombra-brilho:0 0 0 1px rgb(227 168 87 / .35),0 8px 32px -8px rgb(227 168 87 / .25);
+
+  /* ---- Tipografia ---- */
+  --fonte-titulo:'Sora Variable','Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --fonte-texto:'Inter Tight Variable','Inter Tight',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --fonte-rotulo:'Michroma','Sora Variable',system-ui,sans-serif; /* só caixa alta pequena */
+  --peso-titulo:600;
+  --peso-texto:400;
+  --entrelinha-titulo:1.04;
+  --entrelinha-texto:1.6;
+  --tracking-titulo:-.035em;
+  --tracking-rotulo:.14em;
+
+  /* Escala fluida (390 → 1440 px) */
+  --texto-rotulo:clamp(.6875rem,.66rem + .1vw,.75rem); /* 11–12 px, Michroma */
+  --texto-sm:clamp(.875rem,.85rem + .1vw,.9375rem);
+  --texto-base:clamp(1rem,.97rem + .15vw,1.0625rem);
+  --texto-lg:clamp(1.125rem,1.06rem + .3vw,1.3125rem);
+  --texto-h4:clamp(1.25rem,1.14rem + .5vw,1.625rem);
+  --texto-h3:clamp(1.5rem,1.3rem + .9vw,2.25rem);
+  --texto-h2:clamp(2rem,1.55rem + 2vw,3.5rem);
+  --texto-h1:clamp(2.5rem,1.8rem + 3.2vw,5rem);
+  --texto-display:clamp(3rem,1.9rem + 5vw,7rem);       /* 5,0 · 766 */
+
+  /* ---- Movimento ---- */
+  --ease-saida:cubic-bezier(.16,1,.3,1);
+  --ease-entrada:cubic-bezier(.7,0,.84,0);
+  --duracao-curta:160ms;
+  --duracao-media:420ms;
+  --duracao-longa:900ms;
+
+  /* ==========================================================================
+     APELIDOS TEMPORÁRIOS · remover na P6
+     Mantêm os valores antigos para não mudar o layout antes da hora.
+     Na P6 cada uso é trocado pelo token novo indicado e este bloco sai.
+     ========================================================================== */
+  --ink:#111214;          /* → --cor-fundo */
+  --surface:#f5f3ef;      /* → --cor-fundo-claro (SAI o creme) */
+  --white:#fff;           /* → --cor-texto */
+  --muted:#bfc0c2;        /* → --cor-texto-2 */
+  --line:#363739;         /* → --cor-borda */
+  --wood:#8a6a4f;         /* → --cor-acento-escuro / --cor-linha (SAI a madeira) */
+  --wood-light:#c6aa8f;   /* → --cor-acento (SAI) */
+  --accent:#e0157a;       /* → --cor-acento (SAI o magenta) */
+  --accent-light:#ff78bc; /* → --cor-foco (SAI) */
+  --focus-light:#a50050;  /* → --cor-acento-escuro (SAI) */
+  --whatsapp:#25d366;     /* → --cor-whatsapp */
+  --text-dark:#414246;    /* → --cor-texto-2-escuro */
+  --space-1:.5rem;        /* → --espaco-2 */
+  --space-2:1rem;         /* → --espaco-4 */
+  --space-3:1.5rem;       /* → --espaco-5 */
+  --space-4:2rem;         /* → --espaco-6 */
+  --space-5:3rem;         /* → --espaco-7 */
+  --space-6:5rem;         /* → --espaco-8/9 */
+  --space-chapter:clamp(4rem,8vw,8rem); /* → --espaco-secao */
+  --radius:.2rem;         /* → --raio-sm */
+  --shadow:0 12px 36px #0002; /* → --sombra-2 */
+  --font-body:'DM Sans',sans-serif;              /* → --fonte-texto */
+  --font-heading:'DM Serif Display',Georgia,serif; /* → --fonte-titulo (SAI a serifa) */
+  --text-sm:.875rem;      /* → --texto-sm */
+  --text-base:1rem;       /* → --texto-base */
+  --text-h1:clamp(2.6rem,5.5vw,5.6rem); /* → --texto-h1 */
+  --text-h2:clamp(2.15rem,4vw,4.3rem);  /* → --texto-h2 */
+  --container:1320px;     /* → --largura-max */
+}

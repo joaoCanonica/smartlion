@@ -6,9 +6,10 @@ import RevelacaoImagem from '../components/editorial/RevelacaoImagem.astro';
 import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
 import StatusHorario from '../components/StatusHorario.astro';
 import { Picture, Image } from 'astro:assets';
-import lojaFoto from '../assets/loja.jpg';
-import bancada from '../assets/home/bancada.jpg';
-import laboratorio from '../assets/home/laboratorio.jpg';
+import { midia } from '../lib/midia';
+const lojaFoto = midia.loja;
+const bancada = midia.bancada;
+const laboratorio = midia.laboratorio;
 import logo from '../assets/logo.png';
 import { loja, enderecoCompleto } from '../config/loja';
 ---

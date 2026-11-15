@@ -1,11 +1,12 @@
 ---
 import { Picture } from 'astro:assets';
 import { loja } from '../../config/loja';
-import capas from '../../assets/home/capas.jpg';
-import laboratorio from '../../assets/home/laboratorio.jpg';
-import bancada from '../../assets/home/bancada.jpg';
-import fones from '../../assets/home/fones.jpg';
-import caixas from '../../assets/home/caixas-de-som.jpg';
+import { midia } from '../../lib/midia';
+const capas = midia.capas;
+const laboratorio = midia.laboratorio;
+const bancada = midia.bancada;
+const fones = midia.fones;
+const caixas = midia.caixasDeSom;
 const imagens={capas:{src:capas,alt:'Capas de celular com textura de couro em três cores'},laboratorio:{src:laboratorio,alt:'Bancadas individuais no laboratório da Smart Lion'},bancada:{src:bancada,alt:'Microscópio e ferramentas na bancada de manutenção'},fones:{src:fones,alt:'Fone de ouvido azul fotografado na loja Smart Lion'},'caixas-de-som':{src:caixas,alt:'Caixa de som portátil fotografada no balcão da Smart Lion'}};
 ---
 <section id="instagram" class="instagram-home light" aria-labelledby="titulo-instagram"><div class="container"><div class="cabecalho"><div><p class="eyebrow">De perto, no seu feed</p><h2 id="titulo-instagram">Acompanhe a Smart Lion.</h2><p>{loja.instagram.nome} · {loja.instagram.seguidoresExibicao} seguidores em <time datetime={loja.instagram.seguidoresEm}>28/10/2026</time>.</p></div><a class="button" href={loja.instagram.url}>Seguir no Instagram ↗</a></div><div class="fotos">{loja.instagramPosts.map(post=>{const img=imagens[post.imagem as keyof typeof imagens];return img ? <a href={post.url || loja.instagram.url} aria-label={`${img.alt}. ${post.url ? 'Ver publicação' : 'Ver perfil da Smart Lion'} no Instagram`}><Picture src={img.src} formats={['avif','webp']} widths={[240,400,600]} sizes="(max-width:600px) 45vw, 240px" alt={img.alt} loading="lazy"/><span>{post.url ? 'Ver publicação' : 'Ver perfil'} ↗</span></a> : import.meta.env.DEV && <div class="pendente">PENDENTE<br/>Foto e link do post</div>})}</div>{import.meta.env.DEV&&<p class="pendencia">PENDENTE: links das publicações e sexta imagem. Sem links confirmados, as fotos levam ao perfil.</p>}</div></section>

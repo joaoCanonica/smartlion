@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
-import capas from '../../assets/home/capas.jpg';
+import { midia } from '../../lib/midia';
+const capas = midia.capas;
 import { loja } from '../../config/loja';
 interface Props { categoria?: {slug:string;nome:string;detalhe:string} }
 const {categoria}=Astro.props;

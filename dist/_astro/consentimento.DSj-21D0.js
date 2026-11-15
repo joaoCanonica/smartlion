@@ -1,1 +1,0 @@
-var e=`smartlion-mapa-v1`;function t(e){return e===`aceito`||e===`recusado`}var n=null;function r(){try{let r=sessionStorage.getItem(e);return t(r)?r:n}catch{return n}}function i(t){n=t;try{sessionStorage.setItem(e,t)}catch{}window.dispatchEvent(new CustomEvent(`smartlion:consentimento`,{detail:t}))}export{r as n,i as r,t};

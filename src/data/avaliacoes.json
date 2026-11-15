@@ -1,0 +1,960 @@
+{
+  "_leiaMe": "Avaliações públicas do Google Maps coletadas em 28/10/2026, ordenadas por 'Mais recentes'. Textos literais (só emojis removidos). No site, exibir só o primeiro nome + inicial (campo autorExibicao), com selo 'Avaliação no Google' e link para a ficha. NÃO usar em JSON-LD (AggregateRating/Review autosservido é proibido pelo Google). Atualizar nota/total a cada 30–60 dias.",
+  "fonte": {
+    "plataforma": "Google Maps",
+    "ficha": "Smart Lion - Assistência Técnica Especializada e Importados",
+    "categoria": "Oficina de reparos de celulares",
+    "urlFicha": "https://www.google.com/maps?cid=8801259008937640586",
+    "cid": "0x94e01ffb37c77fa7:0x7a245a7003ef428a",
+    "linkAvaliar": "PENDENTE: gerar no Perfil da Empresa (Pedir avaliações) — g.page/r/...",
+    "coletadoEm": "2026-10-28",
+    "coordenadas": [
+      -27.8153637,
+      -50.3290069
+    ]
+  },
+  "resumo": {
+    "nota": 5.0,
+    "total": 766,
+    "distribuicao": {
+      "5": 763,
+      "4": 1,
+      "3": 0,
+      "2": 0,
+      "1": 2
+    },
+    "temasMaisCitados": {
+      "produtos": 101,
+      "atendente": 26,
+      "vendedor": 25,
+      "certeza": 24
+    },
+    "citacoesDestacadasPeloGoogle": [
+      "A melhor loja da cidade, produtos de qualidade e ótimo atendimento",
+      "Ótima proposta para negócio na compra de um novo celular.",
+      "E o aparelho nem se fala né, top de linha com preço de intermediário premium."
+    ]
+  },
+  "equipeCitada": {
+    "Sabrina": "gerente/consultora (a mais citada)",
+    "Amanda": "vendedora",
+    "Fabi": "vendedora",
+    "Vagner": "técnico/atendimento da assistência"
+  },
+  "avaliacoes": [
+    {
+      "id": "g-001",
+      "autor": "Karolina Daboit",
+      "autorExibicao": "Karolina D.",
+      "nota": 5,
+      "quando": "um mês atrás",
+      "mesAprox": "2026-09",
+      "texto": "Excelente atendimento! Levei meu Apple Watch para verificarem e fui muito bem atendida. Fizeram uma limpeza no aparelho e nem cobraram pelo serviço. Foram muito atenciosos, prestativos e honestos. Com certeza recomendo e voltarei quando precisar!",
+      "tags": [
+        "assistencia",
+        "apple-watch",
+        "honestidade"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-002",
+      "autor": "Carolina Oliveira",
+      "autorExibicao": "Carolina O.",
+      "nota": 5,
+      "quando": "um mês atrás",
+      "mesAprox": "2026-09",
+      "texto": "Excelente atendimento do início ao fim! Ótimos preços e ótimos produtos!",
+      "tags": [
+        "atendimento",
+        "preco"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-003",
+      "autor": "Mariane Vialli",
+      "autorExibicao": "Mariane V.",
+      "nota": 5,
+      "quando": "2 meses atrás",
+      "mesAprox": "2026-08",
+      "texto": "Me tornei uma fã do trabalho da Smart Lion. Tive alguns problemas técnicos com meu celular no último mês e sempre que precisei eles forem extremamente solicitos, ágeis, dispostos a encontrar a melhor solução possível em todos os casos e sempre trazendo boas explicações técnicas para como resolver aquela questão. Recomendo muito a loja e agora espero voltar apenas para compras, mas sei que se algo acontecer vou poder contar com o bom trabalho deles!!",
+      "tags": [
+        "assistencia",
+        "confianca"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-004",
+      "autor": "Natália Detoni",
+      "autorExibicao": "Natália D.",
+      "nota": 5,
+      "quando": "3 meses atrás",
+      "mesAprox": "2026-07",
+      "texto": "Levei meu AirPods pro conserto na Smart Lion e fui muito bem atendida. O serviço foi rápido, de qualidade e resolveu meu problema.",
+      "tags": [
+        "assistencia",
+        "airpods",
+        "rapidez"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-005",
+      "autor": "São Chico São Chico",
+      "autorExibicao": "São C.",
+      "nota": 5,
+      "quando": "3 meses atrás",
+      "mesAprox": "2026-07",
+      "texto": "Fomos muito bem atendidos, quem nós atendeu tem um conhecimento excepcional. Com certeza recomendamos",
+      "tags": [
+        "atendimento",
+        "conhecimento"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-006",
+      "autor": "Andréia Daniel de Liz",
+      "autorExibicao": "Andréia L.",
+      "nota": 5,
+      "quando": "3 meses atrás",
+      "mesAprox": "2026-07",
+      "texto": "Sinceramente foi a melhor loja de assistencia técnica que encontrei até hoje. O atendimento foi maravilhoso, meu problema foi resolvido e o atendimento muito bom. Eu nunca conseguiria fazer o que foi feito e o profissionalismo impecável. Super recomendo e me fidelizou como cliente pra sempre.",
+      "tags": [
+        "assistencia"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-007",
+      "autor": "Paola Zappelini de Carvalho",
+      "autorExibicao": "Paola C.",
+      "nota": 5,
+      "quando": "3 meses atrás",
+      "mesAprox": "2026-07",
+      "texto": "Atendimento impecável, personalizado e de alto padrão. Os profissionais demonstram amplo conhecimento sobre os produtos, orientam com segurança e são extremamente atenciosos em cada etapa do atendimento. A experiência é diferenciada do início ao fim. Super satisfeita com a minha compra!!!",
+      "tags": [
+        "compra",
+        "atendimento",
+        "premium"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-008",
+      "autor": "Keli Oliveira",
+      "autorExibicao": "Keli O.",
+      "nota": 5,
+      "quando": "3 meses atrás",
+      "mesAprox": "2026-07",
+      "texto": "Atendimento muito bom, fui atendida pelo Vagner. Cotamos o aparelho no sábado e voltamos buscar hoje",
+      "tags": [
+        "compra"
+      ],
+      "equipeCitada": "Vagner",
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-009",
+      "autor": "Verônica Zanotto",
+      "autorExibicao": "Verônica Z.",
+      "nota": 5,
+      "quando": "4 meses atrás",
+      "mesAprox": "2026-06",
+      "texto": "Eu tive uma ótima experiência com a loja. Desde o primeiro atendimento foram esclarecidos e atenciosos. Minha solicitação foi para assistência. Tive meu iPhone quebrado após um queda e eles trocaram a parte de trás do aparelho, e o serviço foi bem prestado. Recomendo muito.",
+      "tags": [
+        "assistencia",
+        "iphone",
+        "tampa-traseira"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-010",
+      "autor": "Gorete Eliane de Oliveira",
+      "autorExibicao": "Gorete O.",
+      "nota": 5,
+      "quando": "4 meses atrás",
+      "mesAprox": "2026-06",
+      "texto": "Comprei um iPhone 15 pra minha filha foi muito bem atendida vcs sao nota 10",
+      "tags": [
+        "compra",
+        "iphone"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-011",
+      "autor": "Paloma Mota",
+      "autorExibicao": "Paloma M.",
+      "nota": 5,
+      "quando": "4 meses atrás",
+      "mesAprox": "2026-06",
+      "texto": "Atendimento impecável e preço justo",
+      "tags": [
+        "preco"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-012",
+      "autor": "Rose Alves",
+      "autorExibicao": "Rose A.",
+      "nota": 5,
+      "quando": "4 meses atrás",
+      "mesAprox": "2026-06",
+      "texto": "Minha indicação é que pode confiar. Adquiri um excelente Xioami novo. Atendimento maravilhoso pela Fabi, atenciosa. Recomendo.",
+      "tags": [
+        "compra",
+        "xiaomi",
+        "confianca"
+      ],
+      "equipeCitada": "Fabi",
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-013",
+      "autor": "Luan Vitor Borges",
+      "autorExibicao": "Luan B.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Super atenciosos! Um ótimo lugar para realizar a compra de aparelhos! Diretamente de Cerro Negro - SC",
+      "tags": [
+        "compra",
+        "regiao"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-014",
+      "autor": "Crystian Aguida",
+      "autorExibicao": "Crystian A.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Grato pelo ótimo atendimento carinho e atenção ! Vocês são excelentes no que fazem ! Iremos fechar muitos outros negócios ! Super indico ! Sérios e honestos parabéns . Smart Lion",
+      "tags": [
+        "honestidade"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-015",
+      "autor": "Elisangela Pereira da Silva",
+      "autorExibicao": "Elisangela S.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Levei o telefone da minha filha para reparo e me entregaram no mesmo dia com o melhor tempo de garantia da cidade",
+      "tags": [
+        "assistencia",
+        "mesmo-dia",
+        "garantia"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-016",
+      "autor": "Carmen Barbetta Narciso",
+      "autorExibicao": "Carmen N.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Eu comprei um robô aspirador da XIAOMI X20 MAX. Ainda estou em processo de mais descobertas em tudo o que ele pode fazer… mas do que vi até agora, é muito bom Aspira e passa o pano muito bem. Na realidade achei melhor do que esperava… Mas o excelente mesmo foi o atendimento da SABRINA. Super disponível, com bom conhecimento, e muito cordial. Dispôs da sua tarde de sábado para nos orientar… e sempre atende nas dúvidas",
+      "tags": [
+        "compra",
+        "xiaomi",
+        "robo-aspirador"
+      ],
+      "equipeCitada": "Sabrina",
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-017",
+      "autor": "MATEUS SOUSA",
+      "autorExibicao": "Mateus S.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Muito bom,consegui pegar o meu celular no mesmo dia!",
+      "tags": [
+        "assistencia",
+        "mesmo-dia"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-018",
+      "autor": "Thalia Amorim",
+      "autorExibicao": "Thalia A.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Deixar aqui meu agradecimento de coração pelo atendimento perfeito que recebi desde o primeiro contato que tive por telefone com a loja, Gerente Sabrina e vendedora Amanda ,que atendimento maravilhoso. Muito queridas , me atenderam em horário diferenciado eu cheia de dúvidas meu primeiro iPhone e elas muito atenciosas tanto no pessoal quanto por telefone , sem dúvidas o melhor atendimento, fico grata de coração",
+      "tags": [
+        "compra",
+        "iphone",
+        "primeiro-iphone"
+      ],
+      "equipeCitada": "Sabrina; Amanda",
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-019",
+      "autor": "RYAN Dos santos",
+      "autorExibicao": "Ryan S.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Melhor assistência técnica de Lages!! Super indico, super rápidos e sinceros. O melhor tempo de garantia que tem em Lages.",
+      "tags": [
+        "assistencia",
+        "garantia",
+        "rapidez"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-020",
+      "autor": "Gabriel De Jesus",
+      "autorExibicao": "Gabriel J.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Excelente atendimento e ótima experiência de compra. A equipe foi muito atenciosa, tirou todas as minhas dúvidas e me ajudou a escolher o celular ideal para o que eu precisava. O aparelho veio em perfeito estado, original e com garantia. O preço foi justo e o atendimento foi rápido e profissional. Estou muito satisfeito com a compra e com certeza voltarei a comprar nessa loja. Recomendo a todos que procuram confiança, qualidade e bom atendimento.",
+      "tags": [
+        "compra",
+        "original",
+        "garantia",
+        "preco"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-021",
+      "autor": "Victor Emanuel",
+      "autorExibicao": "Victor E.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Muito bom, loja climatizada, comprei um iPhone e veio tudo perfeito, o atendimento é muito bom e atencioso",
+      "tags": [
+        "compra",
+        "iphone",
+        "loja"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-022",
+      "autor": "Isadora Xavier",
+      "autorExibicao": "Isadora X.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Excelente atendimento, deixei o celular com um curto total, me entregaram em menos de 1 semana. Indico e recomendo!",
+      "tags": [
+        "assistencia",
+        "placa"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-023",
+      "autor": "cleci dalla bona",
+      "autorExibicao": "Cleci B.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "O melhor atendimento, sempre me socorrem no que precisar … super indico !!!!",
+      "tags": [
+        "atendimento"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-024",
+      "autor": "Cortina Companhia",
+      "autorExibicao": "Cortina C.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "O atendimento das meninas é ótimo, além de você se sentir bem dentro da loja. Volto sempre e indico!",
+      "tags": [
+        "loja"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-025",
+      "autor": "Alana Malbec",
+      "autorExibicao": "Alana M.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Levei meu celular na Smart Lion depois de já ter passado por outra assistência e não ter tido uma boa experiência. Desde o primeiro contato senti muita confiança pela honestidade deles e principalmente pela garantia do serviço, que hoje em dia faz toda diferença. O atendimento foi impecável! Inclusive buscaram meu aparelho em Bom Retiro, o que já mostrou o cuidado e a preocupação com o cliente. O Vagner transmite muita segurança, explica tudo com paciência e dá pra ver que realmente se importa em entregar um trabalho bem feito. Eu tinha um prazo bem curto e eles cumpriram exatamente o combinado, sem enrolação. Serviço rápido, transparente e de extrema qualidade. Hoje posso dizer que confio de olhos fechados na Smart Lion. Recomendo demais!",
+      "tags": [
+        "assistencia",
+        "garantia",
+        "regiao",
+        "busca-aparelho"
+      ],
+      "equipeCitada": "Vagner",
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-026",
+      "autor": "Danielli Machado",
+      "autorExibicao": "Danielli M.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Um atendimento impecável! Paciência incrível … esclareceram todas as minhas dúvidas, já é a segunda vez que compro com eles, produtos originais, agradeço muito e parabéns pelo atendimento mais uma vez",
+      "tags": [
+        "compra",
+        "original",
+        "recompra"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-027",
+      "autor": "Alexandre Rafael dos Santos",
+      "autorExibicao": "Alexandre S.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Fui muito bem atendido pela Sabrina da loja de Lages ,dei um iPhone 16 pro meu filho e ela foi impecável no atendimento meu e do meu filho ,ela está de parabéns.",
+      "tags": [
+        "compra",
+        "iphone"
+      ],
+      "equipeCitada": "Sabrina",
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-028",
+      "autor": "Elisangela Correa",
+      "autorExibicao": "Elisangela C.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Excelente atendimento, meninas atenciosas, recebemos todo o suporte necessário,ambiente acolhedor, recomendamos.",
+      "tags": [
+        "loja"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-029",
+      "autor": "xande",
+      "autorExibicao": "Xande",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Super atenciosas, recebi um iphone 16 perfeito. Excelente atendimento",
+      "tags": [
+        "compra",
+        "iphone"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-030",
+      "autor": "Gabrielle Schemes",
+      "autorExibicao": "Gabrielle S.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "O atendimento é ótimo e eles entregaram na minha casa! Recomendo!",
+      "tags": [
+        "entrega"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-031",
+      "autor": "Renata De Betio",
+      "autorExibicao": "Renata B.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Excelente atendimento e ótimas condições! Valeu muito a pena, vim de outra cidade para comprar e fui muito bem atendida. Recomendo!",
+      "tags": [
+        "compra",
+        "regiao",
+        "condicoes"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-032",
+      "autor": "Amanda Silva",
+      "autorExibicao": "Amanda S.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Gostei muito da experiência na loja, foram super atenciosas comigo e me ajudou a encontrar exatamente o que eu precisava, desde a parte da pré venda, quando na finalização... Comprei um iPhone 13. Concerta voltarei e indicarei o serviço e produtos.",
+      "tags": [
+        "compra",
+        "iphone"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-033",
+      "autor": "Maria elisabe Rosa",
+      "autorExibicao": "Maria R.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Comprei meu iPhone na loja smart lion quero agradecer o atendimento as meninas são maravilhosas muito atenciosas principalmente a Sabrina que me vendeu meu próximo vai ser aqui novamente obrigada por tanto carinho",
+      "tags": [
+        "compra",
+        "iphone"
+      ],
+      "equipeCitada": "Sabrina",
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-034",
+      "autor": "this 80s songs",
+      "autorExibicao": "This S.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Ótimo atendimento, Ótimos produtos controles ótimos, o preço do controle de xbox original foi de 450, recomendo muito",
+      "tags": [
+        "compra",
+        "games"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-035",
+      "autor": "Patricia Stefanes",
+      "autorExibicao": "Patricia S.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Ganhei de presente um iPhone comprado na loja e adorei, ótimo aparelho, atendimento pós venda maravilhoso.",
+      "tags": [
+        "compra",
+        "iphone",
+        "pos-venda"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-036",
+      "autor": "Juliara Costa",
+      "autorExibicao": "Juliara C.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Sou de São Joaquim comprei iPhone 16 Pro prefeito supre indico atendimento excelente",
+      "tags": [
+        "compra",
+        "iphone",
+        "regiao"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-037",
+      "autor": "Fernanda Eduarda",
+      "autorExibicao": "Fernanda E.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Muito prestativos, atendimento excelente e me passaram muita segurança durante a execução do serviço.",
+      "tags": [
+        "assistencia"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-038",
+      "autor": "Camila Vieira Lima",
+      "autorExibicao": "Camila L.",
+      "nota": 5,
+      "quando": "5 meses atrás",
+      "mesAprox": "2026-05",
+      "texto": "Atendimento da Sabrina ótimo, educada, ágil e melhor preço que encontrei.",
+      "tags": [
+        "preco"
+      ],
+      "equipeCitada": "Sabrina",
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-039",
+      "autor": "Júnior Varela",
+      "autorExibicao": "Júnior V.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Comprei meu iPhone 17 Pro Max aí e gostei muito A Sabrina e a Amanda foram super queridas comigo, explicaram tudo direitinho. Atendimento muito bom, me senti bem atendido mesmo Recomendo!",
+      "tags": [
+        "compra",
+        "iphone"
+      ],
+      "equipeCitada": "Sabrina; Amanda",
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-040",
+      "autor": "Pedro Silva",
+      "autorExibicao": "Pedro S.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Fui à Smart Lion para reparar meu MacBook e meu iPad e saí genuinamente impressionado. Atendimento excelente, técnicos especializados. Os aparelhos retornaram impecáveis,como novos!! Um serviço que supera expectativas",
+      "tags": [
+        "assistencia",
+        "macbook",
+        "ipad"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-041",
+      "autor": "joao gabriel ramos",
+      "autorExibicao": "Joao R.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Sempre fui muito bem atendido, pessoal simpático e prestativo. Produtos e serviço de qualidade, recomendo muito. Fora o espaço que é lindo, Nota 10 !!",
+      "tags": [
+        "loja"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-042",
+      "autor": "Laís",
+      "autorExibicao": "Laís",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Loja especializada muito boa!! estava com problema na minha bateria e meu celular estava se desligando sozinho, agora esta com a saude 100% e o carregamento bem rapido e demora demais para descarregar, está como do jeito que eu comprei",
+      "tags": [
+        "assistencia",
+        "bateria"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-043",
+      "autor": "daiane Rodrigues rodrigues",
+      "autorExibicao": "Daiane R.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Já comprei um iPhone na Smart Lion um tempo atrás e gostei tanto que voltei agora pra comprar outro pra mim e um pro meu filho. O atendimento continua incrível, AMOOO A VENDEDORA SABRINA pessoal super querido, explica tudo direitinho e ajuda a escolher sem pressão. Também só compro os acessórios da X-One com eles, porque realmente são muito bons e duram bastante, compensa mesmo. Com certeza é uma loja que eu confio e volto sempre ++",
+      "tags": [
+        "compra",
+        "iphone",
+        "recompra",
+        "acessorios"
+      ],
+      "equipeCitada": "Sabrina",
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-044",
+      "autor": "Árian Medeiros",
+      "autorExibicao": "Árian M.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Ótima proposta para negócio na compra de um novo celular. Recomendo! Além de várias opções de capinhas para celular com garantia.",
+      "tags": [
+        "compra",
+        "acessorios"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-045",
+      "autor": "Paola Carvalho",
+      "autorExibicao": "Paola C.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Atendimento ótimo e de excelência comprei meu iPhone 17 lilás.",
+      "tags": [
+        "compra",
+        "iphone"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-046",
+      "autor": "Erica mituti",
+      "autorExibicao": "Erica M.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Fui super bem atendida!! Tava na dúvida entre iPhone e Xiaomi, mas as meninas me ajudaram e me explicaram as principais diferenças. Comprei o POCO X8 PRO e tô apaixonada já sai com tudo transferido e pronto. Atendimento impecável, recomendo muitooooo",
+      "tags": [
+        "compra",
+        "xiaomi",
+        "transferencia-dados"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-047",
+      "autor": "Pamela Oliveira",
+      "autorExibicao": "Pamela O.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Ótimo atendimento e preços justos! A Amanda foi incrível, super atenciosa e prestativa do início ao fim. Atendimento assim faz a gente querer voltar!",
+      "tags": [
+        "preco"
+      ],
+      "equipeCitada": "Amanda",
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-048",
+      "autor": "Wellinton Rafael",
+      "autorExibicao": "Wellinton R.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Agradecido pelo atendimento. Estabelecimento com excelente ambiente, além de serviços e produtos com qualidade!",
+      "tags": [
+        "loja"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-049",
+      "autor": "m l",
+      "autorExibicao": "M L.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Atendimento excelente, com valores acessiveis e profissionais capacitados, voltaremos a fazer negócio muito breve!",
+      "tags": [
+        "preco"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-050",
+      "autor": "Maiara Olineck",
+      "autorExibicao": "Maiara O.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Atendentes super queridas no WhatsApp te dão todo suporte possível",
+      "tags": [
+        "whatsapp"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-051",
+      "autor": "Carol Dias",
+      "autorExibicao": "Carol D.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "Melhor atendimento da cidade, preços ótimos, comprei um 16 pro Max, e depois um 17 pro Max, ambos com excelente preço e pós venda, experiência perfeita",
+      "tags": [
+        "compra",
+        "iphone",
+        "recompra",
+        "pos-venda"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": true,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-052",
+      "autor": "victor kruchinschi",
+      "autorExibicao": "Victor K.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "A melhor da AMURES, recomendo 100%",
+      "tags": [
+        "regiao"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-053",
+      "autor": "Nicole Sousa",
+      "autorExibicao": "Nicole S.",
+      "nota": 5,
+      "quando": "6 meses atrás",
+      "mesAprox": "2026-04",
+      "texto": "ótimo atendimento,estava a procura de produtos da Victoria Secrets,e encontrei de ótima qualidade,super indico",
+      "tags": [
+        "perfumaria"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-054",
+      "autor": "Inacio Fornasari",
+      "autorExibicao": "Inacio F.",
+      "nota": 5,
+      "quando": "7 meses atrás",
+      "mesAprox": "2026-03",
+      "texto": "Fiz a troca da tela de um S9 FE+, concerto rápido e vem sucedido, com atualizações da loja sempre que precisava.",
+      "tags": [
+        "assistencia",
+        "tela",
+        "samsung"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-055",
+      "autor": "Eddy Souza",
+      "autorExibicao": "Eddy S.",
+      "nota": 5,
+      "quando": "7 meses atrás",
+      "mesAprox": "2026-03",
+      "texto": "Empresa excepcional. Meus smartphones e tablets — tanto de uso pessoal quanto profissional — são sempre muito bem cuidados. A Sabrina, como de costume, presta um atendimento impecável e demonstra grande atenção aos equipamentos. Recomendo com total confiança.",
+      "tags": [
+        "assistencia",
+        "empresa"
+      ],
+      "equipeCitada": "Sabrina",
+      "destaqueHome": false,
+      "plataforma": "Google"
+    },
+    {
+      "id": "g-056",
+      "autor": "Camila Bordin",
+      "autorExibicao": "Camila B.",
+      "nota": 5,
+      "quando": "7 meses atrás",
+      "mesAprox": "2026-03",
+      "texto": "Atendimento impecável. As meninas me auxiliaram em como usar o iPad e acessórios tbm. Tudo que precisei encontrei lá com ótimas condições.",
+      "tags": [
+        "compra",
+        "ipad",
+        "orientacao"
+      ],
+      "equipeCitada": null,
+      "destaqueHome": false,
+      "plataforma": "Google"
+    }
+  ],
+  "negativaParaResponder": {
+    "autor": "Dionatan Faro",
+    "nota": 1,
+    "quando": "5 meses atrás",
+    "mesAprox": "2026-05",
+    "tema": "troca de bateria de iPhone; diz que o aparelho segue aquecendo e travando perto de 50% e que a saúde da bateria caiu para 86% em dois meses",
+    "respostaDoProprietario": false,
+    "recomendacao": "Responder em público, com calma, oferecendo avaliação técnica gratuita. Não exibir no site. É a resposta que vende confiança para quem lê o Google."
+  }
+}

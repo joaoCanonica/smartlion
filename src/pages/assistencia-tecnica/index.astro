@@ -1,0 +1,15 @@
+---
+import Pagina from '../../layouts/PaginaInstitucional.astro';
+import { loja,enderecoCompleto } from '../../config/loja';
+import { servicos } from '../../config/servicos';
+import { Picture } from 'astro:assets';
+import bancada from '../../assets/home/bancada.jpg';
+import DecisaoHome from '../../components/home/DecisaoHome.astro';
+import Orcamento from '../../components/institucional/Orcamento.astro';
+---
+<Pagina editorial titulo="Assistência técnica em Lages" descricao="Assistência de iPhone e celulares na Smart Lion em Lages. Avaliação, orçamento e atendimento pelo WhatsApp." resposta={`A ${loja.nome} oferece assistência técnica de celulares na ${enderecoCompleto}. Conte o modelo e o problema pelo WhatsApp para conversar sobre avaliação e orçamento.`}>
+<a slot="acao" class="button button-light" href="#orcamento">Pedir orçamento ↗</a>
+<figure slot="foto"><Picture src={bancada} formats={['avif','webp']} widths={[420,640,900]} sizes="(max-width:800px) 100vw, 45vw" alt="Bancada técnica da Smart Lion com microscópio e equipamentos" loading="eager" class="foto-editorial"/><figcaption>Bancada de assistência da Smart Lion.</figcaption></figure>
+<section class="pagina-bloco light"><div class="container duas-colunas"><div><h2>Entenda o reparo antes de decidir.</h2><p>{loja.irpDescricao}.</p><p>O programa dá acesso a treinamentos, ferramentas e peças originais para reparos elegíveis. Consulte a equipe sobre as peças e opções para o seu modelo.</p></div><ul class="lista-servicos">{servicos.map(s=><li><a href={`/assistencia-tecnica/${s.slug}`}>{s.titulo}<span aria-hidden="true">↗</span></a></li>)}</ul></div></section>
+<section class="pagina-bloco"><div class="container duas-colunas"><div><h2>Do primeiro contato ao orçamento.</h2><ol><li>Informe o aparelho e descreva a falha.</li><li>Converse com a equipe sobre a avaliação técnica.</li><li>Confirme o serviço, as condições e o prazo antes de decidir.</li></ol></div><div><h3>Prazo conforme o diagnóstico</h3><p>Muitos consertos são realizados no mesmo dia. Isso depende da avaliação, do serviço e da disponibilidade de peças.</p><h3>Garantia do serviço</h3><p>A garantia do reparo é oferecida pela loja. Peça as condições, a cobertura e o prazo aplicáveis ao seu orçamento.</p><a class="button button-light" href="/perguntas-frequentes">Tirar outras dúvidas ↗</a></div></div></section><DecisaoHome/><Orcamento/>
+</Pagina>

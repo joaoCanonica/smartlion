@@ -1,0 +1,8 @@
+---
+import { marcos } from '../../lib/historia';
+interface Props { resumida?: boolean }
+const {resumida=false}=Astro.props;
+const itens=resumida?marcos.filter(m=>m.destaqueHome):marcos;
+---
+<ol class:list={['linha-do-tempo',{resumida}]} aria-label="Marcos confirmados da Smart Lion">{itens.map(m=><li data-marco={m.id}><time datetime={m.data}>{m.rotulo}</time><div><h3>{m.titulo}</h3><p>{m.texto}</p></div></li>)}</ol>
+<style>.linha-do-tempo{list-style:none;padding:0;margin:48px 0}.linha-do-tempo li{display:grid;grid-template-columns:200px 1fr;gap:48px;border-top:1px solid var(--wood);padding:32px 0}.linha-do-tempo time{color:var(--wood-light);font-size:.85rem}.linha-do-tempo h3{font-size:clamp(1.6rem,2.5vw,2.5rem);margin-bottom:16px}.linha-do-tempo p{max-width:680px;color:var(--muted)}.resumida{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}.resumida li{display:block}.resumida h3{font-size:1.5rem;margin-top:20px}.resumida p{font-size:.9rem}@media(max-width:700px){.linha-do-tempo li{grid-template-columns:1fr;gap:16px}.resumida{grid-template-columns:1fr;gap:0}.resumida li{padding-block:24px}}</style>

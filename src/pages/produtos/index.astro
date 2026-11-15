@@ -1,0 +1,10 @@
+---
+import AberturaVitrine from '../../components/catalogo/AberturaVitrine.astro';
+import Layout from '../../layouts/LayoutBase.astro';
+import ParcelamentoHome from '../../components/home/ParcelamentoHome.astro';
+import Catalogo from '../../components/catalogo/Catalogo.astro';
+import { obterProdutos } from '../../lib/produtos';
+const produtos=await obterProdutos();
+---
+<Layout title="Catálogo de iPhone e importados em Lages | Smart Lion" description="Explore as categorias da Smart Lion em Lages. Consulte versões, cores e condições pelo WhatsApp."><section class="catalogo light"><div class="container"><AberturaVitrine/><Catalogo produtos={produtos}/></div></section><ParcelamentoHome/></Layout>
+<style>.catalogo{padding:0 0 var(--space-chapter)}</style>

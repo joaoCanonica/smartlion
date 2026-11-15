@@ -1,0 +1,22 @@
+---
+import { Picture } from 'astro:assets';
+import capas from '../../assets/home/capas.jpg';
+import { loja } from '../../config/loja';
+interface Props { categoria?: {slug:string;nome:string;detalhe:string} }
+const {categoria}=Astro.props;
+---
+<header class="abertura-vitrine">
+ <div class="introducao">
+  {categoria && <a class="voltar" href="/produtos">← Todos os produtos</a>}
+  <p class="eyebrow">Produtos · {loja.endereco.cidade}</p>
+  <h1>{categoria?categoria.nome:<>Tecnologia que faz<br/>parte do seu dia.</>}</h1>
+  <p class="resposta">{categoria?`Conheça ${categoria.nome} na ${loja.nome}, na ${loja.endereco.rua}, ${loja.endereco.numero}, Centro de ${loja.endereco.cidade}.`:`Na ${loja.nome}, reunimos Apple, Xiaomi, acessórios e importados no Centro de ${loja.endereco.cidade}.`} A gente conversa sobre o que você procura e ajuda na escolha pelo WhatsApp.</p>
+  {categoria?.slug==='seminovos' && <p class="garantia">Nossos iPhones seminovos passam por avaliação da equipe técnica e têm {loja.garantiaSeminovosMeses} meses de garantia da loja. Consulte a cobertura com a equipe.</p>}
+  <a class="conheca" href="/a-loja">Conheça também o espaço da loja ↗</a>
+ </div>
+ {!categoria && <figure><Picture src={capas} formats={['avif','webp']} widths={[320,480,640]} sizes="(max-width:700px) 80vw, 28vw" alt="Capas de celular com textura de couro fotografadas pela Smart Lion" loading="eager"/><figcaption>Acessórios fotografados na Smart Lion.</figcaption></figure>}
+ {categoria && <p class="detalhe">{categoria.detalhe}</p>}
+</header>
+<style>
+.abertura-vitrine{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,.45fr);gap:clamp(32px,6vw,100px);align-items:center;padding:clamp(40px,7vw,90px) 0}.eyebrow{color:#6a503b}h1{font-size:clamp(2.7rem,5.1vw,5.5rem);margin:20px 0 28px}.resposta,.garantia{max-width:670px;color:var(--text-dark)}.garantia{margin-top:20px;padding-left:18px;border-left:2px solid var(--wood)}.voltar{display:inline-flex;align-items:center;min-height:44px;margin-bottom:24px;font-size:.8rem}.conheca{display:inline-flex;align-items:center;min-height:44px;margin-top:22px;font-size:.85rem;text-decoration:underline;text-underline-offset:5px}figure{margin:0;max-width:360px;justify-self:end;transform:rotate(2deg)}figure :global(img){width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}figcaption{font-size:.7rem;color:var(--text-dark);padding-top:12px}.detalhe{font-family:var(--font-heading);font-size:clamp(1.6rem,3vw,2.6rem);border-top:1px solid var(--wood);padding-top:24px;color:#6a503b;max-width:310px}@media(max-width:700px){.abertura-vitrine{grid-template-columns:1fr;gap:28px}figure{max-width:280px;justify-self:center;transform:none}.detalhe{font-size:1.4rem;max-width:none}}
+</style>

@@ -1,0 +1,50 @@
+{
+  "slug": "rascunho-ipad",
+  "nome": "iPad · modelo a confirmar",
+  "categoria": "ipad-mac-watch",
+  "subcategoria": null,
+  "condicao": "novo",
+  "condicaoFisica": null,
+  "rascunho": true,
+  "confirmado": false,
+  "confirmadoEm": "",
+  "selos": [],
+  "versoes": [
+    {
+      "id": "exemplo-a",
+      "rotulo": "Versão A · demonstração"
+    },
+    {
+      "id": "exemplo-b",
+      "rotulo": "Versão B · demonstração"
+    }
+  ],
+  "cores": [
+    {
+      "id": "exemplo-clara",
+      "rotulo": "Cor clara · demonstração",
+      "hex": "#D9D9D6"
+    },
+    {
+      "id": "exemplo-escura",
+      "rotulo": "Cor escura · demonstração",
+      "hex": "#303236"
+    }
+  ],
+  "disponibilidade": "consultar",
+  "preco": null,
+  "precoNota": null,
+  "garantia": "",
+  "garantiaMeses": null,
+  "saudeBateria": "",
+  "destaque": true,
+  "ordem": 3,
+  "imagens": [],
+  "imagensAlt": [],
+  "descricaoCurta": "",
+  "sinonimos": [
+    "tablet",
+    "tablets"
+  ],
+  "atualizadoEm": ""
+}

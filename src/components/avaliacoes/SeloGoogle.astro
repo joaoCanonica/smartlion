@@ -1,0 +1,7 @@
+---
+import { resumoAvaliacoes, atualizadoEm, coletadoEm } from '../../lib/avaliacoes';
+import { loja } from '../../config/loja';
+import MarcaGoogle from './MarcaGoogle.astro';
+---
+<a class="selo-google" href={loja.googleMaps}><span class="nota tabular">{resumoAvaliacoes.nota.toFixed(1).replace('.', ',')} <span aria-hidden="true">★</span><span class="sr-only">de 5 estrelas</span></span><span><strong><MarcaGoogle/>{resumoAvaliacoes.total} avaliações no Google</strong><small>Atualizado em <time datetime={coletadoEm}>{atualizadoEm}</time> ↗</small></span></a>
+<style>.selo-google{display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:24px 0}.nota{font:600 3.1rem var(--font-heading);letter-spacing:-.04em}.nota span[aria-hidden]{font-size:1.8rem}strong{font-weight:400;font-size:.95rem}small{display:block;color:inherit;opacity:.8;font-size:.8rem;margin-top:4px}</style>

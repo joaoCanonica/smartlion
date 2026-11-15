@@ -1,0 +1,6 @@
+---
+import Layout from '../layouts/LayoutBase.astro';
+import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
+---
+<Layout title="Página não encontrada | Smart Lion" description="Não encontramos esta página. Volte ao início ou fale com a Smart Lion pelo WhatsApp."><section class="container error"><p class="eyebrow">404</p><h1>Página não encontrada.</h1><p>A página que você procurou não foi encontrada. Acesse os produtos, encontre um serviço ou fale com a equipe.</p><div><a class="button button-light" href="/">Voltar ao início</a><a class="button" href="/produtos">Ver produtos</a><a class="button" href="/assistencia-tecnica">Assistência técnica</a><BotaoWhatsApp/></div></section></Layout>
+<style>.error{padding-block:var(--space-chapter)}.error .eyebrow{font:400 clamp(4rem,10vw,9rem) var(--font-heading);color:var(--wood-light);border-bottom:1px solid var(--wood)}.error h1{margin:24px 0}.error>p{max-width:500px}.error>div{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}</style>

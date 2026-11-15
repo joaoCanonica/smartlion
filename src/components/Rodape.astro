@@ -1,0 +1,24 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { loja, enderecoCompleto } from '../config/loja';
+import { formatarPeriodos } from '../lib/horario';
+import { linkWhatsApp, mensagemGeral } from '../config/whatsapp';
+import { navegacao, atividades } from '../config/navegacao';
+import AvaliarGoogle from './avaliacoes/AvaliarGoogle.astro';
+---
+<footer id="contato">
+ <div class="container assinatura"><Image src={logo} alt="Leão da Smart Lion" width={90} height={90} loading="lazy"/><p>Tecnologia de verdade<br/>é sobre pessoas.</p><a href={loja.instagram.url}>{loja.instagram.nome} ↗</a></div>
+ <div class="container footer-grid">
+  <div><h2>Venha nos conhecer</h2><address>{enderecoCompleto}<br/>CEP {loja.endereco.cep}</address><a href={loja.googleMaps}>Ver no Google Maps ↗</a></div>
+  <div><h2>Horários da loja</h2><table><caption class="sr-only">Horário de atendimento</caption><tbody>{loja.horario.semana.map(h=><tr><th scope="row">{h.rotulo}</th><td>{formatarPeriodos(h.periodos)}</td></tr>)}</tbody></table><p class="small">Nos feriados, consulte o atendimento.</p></div>
+  <div><h2>Fale com a gente</h2><a class="contact" href={linkWhatsApp(mensagemGeral)}>WhatsApp <span>{loja.whatsapp.exibicao}</span></a><a class="contact" href={`tel:${loja.telefone.numero}`}>Telefone <span>{loja.telefone.exibicao}</span></a></div>
+ </div>
+ <nav class="container paginas" aria-label="Informações da loja">{[...navegacao,...atividades].map(n=><a href={n.href}>{n.nome}</a>)}<a href="/perguntas-frequentes">Perguntas frequentes</a><a href="/dicas">Dicas</a><a href="/privacidade">Privacidade</a></nav>
+ <AvaliarGoogle compacto/>
+ <div class="container footer-bottom"><span>{loja.nome} · {loja.endereco.cidade}/{loja.endereco.uf}{loja.cnpj&&` · CNPJ ${loja.cnpj}`}{import.meta.env.DEV&&!loja.cnpj&&<span class="pendente"> · CNPJ PENDENTE</span>}</span><span>Desenvolvido por WAXLO</span></div>
+ <div class="container"><button class="preferencias-button" type="button" data-preferencias hidden>Preferências de privacidade</button></div>
+</footer>
+<style>
+footer{padding:var(--space-chapter) 0 100px;background:var(--ink);color:var(--white);border-top:1px solid var(--line)}.assinatura{display:flex;align-items:center;gap:30px;margin-bottom:60px}.assinatura p{font:400 clamp(1.8rem,3vw,3.2rem)/1.15 var(--font-heading)}.assinatura>a{margin-left:auto;font-size:.9rem;min-height:44px;display:flex;align-items:center}.footer-grid{display:grid;grid-template-columns:1.1fr 1.2fr 1fr;gap:48px;color:var(--muted);font-size:.875rem}h2{font:400 .75rem var(--font-body);text-transform:uppercase;letter-spacing:.14em;color:var(--white);margin-bottom:24px}address{font-style:normal;margin-bottom:18px;max-width:30ch}table{border-collapse:collapse;font-variant-numeric:tabular-nums}th{text-align:left;font-weight:400;padding:0 16px 12px 0;vertical-align:top}td{padding-bottom:12px}.small{font-size:.75rem;margin-top:10px}.contact{display:block;margin-bottom:18px}.contact span{display:block;color:var(--white);font-size:1.15rem;font-variant-numeric:tabular-nums}.paginas{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:44px;padding-top:24px;border-top:1px solid var(--line);font-size:.8rem}.paginas a{min-height:44px;display:flex;align-items:center}.footer-bottom{display:flex;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding-top:24px;font-size:.75rem;color:var(--muted)}.preferencias-button{min-height:48px;padding:12px 16px;margin-top:20px;color:var(--white);background:transparent;border:1px solid var(--muted);font-size:.8rem}.pendente{color:#ffda8b}@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}.assinatura{flex-wrap:wrap}.assinatura>a{margin-left:0}.footer-grid>div:last-child{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:16px 48px}.footer-grid>div:last-child h2{width:100%;margin-bottom:0}}@media(max-width:550px){.assinatura{gap:20px;margin-bottom:40px}.assinatura img{width:64px;height:64px}.assinatura p{font-size:1.7rem}.assinatura>a{width:100%}.footer-grid{grid-template-columns:1fr;gap:32px}.footer-grid>div:last-child{display:block}.footer-grid>div:last-child h2{margin-bottom:24px}.footer-bottom{flex-direction:column;gap:10px}}
+</style>

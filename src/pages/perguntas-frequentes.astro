@@ -1,0 +1,9 @@
+---
+import Pagina from '../layouts/PaginaInstitucional.astro';
+import { perguntas } from '../data/perguntas';
+import { loja } from '../config/loja';
+import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
+---
+<Pagina editorial titulo="Perguntas frequentes" descricao="Tire dúvidas sobre catálogo, seminovos, assistência, parcelamento e curso da Smart Lion em Lages." resposta={`Encontre respostas sobre compras, assistência e treinamento na ${loja.nome}, no Centro de ${loja.endereco.cidade}. Para confirmar as condições do seu produto ou serviço, converse com a equipe pelo WhatsApp.`}><BotaoWhatsApp slot="acao" rotulo="Tirar uma dúvida no WhatsApp"/><section class="pagina-bloco light"><div class="container faq-lista">{perguntas.map(p=><details id={p.pergunta==='Os iPhones seminovos têm garantia?' ? 'garantia-seminovos' : undefined}><summary>{p.pergunta}</summary><p>{p.resposta}</p></details>)}</div></section></Pagina>
+
+<style>details[open]{border-left:2px solid var(--wood);padding-left:1rem}.faq-lista summary{font-weight:400}.faq-lista{margin-inline:auto}</style>

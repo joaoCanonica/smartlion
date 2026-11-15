@@ -1,0 +1,9 @@
+---
+import { Picture } from 'astro:assets';
+import foto from '../../assets/home/bancada.jpg';
+import { loja } from '../../config/loja';
+import { mensagensWhatsApp } from '../../config/whatsapp';
+import BotaoWhatsApp from '../BotaoWhatsApp.astro';
+---
+<section class="assistencia" id="assistencia" aria-labelledby="titulo-assistencia"><div class="container editorial"><Picture src={foto} formats={['avif','webp']} widths={[420,640,900]} sizes="(max-width:800px) 100vw, 45vw" alt="Bancada do Centro Técnico Smart Lion com microscópio e equipamentos de manutenção" loading="lazy"/><div class="texto"><p class="eyebrow">Assistência técnica em Lages</p><h2 id="titulo-assistencia">Seu celular precisa<br/>de cuidado.<br/>Você, de clareza.</h2><p>{loja.irpDescricao}.</p><p>Da avaliação ao orçamento, entenda o que precisa ser feito antes de decidir. Tela, bateria ou um problema mais complexo: conte o que aconteceu.</p><ul>{loja.servicos.map(s=><li>{s}</li>)}</ul><p class="prazo">Muitos consertos são realizados no mesmo dia. O prazo depende da avaliação e da disponibilidade das peças; confirme com a equipe.</p><BotaoWhatsApp texto={mensagensWhatsApp.assistencia()} rotulo="Pedir orçamento no WhatsApp"/><p><a href="/assistencia-tecnica">Conhecer os serviços ↗</a></p></div></div></section>
+<style>.assistencia{padding:80px 0;background:#1c1d20}.editorial{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:64px}.editorial :global(img){width:100%;height:auto;max-height:780px;object-fit:cover}.eyebrow{color:#ff78bc;margin-bottom:18px}.texto>p:not(.eyebrow){margin:22px 0;color:#d2d3d5}ul{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:28px 0}li{border-bottom:1px solid #626367;padding-bottom:12px;font-size:.9rem}.prazo{font-size:.8rem}@media(max-width:800px){.editorial{grid-template-columns:1fr;gap:32px}.assistencia{padding:48px 0}.editorial :global(img){max-height:480px;object-position:center}}</style>

@@ -1,0 +1,13 @@
+---
+import type { Avaliacao } from '../../lib/avaliacoes';
+import { loja } from '../../config/loja';
+import MarcaGoogle from './MarcaGoogle.astro';
+interface Props { avaliacao: Avaliacao }
+const { avaliacao: a } = Astro.props;
+---
+<article class="depoimento" data-avaliacao={a.id} data-tags={a.tags.join(' ')}>
+  <header><strong>{a.autorExibicao}</strong><span class="estrelas" aria-label={`${a.nota} de 5 estrelas`}>{'★'.repeat(a.nota)}</span></header>
+  <blockquote data-texto-avaliacao><p>{a.texto}</p></blockquote>
+  <footer><a href={loja.googleMaps}><MarcaGoogle/>Avaliação no Google ↗</a><span>Publicada aproximadamente em <time datetime={a.mesAprox}>{a.mesAprox.split('-').reverse().join('/')}</time></span></footer>
+</article>
+<style>.depoimento{padding:28px 0;border-top:1px solid #747579;min-width:0}header{display:flex;justify-content:space-between;gap:18px;align-items:center}strong{font:600 1.1rem var(--font-heading)}.estrelas{letter-spacing:.06em;font-size:.85rem;white-space:nowrap}blockquote{margin:22px 0;font-size:1rem;line-height:1.75;overflow-wrap:anywhere}footer{display:grid;gap:8px;font-size:.8rem}footer>span{font-size:.72rem;opacity:.8}a{display:inline-flex;align-items:center;min-height:44px;width:fit-content}</style>

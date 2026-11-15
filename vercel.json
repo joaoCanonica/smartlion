@@ -1,0 +1,59 @@
+{
+  "redirects": [
+    {
+      "source": "/como-chegar",
+      "destination": "/visite-nos",
+      "statusCode": 301
+    },
+    {
+      "source": "/sobre",
+      "destination": "/nossa-historia",
+      "statusCode": 301
+    },
+    {
+      "source": "/catalogo",
+      "destination": "/produtos",
+      "statusCode": 301
+    },
+    {
+      "source": "/produtos/seminovos",
+      "destination": "/seminovos",
+      "statusCode": 301
+    },
+    {
+      "source": "/catalogo/iphone",
+      "destination": "/produtos/iphone",
+      "statusCode": 301
+    },
+    {
+      "source": "/catalogo/seminovos",
+      "destination": "/seminovos",
+      "statusCode": 301
+    },
+    {
+      "source": "/catalogo/ipad-mac-watch",
+      "destination": "/produtos/ipad-mac-watch",
+      "statusCode": 301
+    },
+    {
+      "source": "/catalogo/xiaomi",
+      "destination": "/produtos/xiaomi",
+      "statusCode": 301
+    },
+    {
+      "source": "/catalogo/casa-e-games",
+      "destination": "/produtos/casa-e-games",
+      "statusCode": 301
+    },
+    {
+      "source": "/catalogo/acessorios",
+      "destination": "/produtos/acessorios",
+      "statusCode": 301
+    },
+    {
+      "source": "/catalogo/perfumaria",
+      "destination": "/produtos/perfumaria",
+      "statusCode": 301
+    }
+  ]
+}

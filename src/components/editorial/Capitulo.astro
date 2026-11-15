@@ -1,0 +1,6 @@
+---
+interface Props { id: string; tema?: 'claro'|'escuro'; marcador?: string; titulo: string }
+const {id,tema='escuro',marcador,titulo}=Astro.props;
+---
+<section id={id} class:list={['capitulo',{'light':tema==='claro'}]} aria-labelledby={`${id}-titulo`}><div class="container"><header>{marcador&&<p class="eyebrow">{marcador}</p>}<h2 id={`${id}-titulo`}>{titulo}</h2><div class="introducao"><slot name="introducao"/></div></header><slot/></div></section>
+<style>.capitulo{padding-block:var(--space-chapter);background:var(--ink);color:var(--white)}.capitulo.light{background:var(--surface);color:var(--ink)}header{margin-bottom:clamp(32px,5vw,64px);max-width:1000px}.eyebrow{color:var(--wood-light);margin-bottom:24px}.light .eyebrow{color:var(--text-dark)}h2{max-width:20ch}.introducao{max-width:660px;margin-top:24px;color:var(--muted)}.light .introducao{color:var(--text-dark)}</style>

@@ -1,0 +1,38 @@
+---
+import { loja } from '../config/loja';
+import { validarAgenda } from '../lib/horario';
+validarAgenda(loja.horario);
+---
+<div class="status-horario" data-horario={JSON.stringify(loja.horario)}>
+  <p data-status-horario role="status" aria-live="polite">Confira os horários de atendimento abaixo.</p>
+  <a href="#contato">Ver horário completo</a>
+</div>
+<script>
+import { statusHorario, type Agenda } from '../lib/horario';
+const raiz = document.querySelector<HTMLElement>('[data-horario]');
+const texto = raiz?.querySelector<HTMLElement>('[data-status-horario]');
+if (raiz?.dataset.horario && texto) {
+  const agenda: Agenda = JSON.parse(raiz.dataset.horario);
+  let timer: ReturnType<typeof setTimeout>;
+  const atualizar = () => {
+    clearTimeout(timer);
+    try {
+      const status = statusHorario(new Date(), agenda);
+      if (texto.textContent !== status.texto) texto.textContent = status.texto;
+      raiz.dataset.status = status.tipo;
+    } catch {
+      texto.textContent = 'Consulte o horário de atendimento abaixo.';
+    }
+    if (!document.hidden) timer = setTimeout(atualizar, 60_000 - Date.now() % 60_000 + 100);
+  };
+  atualizar();
+  document.addEventListener('visibilitychange', atualizar);
+  window.addEventListener('pageshow', atualizar);
+  window.addEventListener('pagehide', () => clearTimeout(timer));
+}
+</script>
+<style>
+.status-horario{margin-top:22px;min-height:60px;font-size:.85rem;color:#eee}
+.status-horario a{font-size:.75rem;text-decoration:underline;text-underline-offset:4px;color:var(--muted)}
+.status-horario p{font-variant-numeric:tabular-nums;min-height:1.6em}
+</style>

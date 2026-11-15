@@ -1,0 +1,7 @@
+---
+import { loja } from '../../config/loja';
+import { mensagensWhatsApp } from '../../config/whatsapp';
+import BotaoWhatsApp from '../BotaoWhatsApp.astro';
+---
+<section class="parcelamento" id="parcelamento" aria-labelledby="titulo-parcelamento"><div class="container"><div><p class="eyebrow">Consulte as condições para o seu aparelho</p><h2 id="titulo-parcelamento">Planeje a próxima compra.</h2><div class="opcoes"><p><strong>Até {loja.parcelamento.cartaoAte}x</strong><span>no cartão</span></p><p><strong>Até {loja.parcelamento.boletoAte}x</strong><span>no boleto, sujeito a análise de crédito</span></p></div><p class="nota">Consulte entrada, taxas, valor das parcelas e condições vigentes antes de fechar.</p></div><BotaoWhatsApp texto={mensagensWhatsApp.parcelamento()} rotulo="Simular no WhatsApp"/></div></section>
+<style>.parcelamento{padding:64px 0;border-block:1px solid #4a4b4e}.container{display:flex;align-items:center;justify-content:space-between;gap:32px}.eyebrow{color:#ff78bc;margin-bottom:18px}h2{font-size:clamp(1.8rem,3vw,3rem)}.opcoes{display:flex;gap:48px;margin:28px 0}.opcoes p{display:grid;gap:4px}.opcoes strong{font:600 clamp(2.5rem,5vw,4rem) var(--font-heading);font-variant-numeric:tabular-nums}.opcoes span,.nota{font-size:.8rem;color:#c8c9cb}.nota{max-width:600px}.container :global(.button){flex-shrink:0}@media(max-width:850px){.container{display:block}.container :global(.button){margin-top:28px}.opcoes{gap:24px}}</style>

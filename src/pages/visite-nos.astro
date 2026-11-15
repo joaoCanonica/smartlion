@@ -1,0 +1,8 @@
+---
+import Layout from '../layouts/LayoutBase.astro';
+import LojaHome from '../components/home/LojaHome.astro';
+import { enderecoCompleto } from '../config/loja';
+---
+<Layout title="Visite a Smart Lion em Lages | Endereço e horários" description={`Veja os horários da loja na ${enderecoCompleto} e abra a rota no Google Maps ou Waze.`}>
+  <LojaHome pagina />
+</Layout>

@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/LayoutBase.astro';
+import DetalhesProduto from '../../components/catalogo/DetalhesProduto.astro';
+import { obterProdutos } from '../../lib/produtos';
+export async function getStaticPaths(){return (await obterProdutos()).map(produto=>({params:{slug:produto.slug},props:{produto}}))}
+const {produto}=Astro.props;
+---
+<Layout produto={produto} title={`${produto.nome} em Lages | Smart Lion`} description={`Consulte ${produto.nome} com a Smart Lion em Lages. Escolha versão e cor e fale pelo WhatsApp.`}><div class="pagina-produto light"><div class="container"><a class="voltar" href="/produtos">← Voltar ao catálogo</a><DetalhesProduto produto={produto}/></div></div></Layout>
+<script>
+import { iniciarProduto } from '../../scripts/produto';
+import { caminhoProduto } from '../../lib/catalogo';
+const raiz=document.querySelector<HTMLElement>('[data-produto-detalhes]');
+if(raiz){
+ const slug=JSON.parse(raiz.dataset.produto!).slug;
+ const sessao=iniciarProduto(raiz,escolhas=>history.replaceState(history.state,'',caminhoProduto(slug,escolhas)));
+ window.addEventListener('popstate',sessao.aplicarURL);
+}
+</script>
+<style>.pagina-produto{padding:24px 0 70px}.voltar{display:inline-flex;align-items:center;min-height:44px;font-size:.8rem;margin-bottom:20px}</style>

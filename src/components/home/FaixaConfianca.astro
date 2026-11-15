@@ -1,0 +1,6 @@
+---
+import { loja } from '../../config/loja';
+import { resumoAvaliacoes, atualizadoEm } from '../../lib/avaliacoes';
+---
+<section class="confianca" aria-label="Por que conhecer a Smart Lion"><div class="container"><a href="/avaliacoes"><strong>{resumoAvaliacoes.nota.toFixed(1).replace('.', ',')} ★</strong><span>{resumoAvaliacoes.total} avaliações no Google<small>Atualizado em {atualizadoEm}</small></span></a><p><strong>IRP Apple</strong><span>{loja.irpDescricao}</span></p><p><strong>{loja.garantiaSeminovosMeses} meses</strong><span>De garantia da loja nos seminovos</span></p><a href="#parcelamento"><strong>Até {loja.parcelamento.cartaoAte}x</strong><span>No cartão. Consulte condições.</span></a></div></section>
+<style>.confianca{background:#222326;border-block:1px solid #4a4b4e;padding:28px 0}.container{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}.container>a,.container>p{display:grid;gap:7px;padding-right:24px;border-right:1px solid #57585b}.container>:last-child{border:0}strong{font:600 1.65rem var(--font-heading)}span{font-size:.8rem;color:#d6d7d9}small{display:block;font-size:.7rem;margin-top:5px}@media(max-width:800px){.container{grid-template-columns:1fr 1fr;gap:24px}.container>:nth-child(2){border:0}}@media(max-width:380px){.container{gap:20px}strong{font-size:1.4rem}.container>a,.container>p{padding-right:10px}}</style>

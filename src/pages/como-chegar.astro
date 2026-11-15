@@ -1,0 +1,7 @@
+---
+import Pagina from '../layouts/PaginaInstitucional.astro';
+import { loja,enderecoCompleto } from '../config/loja';
+import LojaHome from '../components/home/LojaHome.astro';
+import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
+---
+<Pagina titulo="Como chegar à Smart Lion em Lages" descricao="Endereço, horários e rotas para a Smart Lion na Rua Hercílio Luz, 364, Centro de Lages." resposta={`A ${loja.nome} fica na ${enderecoCompleto}. Confira os horários e abra a rota abaixo; se precisar de orientação, fale com a equipe pelo WhatsApp.`}><BotaoWhatsApp slot="acao" rotulo="Falar com a loja"/><LojaHome/></Pagina>

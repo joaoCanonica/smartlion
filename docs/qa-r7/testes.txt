@@ -1,0 +1,9 @@
+
+ RUN  v5.0.5 /workspace/sites/smartlion
+
+
+ Test Files  8 passed (8)
+      Tests  190 passed (190)
+   Start at  12:05:25
+   Duration  366ms (import 54%, transform 20%, tests 19%, worker 6%)
+

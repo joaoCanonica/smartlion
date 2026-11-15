@@ -1,0 +1,9 @@
+12:05:27 [content] Syncing content
+12:05:27 [content] Synced content
+12:05:27 [types] Generated 588ms
+12:05:27 [check] Getting diagnostics for Astro files in /workspace/sites/smartlion...
+Result (109 files): 
+- 0 errors
+- 0 warnings
+- 0 hints
+

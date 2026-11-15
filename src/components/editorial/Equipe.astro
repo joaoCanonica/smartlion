@@ -1,0 +1,12 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import { loja } from '../../config/loja';
+import { equipePublicavel } from '../../lib/historia';
+const fotos=import.meta.glob<{default:ImageMetadata}>('../../assets/equipe/*.{jpg,jpeg,png,webp}',{eager:true});
+const foto=(nome:string)=>fotos[`../../assets/equipe/${nome}`]?.default;
+const pessoas=loja.equipe.filter(p=>equipePublicavel(p,Boolean(foto(p.foto))));
+---
+{pessoas.length>0&&<section class="equipe container" aria-labelledby="titulo-equipe"><h2 id="titulo-equipe">Quem faz parte dessa história.</h2><div>{pessoas.map(p=><article><Picture src={foto(p.foto)!} formats={['avif','webp']} widths={[320,640]} sizes="(max-width:700px) 100vw, 30vw" alt={`Retrato de ${p.nome}, ${p.funcao}`} loading="lazy"/><h3>{p.nome}</h3><p>{p.funcao}</p></article>)}</div></section>}
+{import.meta.env.DEV&&pessoas.length===0&&<aside class="container pendente">PENDENTE: nomes, funções, fotos e autorização da equipe. A seção não aparece em produção.</aside>}
+<style>.equipe{padding-block:var(--space-chapter)}.equipe>div{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:48px}.equipe h3{font-size:1.8rem;margin:20px 0 12px}.pendente{padding:24px;background:#fff0c7;color:#633a00;font-size:.8rem}@media(max-width:700px){.equipe>div{grid-template-columns:1fr}}</style>

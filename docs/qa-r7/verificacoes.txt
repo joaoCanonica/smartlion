@@ -1,0 +1,55 @@
+56 textos literais; 23 destaques preservados; 3 citações na home; 5 notas; sem iframe ou schema de avaliações.
+┌─────────┬──────────────────────────────────────────────────────────┬─────────────┬───────────┐
+│ (index) │ rota                                                     │ jsGzipBytes │ htmlBytes │
+├─────────┼──────────────────────────────────────────────────────────┼─────────────┼───────────┤
+│ 0       │ '404.html'                                               │ 736         │ 15230     │
+│ 1       │ '_estilo/index.html'                                     │ 2417        │ 34534     │
+│ 2       │ 'a-loja/index.html'                                      │ 1469        │ 35865     │
+│ 3       │ 'assistencia-tecnica/apple-watch-airpods/index.html'     │ 2734        │ 22767     │
+│ 4       │ 'assistencia-tecnica/index.html'                         │ 2734        │ 26671     │
+│ 5       │ 'assistencia-tecnica/macbook-ipad/index.html'            │ 2734        │ 22635     │
+│ 6       │ 'assistencia-tecnica/placa/index.html'                   │ 2734        │ 22530     │
+│ 7       │ 'assistencia-tecnica/tampa-traseira/index.html'          │ 2734        │ 22552     │
+│ 8       │ 'assistencia-tecnica/troca-de-bateria-iphone/index.html' │ 2734        │ 22622     │
+│ 9       │ 'assistencia-tecnica/troca-de-tela-iphone/index.html'    │ 2734        │ 22544     │
+│ 10      │ 'avaliacoes/index.html'                                  │ 1343        │ 77645     │
+│ 11      │ 'catalogo/acessorios/index.html'                         │ 4023        │ 21931     │
+│ 12      │ 'catalogo/casa-e-games/index.html'                       │ 4023        │ 21952     │
+│ 13      │ 'catalogo/index.html'                                    │ 4023        │ 25224     │
+│ 14      │ 'catalogo/ipad-mac-watch/index.html'                     │ 4023        │ 21992     │
+│ 15      │ 'catalogo/iphone/index.html'                             │ 4023        │ 21865     │
+│ 16      │ 'catalogo/perfumaria/index.html'                         │ 4023        │ 21910     │
+│ 17      │ 'catalogo/seminovos/index.html'                          │ 4023        │ 22064     │
+│ 18      │ 'catalogo/xiaomi/index.html'                             │ 4023        │ 21860     │
+│ 19      │ 'como-chegar/index.html'                                 │ 1238        │ 24582     │
+│ 20      │ 'curso-manutencao-celular/index.html'                    │ 736         │ 20548     │
+│ 21      │ 'dicas/index.html'                                       │ 736         │ 19273     │
+│ 22      │ 'index.html'                                             │ 2919        │ 58870     │
+│ 23      │ 'nossa-historia/index.html'                              │ 967         │ 35234     │
+│ 24      │ 'perguntas-frequentes/index.html'                        │ 736         │ 25647     │
+│ 25      │ 'privacidade/index.html'                                 │ 736         │ 20844     │
+│ 26      │ 'produtos/acessorios/index.html'                         │ 4023        │ 21931     │
+│ 27      │ 'produtos/casa-e-games/index.html'                       │ 4023        │ 21952     │
+│ 28      │ 'produtos/index.html'                                    │ 4023        │ 25224     │
+│ 29      │ 'produtos/ipad-mac-watch/index.html'                     │ 4023        │ 21992     │
+│ 30      │ 'produtos/iphone/index.html'                             │ 4023        │ 21865     │
+│ 31      │ 'produtos/perfumaria/index.html'                         │ 4023        │ 21910     │
+│ 32      │ 'produtos/xiaomi/index.html'                             │ 4023        │ 21860     │
+│ 33      │ 'seminovos/index.html'                                   │ 4023        │ 22451     │
+│ 34      │ 'sobre/index.html'                                       │ 736         │ 19284     │
+│ 35      │ 'visite-nos/index.html'                                  │ 1238        │ 20733     │
+└─────────┴──────────────────────────────────────────────────────────┴─────────────┴───────────┘
+36 páginas verificadas. 0 produtos publicados; 5 excluídos. Links, H1, copy e orçamento OK.
+Dicas: listagem disponível; três rascunhos ausentes de rotas, HTML e assets de produção.
+madeira no escuro: 8.52:1
+texto escuro: 16.91:1
+texto secundário: 9.06:1
+texto rodapé: 10.29:1
+WhatsApp: 7.74:1
+foco claro corrigido: 6.98:1
+foco no escuro: 7.73:1
+36 páginas; 152 links WhatsApp; 107 imagens. IDs, copy da loja e função central: OK. Não substitui axe ou auditoria visual.
+Ordem dos 10 blocos institucionais, 3 citações, sem modal comercial, dimensões de imagens, prioridade única e mapa sem iframe inicial: OK.
+{"avifVariantes":38,"menorBytes":2760,"maiorBytes":46093}
+SEO: 36 páginas com canônica, Open Graph, JSON-LD válido e nenhum iframe inicial. Sitemap sem rascunhos; llms.txt com almoço.
+Vitrine: 8 rotas novas, busca, contatos, garantias e parcelamento presentes; rascunhos ausentes e rotas antigas preservadas.

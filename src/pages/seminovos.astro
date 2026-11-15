@@ -1,0 +1,12 @@
+---
+import AberturaVitrine from '../components/catalogo/AberturaVitrine.astro';
+import Layout from '../layouts/LayoutBase.astro';
+import Catalogo from '../components/catalogo/Catalogo.astro';
+import { categorias } from '../config/categorias';
+import { obterProdutos } from '../lib/produtos';
+import { categoriasProduto } from '../lib/catalogo';
+const categoria=categorias.find(c=>c.slug==='seminovos')!;
+const produtos=(await obterProdutos()).filter(p=>categoriasProduto(p).includes(categoria.slug));
+---
+<Layout title={`${categoria.nome} em Lages | Smart Lion`} description={`Consulte ${categoria.nome} na Smart Lion, no Centro de Lages. Modelos e condições pelo WhatsApp.`}><section class="categoria light"><div class="container"><AberturaVitrine categoria={categoria}/><nav aria-label="Orientação sobre seminovos"><a href="/perguntas-frequentes#garantia-seminovos">Confira as condições de garantia ↗</a></nav><Catalogo produtos={produtos} categoria={categoria.slug}/></div></section></Layout>
+<style>.categoria{padding:0 0 var(--space-chapter)}nav{margin-bottom:2rem}nav a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px}</style>

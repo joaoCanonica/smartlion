@@ -1,0 +1,14 @@
+---
+import { render } from 'astro:content';
+import { obterDicas } from '../../lib/dicas';
+import Pagina from '../../layouts/PaginaInstitucional.astro';
+import { loja } from '../../config/loja';
+import BotaoWhatsApp from '../../components/BotaoWhatsApp.astro';
+import { mensagensWhatsApp } from '../../config/whatsapp';
+export async function getStaticPaths(){return (await obterDicas()).map(artigo=>({params:{slug:artigo.data.slug},props:{artigo}}));}
+const {artigo}=Astro.props;const d=artigo.data;const {Content}=await render(artigo);
+---
+<Pagina editorial titulo={d.titulo} descricao={d.descricao} resposta={`${d.resposta} Em ${loja.endereco.cidade}, fale com a ${loja.nome} pelo WhatsApp se precisar de orientação.`} rotulo={`Dicas · ${d.tema}`}>
+<section class="pagina-bloco light"><div class="container texto-longo">{import.meta.env.DEV&&<aside class="rascunho">PENDENTE: revisão técnica, aprovação editorial, revisor e datas de publicação. Este artigo não aparece na produção.</aside>}{d.publicadoEm&&<p>Publicado em <time datetime={d.publicadoEm}>{d.publicadoEm.split('-').reverse().join('/')}</time></p>}<article class="conteudo-artigo"><Content/></article><aside class="fontes" aria-label="Fontes consultadas"><h2>Para conferir</h2><ul>{d.fontes.map(f=><li><a href={f.url}>{f.titulo} ↗</a><small>Consultado em {f.consultadoEm.split('-').reverse().join('/')}</small></li>)}</ul></aside><div class="final-artigo"><h2>Quer conversar sobre seu aparelho?</h2><p>A equipe atende na loja e pelo WhatsApp.</p><BotaoWhatsApp texto={d.cta==='assistencia'?mensagensWhatsApp.assistencia():mensagensWhatsApp.geral()} rotulo={d.cta==='assistencia'?'Falar com a assistência':'Consultar aparelhos'}/><nav class="navegacao-paginas" aria-label="Mais dicas"><a href="/dicas">Voltar para dicas ↗</a></nav></div></div></section>
+</Pagina>
+<style>.rascunho{padding:20px;background:#fff0c7;color:#342800;margin-bottom:30px}.conteudo-artigo :global(h2){margin-top:38px;font-size:clamp(1.5rem,3vw,2.2rem)}.conteudo-artigo :global(p){line-height:1.85;margin:18px 0}.conteudo-artigo :global(li){margin:8px 0}.fontes{border-top:1px solid #979895;margin-top:40px}.fontes small{display:block;font-size:.75rem}.final-artigo{border-top:1px solid #979895;margin-top:38px}</style>

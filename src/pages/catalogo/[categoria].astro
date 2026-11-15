@@ -1,0 +1,13 @@
+---
+import AberturaVitrine from '../../components/catalogo/AberturaVitrine.astro';
+import Layout from '../../layouts/LayoutBase.astro';
+import Catalogo from '../../components/catalogo/Catalogo.astro';
+import { categorias } from '../../config/categorias';
+import { obterProdutos } from '../../lib/produtos';
+import { categoriasProduto } from '../../lib/catalogo';
+export function getStaticPaths(){return categorias.map(c=>({params:{categoria:c.slug},props:{categoria:c}}))}
+const {categoria}=Astro.props;
+const produtos=(await obterProdutos()).filter(p=>categoriasProduto(p).includes(categoria.slug));
+---
+<Layout title={`${categoria.nome} em Lages | Smart Lion`} description={`Consulte ${categoria.nome} na Smart Lion, no Centro de Lages. Modelos e condições pelo WhatsApp.`}><section class="categoria light"><div class="container"><AberturaVitrine categoria={categoria}/><Catalogo produtos={produtos} categoria={categoria.slug}/></div></section></Layout>
+<style>.categoria{padding:0 0 var(--space-chapter)}</style>

@@ -1,0 +1,9 @@
+---
+import { obterProdutos } from '../../lib/produtos';
+import { categoriasProduto } from '../../lib/catalogo';
+import { categorias, caminhoCategoria } from '../../config/categorias';
+import CardProduto from '../catalogo/CardProduto.astro';
+const produtos=await obterProdutos();
+---
+<section class="categorias-home light" aria-labelledby="categorias-titulo"><div class="container"><p class="eyebrow">Escolha por categoria</p><h2 id="categorias-titulo">Tecnologia para<br/>o seu dia a dia.</h2>{categorias.map((c,i)=>{const lista=produtos.filter(p=>categoriasProduto(p).includes(c.slug));return <section class="categoria" aria-labelledby={`cat-${c.slug}`}><div class="cabecalho"><span class="indice" aria-hidden="true">0{i+1}</span><div><h3 id={`cat-${c.slug}`}>{c.nome}</h3><p>{c.detalhe}</p></div><a href={caminhoCategoria(c.slug)}>{lista.length ? `Ver todos (${lista.length})` : 'Consultar categoria'} ↗</a></div>{lista.length ? <div class="produtos">{lista.slice(0,8).map(p=><CardProduto produto={p}/>)}</div> : <p class="consulta">Modelos, versões e disponibilidade sob consulta com a equipe.</p>}</section>})}</div></section>
+<style>.categorias-home{padding:70px 0}.eyebrow{color:#8c0747;margin-bottom:14px}.categoria{border-bottom:1px solid #b7b8b4;padding:30px 0}.cabecalho{display:flex;gap:22px;align-items:center}.indice{font-size:.75rem;color:#595a5d}h3{font-size:clamp(1.6rem,3vw,2.3rem)}.cabecalho p,.consulta{font-size:.85rem;color:#414246;margin-top:8px}.cabecalho a{margin-left:auto;font-size:.85rem;min-height:44px;display:flex;align-items:center}.consulta{margin-left:40px}.produtos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;margin-top:26px}@media(max-width:800px){.produtos{grid-template-columns:repeat(2,minmax(0,1fr))}.cabecalho{gap:12px;flex-wrap:wrap}.cabecalho a{margin-left:0}.consulta{margin-left:0}}@media(max-width:420px){.produtos{grid-template-columns:1fr}}</style>

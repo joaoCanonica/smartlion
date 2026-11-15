@@ -1,0 +1,26 @@
+---
+import type { Produto } from '../../lib/catalogo';
+import { publicavel } from '../../lib/catalogo';
+import CardProduto from './CardProduto.astro';
+import BotaoWhatsApp from '../BotaoWhatsApp.astro';
+import ChipsCategorias from '../ChipsCategorias.astro';
+import ModalProduto from './ModalProduto.astro';
+interface Props { produtos: Produto[]; categoria?: string }
+const {produtos,categoria=''}=Astro.props;
+---
+<ChipsCategorias/>
+<div data-catalogo data-categoria-base={categoria} data-rota-catalogo={Astro.url.pathname}>
+ {import.meta.env.DEV && produtos.some(p=>!publicavel(p)) && <p class="aviso-dev">Prévia de desenvolvimento: os slots abaixo são rascunhos, com opções demonstrativas. Nenhum deles será publicado sem confirmação.</p>}
+ <form class="busca-catalogo" id="busca" action={Astro.url.pathname} method="get" data-busca-catalogo role="search" aria-label="Buscar produtos">
+  <div class="campo-busca"><label for="consulta-catalogo">Qual modelo você procura?</label><input id="consulta-catalogo" name="q" type="search" placeholder="iPhone, 17 Pro Max, tablet…" autocomplete="off"/></div>
+  <div class="campo-condicao"><label for="condicao-catalogo">Condição</label><select id="condicao-catalogo" name="condicao"><option value="">Todas</option><option value="novo">Novo</option><option value="seminovo">Seminovo</option></select></div>
+  <button type="submit" class="buscar">Buscar</button><button type="button" class="limpar" data-limpar hidden>Limpar busca</button>
+ </form>
+ <noscript><p class="aviso">A busca precisa de JavaScript. Você pode navegar pelas categorias acima e abrir os produtos ou o WhatsApp normalmente.</p></noscript>
+ <div class="catalogo-meta"><h2 class="sr-only">Modelos do catálogo</h2><p data-contagem role="status" aria-live="polite">{produtos.length} {produtos.length===1?'modelo cadastrado':'modelos cadastrados'}</p><span>Disponibilidade e condições pelo WhatsApp</span></div>
+ <div class="grade-produtos">{produtos.map(p=><CardProduto produto={p}/>)}</div>
+ <div class="catalogo-vazio" data-catalogo-vazio hidden={produtos.length>0}><p class="eyebrow">Vamos encontrar seu próximo aparelho</p><h2>Converse com a nossa equipe.</h2><p data-vazio-texto>{produtos.length ? 'Não encontramos um modelo para essa busca. Consulte as opções com a equipe.' : 'Consulte os modelos e as condições pelo WhatsApp. Nossa equipe ajuda você a escolher.'}</p><BotaoWhatsApp rotulo="Tirar dúvida no WhatsApp"/></div>
+</div>
+{produtos.length > 0 && <ModalProduto/>}
+<script src="../../scripts/busca.ts"></script>
+<style>.aviso-dev{background:#fff0c7;color:#633a00;padding:16px;font-size:.8rem;margin-bottom:24px}.busca-catalogo{display:flex;align-items:end;gap:12px;padding:24px 0;border-block:1px solid #c5c6c0;scroll-margin-top:165px}.busca-catalogo label{display:block;font-size:.8rem;margin-bottom:8px}.campo-busca{flex:1}.campo-condicao{width:160px}.busca-catalogo input,.busca-catalogo select{display:block;min-height:48px;width:100%;background:var(--surface);border:1px solid #868780;border-radius:0;padding:11px 14px;color:var(--ink)}.busca-catalogo button{min-height:48px;padding:10px 22px;border:1px solid var(--ink);background:var(--ink);color:white}.busca-catalogo .limpar{background:transparent;color:var(--ink);border-color:#777}.catalogo-meta{display:flex;justify-content:space-between;gap:16px;font-size:.75rem;color:#52534e;margin:28px 0}.grade-produtos{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 24px}.catalogo-vazio{padding:48px 0;max-width:650px}.catalogo-vazio .eyebrow{color:#6a503b}.catalogo-vazio h2{margin:12px 0 20px}.catalogo-vazio>p{margin-bottom:24px;color:#414246}.aviso{font-size:.8rem;margin-top:12px}@media(max-width:1050px){.grade-produtos{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:700px){.busca-catalogo{flex-wrap:wrap}.campo-busca{flex-basis:100%}.campo-condicao{flex:1;min-width:150px}.busca-catalogo .limpar{flex-basis:100%}.grade-produtos{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 16px}.catalogo-meta span{max-width:120px;text-align:right}}@media(max-width:420px){.grade-produtos{grid-template-columns:1fr}.grade-produtos :global(.foto-produto){max-height:320px;aspect-ratio:auto;height:320px}}</style>

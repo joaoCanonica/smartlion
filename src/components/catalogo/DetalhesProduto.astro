@@ -1,0 +1,33 @@
+---
+import '../../styles/produto.css';
+import { loja } from '../../config/loja';
+import { consultaProduto, dadosConsulta, formatarPreco, textoPrecoNota, nomeCategoria, publicavel, condicaoFisica, urlProduto, type Produto } from '../../lib/catalogo';
+import FotoProduto from './FotoProduto.astro';
+interface Props { produto: Produto }
+const { produto: p } = Astro.props;
+const origem = import.meta.env.DEV ? Astro.url.origin : Astro.site!.href;
+const condicao = condicaoFisica(p);
+---
+<section class="produto-detalhes light" data-produto-detalhes data-produto={JSON.stringify(dadosConsulta(p))} data-origem={origem}>
+ <div class="fotos"><FotoProduto produto={p}/>{p.imagens.slice(1).map((_,i)=><div class="foto-extra"><FotoProduto produto={p} indice={i+1}/></div>)}</div>
+ <div class="conteudo-produto">
+  <p class="eyebrow">{nomeCategoria(p.categoria)} · {p.condicao === 'encomenda' ? 'Sob encomenda' : condicao === 'seminovo' ? 'Seminovo' : 'Novo'}</p>
+  <h1 data-titulo-produto>{p.nome}</h1>
+  {!publicavel(p) && <p class="aviso-rascunho">Demonstração de desenvolvimento. Modelo, versões, cores e imagens aguardam confirmação; não representa estoque ou oferta.</p>}
+  <p class="resposta">Consulte {p.nome} com a {loja.nome}, na {loja.endereco.rua}, {loja.endereco.numero}, Centro de {loja.endereco.cidade}. Fale pelo WhatsApp para confirmar disponibilidade e condições.</p>
+  {p.descricaoCurta && <p class="garantia">{p.descricaoCurta}</p>}
+  {condicao === 'seminovo' && <p class="garantia">Seminovo com procedência · {loja.garantiaSeminovosMeses} meses de garantia da loja.</p>}
+  {p.garantia && <p class="garantia">{p.garantia}</p>}
+  {p.saudeBateria && <p class="garantia">Saúde da bateria: {p.saudeBateria}</p>}
+  {p.versoes.length > 0 && <fieldset><legend>Versão</legend><div class="escolhas">{p.versoes.map(v=><label class="opcao"><input type="radio" name={`versao-${p.slug}`} value={v.id} data-escolha="versao"/>{v.rotulo}</label>)}</div></fieldset>}
+  {p.cores.length > 0 && <fieldset><legend>Cor</legend><div class="escolhas">{p.cores.map(c=><label class="opcao"><input type="radio" name={`cor-${p.slug}`} value={c.id} data-escolha="cor"/><span class="amostra-cor" style={`--cor:${c.hex}`} aria-hidden="true"></span>{c.rotulo}</label>)}</div></fieldset>}
+  <dl class="resumo"><dt>Modelo</dt><dd>{p.nome}</dd><dt>Versão</dt><dd data-resumo-versao>A escolher</dd><dt>Cor</dt><dd data-resumo-cor>A escolher</dd>{p.preco !== null && p.precoNota && <><dt>Preço</dt><dd>{formatarPreco(p)}</dd></>}</dl>
+  {p.precoNota && <p class="preco-nota">{textoPrecoNota(p)}</p>}
+  <a class="button button-wa consulta" data-consulta-produto href={consultaProduto(p,origem)}>{p.disponibilidade === 'esgotado' ? 'Avise-me quando chegar' : 'Tirar dúvida no WhatsApp'}</a>
+  <p class="nota">Disponibilidade e condições pelo WhatsApp.</p>
+  <p class="feedback" data-feedback-produto role="status" aria-live="polite">{p.disponibilidade === 'esgotado' ? 'Peça à equipe para avisar quando chegar.' : 'Selecione versão e cor para incluir na consulta.'}</p>
+  <noscript><p class="nota">O botão abre uma consulta geral deste modelo. Informe a versão e a cor desejadas na conversa.</p></noscript>
+  <button class="compartilhar" type="button" data-compartilhar hidden>Compartilhar produto</button>
+  <details data-copia><summary>Link do produto para copiar</summary><label class="sr-only" for={`link-${p.slug}`}>Link compartilhável do produto</label><input class="link-copia" id={`link-${p.slug}`} data-link-copia value={urlProduto(p.slug,origem)} readonly/></details>
+ </div>
+</section>

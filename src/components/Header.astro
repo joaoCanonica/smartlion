@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
+import { loja } from '../config/loja';
+import { navegacao, atividades } from '../config/navegacao';
+import BotaoWhatsApp from './BotaoWhatsApp.astro';
+---
+<header class="site-header">
+ <div class="container header-row">
+  <a class="brand" href="/" aria-label={`${loja.nome} — início`}><Image src={logo} alt="" width={58} height={58}/><span>{loja.nome.toUpperCase()}<small>{loja.endereco.cidade.toUpperCase()} · {loja.endereco.uf}</small></span></a>
+  <nav class="main-nav" aria-label="Navegação principal">
+   {navegacao.slice(0,2).map(n=><a href={n.href}>{n.nome}</a>)}
+   <details class="activities"><summary>O que fazemos <span aria-hidden="true">⌄</span></summary><div class="submenu">{atividades.map(n=><a href={n.href}>{n.nome}</a>)}</div></details>
+   {navegacao.slice(2).map(n=><a href={n.href}>{n.nome}</a>)}
+  </nav>
+  <div class="contacts"><a class="instagram" href={loja.instagram.url} aria-label={`Instagram ${loja.instagram.nome}`}><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7"/></svg></a><BotaoWhatsApp rotulo="Fale conosco" discreto/></div>
+ </div>
+</header>
+<script>
+ const menu=document.querySelector<HTMLDetailsElement>('.activities');
+ menu?.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary')?.focus();}});
+ document.addEventListener('click',event=>{if(menu?.open&&event.target instanceof Node&&!menu.contains(event.target))menu.open=false;});
+ menu?.addEventListener('focusout',event=>{if(event.relatedTarget instanceof Node&&!menu.contains(event.relatedTarget))menu.open=false;});
+</script>
+<style>
+.site-header{background:var(--ink);border-bottom:1px solid var(--line)}.header-row{display:flex;align-items:center;gap:28px;min-height:100px}.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}.brand:hover{text-decoration:none}.brand span{font:400 1.05rem var(--font-body);letter-spacing:.12em}.brand small{display:block;font-size:.53rem;letter-spacing:.12em;color:var(--muted);margin-top:6px}.main-nav{display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.6vw,25px);margin-left:auto;font-size:.8rem}.main-nav>a,summary{display:flex;align-items:center;min-height:48px;white-space:nowrap}summary{gap:8px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}.activities{position:relative}.activities[open] summary{color:var(--accent-light)}.submenu{position:absolute;top:100%;left:-20px;background:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow);padding:12px;min-width:240px;z-index:50}.submenu a{display:flex;align-items:center;min-height:48px;padding:8px 12px}.submenu a:hover{background:#242529}.contacts{display:flex;gap:8px;align-items:center}.instagram{display:grid;place-items:center;min-width:44px;min-height:48px}.contacts :global(.button){font-size:.78rem;white-space:nowrap;padding:10px 13px}.contacts :global(.button svg){width:18px;height:18px}
+@media(max-width:1180px){.header-row{flex-wrap:wrap;gap:0;min-height:0;padding-top:12px}.contacts{margin-left:auto}.main-nav{order:3;width:100%;justify-content:space-between;margin-top:8px;gap:8px;border-top:1px solid var(--line)}.brand img{width:44px;height:44px}.main-nav>a,summary{min-height:50px}}
+@media(max-width:550px){.brand span{font-size:.8rem}.brand small{font-size:.43rem}.brand{gap:6px}.contacts{gap:0}.contacts :global(.button){font-size:.72rem;padding:8px}.contacts :global(.button svg){display:none}.main-nav{display:grid;grid-template-columns:1fr 1fr auto;column-gap:8px;padding-block:4px}.main-nav>a,summary{font-size:.75rem;min-height:44px}.activities{grid-column:3;grid-row:1 / span 2;align-self:center}.submenu{left:auto;right:0}.main-nav>a:nth-last-child(2){grid-column:1}.main-nav>a:last-child{grid-column:2}}
+</style>

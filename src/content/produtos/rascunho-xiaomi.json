@@ -1,0 +1,50 @@
+{
+  "slug": "rascunho-xiaomi",
+  "nome": "Xiaomi · modelo a confirmar",
+  "categoria": "xiaomi",
+  "subcategoria": null,
+  "condicao": "encomenda",
+  "condicaoFisica": null,
+  "rascunho": true,
+  "confirmado": false,
+  "confirmadoEm": "",
+  "selos": [],
+  "versoes": [
+    {
+      "id": "exemplo-a",
+      "rotulo": "Versão A · demonstração"
+    },
+    {
+      "id": "exemplo-b",
+      "rotulo": "Versão B · demonstração"
+    }
+  ],
+  "cores": [
+    {
+      "id": "exemplo-clara",
+      "rotulo": "Cor clara · demonstração",
+      "hex": "#D9D9D6"
+    },
+    {
+      "id": "exemplo-escura",
+      "rotulo": "Cor escura · demonstração",
+      "hex": "#303236"
+    }
+  ],
+  "disponibilidade": "sob-encomenda",
+  "preco": null,
+  "precoNota": null,
+  "garantia": "",
+  "garantiaMeses": null,
+  "saudeBateria": "",
+  "destaque": true,
+  "ordem": 4,
+  "imagens": [],
+  "imagensAlt": [],
+  "descricaoCurta": "",
+  "sinonimos": [
+    "redmi",
+    "poco"
+  ],
+  "atualizadoEm": ""
+}

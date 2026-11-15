@@ -1,0 +1,12 @@
+---
+import Pagina from '../../layouts/PaginaInstitucional.astro';
+import { servicos } from '../../config/servicos';
+import { loja,enderecoCompleto } from '../../config/loja';
+import Orcamento from '../../components/institucional/Orcamento.astro';
+export function getStaticPaths(){return servicos.map(servico=>({params:{servico:servico.slug},props:{servico}}));}
+const {servico}=Astro.props;
+---
+<Pagina editorial titulo={`${servico.titulo} em Lages`} descricao={`${servico.titulo} na Smart Lion em Lages. Fale pelo WhatsApp para consultar avaliação, peças, prazo e orçamento.`} resposta={`${servico.titulo} na ${loja.nome}, na ${enderecoCompleto}. Fale com a equipe pelo WhatsApp para avaliar o seu aparelho e consultar as condições do serviço.`}>
+<a slot="acao" class="button button-light" href="#orcamento">Conversar sobre este serviço ↗</a>
+<section class="pagina-bloco light"><div class="container duas-colunas"><div><h2>Conte o que aconteceu.</h2><p>{servico.resumo}</p><h3>O que ajuda no primeiro contato</h3><ul>{servico.perguntas.map(p=><li>{p}</li>)}</ul></div><div><h2>Orçamento para o seu caso.</h2><p>Valor, peças necessárias e prazo dependem da avaliação do aparelho. Não é possível confirmar o reparo apenas pela descrição do problema.</p><h3>Peças e garantia</h3><p>Confirme as opções de peças e as condições da garantia da loja antes de aprovar o serviço.</p><nav class="navegacao-paginas" aria-label="Mais informações"><a href="/assistencia-tecnica">Todos os serviços ↗</a><a href="/visite-nos">Como chegar ↗</a></nav></div></div></section><Orcamento servico={servico.mensagem}/>
+</Pagina>

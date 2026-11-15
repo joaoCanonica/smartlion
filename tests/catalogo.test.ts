@@ -1,0 +1,66 @@
+import { describe, expect, it } from 'vitest';
+import { readFileSync, readdirSync } from 'node:fs';
+import { produtoJsonSchema } from '../src/schemas/produto';
+import { buscar, caminhoProduto, categoriasProduto, consultaProduto, criarIndice, formatarPreco, resolverEscolhas, urlProduto, visivel } from '../src/lib/catalogo';
+const pasta=new URL('../src/content/produtos/',import.meta.url);
+const brutos=readdirSync(pasta).filter(f=>f.endsWith('.json')).map(f=>JSON.parse(readFileSync(new URL(f,pasta),'utf8')));
+const rascunhos=brutos.map(p=>produtoJsonSchema.parse(p));
+// Imagens vazias nas fixtures: nenhuma destas entidades é publicada.
+const exemplo=rascunhos[0]!;
+const exemploConfirmado={...brutos[0],rascunho:false,confirmado:true,confirmadoEm:'2026-10-28',imagens:['../../assets/produtos/foto-real.jpg'],imagensAlt:['Descrição da foto real'],descricaoCurta:'Descrição confirmada de teste.'};
+describe('Schema e publicação',()=>{
+ it('os cinco arquivos são válidos e permanecem rascunhos sem confirmação',()=>{expect(rascunhos).toHaveLength(5);expect(rascunhos.every(p=>p.rascunho&&!p.confirmado&&!p.confirmadoEm)).toBe(true)});
+ it('exclui todos os exemplos na produção',()=>expect(rascunhos.filter(p=>visivel(p,false))).toEqual([]));
+ it('permite conferir os cinco slots somente em desenvolvimento',()=>expect(rascunhos.filter(p=>visivel(p,true))).toHaveLength(5));
+ it.each([{rascunho:true,confirmado:true,confirmadoEm:'2026-10-28'},{rascunho:false,confirmado:false,confirmadoEm:''},{rascunho:false,confirmado:true,confirmadoEm:''}])('não publica estado incompleto %j',p=>expect(visivel(p,false)).toBe(false));
+ it('publica um cadastro confirmado e sem rascunho',()=>{const p=produtoJsonSchema.parse(exemploConfirmado);expect(visivel(p,false)).toBe(true)});
+ it('por padrão um arquivo novo não é publicado',()=>{const {rascunho,confirmado,confirmadoEm,...p}=brutos[0];const validado=produtoJsonSchema.parse(p);expect(visivel(validado,false)).toBe(false)});
+ it('rejeita confirmação sem data',()=>expect(produtoJsonSchema.safeParse({...exemploConfirmado,confirmadoEm:''}).success).toBe(false));
+ it.each(['2026-02-30','28/10/2026','2026-13-01'])('rejeita data inválida %s',data=>expect(produtoJsonSchema.safeParse({...exemploConfirmado,confirmadoEm:data}).success).toBe(false));
+ it('não publica sem foto',()=>expect(produtoJsonSchema.safeParse({...exemploConfirmado,imagens:[],imagensAlt:[]}).success).toBe(false));
+ it('rejeita imagem sem alt correspondente',()=>expect(produtoJsonSchema.safeParse({...exemploConfirmado,imagensAlt:[]}).success).toBe(false));
+ it('rejeita IDs de versão duplicados',()=>expect(produtoJsonSchema.safeParse({...brutos[0],versoes:[{id:'a',rotulo:'A'},{id:'a',rotulo:'B'}]}).success).toBe(false));
+ it('rejeita IDs de cor duplicados',()=>expect(produtoJsonSchema.safeParse({...brutos[0],cores:[{id:'a',rotulo:'A',hex:'#000000'},{id:'a',rotulo:'B',hex:'#ffffff'}]}).success).toBe(false));
+ it('rejeita slug com caminho arbitrário',()=>expect(produtoJsonSchema.safeParse({...brutos[0],slug:'../../segredo'}).success).toBe(false));
+ it('encomenda confirmada exige condição física',()=>expect(produtoJsonSchema.safeParse({...exemploConfirmado,condicao:'encomenda',condicaoFisica:null}).success).toBe(false));
+ it('não aceita condições físicas contraditórias',()=>expect(produtoJsonSchema.safeParse({...brutos[0],condicao:'novo',condicaoFisica:'seminovo'}).success).toBe(false));
+ it('seminovo confirmado exige garantia da loja',()=>expect(produtoJsonSchema.safeParse({...exemploConfirmado,condicao:'seminovo',garantiaMeses:null}).success).toBe(false));
+});
+describe('Preço sob consulta',()=>{
+ const nota={data:'2026-10-28',condicao:'Condição de teste',formaPagamento:'Pagamento de teste'};
+ it('mantém todos os exemplos sem preço',()=>expect(rascunhos.every(p=>p.preco===null&&p.precoNota===null)).toBe(true));
+ it('usa Sob consulta quando não existe preço',()=>expect(formatarPreco(exemplo)).toBe('Sob consulta'));
+ it('não exibe preço sem nota',()=>expect(formatarPreco({preco:100,precoNota:null})).toBe('Sob consulta'));
+ it('rejeita preço sem nota no schema',()=>expect(produtoJsonSchema.safeParse({...brutos[0],preco:100}).success).toBe(false));
+ it('rejeita nota sem preço',()=>expect(produtoJsonSchema.safeParse({...brutos[0],precoNota:nota}).success).toBe(false));
+ it('rejeita nota sem data',()=>expect(produtoJsonSchema.safeParse({...brutos[0],preco:100,precoNota:{...nota,data:''}}).success).toBe(false));
+ it('aceita preço acompanhado de condições completas',()=>expect(produtoJsonSchema.safeParse({...brutos[0],preco:100,precoNota:nota}).success).toBe(true));
+ it('formata preço com nota',()=>expect(formatarPreco({preco:100,precoNota:nota}).replace(/\s/g,' ')).toBe('R$ 100,00'));
+});
+describe('Busca e categorias',()=>{
+ const indice=criarIndice(rascunhos);
+ it('busca 17 pro max por palavras',()=>expect(buscar(indice,'17 pro max').map(p=>p.slug)).toEqual(['rascunho-iphone-17-pro-max']));
+ it('busca independente de ordem, acentos e caixa',()=>expect(buscar(indice,'PRÓ 17 MAX')).toEqual(buscar(indice,'17 pro max')));
+ it('encontra tablet por sinônimo',()=>expect(buscar(indice,'tablet').map(p=>p.slug)).toEqual(['rascunho-ipad']));
+ it('encontra seminovo',()=>expect(buscar(indice,'seminovo')).toHaveLength(1));
+ it('encontra bateria nos termos de demonstração',()=>expect(buscar(indice,'bateria')).toHaveLength(1));
+ it('inclui iPhone seminovo em ambas as categorias',()=>expect(categoriasProduto(rascunhos.find(p=>p.condicao==='seminovo')!)).toEqual(['iphone','seminovos']));
+ it('combina busca, categoria e condição',()=>expect(buscar(indice,'iphone','iphone','seminovo')).toHaveLength(1));
+ it('não inventa resultado quando não há correspondência',()=>expect(buscar(indice,'produto inexistente')).toEqual([]));
+ it('consulta vazia devolve todo o índice',()=>expect(buscar(indice,'   ')).toHaveLength(5));
+ it('o índice de produção fica vazio com os rascunhos atuais',()=>expect(criarIndice((rascunhos).filter(p=>visivel(p,false)))).toEqual([]));
+});
+describe('URLs, seleções e WhatsApp',()=>{
+ const p=rascunhos.find(p=>p.slug==='rascunho-iphone-17-pro-max')!;
+ const escolhas={versao:'exemplo-a',cor:'exemplo-clara'};
+ const texto=(href:string)=>new URL(href).searchParams.get('text');
+ it('gera uma URL compartilhável por produto',()=>expect(caminhoProduto(p.slug,escolhas)).toBe(`/produto/${p.slug}?versao=exemplo-a&cor=exemplo-clara`));
+ it('usa SITE_URL fornecida como origem',()=>expect(urlProduto(p.slug,'https://loja.example',escolhas)).toBe(`https://loja.example/produto/${p.slug}?versao=exemplo-a&cor=exemplo-clara`));
+ it('restaura as duas opções válidas',()=>expect(resolverEscolhas(p,new URLSearchParams(escolhas))).toEqual(escolhas));
+ it('descarta opções inválidas sem escolher outra automaticamente',()=>expect(resolverEscolhas(p,new URLSearchParams('versao=invalida&cor=exemplo-clara'))).toEqual({versao:'',cor:'exemplo-clara'}));
+ it('sem escolhas usa a mensagem exata de atalho',()=>expect(texto(consultaProduto(p,'https://loja.example'))).toBe(`Olá, Smart Lion! Vi o *${p.nome}* no site. Quais versões e cores vocês têm e qual o valor?\nhttps://loja.example/produto/${p.slug}`));
+ it('inclui versão, cor, condição e URL na mensagem',()=>expect(texto(consultaProduto(p,'https://loja.example',escolhas))).toBe(`Olá, Smart Lion! Vi no site e tenho interesse:\n*${p.nome}*\nVersão: Versão A · demonstração\nCor: Cor clara · demonstração\nCondição: novo\nPode me passar a disponibilidade e o valor?\nhttps://loja.example/produto/${p.slug}?versao=exemplo-a&cor=exemplo-clara`));
+ it('esgotado usa avise-me mesmo com escolhas',()=>expect(texto(consultaProduto({...p,disponibilidade:'esgotado'},'https://loja.example',escolhas))).toBe(`Olá, Smart Lion! Vi o *${p.nome}* no site. Me avisam quando chegar?`));
+ it('encomenda sem condição física não assume novo',()=>expect(texto(consultaProduto({...p,condicao:'encomenda',condicaoFisica:null},'https://loja.example',escolhas))).not.toContain('Condição: novo'));
+ it('perfumaria usa a mensagem específica',()=>expect(texto(consultaProduto({...p,categoria:'perfumaria'},'https://loja.example'))).toBe(`Olá, Smart Lion! Vi o perfume *${p.nome}* no site. Tem disponível?`));
+});

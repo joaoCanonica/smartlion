@@ -1,0 +1,14 @@
+---
+import { destaques } from '../../lib/avaliacoes';
+import Depoimento from './Depoimento.astro';
+import SeloGoogle from './SeloGoogle.astro';
+---
+<section class="avaliacoes-home" aria-labelledby="titulo-avaliacoes" data-carrossel>
+<div class="container"><div class="cabecalho"><div><p class="eyebrow">Quem já passou pela loja</p><h2 id="titulo-avaliacoes">Confiança nas palavras<br/>de quem conhece.</h2></div><SeloGoogle/></div>
+<div class="barra"><p>Depoimentos selecionados do Google.</p><a href="/avaliacoes">Ver todas as avaliações ↗</a></div>
+<div class="controles" hidden><button type="button" data-anterior aria-controls="trilho-avaliacoes">← Anterior</button><button type="button" data-pausa aria-controls="trilho-avaliacoes">Pausar carrossel</button><button type="button" data-proximo aria-controls="trilho-avaliacoes">Próxima →</button></div>
+<div class="trilho" id="trilho-avaliacoes" tabindex="0" role="region" aria-label="Depoimentos em destaque; role horizontalmente para ler" aria-roledescription="carrossel">{destaques.map(a=><Depoimento avaliacao={a}/>)}</div>
+<p class="instrucao">Deslize para ler mais relatos. Cada experiência é individual.</p></div>
+</section>
+<script>import '../../scripts/carrossel-avaliacoes';</script>
+<style>.avaliacoes-home{padding:72px 0;background:#191a1d;color:#fff}.cabecalho{display:flex;justify-content:space-between;gap:36px;align-items:center}.eyebrow{color:#ff78bc;margin-bottom:18px}.barra{display:flex;justify-content:space-between;gap:20px;margin:28px 0 18px;font-size:.85rem;color:#d2d3d5}.barra a{min-height:44px;display:flex;align-items:center}.controles{display:flex;gap:10px;justify-content:flex-end;margin-bottom:12px;flex-wrap:wrap}.controles button{border:1px solid #747579;color:#fff;background:transparent;min-height:44px;padding:8px 16px;border-radius:var(--radius)}.trilho{display:grid;grid-auto-flow:column;grid-auto-columns:min(380px,85%);gap:32px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-color:#a5a6a8 #292a2d;padding-bottom:20px}.trilho :global(.depoimento){scroll-snap-align:start}.instrucao{font-size:.75rem;color:#bfc0c2;margin-top:14px}@media(max-width:800px){.cabecalho{display:block}.barra{display:block}.avaliacoes-home{padding:48px 0}.controles{justify-content:flex-start}.controles button{padding:8px 10px;font-size:.8rem}.trilho{gap:24px;grid-auto-columns:90%}}</style>

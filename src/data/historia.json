@@ -1,0 +1,57 @@
+[
+  {
+    "id": "experiencia-assistencia",
+    "data": "2026-02",
+    "rotulo": "Fevereiro de 2026",
+    "titulo": "Experiência no cuidado com aparelhos",
+    "texto": "Na publicação de fevereiro, mencionamos cinco anos de experiência em assistência técnica. Esse relato não define a data de fundação da loja.",
+    "fonte": "docs/ESPECIFICACAO.md §2 / publicação de 18/02/2026",
+    "confirmado": true,
+    "destaqueHome": false,
+    "ordem": 1
+  },
+  {
+    "id": "anuncio-irp",
+    "data": "2026-02",
+    "rotulo": "Fevereiro de 2026",
+    "titulo": "Anúncio de participação no IRP",
+    "texto": "Anunciamos nossa participação no programa Independent Repair Provider (IRP) da Apple. A data se refere à divulgação, não ao início contratual no programa.",
+    "fonte": "docs/ESPECIFICACAO.md §3.2 / publicação de 18/02/2026",
+    "confirmado": true,
+    "destaqueHome": true,
+    "ordem": 2
+  },
+  {
+    "id": "setecentas-avaliacoes",
+    "data": "2026-05",
+    "rotulo": "Maio de 2026",
+    "titulo": "Uma história contada pelos clientes",
+    "texto": "Celebramos mais de 700 avaliações de cinco estrelas no Google em uma publicação da loja.",
+    "fonte": "docs/ESPECIFICACAO.md §4.3 / publicação de 12/05/2026",
+    "confirmado": true,
+    "destaqueHome": false,
+    "ordem": 3
+  },
+  {
+    "id": "turmas-centro-tecnico",
+    "data": "2026",
+    "rotulo": "2026",
+    "titulo": "Aprendizado no Centro Técnico",
+    "texto": "Divulgamos turmas de manutenção de celulares no laboratório anexo à loja, com bancadas individuais. Este marco registra a divulgação das turmas, não uma data de inauguração.",
+    "fonte": "docs/ESPECIFICACAO.md §3.4 / publicações de 27/07 e 02/08/2026",
+    "confirmado": true,
+    "destaqueHome": true,
+    "ordem": 4
+  },
+  {
+    "id": "avaliacoes-outubro",
+    "data": "2026-10",
+    "rotulo": "Outubro de 2026",
+    "titulo": "A confiança segue registrada",
+    "texto": "A coleta de outubro registrou 766 avaliações e nota 5,0 na ficha da loja no Google.",
+    "fonte": "src/data/avaliacoes.json / coleta de 28/10/2026",
+    "confirmado": true,
+    "destaqueHome": true,
+    "ordem": 5
+  }
+]

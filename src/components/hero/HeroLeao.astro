@@ -1,0 +1,88 @@
+---
+/**
+ * Hero "O Leão de Vidro" (P3).
+ * - Texto à esquerda; leão à direita (~45% da largura) no desktop; leão em cima no celular.
+ * - O leão é SEMPRE primeiro o pôster AVIF/WebP (render da própria cena 3D, gerado por
+ *   scripts/render-leao.mjs). No desktop, depois do LCP e com o hero visível, hero-3d.ts carrega
+ *   a ilha Three.js e troca o pôster pelo canvas sem salto (mesmo enquadramento).
+ * - Fica no pôster (com a varredura em CSS): celular/tablet (< 1025 px), sem WebGL2,
+ *   prefers-reduced-motion, Save-Data, pouca memória, ou se o aparelho não sustentar a cena.
+ */
+import { loja } from '../../config/loja';
+import BotaoWhatsApp from '../BotaoWhatsApp.astro';
+import StatusHorario from '../StatusHorario.astro';
+import Rotulo from '../ui/Rotulo.astro';
+import avif480 from '../../assets/hero/leao-3d-480.avif?url';
+import avif1200 from '../../assets/hero/leao-3d-1200.avif?url';
+import webp480 from '../../assets/hero/leao-3d-480.webp?url';
+import webp1200 from '../../assets/hero/leao-3d-1200.webp?url';
+const fundacao = (loja.historia.fundacao as string) || '';
+const rotulo = `${loja.endereco.cidade} · ${loja.endereco.uf}${fundacao ? ` · Desde ${fundacao}` : ''}`;
+// Precisa bater com a largura real do .hero-visual (senão o celular em DPR 2 pula para o de 1200 px).
+const tamanhos = '(max-width: 600px) 46vw, (max-width: 1024px) 320px, 45vw';
+---
+<section class="hero" id="abertura" aria-labelledby="titulo-home">
+  <div class="container hero-grade">
+    <div class="hero-texto">
+      <Rotulo tom="ambar">{rotulo}</Rotulo>
+      <h1 id="titulo-home">Tecnologia com procedência.</h1>
+      <p class="hero-linha">Venda, assistência e ensino no Centro de {loja.endereco.cidade}.</p>
+      <div class="hero-acoes">
+        <a class="button button-primario" href="/a-loja">Conheça a loja</a>
+        <BotaoWhatsApp rotulo="Fale conosco" discreto/>
+      </div>
+      <StatusHorario class="hero-status"/>
+    </div>
+    <div class="hero-visual" data-hero-3d data-modo="poster">
+      <picture class="hero-poster">
+        <source type="image/avif" srcset={`${avif480} 480w, ${avif1200} 1200w`} sizes={tamanhos}/>
+        <source type="image/webp" srcset={`${webp480} 480w, ${webp1200} 1200w`} sizes={tamanhos}/>
+        <img src={webp1200} width="1200" height="1200" alt="" loading="eager" fetchpriority="high" decoding="async"/>
+      </picture>
+      <span class="hero-varredura" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+<script>import './hero-3d';</script>
+<style>
+.hero{position:relative;isolation:isolate;overflow:hidden;padding-block:clamp(32px,5vw,72px) clamp(40px,5vw,72px);min-height:min(calc(100svh - 72px),880px);display:flex;align-items:center}
+.hero-grade{display:grid;grid-template-columns:minmax(0,1fr) 45%;align-items:center;gap:clamp(24px,4vw,64px)}
+.hero-texto{display:grid;gap:22px;justify-items:start;max-width:640px}
+.hero h1{font-size:clamp(2.75rem,1.2rem + 3.9vw,5.25rem);line-height:.98;letter-spacing:-.045em;max-width:14ch;color:var(--cor-texto)}
+.hero-linha{font-size:var(--texto-lg);color:var(--cor-texto-2);max-width:42ch}
+.hero-acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.hero-texto :global(.hero-status){margin-top:4px;min-height:0;color:var(--cor-texto)}
+
+/* Leão: halo âmbar muito sutil atrás, pôster, varredura em CSS e (no desktop) o canvas 3D. */
+.hero-visual{position:relative;aspect-ratio:1;width:100%;justify-self:end}
+.hero-visual::before{content:'';position:absolute;inset:-12%;z-index:-1;background:radial-gradient(closest-side,rgb(227 168 87 / .11),rgb(227 168 87 / .04) 55%,transparent 75%);pointer-events:none}
+.hero-poster,.hero-poster img,.hero-visual :global(canvas){position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero-poster img{object-fit:contain}
+.hero-visual :global(canvas){opacity:0;transition:opacity .7s var(--ease-saida)}
+.hero-poster{transition:opacity .7s var(--ease-saida)}
+.hero-visual[data-modo="3d"] :global(canvas){opacity:1}
+.hero-visual[data-mascara] .hero-varredura{display:block}
+.hero-visual[data-modo="3d"] .hero-poster,.hero-visual[data-modo="3d"] .hero-varredura{opacity:0}
+/* Com o 3D ativo, a varredura em CSS para (senão continua compondo por baixo do canvas). */
+.hero-visual[data-modo="3d"] .hero-varredura{animation:none;visibility:hidden}
+/* Varredura em CSS sobre o pôster: faixa âmbar→branco recortada pela silhueta do próprio leão, a cada 8 s.
+   A máscara (--leao-mascara) é ligada por hero-3d.ts depois do load + ocioso, com o currentSrc do
+   pôster: mesmo arquivo, sem requisição extra, e fora do caminho crítico da primeira pintura
+   (máscara + mix-blend-mode criam uma camada cara). Até lá, display:none. */
+.hero-varredura{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 38%,rgb(227 168 87 / .0) 42%,rgb(227 168 87 / .55) 48%,rgb(245 246 247 / .75) 50%,rgb(227 168 87 / .55) 52%,transparent 58%);background-size:300% 100%;background-position:120% 0;-webkit-mask:var(--leao-mascara) center/contain no-repeat;mask:var(--leao-mascara) center/contain no-repeat;mix-blend-mode:soft-light;display:none;animation:hero-varredura 8s 1.2s var(--ease-saida) infinite;transition:opacity .4s}
+@keyframes hero-varredura{0%{background-position:120% 0}20%,100%{background-position:-20% 0}}
+
+@media (max-width:1024px){
+  .hero{min-height:0;padding-block:20px 40px}
+  .hero-grade{grid-template-columns:1fr;gap:12px}
+  .hero-visual{order:-1;width:min(62vw,320px);justify-self:center}
+  .hero-texto{gap:16px;max-width:none}
+  .hero h1{max-width:12ch}
+}
+@media (max-width:600px){
+  /* ≤ 180 px: o H1 (texto) passa a ser o maior elemento da primeira dobra, então o LCP não depende do download do pôster. */
+  .hero-visual{width:min(46vw,180px)}
+  .hero-acoes{width:100%}
+  .hero-acoes :global(.button){flex:1 1 auto}
+}
+</style>

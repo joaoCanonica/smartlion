@@ -1,0 +1,6 @@
+---
+// Rótulo técnico em Michroma: caixa alta pequena, tracking largo. Só para rótulos curtos.
+interface Props { as?: 'p' | 'span' | 'h2' | 'h3' | 'div' | 'dt'; tom?: 'aco' | 'ambar' | 'herdar'; class?: string; id?: string }
+const { as: Tag = 'p', tom = 'aco', class: classe, id } = Astro.props;
+---
+<Tag class:list={['rotulo', `rotulo-${tom}`, classe]} id={id}><slot/></Tag>

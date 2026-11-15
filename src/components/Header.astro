@@ -1,29 +1,172 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '../assets/logo.png';
-import { loja } from '../config/loja';
+import { loja, enderecoCompleto } from '../config/loja';
 import { navegacao, atividades } from '../config/navegacao';
 import BotaoWhatsApp from './BotaoWhatsApp.astro';
+import StatusHorario from './StatusHorario.astro';
+import Logo from './marca/Logo.astro';
+import Rotulo from './ui/Rotulo.astro';
+const caminho = Astro.url.pathname.replace(/\/$/, '') || '/';
+const atual = (href: string) => caminho === href || caminho.startsWith(`${href}/`);
+const atividadeAtual = atividades.some(a => atual(a.href));
+const [loja1, historia, ...depois] = navegacao;
+const instagramIcone = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/></svg>';
 ---
-<header class="site-header">
- <div class="container header-row">
-  <a class="brand" href="/" aria-label={`${loja.nome} — início`}><Image src={logo} alt="" width={58} height={58}/><span>{loja.nome.toUpperCase()}<small>{loja.endereco.cidade.toUpperCase()} · {loja.endereco.uf}</small></span></a>
-  <nav class="main-nav" aria-label="Navegação principal">
-   {navegacao.slice(0,2).map(n=><a href={n.href}>{n.nome}</a>)}
-   <details class="activities"><summary>O que fazemos <span aria-hidden="true">⌄</span></summary><div class="submenu">{atividades.map(n=><a href={n.href}>{n.nome}</a>)}</div></details>
-   {navegacao.slice(2).map(n=><a href={n.href}>{n.nome}</a>)}
-  </nav>
-  <div class="contacts"><a class="instagram" href={loja.instagram.url} aria-label={`Instagram ${loja.instagram.nome}`}><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".7"/></svg></a><BotaoWhatsApp rotulo="Fale conosco" discreto/></div>
- </div>
+<header class="cabecalho" data-cabecalho>
+  <div class="container cabecalho-linha">
+    <a class="marca" href="/" aria-label={`${loja.nome} — início`}><Logo variante="compacto" legenda={`${loja.endereco.cidade.toUpperCase()} · ${loja.endereco.uf}`}/></a>
+    <nav class="nav-desktop" aria-label="Navegação principal">
+      <ul>
+        {[loja1, historia].map(n => <li><a href={n.href} aria-current={atual(n.href) ? 'page' : undefined}>{n.nome}</a></li>)}
+        <li><details class="submenu" data-submenu><summary class:list={{ ativo: atividadeAtual }}>O que fazemos <svg class="seta" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></summary>
+          <ul class="submenu-lista">{atividades.map(n => <li><a href={n.href} aria-current={atual(n.href) ? 'page' : undefined}>{n.nome}</a></li>)}</ul>
+        </details></li>
+        {depois.map(n => <li><a href={n.href} aria-current={atual(n.href) ? 'page' : undefined}>{n.nome}</a></li>)}
+      </ul>
+    </nav>
+    <div class="cabecalho-acoes">
+      <a class="icone-instagram" href={loja.instagram.url} aria-label={`Instagram ${loja.instagram.nome}`} set:html={instagramIcone}/>
+      <BotaoWhatsApp rotulo="Fale conosco" compacto/>
+    </div>
+    <a class="menu-sem-js" href="#paginas-rodape">Menu</a>
+    <button class="menu-botao" type="button" aria-expanded="false" aria-controls="menu-movel" hidden data-menu-abrir><span>Menu</span><span class="menu-icone" aria-hidden="true"><span></span><span></span></span></button>
+  </div>
+  <div id="menu-movel" class="menu-movel" role="dialog" aria-modal="true" aria-labelledby="menu-movel-titulo" hidden data-menu-painel>
+    <div class="container menu-movel-topo">
+      <Logo variante="compacto" legenda={`${loja.endereco.cidade.toUpperCase()} · ${loja.endereco.uf}`}/>
+      <h2 id="menu-movel-titulo" class="sr-only">Menu</h2>
+      <button class="menu-fechar" type="button" data-menu-fechar><span>Fechar</span><span class="menu-x" aria-hidden="true"></span></button>
+    </div>
+    <div class="container menu-movel-corpo">
+      <nav class="menu-movel-nav" aria-label="Menu principal">
+        <ul class="links-grandes">{[loja1, historia].map(n => <li><a href={n.href} aria-current={atual(n.href) ? 'page' : undefined}>{n.nome}</a></li>)}</ul>
+        <div class="menu-movel-grupo">
+          <Rotulo as="p" tom="ambar" id="menu-o-que-fazemos">O que fazemos</Rotulo>
+          <ul class="links-medios" aria-labelledby="menu-o-que-fazemos">{atividades.map(n => <li><a href={n.href} aria-current={atual(n.href) ? 'page' : undefined}>{n.nome}</a></li>)}</ul>
+        </div>
+        <ul class="links-grandes">{depois.map(n => <li><a href={n.href} aria-current={atual(n.href) ? 'page' : undefined}>{n.nome}</a></li>)}</ul>
+      </nav>
+      <div class="menu-movel-info">
+        <StatusHorario link={false} anunciar={false} class="menu-status"/>
+        <address>{enderecoCompleto}</address>
+        <div class="menu-movel-botoes">
+          <BotaoWhatsApp rotulo="Fale conosco no WhatsApp"/>
+          <a class="button" href={loja.instagram.url}><Fragment set:html={instagramIcone}/><span>Instagram {loja.instagram.nome}</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </header>
 <script>
- const menu=document.querySelector<HTMLDetailsElement>('.activities');
- menu?.addEventListener('keydown',event=>{if(event.key==='Escape'&&menu.open){menu.open=false;menu.querySelector('summary')?.focus();}});
- document.addEventListener('click',event=>{if(menu?.open&&event.target instanceof Node&&!menu.contains(event.target))menu.open=false;});
- menu?.addEventListener('focusout',event=>{if(event.relatedTarget instanceof Node&&!menu.contains(event.relatedTarget))menu.open=false;});
+// Estado "rolado" (vidro + borda) sem ouvir o scroll: observa um marcador no topo da página.
+const cabecalho = document.querySelector<HTMLElement>('[data-cabecalho]');
+const sentinela = document.querySelector('[data-topo-sentinela]');
+if (cabecalho && sentinela && 'IntersectionObserver' in window) {
+  new IntersectionObserver(([e]) => { cabecalho.toggleAttribute('data-rolado', !e.isIntersecting); }).observe(sentinela);
+}
+
+// Submenu "O que fazemos" (desktop): Esc fecha e devolve o foco; clique fora e foco fora fecham.
+const submenu = document.querySelector<HTMLDetailsElement>('[data-submenu]');
+submenu?.addEventListener('keydown', e => { if (e.key === 'Escape' && submenu.open) { submenu.open = false; submenu.querySelector('summary')?.focus(); } });
+document.addEventListener('click', e => { if (submenu?.open && e.target instanceof Node && !submenu.contains(e.target)) submenu.open = false; });
+submenu?.addEventListener('focusout', e => { if (e.relatedTarget instanceof Node && !submenu.contains(e.relatedTarget)) submenu.open = false; });
+
+// Menu do celular: painel em tela cheia, foco preso, Esc fecha, devolve o foco e trava a rolagem.
+const abrir = document.querySelector<HTMLButtonElement>('[data-menu-abrir]');
+const painel = document.querySelector<HTMLElement>('[data-menu-painel]');
+const fechar = painel?.querySelector<HTMLButtonElement>('[data-menu-fechar]');
+const semJs = document.querySelector<HTMLElement>('.menu-sem-js');
+if (abrir && painel && fechar) {
+  abrir.hidden = false;
+  if (semJs) semJs.hidden = true;
+  const focaveis = () => [...painel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')].filter(el => el.offsetParent !== null);
+  // Tudo fora do painel fica inerte enquanto ele está aberto.
+  const forasDoPainel = () => [...document.body.children].filter((el): el is HTMLElement => el instanceof HTMLElement && !el.contains(painel));
+  const linhaCabecalho = cabecalho?.querySelector<HTMLElement>('.cabecalho-linha');
+  let aberto = false;
+  const definir = (estado: boolean, devolverFoco = true) => {
+    if (estado === aberto) return;
+    aberto = estado;
+    painel.hidden = !estado;
+    abrir.setAttribute('aria-expanded', String(estado));
+    document.documentElement.classList.toggle('menu-aberto', estado);
+    for (const el of forasDoPainel()) el.inert = estado;
+    if (linhaCabecalho) linhaCabecalho.inert = estado;
+    if (estado) fechar.focus();
+    else if (devolverFoco) abrir.focus();
+  };
+  abrir.addEventListener('click', () => definir(true));
+  fechar.addEventListener('click', () => definir(false));
+  painel.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { e.preventDefault(); definir(false); return; }
+    if (e.key !== 'Tab') return;
+    const lista = focaveis();
+    const primeiro = lista[0], ultimo = lista[lista.length - 1];
+    if (e.shiftKey && document.activeElement === primeiro) { e.preventDefault(); ultimo.focus(); }
+    else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
+  });
+  // Links internos fecham o painel (inclusive âncoras na mesma página).
+  painel.addEventListener('click', e => { if (e.target instanceof Element && e.target.closest('a[href]')) definir(false, false); });
+  // Ao passar para o layout de desktop, o painel fecha sozinho.
+  matchMedia('(min-width: 1025px)').addEventListener('change', e => { if (e.matches) definir(false, false); });
+}
 </script>
 <style>
-.site-header{background:var(--ink);border-bottom:1px solid var(--line)}.header-row{display:flex;align-items:center;gap:28px;min-height:100px}.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}.brand:hover{text-decoration:none}.brand span{font:400 1.05rem var(--font-body);letter-spacing:.12em}.brand small{display:block;font-size:.53rem;letter-spacing:.12em;color:var(--muted);margin-top:6px}.main-nav{display:flex;align-items:center;justify-content:center;gap:clamp(12px,1.6vw,25px);margin-left:auto;font-size:.8rem}.main-nav>a,summary{display:flex;align-items:center;min-height:48px;white-space:nowrap}summary{gap:8px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}.activities{position:relative}.activities[open] summary{color:var(--accent-light)}.submenu{position:absolute;top:100%;left:-20px;background:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow);padding:12px;min-width:240px;z-index:50}.submenu a{display:flex;align-items:center;min-height:48px;padding:8px 12px}.submenu a:hover{background:#242529}.contacts{display:flex;gap:8px;align-items:center}.instagram{display:grid;place-items:center;min-width:44px;min-height:48px}.contacts :global(.button){font-size:.78rem;white-space:nowrap;padding:10px 13px}.contacts :global(.button svg){width:18px;height:18px}
-@media(max-width:1180px){.header-row{flex-wrap:wrap;gap:0;min-height:0;padding-top:12px}.contacts{margin-left:auto}.main-nav{order:3;width:100%;justify-content:space-between;margin-top:8px;gap:8px;border-top:1px solid var(--line)}.brand img{width:44px;height:44px}.main-nav>a,summary{min-height:50px}}
-@media(max-width:550px){.brand span{font-size:.8rem}.brand small{font-size:.43rem}.brand{gap:6px}.contacts{gap:0}.contacts :global(.button){font-size:.72rem;padding:8px}.contacts :global(.button svg){display:none}.main-nav{display:grid;grid-template-columns:1fr 1fr auto;column-gap:8px;padding-block:4px}.main-nav>a,summary{font-size:.75rem;min-height:44px}.activities{grid-column:3;grid-row:1 / span 2;align-self:center}.submenu{left:auto;right:0}.main-nav>a:nth-last-child(2){grid-column:1}.main-nav>a:last-child{grid-column:2}}
+.cabecalho{position:relative;isolation:isolate;color:var(--cor-texto)}
+.cabecalho::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--cor-fundo);border-bottom:1px solid transparent;transition:background-color var(--duracao-media),border-color var(--duracao-media)}
+.cabecalho[data-rolado]::before{background:rgb(11 11 12 / .88);-webkit-backdrop-filter:var(--vidro-desfoque);backdrop-filter:var(--vidro-desfoque);border-bottom-color:rgb(154 158 166 / .2)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.cabecalho[data-rolado]::before{background:rgb(11 11 12 / .96)}}
+.cabecalho-linha{display:flex;align-items:center;gap:clamp(16px,2vw,32px);height:72px}
+.marca{display:flex;align-items:center;min-height:48px;flex:none;color:var(--cor-texto)}
+.marca:hover{text-decoration:none}
+.nav-desktop{margin-left:auto}
+.nav-desktop>ul{display:flex;align-items:center;gap:clamp(14px,1.8vw,30px);list-style:none;margin:0;padding:0}
+.nav-desktop a,.nav-desktop summary{position:relative;display:flex;align-items:center;gap:6px;min-height:48px;font-size:.875rem;letter-spacing:.01em;white-space:nowrap;color:var(--cor-texto);cursor:pointer}
+.nav-desktop>ul>li>a::after,.nav-desktop summary::after{content:'';position:absolute;left:0;right:0;bottom:10px;height:1px;background:var(--cor-acento);transform:scaleX(0);transform-origin:left;transition:transform var(--duracao-media) var(--ease-saida)}
+.nav-desktop>ul>li>a:hover,.nav-desktop summary:hover{text-decoration:none}
+.nav-desktop>ul>li>a:hover::after,.nav-desktop summary:hover::after,.nav-desktop a[aria-current]::after,.nav-desktop summary.ativo::after{transform:scaleX(1)}
+summary{list-style:none}summary::-webkit-details-marker{display:none}
+.seta{width:10px;transition:transform var(--duracao-curta)}
+.submenu[open] .seta{transform:rotate(180deg)}
+.submenu{position:relative}
+.submenu-lista{position:absolute;top:calc(100% + 12px);left:-18px;min-width:248px;margin:0;padding:8px;list-style:none;background:rgb(23 24 27 / .92);border:1px solid var(--vidro-borda);border-radius:var(--raio-md);-webkit-backdrop-filter:var(--vidro-desfoque);backdrop-filter:var(--vidro-desfoque);box-shadow:var(--sombra-3)}
+.submenu-lista a{padding:6px 12px;border-radius:var(--raio-sm)}
+.submenu-lista a:hover,.submenu-lista a[aria-current]{background:var(--cor-superficie-2);text-decoration:none}
+.submenu-lista a[aria-current]{box-shadow:inset 2px 0 0 var(--cor-acento)}
+.cabecalho-acoes{display:flex;align-items:center;gap:6px;flex:none}
+.icone-instagram{display:grid;place-items:center;width:44px;height:48px;color:var(--cor-texto);border-radius:var(--raio-sm)}
+.icone-instagram:hover{color:var(--cor-acento)}
+.menu-sem-js,.menu-botao{display:none}
+.menu-botao,.menu-sem-js,.menu-fechar{align-items:center;gap:10px;min-height:44px;padding:0 14px;margin-left:auto;background:transparent;color:var(--cor-texto);border:1px solid var(--vidro-borda);border-radius:var(--raio-sm);font:400 .7rem/1 var(--fonte-rotulo);letter-spacing:.16em;text-transform:uppercase}
+.menu-botao:hover,.menu-fechar:hover{border-color:var(--cor-texto-2)}
+.menu-icone{display:grid;gap:5px;width:18px}.menu-icone span{display:block;height:1px;background:currentColor}
+.menu-x{position:relative;width:14px;height:14px}.menu-x::before,.menu-x::after{content:'';position:absolute;top:50%;left:0;right:0;height:1px;background:currentColor;transform:rotate(45deg)}.menu-x::after{transform:rotate(-45deg)}
+
+/* Painel do celular (vidro escuro em tela cheia) */
+.menu-movel{position:fixed;inset:0;z-index:60;display:flex;flex-direction:column;overflow-y:auto;overscroll-behavior:contain;background:rgb(11 11 12 / .9);-webkit-backdrop-filter:blur(18px) saturate(120%);backdrop-filter:blur(18px) saturate(120%);color:var(--cor-texto)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.menu-movel{background:var(--cor-fundo)}}
+.menu-movel-topo{display:flex;align-items:center;justify-content:space-between;min-height:64px;flex:none;border-bottom:1px solid rgb(154 158 166 / .2)}
+.menu-fechar{display:inline-flex;margin-left:0}
+.menu-movel-corpo{display:grid;gap:36px;padding-block:28px 40px}
+.menu-movel-nav ul{list-style:none;margin:0;padding:0}
+.links-grandes a{display:flex;align-items:center;min-height:56px;font:var(--peso-titulo) clamp(1.75rem,7vw,2.4rem)/1.1 var(--fonte-titulo);letter-spacing:-.03em;border-bottom:1px solid rgb(154 158 166 / .14)}
+.links-medios a{display:flex;align-items:center;min-height:48px;font-size:1.2rem;color:var(--cor-texto)}
+.menu-movel-nav a:hover{text-decoration:none;color:var(--cor-acento)}
+.menu-movel-nav a[aria-current]{color:var(--cor-acento)}
+.menu-movel-grupo{padding-block:20px 12px;border-bottom:1px solid rgb(154 158 166 / .14)}
+.menu-movel-grupo :global(.rotulo){margin-bottom:6px}
+.menu-movel-info{display:grid;gap:16px;color:var(--cor-texto-2);font-size:.95rem}
+.menu-movel-info address{font-style:normal}
+.menu-movel-info :global(.menu-status){margin-top:0;min-height:0;color:var(--cor-texto)}
+.menu-movel-botoes{display:grid;gap:12px;margin-top:8px}
+.menu-movel-botoes :global(.button){width:100%}
+:global(html.menu-aberto){overflow:hidden}
+
+@media(max-width:1180px) and (min-width:1025px){.cabecalho-linha{width:calc(100% - 48px)}.nav-desktop a,.nav-desktop summary{font-size:.82rem}}
+@media(max-width:1024px){
+  .cabecalho-linha{height:64px}
+  .nav-desktop,.cabecalho-acoes{display:none}
+  .menu-sem-js,.menu-botao{display:inline-flex}
+  .menu-botao[hidden],.menu-sem-js[hidden]{display:none}
+}
+@media(min-width:1025px){.menu-movel{display:none!important}}
 </style>

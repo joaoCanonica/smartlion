@@ -2,26 +2,33 @@
 import { loja } from '../config/loja';
 import { validarAgenda } from '../lib/horario';
 validarAgenda(loja.horario);
+interface Props { link?: boolean; anunciar?: boolean; class?: string }
+// anunciar: só uma instância por página deve ser região viva (evita leitura repetida).
+const { link = true, anunciar = true, class: classe } = Astro.props;
 ---
-<div class="status-horario" data-horario={JSON.stringify(loja.horario)}>
-  <p data-status-horario role="status" aria-live="polite">Confira os horários de atendimento abaixo.</p>
-  <a href="#contato">Ver horário completo</a>
+<div class:list={['status-horario', classe]} data-horario={JSON.stringify(loja.horario)}>
+  <p data-status-horario role={anunciar ? 'status' : undefined} aria-live={anunciar ? 'polite' : undefined}>Confira os horários de atendimento abaixo.</p>
+  {link && <a href="#contato">Ver horário completo</a>}
 </div>
 <script>
 import { statusHorario, type Agenda } from '../lib/horario';
-const raiz = document.querySelector<HTMLElement>('[data-horario]');
-const texto = raiz?.querySelector<HTMLElement>('[data-status-horario]');
-if (raiz?.dataset.horario && texto) {
-  const agenda: Agenda = JSON.parse(raiz.dataset.horario);
+// Pode haver mais de um status na página (hero, menu do celular, rodapé): todos usam a mesma agenda.
+const raizes = [...document.querySelectorAll<HTMLElement>('[data-horario]')];
+if (raizes.length) {
   let timer: ReturnType<typeof setTimeout>;
   const atualizar = () => {
     clearTimeout(timer);
-    try {
-      const status = statusHorario(new Date(), agenda);
-      if (texto.textContent !== status.texto) texto.textContent = status.texto;
-      raiz.dataset.status = status.tipo;
-    } catch {
-      texto.textContent = 'Consulte o horário de atendimento abaixo.';
+    for (const raiz of raizes) {
+      const texto = raiz.querySelector<HTMLElement>('[data-status-horario]');
+      if (!raiz.dataset.horario || !texto) continue;
+      try {
+        const agenda: Agenda = JSON.parse(raiz.dataset.horario);
+        const status = statusHorario(new Date(), agenda);
+        if (texto.textContent !== status.texto) texto.textContent = status.texto;
+        raiz.dataset.status = status.tipo;
+      } catch {
+        texto.textContent = 'Consulte o horário de atendimento abaixo.';
+      }
     }
     if (!document.hidden) timer = setTimeout(atualizar, 60_000 - Date.now() % 60_000 + 100);
   };
@@ -32,7 +39,9 @@ if (raiz?.dataset.horario && texto) {
 }
 </script>
 <style>
-.status-horario{margin-top:22px;min-height:60px;font-size:.85rem;color:#eee}
+.status-horario{margin-top:22px;min-height:60px;font-size:.85rem;color:var(--cor-texto)}
+.status-horario p::before{content:'';display:inline-block;width:.5rem;height:.5rem;margin-right:.55rem;border-radius:50%;background:var(--cor-texto-2);vertical-align:.08em}
+.status-horario[data-status="aberto"] p::before{background:var(--cor-acento);box-shadow:0 0 0 3px rgb(227 168 87 / .18)}
 .status-horario a{font-size:.75rem;text-decoration:underline;text-underline-offset:4px;color:var(--muted)}
 .status-horario p{font-variant-numeric:tabular-nums;min-height:1.6em}
 </style>

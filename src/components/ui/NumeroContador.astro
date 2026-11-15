@@ -1,0 +1,13 @@
+---
+/**
+ * Número que conta até o valor quando aparece na tela.
+ * O valor final já está no HTML: leitores de tela leem o texto final (cópia em .sr-only)
+ * e, sem JS ou com movimento reduzido, nada se move. A parte animada é aria-hidden e
+ * tem largura reservada para não causar mudança de layout.
+ */
+interface Props { valor: number; casas?: number; prefixo?: string; sufixo?: string; class?: string; duracao?: number }
+const { valor, casas = 0, prefixo = '', sufixo = '', class: classe, duracao = 1400 } = Astro.props;
+const formatado = `${prefixo}${new Intl.NumberFormat('pt-BR', { minimumFractionDigits: casas, maximumFractionDigits: casas }).format(valor)}${sufixo}`;
+---
+<span class:list={['numero-contador', classe]}><span class="sr-only">{formatado}</span><span aria-hidden="true" class="numero-contador-visivel" style={`min-width:${formatado.length}ch`} data-contador={valor} data-casas={casas} data-prefixo={prefixo} data-sufixo={sufixo} data-duracao={duracao}>{formatado}</span></span>
+<script>import '../../scripts/movimento';</script>

@@ -1,24 +1,82 @@
 ---
-import { Image } from 'astro:assets';
-import logo from '../assets/logo.png';
 import { loja, enderecoCompleto } from '../config/loja';
 import { formatarPeriodos } from '../lib/horario';
 import { linkWhatsApp, mensagemGeral } from '../config/whatsapp';
 import { navegacao, atividades } from '../config/navegacao';
 import AvaliarGoogle from './avaliacoes/AvaliarGoogle.astro';
+import StatusHorario from './StatusHorario.astro';
+import Logo from './marca/Logo.astro';
+import Rotulo from './ui/Rotulo.astro';
+const paginas = [...navegacao, ...atividades, { nome: 'Perguntas frequentes', href: '/perguntas-frequentes' }, { nome: 'Dicas', href: '/dicas' }, { nome: 'Privacidade', href: '/privacidade' }];
 ---
-<footer id="contato">
- <div class="container assinatura"><Image src={logo} alt="Leão da Smart Lion" width={90} height={90} loading="lazy"/><p>Tecnologia de verdade<br/>é sobre pessoas.</p><a href={loja.instagram.url}>{loja.instagram.nome} ↗</a></div>
- <div class="container footer-grid">
-  <div><h2>Venha nos conhecer</h2><address>{enderecoCompleto}<br/>CEP {loja.endereco.cep}</address><a href={loja.googleMaps}>Ver no Google Maps ↗</a></div>
-  <div><h2>Horários da loja</h2><table><caption class="sr-only">Horário de atendimento</caption><tbody>{loja.horario.semana.map(h=><tr><th scope="row">{h.rotulo}</th><td>{formatarPeriodos(h.periodos)}</td></tr>)}</tbody></table><p class="small">Nos feriados, consulte o atendimento.</p></div>
-  <div><h2>Fale com a gente</h2><a class="contact" href={linkWhatsApp(mensagemGeral)}>WhatsApp <span>{loja.whatsapp.exibicao}</span></a><a class="contact" href={`tel:${loja.telefone.numero}`}>Telefone <span>{loja.telefone.exibicao}</span></a></div>
- </div>
- <nav class="container paginas" aria-label="Informações da loja">{[...navegacao,...atividades].map(n=><a href={n.href}>{n.nome}</a>)}<a href="/perguntas-frequentes">Perguntas frequentes</a><a href="/dicas">Dicas</a><a href="/privacidade">Privacidade</a></nav>
- <AvaliarGoogle compacto/>
- <div class="container footer-bottom"><span>{loja.nome} · {loja.endereco.cidade}/{loja.endereco.uf}{loja.cnpj&&` · CNPJ ${loja.cnpj}`}{import.meta.env.DEV&&!loja.cnpj&&<span class="pendente"> · CNPJ PENDENTE</span>}</span><span>Desenvolvido por WAXLO</span></div>
- <div class="container"><button class="preferencias-button" type="button" data-preferencias hidden>Preferências de privacidade</button></div>
+<footer id="contato" class="rodape">
+  <Logo variante="leao" decorativo class="rodape-marca-dagua"/>
+  <div class="container rodape-topo">
+    <Logo variante="completo" titulo={`${loja.nome} · ${loja.endereco.cidade}/${loja.endereco.uf}`} class="rodape-logo"/>
+    <p class="rodape-assinatura">Tecnologia de verdade é sobre pessoas.</p>
+  </div>
+  <div class="container rodape-colunas">
+    <section aria-labelledby="rodape-loja">
+      <Rotulo as="h2" id="rodape-loja" tom="ambar">Loja</Rotulo>
+      <address>{enderecoCompleto}<br/>CEP {loja.endereco.cep}</address>
+      <ul class="rodape-links"><li><a href={loja.googleMaps}>Ver no Google Maps ↗</a></li><li><a href={loja.instagram.url}>Instagram {loja.instagram.nome} ↗</a></li></ul>
+    </section>
+    <section aria-labelledby="rodape-horario">
+      <Rotulo as="h2" id="rodape-horario" tom="ambar">Horário</Rotulo>
+      <StatusHorario link={false} anunciar={false} class="rodape-status"/>
+      <table><caption class="sr-only">Horário de atendimento</caption><tbody>{loja.horario.semana.map(h => <tr><th scope="row">{h.rotulo}</th><td>{formatarPeriodos(h.periodos)}</td></tr>)}</tbody></table>
+      <p class="rodape-nota">Nos feriados, consulte o atendimento.</p>
+    </section>
+    <section aria-labelledby="rodape-contato">
+      <Rotulo as="h2" id="rodape-contato" tom="ambar">Contato</Rotulo>
+      <a class="rodape-contato" href={linkWhatsApp(mensagemGeral)}><span class="rotulo rotulo-aco">WhatsApp</span><span class="rodape-numero">{loja.whatsapp.exibicao}</span></a>
+      <a class="rodape-contato" href={`tel:${loja.telefone.numero}`}><span class="rotulo rotulo-aco">Telefone</span><span class="rodape-numero">{loja.telefone.exibicao}</span></a>
+    </section>
+    <nav aria-labelledby="rodape-paginas" id="paginas-rodape">
+      <Rotulo as="h2" id="rodape-paginas" tom="ambar">Páginas</Rotulo>
+      <ul class="rodape-paginas">{paginas.map(n => <li><a href={n.href}>{n.nome}</a></li>)}</ul>
+    </nav>
+  </div>
+  <AvaliarGoogle compacto/>
+  <div class="container rodape-base">
+    <p>{loja.nome} · {loja.endereco.cidade}/{loja.endereco.uf}{loja.cnpj && ` · CNPJ ${loja.cnpj}`}{loja.razaoSocial && ` · ${loja.razaoSocial}`}{import.meta.env.DEV && !loja.cnpj && <span class="pendente"> · CNPJ PENDENTE</span>}</p>
+    <button class="preferencias-button" type="button" data-preferencias hidden>Preferências de privacidade</button>
+    <p>Desenvolvido por WAXLO</p>
+  </div>
 </footer>
 <style>
-footer{padding:var(--space-chapter) 0 100px;background:var(--ink);color:var(--white);border-top:1px solid var(--line)}.assinatura{display:flex;align-items:center;gap:30px;margin-bottom:60px}.assinatura p{font:400 clamp(1.8rem,3vw,3.2rem)/1.15 var(--font-heading)}.assinatura>a{margin-left:auto;font-size:.9rem;min-height:44px;display:flex;align-items:center}.footer-grid{display:grid;grid-template-columns:1.1fr 1.2fr 1fr;gap:48px;color:var(--muted);font-size:.875rem}h2{font:400 .75rem var(--font-body);text-transform:uppercase;letter-spacing:.14em;color:var(--white);margin-bottom:24px}address{font-style:normal;margin-bottom:18px;max-width:30ch}table{border-collapse:collapse;font-variant-numeric:tabular-nums}th{text-align:left;font-weight:400;padding:0 16px 12px 0;vertical-align:top}td{padding-bottom:12px}.small{font-size:.75rem;margin-top:10px}.contact{display:block;margin-bottom:18px}.contact span{display:block;color:var(--white);font-size:1.15rem;font-variant-numeric:tabular-nums}.paginas{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:44px;padding-top:24px;border-top:1px solid var(--line);font-size:.8rem}.paginas a{min-height:44px;display:flex;align-items:center}.footer-bottom{display:flex;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding-top:24px;font-size:.75rem;color:var(--muted)}.preferencias-button{min-height:48px;padding:12px 16px;margin-top:20px;color:var(--white);background:transparent;border:1px solid var(--muted);font-size:.8rem}.pendente{color:#ffda8b}@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}.assinatura{flex-wrap:wrap}.assinatura>a{margin-left:0}.footer-grid>div:last-child{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:16px 48px}.footer-grid>div:last-child h2{width:100%;margin-bottom:0}}@media(max-width:550px){.assinatura{gap:20px;margin-bottom:40px}.assinatura img{width:64px;height:64px}.assinatura p{font-size:1.7rem}.assinatura>a{width:100%}.footer-grid{grid-template-columns:1fr;gap:32px}.footer-grid>div:last-child{display:block}.footer-grid>div:last-child h2{margin-bottom:24px}.footer-bottom{flex-direction:column;gap:10px}}
+.rodape{position:relative;isolation:isolate;overflow:hidden;padding:var(--espaco-secao) 0 100px;background:var(--cor-fundo);color:var(--cor-texto);border-top:1px solid var(--cor-borda)}
+.rodape :global(.rodape-marca-dagua){position:absolute;z-index:-1;right:-14%;bottom:-18%;width:min(78vw,980px);height:auto;color:var(--cor-texto);opacity:.05;pointer-events:none}
+.rodape-topo{display:flex;align-items:center;gap:clamp(20px,3vw,40px);margin-bottom:clamp(48px,6vw,80px)}
+.rodape-topo :global(.rodape-logo){width:clamp(72px,8vw,104px);flex:none}
+.rodape-assinatura{font:var(--peso-titulo) clamp(1.6rem,1.1rem + 2.2vw,3rem)/1.08 var(--fonte-titulo);letter-spacing:var(--tracking-titulo);max-width:16ch;text-wrap:balance}
+.rodape-colunas{display:grid;grid-template-columns:1fr 1.2fr .9fr 1.4fr;gap:clamp(32px,4vw,56px);color:var(--cor-texto-2);font-size:var(--texto-sm)}
+.rodape-colunas :global(h2){margin-bottom:18px}
+.rodape-colunas section,.rodape-colunas nav{padding-top:20px;border-top:1px solid var(--cor-borda)}
+address{font-style:normal;margin-bottom:14px;color:var(--cor-texto)}
+.rodape-links,.rodape-paginas{list-style:none;margin:0;padding:0}
+.rodape-links a,.rodape-paginas a{display:inline-flex;align-items:center;min-height:40px}
+.rodape-paginas{columns:2;column-gap:24px}.rodape-paginas li{break-inside:avoid}.rodape-paginas a{color:var(--cor-texto)}
+.rodape-paginas a:hover,.rodape-links a:hover,.rodape-contato:hover .rodape-numero{color:var(--cor-acento);text-decoration:none}
+.rodape-colunas :global(.rodape-status){margin:0 0 14px;min-height:0;color:var(--cor-texto)}
+table{border-collapse:collapse;font-variant-numeric:tabular-nums}
+th{text-align:left;font-weight:400;padding:0 16px 10px 0;vertical-align:top}
+td{padding-bottom:10px;color:var(--cor-texto)}
+.rodape-nota{font-size:.78rem;margin-top:6px}
+.rodape-contato{display:grid;gap:4px;margin-bottom:20px}
+.rodape-contato:hover{text-decoration:none}
+.rodape-numero{color:var(--cor-texto);font:500 1.2rem/1.2 var(--fonte-titulo);font-variant-numeric:tabular-nums;letter-spacing:-.01em;transition:color var(--duracao-curta)}
+.rodape :global(.avaliar.compacto){background:transparent;margin-top:clamp(48px,6vw,72px)}
+.rodape :global(.avaliar.compacto>.container){padding-top:clamp(32px,4vw,48px);border-top:1px solid var(--cor-borda)}
+.rodape-base{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding-top:24px;border-top:1px solid var(--cor-borda);font-size:.78rem;color:var(--cor-texto-2)}
+.preferencias-button{min-height:44px;padding:10px 16px;color:var(--cor-texto);background:transparent;border:1px solid var(--cor-linha);border-radius:var(--raio-sm);font-size:.8rem}
+.preferencias-button:hover{border-color:var(--cor-texto)}
+.pendente{color:#ffda8b}
+@media(max-width:1024px){.rodape-colunas{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){
+  .rodape-topo{flex-direction:column;align-items:flex-start}
+  .rodape-colunas{grid-template-columns:1fr;gap:28px}
+  .rodape :global(.rodape-marca-dagua){width:150vw;right:-55%;bottom:-6%}
+  .rodape-base{flex-direction:column;align-items:flex-start}
+}
 </style>

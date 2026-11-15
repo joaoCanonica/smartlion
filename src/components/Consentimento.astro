@@ -1,5 +1,19 @@
-<section class="preferencias light" data-consentimento hidden aria-label="Preferências de privacidade">
+<section class="preferencias" data-consentimento hidden aria-label="Preferências de privacidade">
  <div class="container"><h2>Mapa do Google: você escolhe.</h2><p>Não usamos publicidade ou analytics. O mapa é opcional e pode permitir cookies do Google. Aceitar autoriza esse recurso; ele só será carregado quando você clicar no mapa. Sua escolha fica nesta aba durante a sessão.</p><div class="acoes"><button type="button" data-consentir="aceito">Aceitar</button><button type="button" data-consentir="recusado">Recusar</button><a href="/privacidade">Entenda a privacidade</a></div></div>
 </section>
 <script>import '../scripts/consentimento';</script>
-<style>.preferencias{background:#f4f4f2;color:#111214;border-top:2px solid #8c0747;padding:24px 0}.preferencias h2{font-size:1.4rem}.preferencias p{max-width:80ch;margin:12px 0;font-size:.9rem}.acoes{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.acoes button{background:transparent;border:1px solid #414246;color:inherit;padding:12px 24px;min-width:120px;min-height:48px;font:inherit;cursor:pointer}.acoes a{padding:12px}</style>
+<style>
+/* Painel fixo (vidro escuro) na base da tela: aparece sem empurrar o layout (CLS zero).
+   z-index 35: acima do botão flutuante (30), abaixo do cabeçalho e do menu do celular (40). */
+.preferencias{position:fixed;z-index:35;left:16px;right:16px;bottom:16px;max-width:760px;margin-inline:auto;padding:20px 0;color:var(--cor-texto);background:rgb(23 24 27 / .92);border:1px solid var(--vidro-borda);border-radius:var(--raio-lg);-webkit-backdrop-filter:var(--vidro-desfoque);backdrop-filter:var(--vidro-desfoque);box-shadow:var(--sombra-3)}
+.preferencias .container{width:auto;padding-inline:clamp(16px,3vw,28px)}
+.preferencias h2{font-size:1.25rem}
+.preferencias p{max-width:70ch;margin:10px 0 14px;font-size:.88rem;color:var(--cor-texto-2)}
+.acoes{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.acoes button{background:transparent;border:1px solid var(--cor-linha);border-radius:var(--raio-sm);color:inherit;padding:10px 22px;min-width:120px;min-height:48px;font:inherit;cursor:pointer}
+.acoes button:hover{border-color:var(--cor-texto)}
+.acoes button:first-child{background:var(--cor-texto);color:var(--cor-fundo);border-color:var(--cor-texto)}
+.acoes a{display:inline-flex;align-items:center;min-height:48px;padding:0 12px;text-decoration:underline;text-decoration-color:rgb(154 158 166 / .55)}
+.acoes a:hover{color:var(--cor-acento)}
+@supports not ((backdrop-filter:blur(1px)) or (-webkit-backdrop-filter:blur(1px))){.preferencias{background:var(--cor-superficie)}}
+</style>

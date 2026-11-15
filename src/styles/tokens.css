@@ -2,20 +2,30 @@
    Smart Lion · tokens · identidade "Leão de Aço" (premium P0)
    --------------------------------------------------------------------------
    Os tokens novos (--cor-*, --espaco-*, --raio-*, --sombra-*, --fonte-*,
-   --texto-*) são a base da remodelagem. As páginas passam a usá-los na P6.
-   Até lá, os nomes antigos continuam valendo, COM OS VALORES ANTIGOS, no
-   bloco "APELIDOS TEMPORÁRIOS" no fim do arquivo: assim a P0 não altera o
-   layout. Contraste validado por scripts/auditoria-contraste.mjs.
+   --texto-*) são a base da remodelagem. Desde a P1 os nomes antigos são
+   apelidos dos tokens novos (bloco no fim do arquivo) e saem na P6.
+   Contraste validado por scripts/auditoria-contraste.mjs.
    ========================================================================== */
 
 /* --- Fontes da identidade nova (self-host, subset latino) ----------------
-   Títulos: Sora · Texto: Inter Tight · Rótulos/números técnicos: Michroma.
-   Decisão e capturas em docs/premium/tipografia.md. As fontes só são baixadas
-   quando algum elemento as usa, então declarar aqui não pesa nas páginas
-   atuais. */
-@font-face{font-family:'Sora Variable';src:url('@fontsource-variable/sora/files/sora-latin-wght-normal.woff2') format('woff2-variations');font-style:normal;font-weight:100 800;font-display:swap}
-@font-face{font-family:'Inter Tight Variable';src:url('@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2') format('woff2-variations');font-style:normal;font-weight:100 900;font-display:swap}
+   Títulos: Sora (600; 400 nos estilos antigos) · Texto: Inter Tight (400/600)
+   · Rótulos/números técnicos: Michroma. Arquivos estáticos (P1): cada peso só
+   é baixado se algum texto o usa. Decisão em docs/premium/tipografia.md. */
+@font-face{font-family:'Sora';src:url('@fontsource/sora/files/sora-latin-600-normal.woff2') format('woff2');font-style:normal;font-weight:600;font-display:swap}
+@font-face{font-family:'Sora';src:url('@fontsource/sora/files/sora-latin-400-normal.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'Inter Tight';src:url('@fontsource/inter-tight/files/inter-tight-latin-400-normal.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:'Inter Tight';src:url('@fontsource/inter-tight/files/inter-tight-latin-600-normal.woff2') format('woff2');font-style:normal;font-weight:600;font-display:swap}
 @font-face{font-family:'Michroma';src:url('@fontsource/michroma/files/michroma-latin-400-normal.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
+
+/* --- Fallbacks métricos (P1) ---------------------------------------------
+   Arial/Liberation Sans ajustada às medidas de cada fonte (largura média de
+   um texto em português + ascendente/descendente), para que a troca de fonte
+   não empurre o layout (CLS). Calculado com fontTools; ver docs/premium/P1.md. */
+@font-face{font-family:'Sora Fallback';src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');font-weight:600;size-adjust:107.46%;ascent-override:90.26%;descent-override:26.99%;line-gap-override:0%}
+@font-face{font-family:'Sora Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');font-weight:400;size-adjust:113.08%;ascent-override:85.78%;descent-override:25.64%;line-gap-override:0%}
+@font-face{font-family:'Inter Tight Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');font-weight:400;size-adjust:96.45%;ascent-override:100.44%;descent-override:25.01%;line-gap-override:0%}
+@font-face{font-family:'Inter Tight Fallback';src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');font-weight:600;size-adjust:94.81%;ascent-override:102.18%;descent-override:25.44%;line-gap-override:0%}
+@font-face{font-family:'Michroma Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:142.12%;ascent-override:81.36%;descent-override:18.69%;line-gap-override:0%}
 
 /* --- Fontes antigas (saem na P6, junto com os apelidos) ------------------ */
 @font-face{font-family:'DM Serif Display';src:url('@fontsource/dm-serif-display/files/dm-serif-display-latin-400-normal.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
@@ -27,6 +37,7 @@
   --grafite:#17181B;
   --grafite-2:#222429;
   --aco:#9A9EA6;
+  --aco-linha:#7A7E86;               /* linhas decorativas que passam 3:1 no preto e no gelo */
   --branco-gelo:#F5F6F7;
   --ambar:#E3A857;
   --verde-whatsapp:#25D366;
@@ -88,9 +99,9 @@
   --sombra-brilho:0 0 0 1px rgb(227 168 87 / .35),0 8px 32px -8px rgb(227 168 87 / .25);
 
   /* ---- Tipografia ---- */
-  --fonte-titulo:'Sora Variable','Sora',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --fonte-texto:'Inter Tight Variable','Inter Tight',system-ui,-apple-system,'Segoe UI',sans-serif;
-  --fonte-rotulo:'Michroma','Sora Variable',system-ui,sans-serif; /* só caixa alta pequena */
+  --fonte-titulo:'Sora','Sora Fallback',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --fonte-texto:'Inter Tight','Inter Tight Fallback',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --fonte-rotulo:'Michroma','Michroma Fallback',system-ui,sans-serif; /* só caixa alta pequena */
   --peso-titulo:600;
   --peso-texto:400;
   --entrelinha-titulo:1.04;
@@ -118,35 +129,36 @@
 
   /* ==========================================================================
      APELIDOS TEMPORÁRIOS · remover na P6
-     Mantêm os valores antigos para não mudar o layout antes da hora.
-     Na P6 cada uso é trocado pelo token novo indicado e este bloco sai.
+     Desde a P1 (pele global) os nomes antigos apontam para a paleta e as
+     fontes novas: creme, madeira, magenta e serifa já não aparecem. Na P6
+     cada uso é trocado pelo token indicado e este bloco sai.
      ========================================================================== */
-  --ink:#111214;          /* → --cor-fundo */
-  --surface:#f5f3ef;      /* → --cor-fundo-claro (SAI o creme) */
-  --white:#fff;           /* → --cor-texto */
-  --muted:#bfc0c2;        /* → --cor-texto-2 */
-  --line:#363739;         /* → --cor-borda */
-  --wood:#8a6a4f;         /* → --cor-acento-escuro / --cor-linha (SAI a madeira) */
-  --wood-light:#c6aa8f;   /* → --cor-acento (SAI) */
-  --accent:#e0157a;       /* → --cor-acento (SAI o magenta) */
-  --accent-light:#ff78bc; /* → --cor-foco (SAI) */
-  --focus-light:#a50050;  /* → --cor-acento-escuro (SAI) */
-  --whatsapp:#25d366;     /* → --cor-whatsapp */
-  --text-dark:#414246;    /* → --cor-texto-2-escuro */
-  --space-1:.5rem;        /* → --espaco-2 */
-  --space-2:1rem;         /* → --espaco-4 */
-  --space-3:1.5rem;       /* → --espaco-5 */
-  --space-4:2rem;         /* → --espaco-6 */
-  --space-5:3rem;         /* → --espaco-7 */
-  --space-6:5rem;         /* → --espaco-8/9 */
-  --space-chapter:clamp(4rem,8vw,8rem); /* → --espaco-secao */
-  --radius:.2rem;         /* → --raio-sm */
-  --shadow:0 12px 36px #0002; /* → --sombra-2 */
-  --font-body:'DM Sans',sans-serif;              /* → --fonte-texto */
-  --font-heading:'DM Serif Display',Georgia,serif; /* → --fonte-titulo (SAI a serifa) */
-  --text-sm:.875rem;      /* → --texto-sm */
-  --text-base:1rem;       /* → --texto-base */
-  --text-h1:clamp(2.6rem,5.5vw,5.6rem); /* → --texto-h1 */
-  --text-h2:clamp(2.15rem,4vw,4.3rem);  /* → --texto-h2 */
-  --container:1320px;     /* → --largura-max */
+  --ink:var(--cor-fundo);
+  --surface:var(--cor-fundo-claro);
+  --white:var(--cor-texto);
+  --muted:var(--cor-texto-2);
+  --line:var(--cor-borda);
+  --wood:var(--aco-linha);           /* linhas/bordas decorativas */
+  --wood-light:var(--cor-acento);    /* rótulos e números no escuro */
+  --accent:var(--cor-acento);
+  --accent-light:var(--cor-foco);
+  --focus-light:var(--cor-acento-escuro);
+  --whatsapp:var(--cor-whatsapp);
+  --text-dark:var(--cor-texto-2-escuro);
+  --space-1:var(--espaco-2);
+  --space-2:var(--espaco-4);
+  --space-3:var(--espaco-5);
+  --space-4:var(--espaco-6);
+  --space-5:var(--espaco-7);
+  --space-6:5rem;
+  --space-chapter:var(--espaco-secao);
+  --radius:var(--raio-sm);
+  --shadow:var(--sombra-2);
+  --font-body:var(--fonte-texto);
+  --font-heading:var(--fonte-titulo);
+  --text-sm:var(--texto-sm);
+  --text-base:var(--texto-base);
+  --text-h1:var(--texto-h1);
+  --text-h2:var(--texto-h2);
+  --container:var(--largura-max);
 }

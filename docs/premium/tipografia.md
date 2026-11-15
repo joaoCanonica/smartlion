@@ -9,8 +9,8 @@ Três provas com o mesmo texto, tamanho e cor: hero ("Tecnologia com procedênci
 
 | Papel | Escolha | Arquivo (latin) | Token |
 |---|---|---|---|
-| Títulos | **Sora** (variável, 600) | 33,6 KB | `--fonte-titulo` |
-| Texto | **Inter Tight** (variável, 400) | 44,9 KB | `--fonte-texto` |
+| Títulos | **Sora** 600 (e 400 nos estilos antigos) | 15,0 KB + 14,7 KB | `--fonte-titulo` |
+| Texto | **Inter Tight** 400 (600 só se houver texto em negrito) | 22,0 KB (+ 22,7 KB) | `--fonte-texto` |
 | Rótulos e números técnicos | **Michroma** (400, só caixa alta pequena e números grandes) | 17,9 KB | `--fonte-rotulo` |
 
 ## Por quê
@@ -21,7 +21,7 @@ Três provas com o mesmo texto, tamanho e cor: hero ("Tecnologia com procedênci
 
 ## Aplicação
 
-- Na P0 a escolha entra **só nos tokens** (`src/styles/tokens.css`). As páginas continuam com DM Serif Display + DM Sans, pelos apelidos temporários, até a P6.
+- Na P0 a escolha entrou **só nos tokens** (`src/styles/tokens.css`). Na P1 (pele global) os apelidos antigos passaram a apontar para as fontes novas: o site inteiro já usa Sora + Inter Tight + Michroma; os `@font-face` da DM Serif Display e da DM Sans continuam declarados, mas sem uso (nada é baixado), e saem na P6.
 - `@font-face` declarado sem uso não baixa arquivo; o peso atual das páginas não muda.
 - Geist e Outfit são carregadas só no estudo. Na P6: remover `@fontsource-variable/geist`, `@fontsource/outfit`, `@fontsource/dm-serif-display`, `@fontsource/dm-sans`, `@fontsource/young-serif` e a página de estudo.
-- Pendência de orçamento para a P6: avaliar trocar a Inter Tight variável (44,9 KB) por dois estáticos (400 e 600) se o total de fontes da primeira dobra passar de ~80 KB; pré-carregar só a Sora.
+- **Atualização P1:** a pendência de orçamento virou medida. Com as variáveis (Sora 33,6 KB + Inter Tight 44,9 KB + Michroma 17,9 KB) a home foi a 2179 ms de LCP no 4G simulado, porque as fontes disputam banda com a foto do hero. Trocamos por arquivos estáticos (69 KB por página), sem `preload`, e criamos fallbacks métricos (Arial/Liberation ajustada com `size-adjust` e `ascent/descent-override`, calculados com fontTools) para a troca de fonte não mover o layout. Resultado: home 1808–1885 ms. Pacotes `@fontsource-variable/sora` e `@fontsource-variable/inter-tight` saíram.

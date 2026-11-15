@@ -1,0 +1,6 @@
+---
+// Painel de vidro escuro: fundo grafite translúcido, desfoque leve e borda de 1 px em aço (30%).
+interface Props { as?: 'div' | 'section' | 'article' | 'aside'; class?: string; id?: string; 'aria-labelledby'?: string; 'aria-label'?: string }
+const { as: Tag = 'div', class: classe, ...resto } = Astro.props;
+---
+<Tag class:list={['painel-vidro', classe]} {...resto}><slot/></Tag>

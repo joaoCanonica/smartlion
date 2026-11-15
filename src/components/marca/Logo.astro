@@ -1,0 +1,52 @@
+---
+/**
+ * Marca Smart Lion em SVG (currentColor), referenciando o sprite /marca.svg.
+ * - completo: anel + nome + leão.
+ * - leao: só o leão.
+ * - compacto: leão + "SMART LION" em Michroma ao lado (cabeçalho).
+ * Acessibilidade: por padrão tem <title> e role="img". Use `decorativo` quando o
+ * nome já estiver no texto ou no rótulo do link que envolve a marca.
+ * (Para animar anel/nome/leão separadamente, a abertura da P2 embute os caminhos de src/lib/marca.ts.)
+ */
+import { marca, spriteMarca, caixaDeUso } from '../../lib/marca';
+interface Props { variante?: 'completo' | 'leao' | 'compacto'; titulo?: string; decorativo?: boolean; class?: string; legenda?: string }
+const { variante = 'leao', titulo = 'Smart Lion', decorativo = false, class: classe, legenda } = Astro.props;
+const contador = globalThis as { __slLogo?: number };
+contador.__slLogo = (contador.__slLogo ?? 0) + 1;
+const idTitulo = `logo-titulo-${contador.__slLogo}`;
+const role = decorativo ? undefined : 'img';
+const oculto = decorativo ? 'true' as const : undefined;
+const rotulado = decorativo ? undefined : idTitulo;
+const caixaLeao = caixaDeUso(marca.leao.viewBox);
+const caixaLogo = caixaDeUso(marca.logo.viewBox);
+const hrefLeao = `${spriteMarca.url}#${spriteMarca.leao}`;
+const hrefLogo = `${spriteMarca.url}#${spriteMarca.logo}`;
+---
+{variante === 'completo' && (
+  <svg class:list={['logo', 'logo-completo', classe]} viewBox={caixaLogo} role={role} aria-hidden={oculto} aria-labelledby={rotulado} focusable="false">
+    {!decorativo && <title id={idTitulo}>{titulo}</title>}
+    <use href={hrefLogo}/>
+  </svg>
+)}
+{variante === 'leao' && (
+  <svg class:list={['logo', 'logo-leao', classe]} viewBox={caixaLeao} role={role} aria-hidden={oculto} aria-labelledby={rotulado} focusable="false">
+    {!decorativo && <title id={idTitulo}>{titulo}</title>}
+    <use href={hrefLeao}/>
+  </svg>
+)}
+{variante === 'compacto' && (
+  <span class:list={['logo', 'logo-compacto', classe]}>
+    <svg class="logo-compacto-leao" viewBox={caixaLeao} aria-hidden="true" focusable="false"><use href={hrefLeao}/></svg>
+    <span class="logo-compacto-texto"><span class="logo-compacto-nome">SMART LION</span>{legenda && <span class="logo-compacto-legenda">{legenda}</span>}</span>
+  </span>
+)}
+<style>
+.logo{display:block;color:inherit}
+.logo-completo{aspect-ratio:1}
+.logo-leao{aspect-ratio:796/668}
+.logo-compacto{display:inline-flex;align-items:center;gap:.7rem;line-height:1}
+.logo-compacto-leao{width:2.5rem;height:2.1rem;flex:none}
+.logo-compacto-texto{display:grid;gap:.35rem}
+.logo-compacto-nome{font:400 .8rem/1 var(--fonte-rotulo);letter-spacing:.16em;white-space:nowrap}
+.logo-compacto-legenda{font:400 .55rem/1 var(--fonte-rotulo);letter-spacing:.2em;color:var(--cor-texto-2);white-space:nowrap}
+</style>

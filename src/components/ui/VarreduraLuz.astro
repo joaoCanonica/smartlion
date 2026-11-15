@@ -1,0 +1,8 @@
+---
+// Aplica a varredura de luz (âmbar → branco) uma única vez quando o conteúdo entra na tela.
+// Sem JS ou com movimento reduzido, o conteúdo aparece sem efeito.
+interface Props { as?: 'div' | 'span' | 'figure'; class?: string }
+const { as: Tag = 'div', class: classe } = Astro.props;
+---
+<Tag class:list={['varredura-luz', classe]} data-varredura><slot/></Tag>
+<script>import '../../scripts/movimento';</script>

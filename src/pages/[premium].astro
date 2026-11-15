@@ -5,6 +5,12 @@ export function getStaticPaths(){ return [{ params: { premium: '_estudo-premium'
 import Layout from '../layouts/LayoutBase.astro';
 import { loja } from '../config/loja';
 import { resumoAvaliacoes } from '../lib/avaliacoes';
+import PainelVidro from '../components/ui/PainelVidro.astro';
+import VarreduraLuz from '../components/ui/VarreduraLuz.astro';
+import NumeroContador from '../components/ui/NumeroContador.astro';
+import Rotulo from '../components/ui/Rotulo.astro';
+import Logo from '../components/marca/Logo.astro';
+import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
 const nota = resumoAvaliacoes.nota.toFixed(1).replace('.', ',');
 const total = String(resumoAvaliacoes.total);
 const candidatos = [
@@ -35,6 +41,14 @@ const paragrafo = `Começamos com produtos novos e seminovos com nota fiscal. No
         <article class="prova texto-geist"><p class="rotulo">Geist · 17 px / 1,6</p><p class="paragrafo">{paragrafo}</p></article>
       </div>
     </section>
+    <section aria-labelledby="t-componentes"><h2 id="t-componentes" class="rotulo secao">04 · Componentes da pele (P1)</h2>
+      <div class="grade">
+        <PainelVidro class="prova-vidro"><Rotulo>PainelVidro + Rotulo</Rotulo><p class="apoio">Grafite translúcido, desfoque leve e borda de 1 px em aço a 30%.</p></PainelVidro>
+        <PainelVidro class="prova-vidro"><Rotulo tom="ambar">NumeroContador</Rotulo><div class="numeros"><p><span class="numero fonte-m-num"><NumeroContador valor={resumoAvaliacoes.nota} casas={1}/></span><span class="legenda">nota no Google</span></p><p><span class="numero fonte-m-num"><NumeroContador valor={resumoAvaliacoes.total}/></span><span class="legenda">avaliações</span></p></div></PainelVidro>
+        <VarreduraLuz class="prova-varredura"><div class="marca-prova"><Logo variante="completo" titulo="Smart Lion"/></div></VarreduraLuz>
+      </div>
+      <div class="botoes-prova"><a class="button button-primario" href="/a-loja">Conheça a loja</a><a class="button" href="/visite-nos">Como chegar</a><BotaoWhatsApp rotulo="Fale conosco"/><p class="apoio">Texto com <a href="/avaliacoes">link sublinhado fino</a> que acende em âmbar.</p></div>
+    </section>
   </div>
 </Layout>
 <style>
@@ -43,7 +57,7 @@ const paragrafo = `Começamos com produtos novos e seminovos com nota fiscal. No
 @font-face{font-family:'Outfit';src:url('@fontsource/outfit/files/outfit-latin-600-normal.woff2') format('woff2');font-weight:600;font-display:swap}
 @font-face{font-family:'Outfit';src:url('@fontsource/outfit/files/outfit-latin-400-normal.woff2') format('woff2');font-weight:400;font-display:swap}
 .estudo{--f:var(--cor-fundo);background:var(--cor-fundo);color:var(--cor-texto);padding:clamp(32px,6vw,96px) clamp(16px,4vw,64px);display:grid;gap:clamp(40px,6vw,80px)}
-.topo{display:grid;gap:12px;max-width:70ch}.aviso{color:var(--cor-texto-2);font:400 .95rem/1.6 'Inter Tight Variable',sans-serif}
+.topo{display:grid;gap:12px;max-width:70ch}.aviso{color:var(--cor-texto-2);font:400 .95rem/1.6 'Inter Tight',sans-serif}
 .rotulo{font:400 .7rem/1.4 'Michroma',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--cor-texto-2)}
 .rotulo.secao{color:var(--cor-acento);margin-bottom:20px}
 .grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px}.grade.dois{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
@@ -54,9 +68,10 @@ const paragrafo = `Começamos com produtos novos e seminovos com nota fiscal. No
 .numero{font-size:clamp(3rem,6vw,5rem);line-height:1;color:var(--cor-acento);font-variant-numeric:tabular-nums;font-weight:600;letter-spacing:-.02em}
 .legenda{font:400 .65rem/1.4 'Michroma',sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--cor-texto-2)}
 .paragrafo{font-size:1.0625rem;line-height:1.6;max-width:62ch;color:var(--cor-texto)}
-.fonte-a .hero,.fonte-a .numero{font-family:'Sora Variable',sans-serif}.fonte-a .apoio{font-family:'Inter Tight Variable',sans-serif}
+.fonte-a .hero,.fonte-a .numero{font-family:'Sora',sans-serif}.fonte-a .apoio{font-family:'Inter Tight',sans-serif}
 .fonte-b .hero,.fonte-b .numero,.fonte-b .apoio{font-family:'Geist Variable',sans-serif}
-.fonte-c .hero,.fonte-c .numero{font-family:'Outfit',sans-serif}.fonte-c .apoio{font-family:'Inter Tight Variable',sans-serif}
+.fonte-c .hero,.fonte-c .numero{font-family:'Outfit',sans-serif}.fonte-c .apoio{font-family:'Inter Tight',sans-serif}
 .fonte-m .numero{font-family:'Michroma',sans-serif;font-weight:400;font-size:clamp(2.4rem,4.6vw,4rem);letter-spacing:0}
-.texto-inter .paragrafo{font-family:'Inter Tight Variable',sans-serif}.texto-geist .paragrafo{font-family:'Geist Variable',sans-serif}
+.texto-inter .paragrafo{font-family:'Inter Tight',sans-serif}.texto-geist .paragrafo{font-family:'Geist Variable',sans-serif}
+.prova-vidro{padding:clamp(20px,3vw,36px);display:grid;gap:18px;align-content:start}.fonte-m-num{font-family:'Michroma',sans-serif;font-weight:400;font-size:clamp(2.4rem,4.6vw,4rem);letter-spacing:0}.prova-varredura{border:1px solid var(--cor-borda);border-radius:var(--raio-md);overflow:hidden;background:var(--cor-superficie)}.marca-prova{padding:clamp(24px,4vw,48px);display:grid;place-items:center}.marca-prova :global(.logo){width:min(220px,60%)}.botoes-prova{display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-top:24px}
 </style>

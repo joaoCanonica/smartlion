@@ -10,7 +10,7 @@ const {categoria}=Astro.props;
  <div class="introducao">
   {categoria && <a class="voltar" href="/produtos">← Todos os produtos</a>}
   <p class="eyebrow">Produtos · {loja.endereco.cidade}</p>
-  <h1>{categoria?categoria.nome:<>Tecnologia que faz<br/>parte do seu dia.</>}</h1>
+  <h1>{categoria?categoria.nome:<>Tecnologia que faz parte do seu dia.</>}</h1>
   <p class="resposta">{categoria?`Conheça ${categoria.nome} na ${loja.nome}, na ${loja.endereco.rua}, ${loja.endereco.numero}, Centro de ${loja.endereco.cidade}.`:`Na ${loja.nome}, reunimos Apple, Xiaomi, acessórios e importados no Centro de ${loja.endereco.cidade}.`} A gente conversa sobre o que você procura e ajuda na escolha pelo WhatsApp.</p>
   {categoria?.slug==='seminovos' && <p class="garantia">Nossos iPhones seminovos passam por avaliação da equipe técnica e têm {loja.garantiaSeminovosMeses} meses de garantia da loja. Consulte a cobertura com a equipe.</p>}
   <a class="conheca" href="/a-loja">Conheça também o espaço da loja ↗</a>

@@ -64,17 +64,24 @@ const pares = [
   ['--cor-acento-escuro', '--cor-fundo-claro', 4.5, 'Âmbar escuro em capítulo claro'],
   ['--cor-acento-escuro', '--cor-superficie-clara', 4.5, 'Âmbar escuro em painel claro'],
   ['--cor-fundo-claro', '--cor-texto-escuro', 4.5, 'Botão invertido (gelo sobre preto)'],
+  ['--cor-fundo', '--cor-texto', 4.5, 'Botão primário (preto sobre gelo)'],
+  ['--cor-texto-2', '--cor-fundo', 3, 'Contorno do botão secundário no escuro'],
+  ['--cor-texto-2-escuro', '--cor-fundo-claro', 3, 'Contorno do botão secundário no claro'],
+  ['--cor-acento-escuro', '--cor-fundo-claro', 3, 'Anel de foco no claro'],
+  ['--cor-fundo', '--cor-acento', 4.5, 'Seleção de texto (preto sobre âmbar)'],
+  ['--cor-texto', '--cor-fundo', 4.5, 'Painel do menu (vidro sobre o fundo) · texto'],
 ];
 // Pares dos apelidos antigos, ainda em uso até a P6 (informativos; também obrigatórios enquanto existirem).
 const legados = [
-  ['--white', '--ink', 4.5, 'Legado: texto branco no grafite'],
-  ['--muted', '--ink', 4.5, 'Legado: texto secundário no grafite'],
-  ['--ink', '--surface', 4.5, 'Legado: texto no creme'],
-  ['--text-dark', '--surface', 4.5, 'Legado: texto secundário no creme'],
-  ['--wood', '--surface', 3, 'Legado: madeira (decorativa/grande) no creme'],
-  ['--wood-light', '--ink', 4.5, 'Legado: madeira clara no grafite'],
-  ['--accent-light', '--ink', 3, 'Legado: foco magenta no grafite'],
-  ['--focus-light', '--surface', 3, 'Legado: foco magenta escuro no creme'],
+  ['--white', '--ink', 4.5, 'Legado: texto no escuro'],
+  ['--muted', '--ink', 4.5, 'Legado: texto secundário no escuro'],
+  ['--ink', '--surface', 4.5, 'Legado: texto no claro (ex-creme)'],
+  ['--text-dark', '--surface', 4.5, 'Legado: texto secundário no claro'],
+  ['--wood', '--surface', 3, 'Legado: linha decorativa (ex-madeira) no claro'],
+  ['--wood', '--ink', 3, 'Legado: linha decorativa (ex-madeira) no escuro'],
+  ['--wood-light', '--ink', 4.5, 'Legado: rótulo âmbar (ex-madeira clara) no escuro'],
+  ['--accent-light', '--ink', 3, 'Legado: foco (ex-magenta) no escuro'],
+  ['--focus-light', '--surface', 3, 'Legado: foco (ex-magenta) no claro'],
 ];
 
 const linhas = [];

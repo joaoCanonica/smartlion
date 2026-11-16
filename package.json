@@ -20,7 +20,8 @@
     "qa:axe": "node scripts/qa-axe.mjs",
     "qa:lighthouse": "node scripts/qa-lighthouse.mjs",
     "qa:teclado": "node scripts/qa-teclado-menu.mjs",
-    "qa:abertura": "node scripts/qa-abertura.mjs"
+    "qa:abertura": "node scripts/qa-abertura.mjs",
+    "qa:reparo": "node scripts/qa-reparo.mjs"
   },
   "dependencies": {
     "@fontsource-variable/geist": "5.3.0",

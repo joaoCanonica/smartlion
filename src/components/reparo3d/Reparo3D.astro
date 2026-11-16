@@ -1,0 +1,124 @@
+---
+/**
+ * Reparo 3D (P5): abas de serviço + painel + aparelho (3D ou ilustração em camadas).
+ * - Abas (WAI-ARIA, ativação manual): setas/Home/End movem o foco, Enter/Espaço escolhem.
+ *   Sem JS, os quatro painéis aparecem um embaixo do outro e as abas ficam ocultas.
+ * - Painel: nome do serviço, o resumo da config, "costuma ser no mesmo dia" SÓ se o
+ *   serviço tiver `mesmoDia: true` na config (hoje nenhum tem) e "Pedir orçamento"
+ *   (linkWhatsApp com a mensagem de assistência + o serviço, como no formulário de orçamento).
+ * - Aparelho: ilustração vetorial com as camadas em CSS (padrão no celular e fallback);
+ *   no desktop, a ilha Three.js (src/tres/reparo.ts) entra quando visível; no celular só
+ *   com o botão "Ver em 3D". Lógica em reparo3d.ts.
+ */
+import { servicos } from '../../config/servicos';
+import { mensagensWhatsApp } from '../../config/whatsapp';
+import BotaoWhatsApp from '../BotaoWhatsApp.astro';
+import CamadasSvg from './CamadasSvg.astro';
+interface Props { id?: string; class?: string }
+const { id = 'reparo3d', class: classe } = Astro.props;
+const mapa = [
+  { camada: 'tela', rotulo: 'Tela', slug: 'troca-de-tela-iphone' },
+  { camada: 'bateria', rotulo: 'Bateria', slug: 'troca-de-bateria-iphone' },
+  { camada: 'tampa', rotulo: 'Tampa traseira', slug: 'tampa-traseira' },
+  { camada: 'placa', rotulo: 'Placa', slug: 'placa' },
+] as const;
+const abas = mapa.map(a => {
+  const s = servicos.find(x => x.slug === a.slug);
+  if (!s) throw new Error(`Reparo 3D: serviço "${a.slug}" não está em config/servicos.ts.`);
+  const mesmoDia = (s as { mesmoDia?: boolean }).mesmoDia === true;
+  return { ...a, servico: s, mesmoDia, mensagem: mensagensWhatsApp.assistencia('', s.mensagem) };
+});
+---
+<div class:list={['reparo3d', classe]} data-reparo3d id={id}>
+  <div class="reparo3d-controle">
+    <div class="reparo3d-abas" role="tablist" aria-label="Escolha a parte do aparelho" hidden data-abas>
+      {abas.map((a, i) => (
+        <button type="button" role="tab" id={`${id}-aba-${a.camada}`} aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`${id}-painel-${a.camada}`} tabindex={i === 0 ? 0 : -1} data-camada={a.camada}>{a.rotulo}</button>
+      ))}
+    </div>
+    {abas.map((a, i) => (
+      <section class="reparo3d-painel" role="tabpanel" id={`${id}-painel-${a.camada}`} aria-labelledby={`${id}-aba-${a.camada}`} tabindex="0" data-painel={a.camada} data-inicial={i === 0 ? '' : undefined}>
+        <p class="reparo3d-parte">{a.rotulo}</p>
+        <h3>{a.servico.titulo}</h3>
+        <p class="reparo3d-resumo">{a.servico.resumo}</p>
+        {a.mesmoDia && <p class="reparo3d-prazo">Costuma ser no mesmo dia, conforme a avaliação e as peças.</p>}
+        <div class="reparo3d-acoes">
+          <BotaoWhatsApp texto={a.mensagem} rotulo="Pedir orçamento"/>
+          <a class="link-editorial" href={`/assistencia-tecnica/${a.slug}`} aria-label={`Saiba mais: ${a.servico.titulo}`}>Saiba mais ↗</a>
+        </div>
+      </section>
+    ))}
+  </div>
+  <div class="reparo3d-visual" data-visual data-camada="tela" data-modo="svg">
+    <CamadasSvg id={`${id}-svg`}/>
+    <button class="button reparo3d-ver" type="button" hidden data-ver-3d>Ver em 3D</button>
+    <p class="reparo3d-dica" aria-hidden="true">Arraste para girar</p>
+  </div>
+</div>
+<script>import './reparo3d';</script>
+<style>
+.reparo3d{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:center}
+.reparo3d-controle{display:grid;gap:20px;align-content:start}
+.reparo3d-abas{display:flex;flex-wrap:wrap;gap:8px}
+.reparo3d-abas button{min-height:44px;padding:0 16px;background:transparent;color:var(--cor-texto);border:1px solid var(--vidro-borda);border-radius:var(--raio-sm);font:400 .72rem/1 var(--fonte-rotulo);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:border-color var(--duracao-curta),background-color var(--duracao-curta),color var(--duracao-curta)}
+.reparo3d-abas button:hover{border-color:var(--cor-texto-2)}
+.reparo3d-abas button[aria-selected="true"]{background:var(--cor-acento);color:var(--cor-fundo);border-color:var(--cor-acento)}
+.reparo3d-painel{display:grid;gap:12px;align-content:start;padding:clamp(20px,2.5vw,32px);border:1px solid var(--vidro-borda);border-radius:var(--raio-lg);background:var(--vidro-bg);min-height:250px}
+.reparo3d-painel:focus-visible{outline:2px solid var(--cor-foco);outline-offset:3px}
+.reparo3d-parte{font:400 var(--texto-rotulo)/1.4 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-acento)}
+.reparo3d-painel h3{font-size:var(--texto-h3)}
+.reparo3d-resumo{color:var(--cor-texto-2);max-width:46ch}
+.reparo3d-prazo{color:var(--cor-texto);font-size:var(--texto-sm)}
+.reparo3d-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:4px}
+/* Com JS: só o painel escolhido aparece. Sem JS: os quatro, um embaixo do outro. */
+.reparo3d[data-js] .reparo3d-painel:not([data-ativo]){display:none}
+
+/* Aparelho: caixa reservada (o canvas 3D ocupa a mesma). */
+.reparo3d-visual{position:relative;aspect-ratio:680/520;width:100%}
+.reparo3d-visual :global(.reparo-camadas){position:absolute;inset:0;width:100%;height:100%;transition:opacity .5s var(--ease-saida)}
+.reparo3d-visual :global(canvas){position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y;cursor:grab;opacity:0;transition:opacity .6s var(--ease-saida)}
+.reparo3d-visual :global(canvas:active){cursor:grabbing}
+.reparo3d-visual[data-modo="3d"] :global(canvas){opacity:1}
+.reparo3d-visual[data-modo="3d"] :global(.reparo-camadas),.reparo3d-visual[data-modo="3d"] :global(.reparo-legenda){opacity:0;visibility:hidden}
+.reparo3d-ver{position:absolute;right:0;bottom:0;z-index:2;background:var(--cor-fundo)}
+.reparo3d-dica{position:absolute;left:0;bottom:0;font:400 var(--texto-rotulo)/1.4 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-texto-2);opacity:0;transition:opacity .4s}
+.reparo3d-visual[data-modo="3d"] .reparo3d-dica{opacity:1}
+
+/* Ilustração em CSS: montada (cada camada desce/sobe até o centro) e explodida; a escolhida acende. */
+.reparo3d-visual :global(.camada){transform:translateY(var(--dy));transition:transform .8s cubic-bezier(.65,0,.35,1)}
+.reparo3d-visual[data-explodido] :global(.camada){transform:none}
+.reparo3d-visual :global(.camada :is(rect,path,circle)){transition:stroke .4s,stroke-opacity .4s}
+.reparo3d-visual :global(.camada-rotulo){transition:fill .4s}
+.reparo3d-visual[data-explodido][data-camada="tela"] :global(.camada-tela :is(rect,path,circle)),
+.reparo3d-visual[data-explodido][data-camada="bateria"] :global(.camada-bateria :is(rect,path,circle)),
+.reparo3d-visual[data-explodido][data-camada="placa"] :global(.camada-placa :is(rect,path,circle)),
+.reparo3d-visual[data-explodido][data-camada="tampa"] :global(.camada-tampa :is(rect,path,circle)){stroke:#E3A857;stroke-opacity:1}
+.reparo3d-visual[data-explodido][data-camada="tela"] :global(.camada-tela .camada-rotulo),
+.reparo3d-visual[data-explodido][data-camada="bateria"] :global(.camada-bateria .camada-rotulo),
+.reparo3d-visual[data-explodido][data-camada="placa"] :global(.camada-placa .camada-rotulo),
+.reparo3d-visual[data-explodido][data-camada="tampa"] :global(.camada-tampa .camada-rotulo){fill:#E3A857}
+.reparo3d-visual[data-explodido][data-camada="tela"] :global(.camada-tela),
+.reparo3d-visual[data-explodido][data-camada="bateria"] :global(.camada-bateria),
+.reparo3d-visual[data-explodido][data-camada="placa"] :global(.camada-placa),
+.reparo3d-visual[data-explodido][data-camada="tampa"] :global(.camada-tampa){filter:drop-shadow(0 0 10px rgb(227 168 87 / .45))}
+.reparo3d-visual :global(.camada-linha){stroke:#9A9EA6;stroke-opacity:.45;stroke-dasharray:2 4;fill:none}
+.reparo3d-visual :global(.camada-rotulo){font:400 11px var(--fonte-rotulo);letter-spacing:.14em;fill:#9A9EA6}
+.reparo3d-visual :global(.reparo-legenda){display:none}
+.reparo3d-visual[data-camada="tela"] :global([data-camada-legenda="tela"]),.reparo3d-visual[data-camada="bateria"] :global([data-camada-legenda="bateria"]),
+.reparo3d-visual[data-camada="placa"] :global([data-camada-legenda="placa"]),.reparo3d-visual[data-camada="tampa"] :global([data-camada-legenda="tampa"]){color:var(--cor-acento)}
+
+@media (max-width:900px){.reparo3d{grid-template-columns:1fr}.reparo3d-visual{order:-1;max-width:560px;justify-self:center}}
+@media (max-width:600px){
+  .reparo3d-visual{aspect-ratio:auto}
+  /* Sem os rótulos da direita, o aparelho (x 36–396 de 680) ficaria à esquerda: amplia e recentraliza. */
+  .reparo3d-visual{overflow:hidden}
+  .reparo3d-visual :global(.reparo-camadas){position:relative;display:block;height:auto;aspect-ratio:680/520;width:140%;max-width:none;margin-left:5.5%}
+  .reparo3d-visual :global(.camada-rotulo),.reparo3d-visual :global(.camada-linha){display:none}
+  .reparo3d-visual :global(.reparo-legenda){display:flex;flex-wrap:wrap;justify-content:center;gap:6px 14px;list-style:none;margin:8px 0 0;padding:0;font:400 var(--texto-rotulo)/1.4 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-texto-2)}
+  .reparo3d-visual :global(.reparo-legenda li+li::before){content:'·';margin-right:14px;color:var(--cor-acento)}
+  .reparo3d-visual[data-modo="3d"]{aspect-ratio:680/520}
+  .reparo3d-ver{position:relative;margin:12px auto 0;display:flex}
+  .reparo3d-visual[data-modo="3d"] .reparo3d-ver{display:none}
+}
+@media (prefers-reduced-motion:reduce){.reparo3d-visual :global(.camada){transition:none}}
+</style>

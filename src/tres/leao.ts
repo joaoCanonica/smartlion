@@ -15,12 +15,12 @@
  *   pôster AVIF); dispose de geometria, materiais, ambiente e renderer ao desmontar.
  */
 import {
-  ACESFilmicToneMapping, Box3, BoxGeometry, MeshBasicMaterial, Color, DirectionalLight, ExtrudeGeometry, Group, MathUtils, Mesh,
-  MeshPhysicalMaterial, PerspectiveCamera, PMREMGenerator, PointLight, Scene, SRGBColorSpace, Vector3, WebGLRenderer,
+  ACESFilmicToneMapping, Box3, Color, DirectionalLight, ExtrudeGeometry, Group, MathUtils, Mesh,
+  MeshPhysicalMaterial, PerspectiveCamera, PointLight, Scene, SRGBColorSpace, Vector3, WebGLRenderer,
   type Shape,
 } from 'three';
 import { SVGLoader } from 'three/addons/loaders/SVGLoader.js';
-import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+import { criarAmbiente } from './ambiente';
 import svgLeao from '../assets/marca/smartlion-leao.svg?raw';
 
 export interface OpcoesLeao {
@@ -127,19 +127,8 @@ export function montarLeao(canvas: HTMLCanvasElement, opcoes: OpcoesLeao = {}): 
   renderer.setPixelRatio(pixelRatio);
 
   const cena = new Scene();
-  const pmrem = new PMREMGenerator(renderer);
-  // Ambiente: RoomEnvironment + um painel âmbar (frente-esquerda) e uma faixa fria (atrás-direita).
-  // Em metal, o que dá cor é o que ele reflete: as luzes "moram" no ambiente pré-filtrado.
-  const sala = new RoomEnvironment();
-  const painelGeo = new BoxGeometry(1, 1, 1);
-  const painelQuente = new Mesh(painelGeo, new MeshBasicMaterial({ color: AMBAR.clone().multiplyScalar(1.9) }));
-  painelQuente.position.set(-3, 6.5, 12); painelQuente.scale.set(11, 6, 0.5); 
-  const faixaFria = new Mesh(painelGeo, new MeshBasicMaterial({ color: new Color('#C8D8F0').multiplyScalar(10) }));
-  faixaFria.position.set(12, 2, 1); faixaFria.scale.set(0.5, 12, 2.5); 
-  sala.add(painelQuente, faixaFria);
-  const ambiente = pmrem.fromScene(sala, 0.04).texture;
-  sala.traverse(o => { const m = o as Mesh; if (m.isMesh) { m.geometry.dispose(); (m.material as MeshBasicMaterial).dispose(); } });
-  pmrem.dispose(); // o gerador só é preciso uma vez
+  // Ambiente compartilhado com o reparo 3D (src/tres/ambiente.ts).
+  const ambiente = criarAmbiente(renderer);
   cena.environment = ambiente;
   cena.environmentIntensity = 0.85;
 

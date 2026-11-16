@@ -1,0 +1,17 @@
+# Árvore de acessibilidade do reparo (home, aba "Bateria" escolhida)
+# Gerada com Playwright ariaSnapshot()
+
+- tablist "Escolha a parte do aparelho":
+  - tab "Tela"
+  - tab "Bateria" [selected]
+  - tab "Tampa traseira"
+  - tab "Placa"
+- tabpanel "Bateria":
+  - paragraph: Bateria
+  - heading "Troca de bateria de iPhone" [level=3]
+  - paragraph: Bateria durando pouco ou aparelho desligando? A avaliação ajuda a entender o problema antes de indicar o reparo.
+  - link "Pedir orçamento":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Preciso%20de%20assist%C3%AAncia%20t%C3%A9cnica.%20Aparelho%3A%20.%20Problema%3A%20troca%20de%20bateria.
+  - 'link "Saiba mais: Troca de bateria de iPhone"':
+    - /url: /assistencia-tecnica/troca-de-bateria-iphone
+    - text: Saiba mais ↗

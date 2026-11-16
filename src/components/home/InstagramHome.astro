@@ -23,7 +23,7 @@ const posts = loja.instagramPosts.map((p, i) => ({ ...p, i, img: (!fotosUsadas.i
 const comFoto = posts.filter(p => p.img);
 const dataSeguidores = loja.instagram.seguidoresEm.split('-').reverse().join('/');
 ---
-<section id="instagram" class="instagram light" aria-labelledby="titulo-instagram">
+<section id="instagram" class="instagram claro" aria-labelledby="titulo-instagram">
   <div class:list={['container', 'instagram-grade', { 'sem-posts': comFoto.length === 0 && !import.meta.env.DEV }]}>
     <div class="instagram-perfil">
       <Rotulo tom="ambar">De perto, no seu feed</Rotulo>

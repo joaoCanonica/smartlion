@@ -2,9 +2,9 @@
    Smart Lion · tokens · identidade "Leão de Aço" (premium P0)
    --------------------------------------------------------------------------
    Os tokens novos (--cor-*, --espaco-*, --raio-*, --sombra-*, --fonte-*,
-   --texto-*) são a base da remodelagem. Desde a P1 os nomes antigos são
-   apelidos dos tokens novos (bloco no fim do arquivo) e saem na P6.
-   Contraste validado por scripts/auditoria-contraste.mjs.
+   --texto-*) são a única fonte de cor, espaço e tipo do site. Os apelidos da
+   identidade anterior saíram na P6. Contraste validado por
+   scripts/auditoria-contraste.mjs.
    ========================================================================== */
 
 /* --- Fontes da identidade nova (self-host, subset latino) ----------------
@@ -26,10 +26,6 @@
 @font-face{font-family:'Inter Tight Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');font-weight:400;size-adjust:96.45%;ascent-override:100.44%;descent-override:25.01%;line-gap-override:0%}
 @font-face{font-family:'Inter Tight Fallback';src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');font-weight:600;size-adjust:94.81%;ascent-override:102.18%;descent-override:25.44%;line-gap-override:0%}
 @font-face{font-family:'Michroma Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:142.12%;ascent-override:81.36%;descent-override:18.69%;line-gap-override:0%}
-
-/* --- Fontes antigas (saem na P6, junto com os apelidos) ------------------ */
-@font-face{font-family:'DM Serif Display';src:url('@fontsource/dm-serif-display/files/dm-serif-display-latin-400-normal.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
-@font-face{font-family:'DM Sans';src:url('@fontsource/dm-sans/files/dm-sans-latin-400-normal.woff2') format('woff2');font-style:normal;font-weight:400;font-display:swap}
 
 :root{
   /* ---- Paleta base (valores de marca; não usar direto nos componentes) ---- */
@@ -127,38 +123,4 @@
   --duracao-media:420ms;
   --duracao-longa:900ms;
 
-  /* ==========================================================================
-     APELIDOS TEMPORÁRIOS · remover na P6
-     Desde a P1 (pele global) os nomes antigos apontam para a paleta e as
-     fontes novas: creme, madeira, magenta e serifa já não aparecem. Na P6
-     cada uso é trocado pelo token indicado e este bloco sai.
-     ========================================================================== */
-  --ink:var(--cor-fundo);
-  --surface:var(--cor-fundo-claro);
-  --white:var(--cor-texto);
-  --muted:var(--cor-texto-2);
-  --line:var(--cor-borda);
-  --wood:var(--aco-linha);           /* linhas/bordas decorativas */
-  --wood-light:var(--cor-acento);    /* rótulos e números no escuro */
-  --accent:var(--cor-acento);
-  --accent-light:var(--cor-foco);
-  --focus-light:var(--cor-acento-escuro);
-  --whatsapp:var(--cor-whatsapp);
-  --text-dark:var(--cor-texto-2-escuro);
-  --space-1:var(--espaco-2);
-  --space-2:var(--espaco-4);
-  --space-3:var(--espaco-5);
-  --space-4:var(--espaco-6);
-  --space-5:var(--espaco-7);
-  --space-6:5rem;
-  --space-chapter:var(--espaco-secao);
-  --radius:var(--raio-sm);
-  --shadow:var(--sombra-2);
-  --font-body:var(--fonte-texto);
-  --font-heading:var(--fonte-titulo);
-  --text-sm:var(--texto-sm);
-  --text-base:var(--texto-base);
-  --text-h1:var(--texto-h1);
-  --text-h2:var(--texto-h2);
-  --container:var(--largura-max);
 }

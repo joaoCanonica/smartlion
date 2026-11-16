@@ -24,14 +24,9 @@
     "qa:reparo": "node scripts/qa-reparo.mjs"
   },
   "dependencies": {
-    "@fontsource-variable/geist": "5.3.0",
-    "@fontsource/dm-sans": "5.3.0",
-    "@fontsource/dm-serif-display": "5.3.0",
     "@fontsource/inter-tight": "5.3.0",
     "@fontsource/michroma": "5.3.0",
-    "@fontsource/outfit": "5.3.0",
     "@fontsource/sora": "5.3.0",
-    "@fontsource/young-serif": "5.3.0",
     "astro": "7.4.3",
     "three": "0.187.0"
   },

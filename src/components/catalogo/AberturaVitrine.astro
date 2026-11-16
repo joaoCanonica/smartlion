@@ -1,7 +1,8 @@
 ---
 import { Picture } from 'astro:assets';
 import { midia } from '../../lib/midia';
-const capas = midia.capas;
+const fones = midia.fones;
+import Rotulo from '../ui/Rotulo.astro';
 import { loja } from '../../config/loja';
 interface Props { categoria?: {slug:string;nome:string;detalhe:string} }
 const {categoria}=Astro.props;
@@ -9,15 +10,28 @@ const {categoria}=Astro.props;
 <header class="abertura-vitrine">
  <div class="introducao">
   {categoria && <a class="voltar" href="/produtos">← Todos os produtos</a>}
-  <p class="eyebrow">Produtos · {loja.endereco.cidade}</p>
-  <h1>{categoria?categoria.nome:<>Tecnologia que faz parte do seu dia.</>}</h1>
+  <Rotulo tom="ambar">{`Produtos · ${loja.endereco.cidade}`}</Rotulo>
+  <h1>{categoria?categoria.nome:'Tecnologia que faz parte do seu dia.'}</h1>
   <p class="resposta">{categoria?`Conheça ${categoria.nome} na ${loja.nome}, na ${loja.endereco.rua}, ${loja.endereco.numero}, Centro de ${loja.endereco.cidade}.`:`Na ${loja.nome}, reunimos Apple, Xiaomi, acessórios e importados no Centro de ${loja.endereco.cidade}.`} A gente conversa sobre o que você procura e ajuda na escolha pelo WhatsApp.</p>
   {categoria?.slug==='seminovos' && <p class="garantia">Nossos iPhones seminovos passam por avaliação da equipe técnica e têm {loja.garantiaSeminovosMeses} meses de garantia da loja. Consulte a cobertura com a equipe.</p>}
   <a class="conheca" href="/a-loja">Conheça também o espaço da loja ↗</a>
  </div>
- {!categoria && <figure><Picture src={capas} formats={['avif','webp']} widths={[320,480,640]} sizes="(max-width:700px) 80vw, 28vw" alt="Capas de celular com textura de couro fotografadas pela Smart Lion" loading="eager"/><figcaption>Acessórios fotografados na Smart Lion.</figcaption></figure>}
+ {!categoria && <figure><Picture src={fones} formats={['avif','webp']} widths={[320,480,640]} sizes="(max-width:700px) 80vw, 28vw" alt="Fone de ouvido azul fotografado na loja Smart Lion" loading="eager"/><figcaption>Fotografado na Smart Lion.</figcaption></figure>}
  {categoria && <p class="detalhe">{categoria.detalhe}</p>}
 </header>
 <style>
-.abertura-vitrine{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,.45fr);gap:clamp(32px,6vw,100px);align-items:center;padding:clamp(40px,7vw,90px) 0}.eyebrow{color:#6a503b}h1{font-size:clamp(2.7rem,5.1vw,5.5rem);margin:20px 0 28px}.resposta,.garantia{max-width:670px;color:var(--text-dark)}.garantia{margin-top:20px;padding-left:18px;border-left:2px solid var(--wood)}.voltar{display:inline-flex;align-items:center;min-height:44px;margin-bottom:24px;font-size:.8rem}.conheca{display:inline-flex;align-items:center;min-height:44px;margin-top:22px;font-size:.85rem;text-decoration:underline;text-underline-offset:5px}figure{margin:0;max-width:360px;justify-self:end;transform:rotate(2deg)}figure :global(img){width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}figcaption{font-size:.7rem;color:var(--text-dark);padding-top:12px}.detalhe{font-family:var(--font-heading);font-size:clamp(1.6rem,3vw,2.6rem);border-top:1px solid var(--wood);padding-top:24px;color:#6a503b;max-width:310px}@media(max-width:700px){.abertura-vitrine{grid-template-columns:1fr;gap:28px}figure{max-width:280px;justify-self:center;transform:none}.detalhe{font-size:1.4rem;max-width:none}}
+.abertura-vitrine{display:grid;grid-template-columns:minmax(0,1fr) minmax(200px,.42fr);gap:clamp(32px,6vw,96px);align-items:center;padding:clamp(32px,6vw,80px) 0 clamp(16px,3vw,32px)}
+.introducao{display:grid;gap:18px;justify-items:start}
+h1{font-size:clamp(2.4rem,1.4rem + 3.6vw,4.75rem);line-height:1;letter-spacing:-.04em;max-width:15ch}
+.resposta,.garantia{max-width:62ch;color:var(--cor-texto-2)}
+.garantia{padding-left:16px;border-left:2px solid var(--cor-acento);color:var(--cor-texto)}
+.voltar{display:inline-flex;align-items:center;min-height:44px;font-size:var(--texto-sm);color:var(--cor-texto-2)}
+.voltar:hover{color:var(--cor-acento)}
+.conheca{display:inline-flex;align-items:center;min-height:44px;font-size:var(--texto-sm);text-decoration:underline;text-underline-offset:.28em;text-decoration-color:rgb(154 158 166 / .55)}
+.conheca:hover{color:var(--cor-acento)}
+figure{margin:0;max-width:380px;justify-self:end}
+figure :global(img){width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;border-radius:var(--raio-lg)}
+figcaption{font:400 var(--texto-rotulo)/1.5 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-texto-2);padding-top:12px}
+.detalhe{font:var(--peso-titulo) clamp(1.4rem,1rem + 1.6vw,2.4rem)/1.1 var(--fonte-titulo);letter-spacing:-.03em;border-top:1px solid var(--cor-acento);padding-top:20px;color:var(--cor-texto);max-width:300px}
+@media(max-width:700px){.abertura-vitrine{grid-template-columns:1fr;gap:24px}figure{max-width:260px;justify-self:start}.detalhe{font-size:1.4rem;max-width:none}}
 </style>

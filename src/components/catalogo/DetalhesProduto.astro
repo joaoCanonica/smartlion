@@ -8,7 +8,7 @@ const { produto: p } = Astro.props;
 const origem = import.meta.env.DEV ? Astro.url.origin : Astro.site!.href;
 const condicao = condicaoFisica(p);
 ---
-<section class="produto-detalhes light" data-produto-detalhes data-produto={JSON.stringify(dadosConsulta(p))} data-origem={origem}>
+<section class="produto-detalhes grafite" data-produto-detalhes data-produto={JSON.stringify(dadosConsulta(p))} data-origem={origem}>
  <div class="fotos"><FotoProduto produto={p}/>{p.imagens.slice(1).map((_,i)=><div class="foto-extra"><FotoProduto produto={p} indice={i+1}/></div>)}</div>
  <div class="conteudo-produto">
   <p class="eyebrow">{nomeCategoria(p.categoria)} · {p.condicao === 'encomenda' ? 'Sob encomenda' : condicao === 'seminovo' ? 'Seminovo' : 'Novo'}</p>

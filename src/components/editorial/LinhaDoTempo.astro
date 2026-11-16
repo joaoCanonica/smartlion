@@ -5,4 +5,16 @@ const {resumida=false}=Astro.props;
 const itens=resumida?marcos.filter(m=>m.destaqueHome):marcos;
 ---
 <ol class:list={['linha-do-tempo',{resumida}]} aria-label="Marcos confirmados da Smart Lion">{itens.map(m=><li data-marco={m.id}><time datetime={m.data}>{m.rotulo}</time><div><h3>{m.titulo}</h3><p>{m.texto}</p></div></li>)}</ol>
-<style>.linha-do-tempo{list-style:none;padding:0;margin:48px 0}.linha-do-tempo li{display:grid;grid-template-columns:200px 1fr;gap:48px;border-top:1px solid var(--wood);padding:32px 0}.linha-do-tempo time{color:var(--wood-light);font-size:.85rem}.linha-do-tempo h3{font-size:clamp(1.6rem,2.5vw,2.5rem);margin-bottom:16px}.linha-do-tempo p{max-width:680px;color:var(--muted)}.resumida{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}.resumida li{display:block}.resumida h3{font-size:1.5rem;margin-top:20px}.resumida p{font-size:.9rem}@media(max-width:700px){.linha-do-tempo li{grid-template-columns:1fr;gap:16px}.resumida{grid-template-columns:1fr;gap:0}.resumida li{padding-block:24px}}</style>
+<style>
+.linha-do-tempo{list-style:none;padding:0;margin:48px 0}
+.linha-do-tempo li{position:relative;display:grid;grid-template-columns:220px 1fr;gap:48px;border-top:1px solid var(--cor-borda);padding:32px 0}
+.linha-do-tempo li::before{content:'';position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--cor-acento);box-shadow:0 0 0 4px rgb(227 168 87 / .15)}
+.linha-do-tempo time{font:400 var(--texto-rotulo)/1.5 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-acento);padding-top:4px}
+.linha-do-tempo h3{font-size:var(--texto-h3);margin-bottom:14px}
+.linha-do-tempo p{max-width:680px;color:var(--cor-texto-2)}
+.resumida{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.resumida li{display:block}
+.resumida h3{font-size:var(--texto-h4);margin-top:16px}
+.resumida p{font-size:var(--texto-sm)}
+@media(max-width:700px){.linha-do-tempo li{grid-template-columns:1fr;gap:14px}.resumida{grid-template-columns:1fr;gap:0}.resumida li{padding-block:24px}}
+</style>

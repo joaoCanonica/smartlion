@@ -1,6 +1,43 @@
 ---
 import Layout from '../layouts/LayoutBase.astro';
 import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
+import Logo from '../components/marca/Logo.astro';
+import Rotulo from '../components/ui/Rotulo.astro';
+const caminhos = [
+  { numero: '01', href: '/produtos', titulo: 'Produtos', texto: 'As linhas da loja e o convite para consultar pelo WhatsApp.' },
+  { numero: '02', href: '/assistencia-tecnica', titulo: 'Assistência técnica', texto: 'Os serviços da bancada e o pedido de orçamento.' },
+  { numero: '03', href: '/visite-nos', titulo: 'Visite a loja', texto: 'Endereço, horários e rotas no Centro de Lages.' },
+];
 ---
-<Layout title="Página não encontrada | Smart Lion" description="Não encontramos esta página. Volte ao início ou fale com a Smart Lion pelo WhatsApp."><section class="container error"><p class="eyebrow">404</p><h1>Página não encontrada.</h1><p>A página que você procurou não foi encontrada. Acesse os produtos, encontre um serviço ou fale com a equipe.</p><div><a class="button button-light" href="/">Voltar ao início</a><a class="button" href="/produtos">Ver produtos</a><a class="button" href="/assistencia-tecnica">Assistência técnica</a><BotaoWhatsApp/></div></section></Layout>
-<style>.error{padding-block:var(--space-chapter)}.error .eyebrow{font:400 clamp(4rem,10vw,9rem) var(--font-heading);color:var(--wood-light);border-bottom:1px solid var(--wood)}.error h1{margin:24px 0}.error>p{max-width:500px}.error>div{display:flex;gap:16px;flex-wrap:wrap;margin-top:32px}</style>
+<Layout title="Página não encontrada | Smart Lion" description="Não encontramos esta página. Volte ao início ou fale com a Smart Lion pelo WhatsApp.">
+<section class="erro container">
+  <Logo variante="leao" decorativo class="leao-dormindo"/>
+  <div class="erro-texto">
+    <Rotulo tom="ambar">Erro 404</Rotulo>
+    <h1>Página não&nbsp;encontrada.</h1>
+    <p class="resposta">A página que você procurou não foi encontrada. Siga por um dos caminhos abaixo, volte ao início ou fale com a equipe.</p>
+    <div class="acoes"><a class="button button-primario" href="/">Voltar ao início</a><BotaoWhatsApp/></div>
+  </div>
+  <nav class="caminhos" aria-label="Caminhos sugeridos">
+    <ul>{caminhos.map(c => <li><a href={c.href}><span class="numero" aria-hidden="true">{c.numero}</span><span class="titulo">{c.titulo} <span aria-hidden="true">↗</span></span><span class="texto">{c.texto}</span></a></li>)}</ul>
+  </nav>
+</section>
+</Layout>
+<style>
+.erro{position:relative;isolation:isolate;overflow-x:clip;padding-block:clamp(56px,9vw,128px);display:grid;gap:clamp(40px,6vw,80px)}
+/* O leão "dormindo": a marca grande, em baixa opacidade, inclinada e sem movimento. */
+.erro :global(.leao-dormindo){position:absolute;z-index:-1;right:-4%;top:50%;width:min(62vw,620px);height:auto;color:var(--cor-texto);opacity:.05;transform:translateY(-50%) rotate(-8deg);pointer-events:none}
+.erro-texto{display:grid;gap:18px;justify-items:start}
+.erro h1{font-size:clamp(2.4rem,1.4rem + 3.6vw,4.75rem);line-height:1;letter-spacing:-.04em;max-width:12ch}
+.resposta{max-width:52ch;color:var(--cor-texto-2);font-size:var(--texto-lg)}
+.acoes{display:flex;gap:16px;flex-wrap:wrap;margin-top:8px}
+.caminhos ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--cor-borda)}
+.caminhos li+li{border-left:1px solid var(--cor-borda)}
+.caminhos a{display:grid;gap:10px;padding:clamp(20px,2.5vw,32px) clamp(16px,2vw,28px);min-height:100%;color:var(--cor-texto)}
+.caminhos a:hover{text-decoration:none;background:var(--cor-superficie)}
+.caminhos a:hover .titulo{color:var(--cor-acento)}
+.numero{font:400 .75rem/1 var(--fonte-rotulo);letter-spacing:.14em;color:var(--cor-acento)}
+.titulo{font:var(--peso-titulo) var(--texto-h4)/1.15 var(--fonte-titulo);letter-spacing:-.02em}
+.texto{font-size:var(--texto-sm);color:var(--cor-texto-2)}
+@media(max-width:800px){.caminhos ul{grid-template-columns:1fr}.caminhos li+li{border-left:0;border-top:1px solid var(--cor-borda)}.caminhos a{padding-inline:0}.erro :global(.leao-dormindo){width:90vw;top:28%;right:-20%}}
+</style>

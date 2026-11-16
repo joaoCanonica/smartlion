@@ -4,11 +4,31 @@ import type { ImageMetadata } from 'astro';
 interface Props { src: ImageMetadata; alt: string; legenda?: string; sizes?: string; provisoria?: boolean }
 const {src,alt,legenda,sizes='(max-width: 700px) 100vw, 80vw',provisoria=false}=Astro.props;
 ---
-<figure data-revelacao><Picture src={src} alt={alt} formats={['avif','webp']} widths={[480,800,1280]} sizes={sizes} loading="lazy"/>{legenda&&<figcaption>{legenda}</figcaption>}{import.meta.env.DEV&&provisoria&&<p class="provisorio">PROVISÓRIO — aguardando fotografia deste ambiente.</p>}</figure>
+<figure data-revelacao><div class="moldura"><Picture src={src} alt={alt} formats={['avif','webp']} widths={[480,800,1280]} sizes={sizes} loading="lazy"/></div>{legenda&&<figcaption>{legenda}</figcaption>}{import.meta.env.DEV&&provisoria&&<p class="provisorio">PROVISÓRIO — aguardando fotografia deste ambiente.</p>}</figure>
 <script>
  if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
   const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(entry.isIntersecting){entry.target.classList.add('revelada');observer.unobserve(entry.target);}}},{threshold:.08});
   document.querySelectorAll('[data-revelacao]').forEach(el=>observer.observe(el));
  }
 </script>
-<style>figure{margin:0}figure :global(img){width:100%;height:auto}figcaption{margin-top:14px;font-size:.8rem}figure.revelada :global(picture){display:block;animation:revelar .7s ease-out both}.provisorio{margin-top:12px;font:400 .75rem var(--font-body);background:#fff0c7;color:#633a00;padding:10px}@keyframes revelar{from{opacity:.75;clip-path:inset(0 0 3% 0)}to{opacity:1;clip-path:inset(0)}}@media(prefers-reduced-motion:reduce){figure.revelada :global(picture){animation:none}}</style>
+<style>
+/* Galeria com profundidade (P6): moldura com placa de aço deslocada atrás, sombra escura e,
+   onde há scroll-driven animations, a foto desliza devagar dentro da moldura (paralaxe leve).
+   Nada disso sequestra a rolagem; com reduced-motion fica a foto parada. */
+figure{margin:0;position:relative}
+.moldura{position:relative;isolation:isolate;overflow:hidden;border-radius:var(--raio-md);box-shadow:var(--sombra-3)}
+figure::before{content:'';position:absolute;inset:clamp(14px,2vw,28px) clamp(-28px,-2vw,-14px) auto auto;width:62%;height:70%;z-index:-1;border:1px solid var(--vidro-borda);border-radius:var(--raio-md);background:repeating-linear-gradient(135deg,rgb(154 158 166 / .06) 0 1px,transparent 1px 12px)}
+.moldura :global(img){width:100%;height:auto}
+figcaption{margin-top:14px;font:400 var(--texto-rotulo)/1.5 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-texto-2)}
+figure.revelada .moldura{animation:revelar .9s var(--ease-saida) both}
+.provisorio{margin-top:12px;font-size:.75rem;background:#fff0c7;color:#633a00;padding:10px}
+@keyframes revelar{from{opacity:.6;clip-path:inset(4% 0 4% 0 round var(--raio-md))}to{opacity:1;clip-path:inset(0 round var(--raio-md))}}
+@supports (animation-timeline:view()){
+  @media(prefers-reduced-motion:no-preference){
+    .moldura :global(img){scale:1.08;animation:deslizar linear both;animation-timeline:view();animation-range:cover}
+    @keyframes deslizar{from{translate:0 -3.5%}to{translate:0 3.5%}}
+  }
+}
+@media(max-width:700px){figure::before{inset:12px -8px auto auto}}
+@media(prefers-reduced-motion:reduce){figure.revelada .moldura{animation:none}}
+</style>

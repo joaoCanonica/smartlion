@@ -5,5 +5,10 @@ const atual=path==='/seminovos'?'seminovos':/^\/(produtos|catalogo)\//.test(path
 ---
 <nav aria-label="Categorias de produtos"><div class="chips"><a href="/produtos" data-filtro-categoria="" aria-current={!atual?'page':undefined}>Todas</a>{categorias.map(c=><a href={caminhoCategoria(c.slug)} data-filtro-categoria={c.slug} aria-current={atual===c.slug?'page':undefined}>{c.nome}</a>)}</div></nav>
 <style>
-nav{border-block:1px solid #c7c1b8;color:var(--ink)}.chips{display:flex;align-items:center;gap:28px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--wood) var(--surface);padding:3px}a{white-space:nowrap;min-height:52px;display:flex;align-items:center;font-size:.82rem;flex-shrink:0;padding:4px 2px;border-bottom:2px solid transparent}a[aria-current]{border-bottom-color:var(--focus-light)}a:focus-visible{outline-color:var(--focus-light);outline-offset:0}@media(max-width:700px){.chips{gap:24px}a{min-height:48px}}
+nav{border-block:1px solid var(--cor-borda);color:var(--cor-texto)}
+.chips{display:flex;align-items:center;gap:8px;overflow-x:auto;scrollbar-width:thin;scrollbar-color:var(--cor-borda) transparent;padding:10px 2px}
+a{white-space:nowrap;min-height:44px;display:flex;align-items:center;flex-shrink:0;padding:0 14px;border:1px solid var(--vidro-borda);border-radius:var(--raio-sm);font:400 .7rem/1 var(--fonte-rotulo);letter-spacing:.12em;text-transform:uppercase;color:var(--cor-texto-2);transition:border-color var(--duracao-curta),color var(--duracao-curta)}
+a:hover{text-decoration:none;color:var(--cor-texto);border-color:var(--cor-texto-2)}
+a[aria-current]{color:var(--cor-fundo);background:var(--cor-acento);border-color:var(--cor-acento)}
+a:focus-visible{outline-offset:2px}
 </style>

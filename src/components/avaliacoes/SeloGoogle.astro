@@ -1,7 +1,19 @@
 ---
+/** Nota gigante (P6): 5,0 em Michroma com contador, total e data da coleta, ligados à ficha do Google. */
 import { resumoAvaliacoes, atualizadoEm, coletadoEm } from '../../lib/avaliacoes';
 import { loja } from '../../config/loja';
 import MarcaGoogle from './MarcaGoogle.astro';
+import NumeroContador from '../ui/NumeroContador.astro';
 ---
-<a class="selo-google" href={loja.googleMaps}><span class="nota tabular">{resumoAvaliacoes.nota.toFixed(1).replace('.', ',')} <span aria-hidden="true">★</span><span class="sr-only">de 5 estrelas</span></span><span><strong><MarcaGoogle/>{resumoAvaliacoes.total} avaliações no Google</strong><small>Atualizado em <time datetime={coletadoEm}>{atualizadoEm}</time> ↗</small></span></a>
-<style>.selo-google{display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding:24px 0}.nota{font:600 3.1rem var(--font-heading);letter-spacing:-.04em}.nota span[aria-hidden]{font-size:1.8rem}strong{font-weight:400;font-size:.95rem}small{display:block;color:inherit;opacity:.8;font-size:.8rem;margin-top:4px}</style>
+<div class="selo-google">
+  <p class="nota"><NumeroContador valor={resumoAvaliacoes.nota} casas={1}/><span class="sr-only"> de 5 estrelas no Google</span></p>
+  <a class="total" href={loja.googleMaps}><MarcaGoogle/><span>{resumoAvaliacoes.total} avaliações no Google</span> <span aria-hidden="true">↗</span></a>
+  <p class="coleta">Atualizado em <time datetime={coletadoEm}>{atualizadoEm}</time>.</p>
+</div>
+<style>
+.selo-google{display:grid;gap:12px;justify-items:start}
+.nota{font:400 clamp(6rem,3rem + 11vw,13rem)/.9 var(--fonte-rotulo);letter-spacing:-.02em;color:var(--cor-texto);font-variant-numeric:tabular-nums}
+.total{display:inline-flex;align-items:center;gap:10px;min-height:44px;font-size:var(--texto-lg)}
+.total:hover{color:var(--cor-acento)}
+.coleta{font-size:var(--texto-sm);color:var(--cor-texto-2)}
+</style>

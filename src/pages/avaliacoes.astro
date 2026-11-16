@@ -5,20 +5,44 @@ import { loja, enderecoCompleto } from '../config/loja';
 import SeloGoogle from '../components/avaliacoes/SeloGoogle.astro';
 import Depoimento from '../components/avaliacoes/Depoimento.astro';
 import BotaoWhatsApp from '../components/BotaoWhatsApp.astro';
+import Rotulo from '../components/ui/Rotulo.astro';
 ---
 <Layout title="Avaliações da Smart Lion em Lages" description="Leia relatos de clientes da Smart Lion em Lages sobre compras e assistência técnica. Veja a nota no Google e conte sua experiência.">
-<section class="intro-avaliacoes container"><div><p class="eyebrow">Experiências de quem conhece</p><h1>Avaliações da Smart Lion em Lages.</h1><p>Veja relatos sobre compras e assistência técnica na {loja.nome}, na {enderecoCompleto}. Para consultar um aparelho ou falar sobre um reparo, converse com nossa equipe pelo WhatsApp.</p><BotaoWhatsApp/></div><div class="painel"><SeloGoogle/>
+<section class="intro-avaliacoes container"><div class="intro-texto"><Rotulo tom="ambar">Experiências de quem conhece</Rotulo><h1>Avaliações da Smart Lion em Lages.</h1><p class="resposta">Veja relatos sobre compras e assistência técnica na {loja.nome}, na {enderecoCompleto}. Para consultar um aparelho ou falar sobre um reparo, converse com nossa equipe pelo WhatsApp.</p><BotaoWhatsApp/></div><div class="painel"><SeloGoogle/>
 <ul aria-label="Distribuição das notas no Google">
  {[5,4,3,2,1].map(n => {
    const quantidade = resumoAvaliacoes.distribuicao[String(n) as keyof typeof resumoAvaliacoes.distribuicao];
    return <li aria-label={`${n} ${n === 1 ? 'estrela' : 'estrelas'}: ${quantidade}`}>
-     <span>{n} ★</span><span class="trilho" aria-hidden="true"><span style={`width:${100 * quantidade / resumoAvaliacoes.total}%`}></span></span><span>{quantidade}</span>
+     <span>{n}</span><span class="trilho" aria-hidden="true"><span style={`width:${100 * quantidade / resumoAvaliacoes.total}%`}></span></span><span>{quantidade}</span>
    </li>;
  })}
 </ul></div></section>
-<section class="relatos light" aria-labelledby="titulo-relatos"><div class="container"><h2 id="titulo-relatos">Relatos de clientes.</h2><p class="contexto">Esta seleção reúne {avaliacoes.length} depoimentos coletados do Google em outubro de 2026. Para consultar o conjunto completo e as avaliações mais recentes, <a href={loja.googleMaps}>acesse a ficha no Google ↗</a>. Preços, prazos e experiências citados são relatos individuais da época, não condições atuais da loja.</p>
+<section class="relatos grafite" aria-labelledby="titulo-relatos"><div class="container"><Rotulo tom="aco">Arquivo de relatos</Rotulo><h2 id="titulo-relatos">Relatos de clientes.</h2><p class="contexto">Esta seleção reúne {avaliacoes.length} depoimentos coletados do Google em outubro de 2026. Para consultar o conjunto completo e as avaliações mais recentes, <a href={loja.googleMaps}>acesse a ficha no Google ↗</a>. Preços, prazos e experiências citados são relatos individuais da época, não condições atuais da loja.</p>
 <div class="filtros" role="group" aria-label="Filtrar avaliações por tema" hidden>{filtrosAvaliacoes.map(f=><button type="button" data-tema={f.id} aria-pressed={f.id === 'todas'}>{f.nome}</button>)}</div><noscript><p>Todos os depoimentos estão abaixo. Os filtros por tema ficam disponíveis com JavaScript.</p></noscript>
 <p id="contagem-avaliacoes" role="status" aria-live="polite">{avaliacoes.length} depoimentos</p><div class="lista-avaliacoes">{avaliacoes.map(a=><Depoimento avaliacao={a}/>)}</div><p data-sem-avaliacoes hidden>Nenhum depoimento com este tema no arquivo disponível. <a href={loja.googleMaps}>Veja as avaliações no Google ↗</a>.</p></div></section>
 </Layout>
 <script>import '../scripts/filtros-avaliacoes';</script>
-<style>.intro-avaliacoes{padding-block:var(--space-chapter);display:grid;grid-template-columns:1.3fr 1fr;gap:clamp(30px,6vw,100px);align-items:center}.intro-avaliacoes h1{font-size:clamp(2.6rem,5vw,5rem)}.intro-avaliacoes .eyebrow{color:var(--wood-light);margin-bottom:18px}.intro-avaliacoes h1+p{margin:24px 0;max-width:62ch}.painel{border-block:1px solid var(--wood);padding-bottom:24px}.painel ul{list-style:none;margin:0;padding:0}.painel li{display:grid;grid-template-columns:3ch 1fr 4ch;gap:12px;align-items:center;font-variant-numeric:tabular-nums;font-size:.85rem}.painel li>span:last-child{text-align:right}.trilho{height:4px;background:#464342}.trilho>span{background:var(--wood-light);display:block;height:100%}@media(max-width:800px){.intro-avaliacoes{grid-template-columns:1fr}}.intro-avaliacoes>.eyebrow{color:var(--cor-acento);margin-bottom:18px}.intro-avaliacoes>p:not(.eyebrow){max-width:760px;margin:24px 0}.intro-avaliacoes h1{max-width:1000px}.intro-avaliacoes details{font-size:.85rem;max-width:650px}.intro-avaliacoes summary{min-height:44px;cursor:pointer}.relatos{padding:60px 0}.contexto{max-width:850px;margin:22px 0;font-size:.9rem;color:#414246}.contexto a{text-decoration:underline}.filtros{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0}.filtros button{padding:10px 16px;min-height:44px;background:transparent;border:1px solid #747579;color:#111214;border-radius:var(--radius)}.filtros button[aria-pressed=true]{background:var(--cor-acento-escuro);border-color:var(--cor-acento-escuro);color:#fff}#contagem-avaliacoes{font-size:.85rem;margin-bottom:22px}.lista-avaliacoes{columns:2;column-gap:64px}.lista-avaliacoes :global(.depoimento){break-inside:avoid;margin-bottom:22px} [data-sem-avaliacoes]{padding:24px 0}@media(max-width:800px){.lista-avaliacoes{columns:1}.intro-avaliacoes,.relatos{padding-block:42px}}</style>
+<style>
+.intro-avaliacoes{padding-block:clamp(48px,7vw,104px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(32px,6vw,100px);align-items:end}
+.intro-texto{display:grid;gap:18px;justify-items:start}
+.intro-avaliacoes h1{font-size:clamp(2.4rem,1.4rem + 3.6vw,4.75rem);line-height:1;letter-spacing:-.04em;max-width:14ch}
+.resposta{max-width:58ch;color:var(--cor-texto-2);font-size:var(--texto-lg)}
+.painel{display:grid;gap:28px}
+.painel ul{list-style:none;margin:0;padding:20px 0 0;border-top:1px solid var(--cor-borda);display:grid;gap:10px}
+.painel li{display:grid;grid-template-columns:2ch 1fr 4ch;gap:14px;align-items:center;font:400 .75rem/1 var(--fonte-rotulo);letter-spacing:.08em;color:var(--cor-texto-2);font-variant-numeric:tabular-nums}
+.painel li>span:last-child{text-align:right;color:var(--cor-texto)}
+.trilho{height:2px;background:var(--cor-borda)}
+.trilho>span{background:var(--cor-acento);display:block;height:100%}
+.relatos{padding-block:clamp(56px,7vw,104px)}
+.relatos h2{margin-top:14px}
+.contexto{max-width:850px;margin:22px 0;font-size:var(--texto-sm);color:var(--cor-texto-2)}
+.filtros{display:flex;flex-wrap:wrap;gap:10px;margin:28px 0}
+.filtros button{padding:10px 16px;min-height:44px;background:transparent;border:1px solid var(--cor-linha);color:var(--cor-texto);border-radius:var(--raio-sm);font:400 .7rem/1.2 var(--fonte-rotulo);letter-spacing:.12em;text-transform:uppercase}
+.filtros button:hover{border-color:var(--cor-texto)}
+.filtros button[aria-pressed=true]{background:var(--cor-acento);border-color:var(--cor-acento);color:var(--cor-fundo)}
+#contagem-avaliacoes{font:400 var(--texto-rotulo)/1.4 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-texto-2);margin-bottom:22px}
+.lista-avaliacoes{columns:3 300px;column-gap:clamp(32px,4vw,64px);column-rule:1px solid var(--cor-borda)}
+.lista-avaliacoes :global(.depoimento){break-inside:avoid;margin-bottom:8px}
+[data-sem-avaliacoes]{padding:24px 0}
+@media(max-width:800px){.intro-avaliacoes{grid-template-columns:1fr;align-items:start}}
+</style>

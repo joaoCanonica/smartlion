@@ -1,0 +1,64 @@
+---
+/**
+ * Vitrine por linhas (P6): todas as categorias em painéis de vidro grandes, com foto real
+ * onde existe (sem repetir foto na página) e padrão gráfico com o nome grande onde não existe.
+ * Aparece em /produtos e nas categorias (as outras linhas), mesmo sem produto confirmado:
+ * a página nunca fica vazia.
+ */
+import type { ImageMetadata } from 'astro';
+import { Picture } from 'astro:assets';
+import { categorias, caminhoCategoria } from '../../config/categorias';
+import { midia } from '../../lib/midia';
+import Rotulo from '../ui/Rotulo.astro';
+interface Props { atual?: string; titulo?: string }
+const { atual = '', titulo = 'Escolha por linha.' } = Astro.props;
+const fotos: Record<string, { src: ImageMetadata; alt: string }> = {
+  'casa-e-games': { src: midia.caixasDeSom, alt: 'Caixa de som portátil no balcão da Smart Lion' },
+  acessorios: { src: midia.capas, alt: 'Capas de celular com textura de couro, fotografadas na loja' },
+};
+const linhas = categorias.filter(c => c.slug !== atual);
+const padroes = ['135deg', '90deg', '45deg', '120deg', '60deg', '160deg', '20deg'];
+---
+<section class="linhas-vitrine" aria-labelledby="titulo-linhas-vitrine">
+  <div class="linhas-cabecalho">
+    <Rotulo tom="ambar">{atual ? 'Outras linhas' : 'Linhas de produto'}</Rotulo>
+    <h2 id="titulo-linhas-vitrine">{titulo}</h2>
+  </div>
+  <ul class="linhas-grade">
+    {linhas.map((c, i) => {
+      const foto = fotos[c.slug];
+      return (
+        <li class:list={['linha', { 'com-foto': !!foto }]} style={`--angulo:${padroes[i % padroes.length]}`}>
+          <a href={caminhoCategoria(c.slug)}>
+            {foto ? <Picture class="linha-foto" src={foto.src} alt={foto.alt} formats={['avif', 'webp']} widths={[400, 720]} sizes="(max-width: 700px) 100vw, 33vw" loading="lazy"/> : <span class="linha-padrao" aria-hidden="true"></span>}
+            <span class="linha-texto">
+              <span class="linha-indice" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+              <span class="linha-nome">{c.nome}</span>
+              <span class="linha-detalhe">{c.detalhe} <span aria-hidden="true">↗</span></span>
+            </span>
+          </a>
+        </li>
+      );
+    })}
+  </ul>
+</section>
+<style>
+.linhas-vitrine{padding-block:clamp(40px,5vw,72px)}
+.linhas-cabecalho{display:grid;gap:12px;margin-bottom:clamp(20px,3vw,32px)}
+.linhas-grade{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.5vw,20px)}
+.linha a{position:relative;isolation:isolate;display:grid;grid-template-rows:1fr auto;min-height:clamp(220px,22vw,320px);height:100%;overflow:hidden;border:1px solid var(--vidro-borda);border-radius:var(--raio-lg);background:var(--vidro-bg);-webkit-backdrop-filter:var(--vidro-desfoque);backdrop-filter:var(--vidro-desfoque);color:var(--cor-texto);transition:border-color .3s,transform .5s var(--ease-saida)}
+.linha a:hover{text-decoration:none;border-color:rgb(227 168 87 / .5)}
+.linha-padrao{position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(var(--angulo),rgb(154 158 166 / .09) 0 1px,transparent 1px 13px),radial-gradient(circle at 85% 15%,rgb(227 168 87 / .12),transparent 55%)}
+.linha :global(.linha-foto),.linha :global(.linha-foto img){position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover}
+.linha :global(.linha-foto img){filter:brightness(.62) saturate(.9);transition:filter .6s var(--ease-saida),transform .9s var(--ease-saida)}
+.linha a:hover :global(.linha-foto img){filter:brightness(.9);transform:scale(1.04)}
+.linha-texto{grid-row:2;display:grid;gap:6px;padding:clamp(18px,2vw,26px);background:linear-gradient(0deg,rgb(11 11 12 / .92) 35%,rgb(11 11 12 / 0))}
+.linha-indice{font:400 .75rem/1 var(--fonte-rotulo);letter-spacing:.16em;color:var(--cor-acento)}
+.linha-nome{font:var(--peso-titulo) clamp(1.6rem,1rem + 1.8vw,2.6rem)/1 var(--fonte-titulo);letter-spacing:-.035em;text-wrap:balance}
+.linha-detalhe{font-size:var(--texto-sm);color:var(--cor-texto-2)}
+.linha a:hover .linha-detalhe{color:var(--cor-acento)}
+/* Sete linhas em três colunas: a primeira e a última ocupam duas, e a grade fecha sem buraco. */
+@media (min-width:901px){.linhas-grade:has(> li:nth-child(7):last-child)>li:is(:first-child,:last-child){grid-column:span 2}}
+@media (max-width:900px){.linhas-grade{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.linhas-grade{grid-template-columns:1fr}.linha a{min-height:180px}}
+</style>

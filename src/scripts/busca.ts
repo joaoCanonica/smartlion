@@ -24,7 +24,8 @@ if(raiz){
   const slugs=new Set(resultado.map(p=>p.slug));let visiveis=0;
   cards.forEach(card=>{card.hidden=!slugs.has(card.dataset.cardProduto!);if(!card.hidden)visiveis++});
   vazio.hidden=visiveis>0;
-  contagem.textContent=`${visiveis} ${visiveis===1?'modelo encontrado':'modelos encontrados'}`;
+  // Sem nenhum produto confirmado no catálogo, a contagem não vira "0 modelos": fica o convite.
+  contagem.textContent=cards.length===0?'Modelos sob consulta':`${visiveis} ${visiveis===1?'modelo encontrado':'modelos encontrados'}`;
   limpar.hidden=!(input.value || select.value || (!categoriaBase&&categoria));
   chips.forEach(c=>{if(c.dataset.filtroCategoria===categoria)c.setAttribute('aria-current','page');else c.removeAttribute('aria-current')});
   if(atualizarURL){

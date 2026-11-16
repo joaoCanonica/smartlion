@@ -72,21 +72,9 @@ const pares = [
   ['--cor-texto', '--cor-fundo', 4.5, 'Painel do menu (vidro sobre o fundo) · texto'],
 ];
 // Pares dos apelidos antigos, ainda em uso até a P6 (informativos; também obrigatórios enquanto existirem).
-const legados = [
-  ['--white', '--ink', 4.5, 'Legado: texto no escuro'],
-  ['--muted', '--ink', 4.5, 'Legado: texto secundário no escuro'],
-  ['--ink', '--surface', 4.5, 'Legado: texto no claro (ex-creme)'],
-  ['--text-dark', '--surface', 4.5, 'Legado: texto secundário no claro'],
-  ['--wood', '--surface', 3, 'Legado: linha decorativa (ex-madeira) no claro'],
-  ['--wood', '--ink', 3, 'Legado: linha decorativa (ex-madeira) no escuro'],
-  ['--wood-light', '--ink', 4.5, 'Legado: rótulo âmbar (ex-madeira clara) no escuro'],
-  ['--accent-light', '--ink', 3, 'Legado: foco (ex-magenta) no escuro'],
-  ['--focus-light', '--surface', 3, 'Legado: foco (ex-magenta) no claro'],
-];
-
 const linhas = [];
 let falhas = 0;
-for (const [grupo, lista] of [['Leão de Aço', pares], ['Legado (sai na P6)', legados]]) {
+for (const [grupo, lista] of [['Leão de Aço', pares]]) {
   for (const [f, b, minimo, uso, base] of lista) {
     let fundo = cor(token(b));
     if (fundo[3] < 1) fundo = compor(fundo, cor(token(base ?? '--cor-fundo')));

@@ -18,9 +18,9 @@ a{color:inherit;text-decoration:none;text-underline-offset:.28em;text-decoration
 :where(main,footer) :where(p,li,address,dd,td):not(nav li) a:not([class]),.link-editorial{text-decoration:underline;text-decoration-color:rgb(154 158 166 / .55)}
 a:hover{text-decoration:underline;text-decoration-color:var(--cor-acento)}
 :where(main,footer) :where(p,li,address,dd,td):not(nav li) a:not([class]):hover,.link-editorial:hover{color:var(--cor-acento)}
-.light :where(p,li,address,dd,td):not(nav li) a:not([class]),.light .link-editorial{text-decoration-color:rgb(85 89 95 / .6)}
-.light a:hover{text-decoration-color:var(--cor-acento-escuro)}
-.light :where(p,li,address,dd,td):not(nav li) a:not([class]):hover,.light .link-editorial:hover{color:var(--cor-acento-escuro)}
+.claro :where(p,li,address,dd,td):not(nav li) a:not([class]),.claro .link-editorial{text-decoration-color:rgb(85 89 95 / .6)}
+.claro a:hover{text-decoration-color:var(--cor-acento-escuro)}
+.claro :where(p,li,address,dd,td):not(nav li) a:not([class]):hover,.claro .link-editorial:hover{color:var(--cor-acento-escuro)}
 
 button,input,select,textarea{font:inherit}
 button,a,input{touch-action:manipulation}
@@ -29,23 +29,23 @@ img{display:block;max-width:100%;height:auto}
 
 /* Foco: anel âmbar de 2 px com afastamento. */
 :focus-visible{outline:2px solid var(--cor-foco);outline-offset:3px}
-.light :focus-visible{outline-color:var(--cor-acento-escuro)}
+.claro :focus-visible{outline-color:var(--cor-acento-escuro)}
 
 .container{width:min(var(--largura-max),calc(100% - 96px));margin-inline:auto}
 .eyebrow,.rotulo{font-family:var(--fonte-rotulo);font-size:var(--texto-rotulo);font-weight:400;line-height:1.5;letter-spacing:var(--tracking-rotulo);text-transform:uppercase}
 .rotulo-aco{color:var(--cor-texto-2)}.rotulo-ambar{color:var(--cor-acento)}
-.light .rotulo-aco{color:var(--cor-texto-2-escuro)}.light .rotulo-ambar{color:var(--cor-acento-escuro)}
+.claro .rotulo-aco{color:var(--cor-texto-2-escuro)}.claro .rotulo-ambar{color:var(--cor-acento-escuro)}
 
 /* Botões: secundário (padrão, contorno aço) · primário (gelo sobre preto, varredura no hover) · WhatsApp (verde). */
 .button{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;justify-content:center;align-items:center;gap:.65rem;min-height:48px;padding:.75rem 1.3rem;border:1px solid var(--cor-linha);border-radius:var(--raio-sm);background:transparent;color:inherit;font-weight:500;letter-spacing:.01em;line-height:1.2;transition:border-color var(--duracao-curta),background-color var(--duracao-curta),color var(--duracao-curta)}
 .button:hover{text-decoration:none;border-color:var(--cor-texto)}
-.light .button{border-color:var(--cor-texto-2-escuro)}
-.light .button:hover{border-color:var(--cor-texto-escuro)}
-.button-primario,.button-light{background:var(--cor-texto);color:var(--cor-fundo);border-color:var(--cor-texto)}
-.button-primario::after,.button-light::after{content:'';position:absolute;inset:0;z-index:-1;background:var(--varredura);background-size:250% 100%;background-position:120% 0;opacity:0}
-.button-primario:hover,.button-light:hover{border-color:var(--cor-texto);color:var(--cor-fundo)}
-.button-primario:hover::after,.button-light:hover::after{opacity:1;animation:varredura-botao .8s var(--ease-saida) 1 both}
-.light .button-primario,.light .button-light{background:var(--cor-texto-escuro);color:var(--cor-fundo-claro);border-color:var(--cor-texto-escuro)}
+.claro .button{border-color:var(--cor-texto-2-escuro)}
+.claro .button:hover{border-color:var(--cor-texto-escuro)}
+.button-primario{background:var(--cor-texto);color:var(--cor-fundo);border-color:var(--cor-texto)}
+.button-primario::after{content:'';position:absolute;inset:0;z-index:-1;background:var(--varredura);background-size:250% 100%;background-position:120% 0;opacity:0}
+.button-primario:hover{border-color:var(--cor-texto);color:var(--cor-fundo)}
+.button-primario:hover::after{opacity:1;animation:varredura-botao .8s var(--ease-saida) 1 both}
+.claro .button-primario{background:var(--cor-texto-escuro);color:var(--cor-fundo-claro);border-color:var(--cor-texto-escuro)}
 .button-wa{background:var(--cor-whatsapp);color:var(--cor-whatsapp-texto);border-color:var(--cor-whatsapp)}
 .button-wa:hover{border-color:var(--cor-whatsapp);filter:brightness(1.06)}
 @keyframes varredura-botao{from{background-position:120% 0}to{background-position:-20% 0}}
@@ -61,7 +61,10 @@ img{display:block;max-width:100%;height:auto}
 
 .skip{position:fixed;left:1rem;top:-100px;background:var(--cor-texto);color:var(--cor-fundo);padding:1rem;z-index:100;border-radius:var(--raio-sm)}
 .skip:focus{top:1rem}
-.light{background:var(--cor-fundo-claro);color:var(--cor-texto-escuro)}
+/* Capítulos: o padrão é Preto Leão (body). `.grafite` = capítulo Grafite (alternância nas páginas).
+   `.claro` = Branco Gelo, só em páginas de texto longo (privacidade, dicas) e nas duas seções claras da home. */
+.grafite{background:var(--cor-superficie);color:var(--cor-texto)}
+.claro{background:var(--cor-fundo-claro);color:var(--cor-texto-escuro)}
 .tabular{font-variant-numeric:tabular-nums}
 [hidden]{display:none!important}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

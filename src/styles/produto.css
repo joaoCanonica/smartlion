@@ -1,2 +1,28 @@
-.produto-detalhes{color:var(--ink);background:var(--surface);padding:clamp(20px,4vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,52px)}
-.produto-detalhes h1,.produto-detalhes h2{font-size:clamp(2rem,3.4vw,3rem);line-height:1.1;margin:12px 0 20px}.produto-detalhes .resposta{color:#414246;font-size:.9rem;line-height:1.65}.produto-detalhes .aviso-rascunho{padding:10px 12px;background:#fff0c7;color:#633a00;font-size:.8rem;margin:14px 0}.produto-detalhes .garantia{font-size:.85rem;margin:16px 0;color:#414246}.produto-detalhes fieldset{border:0;padding:0;margin:24px 0}.produto-detalhes legend{font:600 .9rem var(--font-body);margin-bottom:10px}.produto-detalhes .escolhas{display:flex;flex-wrap:wrap;gap:8px}.produto-detalhes label.opcao{position:relative;display:flex;align-items:center;gap:8px;min-height:46px;border:1px solid #868780;padding:10px 12px;cursor:pointer;font-size:.8rem}.produto-detalhes label.opcao:has(input:checked){border-color:var(--cor-acento-escuro);box-shadow:inset 0 0 0 1px var(--cor-acento-escuro);background:#eee8df}.produto-detalhes label.opcao:has(input:focus-visible){outline:3px solid var(--cor-acento-escuro);outline-offset:3px}.produto-detalhes input[type=radio]{accent-color:var(--cor-acento-escuro);width:16px;height:16px;margin:0}.produto-detalhes .amostra-cor{display:block;width:15px;height:15px;background:var(--cor);border:1px solid #666;border-radius:50%}.produto-detalhes .resumo{margin:24px 0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;border-block:1px solid #ccc;padding:18px 0;font-size:.85rem}.produto-detalhes dt{color:#565752}.produto-detalhes dd{margin:0;overflow-wrap:anywhere}.produto-detalhes .preco-nota{font-size:.75rem;margin:8px 0 16px}.produto-detalhes .consulta{width:100%;text-align:center}.produto-detalhes .nota{font-size:.75rem;color:#50514c;margin:12px 0}.produto-detalhes .feedback{font-size:.8rem;min-height:1.6em;margin:10px 0}.produto-detalhes .compartilhar{background:transparent;border:1px solid #777;min-height:44px;padding:8px 16px;color:var(--ink)}.produto-detalhes details{margin-top:14px;font-size:.8rem}.produto-detalhes summary{cursor:pointer;min-height:40px;display:list-item}.produto-detalhes .link-copia{width:100%;padding:12px;border:1px solid #777;background:white;color:var(--ink);font-size:.8rem}.produto-detalhes .fotos{display:grid;gap:12px;align-content:start}.produto-detalhes .foto-extra{max-width:240px}.produto-detalhes :focus-visible{outline-color:var(--cor-acento-escuro)}@media(max-width:700px){.produto-detalhes{grid-template-columns:1fr}.produto-detalhes .fotos{max-width:420px;width:100%;margin-inline:auto}.produto-detalhes h1,.produto-detalhes h2{font-size:2rem}.produto-detalhes .resumo{grid-template-columns:80px 1fr}}
+/* Detalhes do produto (modal e /produto/[slug]) · identidade "Leão de Aço" (P6): painel Grafite, tokens. */
+.produto-detalhes{color:var(--cor-texto);background:var(--cor-superficie);padding:clamp(20px,4vw,48px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,52px)}
+.produto-detalhes h1,.produto-detalhes h2{font-size:clamp(2rem,3.4vw,3rem);line-height:1.1;margin:12px 0 20px}
+.produto-detalhes .resposta{color:var(--cor-texto-2);font-size:.95rem;line-height:1.65}
+.produto-detalhes .aviso-rascunho{padding:10px 12px;background:#fff0c7;color:#633a00;font-size:.8rem;margin:14px 0}
+.produto-detalhes .garantia{font-size:.875rem;margin:16px 0;color:var(--cor-texto-2)}
+.produto-detalhes fieldset{border:0;padding:0;margin:24px 0}
+.produto-detalhes legend{font:400 var(--texto-rotulo)/1.4 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-texto-2);margin-bottom:12px}
+.produto-detalhes .escolhas{display:flex;flex-wrap:wrap;gap:8px}
+.produto-detalhes label.opcao{position:relative;display:flex;align-items:center;gap:8px;min-height:46px;border:1px solid var(--cor-linha);border-radius:var(--raio-sm);padding:10px 12px;cursor:pointer;font-size:.85rem}
+.produto-detalhes label.opcao:has(input:checked){border-color:var(--cor-acento);box-shadow:inset 0 0 0 1px var(--cor-acento);background:var(--cor-superficie-2)}
+.produto-detalhes label.opcao:has(input:focus-visible){outline:2px solid var(--cor-foco);outline-offset:3px}
+.produto-detalhes input[type=radio]{accent-color:var(--cor-acento);width:16px;height:16px;margin:0}
+.produto-detalhes .amostra-cor{display:block;width:15px;height:15px;background:var(--cor);border:1px solid var(--cor-linha);border-radius:50%}
+.produto-detalhes .resumo{margin:24px 0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;border-block:1px solid var(--cor-borda);padding:18px 0;font-size:.875rem}
+.produto-detalhes dt{color:var(--cor-texto-2)}
+.produto-detalhes dd{margin:0;overflow-wrap:anywhere}
+.produto-detalhes .preco-nota{font-size:.8rem;margin:8px 0 16px;color:var(--cor-texto-2)}
+.produto-detalhes .consulta{width:100%;text-align:center}
+.produto-detalhes .nota{font-size:.8rem;color:var(--cor-texto-2);margin:12px 0}
+.produto-detalhes .feedback{font-size:.8rem;min-height:1.6em;margin:10px 0}
+.produto-detalhes .compartilhar{background:transparent;border:1px solid var(--cor-linha);border-radius:var(--raio-sm);min-height:44px;padding:8px 16px;color:var(--cor-texto)}
+.produto-detalhes details{margin-top:14px;font-size:.85rem}
+.produto-detalhes summary{cursor:pointer;min-height:40px;display:list-item}
+.produto-detalhes .link-copia{width:100%;padding:12px;border:1px solid var(--cor-linha);border-radius:var(--raio-sm);background:var(--cor-fundo);color:var(--cor-texto);font-size:.8rem}
+.produto-detalhes .fotos{display:grid;gap:12px;align-content:start}
+.produto-detalhes .foto-extra{max-width:240px}
+@media(max-width:700px){.produto-detalhes{grid-template-columns:1fr}.produto-detalhes .fotos{max-width:420px;width:100%;margin-inline:auto}.produto-detalhes h1,.produto-detalhes h2{font-size:2rem}.produto-detalhes .resumo{grid-template-columns:80px 1fr}}

@@ -1,4 +1,5 @@
 ---
+import LinhasVitrine from '../../components/catalogo/LinhasVitrine.astro';
 import AberturaVitrine from '../../components/catalogo/AberturaVitrine.astro';
 import Layout from '../../layouts/LayoutBase.astro';
 import Catalogo from '../../components/catalogo/Catalogo.astro';
@@ -9,5 +10,5 @@ export function getStaticPaths(){return categorias.map(c=>({params:{categoria:c.
 const {categoria}=Astro.props;
 const produtos=(await obterProdutos()).filter(p=>categoriasProduto(p).includes(categoria.slug));
 ---
-<Layout title={`${categoria.nome} em Lages | Smart Lion`} description={`Consulte ${categoria.nome} na Smart Lion, no Centro de Lages. Modelos e condições pelo WhatsApp.`}><section class="categoria light"><div class="container"><AberturaVitrine categoria={categoria}/><Catalogo produtos={produtos} categoria={categoria.slug}/></div></section></Layout>
-<style>.categoria{padding:0 0 var(--space-chapter)}</style>
+<Layout title={`${categoria.nome} em Lages | Smart Lion`} description={`Consulte ${categoria.nome} na Smart Lion, no Centro de Lages. Modelos e condições pelo WhatsApp.`}><section class="categoria"><div class="container"><AberturaVitrine categoria={categoria}/><Catalogo produtos={produtos} categoria={categoria.slug}/><LinhasVitrine atual={categoria.slug} titulo="Conheça as outras linhas."/></div></section></Layout>
+<style>.catalogo,.categoria{padding:0 0 var(--espaco-secao)}</style>

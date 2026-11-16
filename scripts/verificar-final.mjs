@@ -15,6 +15,6 @@ for(const f of paginas){
 for(const f of walk('src').filter(f=>/\.(astro|ts)$/.test(f)&&f!=='src/config/whatsapp.ts'))assert(!readFileSync(f,'utf8').includes('wa.me'),`Link fora da função central: ${f}`);
 const luminancia=hex=>{const rgb=hex.match(/\w\w/g).map(x=>parseInt(x,16)/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4);return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722};
 const contraste=(a,b)=>{const x=luminancia(a),y=luminancia(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)};
-const pares=[['madeira no escuro','c6aa8f','111214',4.5],['texto escuro','111214','f5f3ef',4.5],['texto secundário','414246','f5f3ef',4.5],['texto rodapé','bfc0c2','111214',4.5],['WhatsApp','082b16','25d366',4.5],['foco claro corrigido','a50050','f5f3ef',3],['foco no escuro','ff78bc','111214',3]];
+const pares=[['texto no Preto Leão','f5f6f7','0b0b0c',4.5],['aço no Preto Leão','9a9ea6','0b0b0c',4.5],['aço no Grafite','9a9ea6','17181b',4.5],['âmbar no Preto Leão','e3a857','0b0b0c',4.5],['texto no Branco Gelo','0b0b0c','f5f6f7',4.5],['aço escuro no Branco Gelo','55595f','f5f6f7',4.5],['âmbar escuro no Branco Gelo','8a5b17','f5f6f7',4.5],['WhatsApp','082b16','25d366',4.5],['foco âmbar no Grafite','e3a857','17181b',3]];
 for(const [nome,a,b,min] of pares){const razao=contraste(a,b);assert(razao>=min,`Contraste: ${nome}`);console.log(`${nome}: ${razao.toFixed(2)}:1`);}
 console.log(`${paginas.length} páginas; ${links} links WhatsApp; ${imagens} imagens. IDs, copy da loja e função central: OK. Não substitui axe ou auditoria visual.`);

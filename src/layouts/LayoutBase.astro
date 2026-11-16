@@ -17,7 +17,7 @@ const { title, description, produto } = Astro.props;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const destination = redirects.find(rule => rule.source === path)?.destination ?? path;
 const canonical = urlCanonica(destination, Astro.site!);
-const indexavel=podeIndexar(import.meta.env.DEV,import.meta.env.PUBLIC_INDEXABLE,import.meta.env.VERCEL_ENV)&&!Astro.url.pathname.startsWith('/404')&&!Astro.url.pathname.startsWith('/_estilo')&&!Astro.url.pathname.startsWith('/_estudo');
+const indexavel=podeIndexar(import.meta.env.DEV,import.meta.env.PUBLIC_INDEXABLE,import.meta.env.VERCEL_ENV)&&!Astro.url.pathname.startsWith('/404');
 const og=await getImage({src:fotoLoja,width:1200,format:'jpg'});
 const schema=dadosEstruturados(destination,title,Astro.site!,produto);
 ---

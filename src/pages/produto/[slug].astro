@@ -5,7 +5,7 @@ import { obterProdutos } from '../../lib/produtos';
 export async function getStaticPaths(){return (await obterProdutos()).map(produto=>({params:{slug:produto.slug},props:{produto}}))}
 const {produto}=Astro.props;
 ---
-<Layout produto={produto} title={`${produto.nome} em Lages | Smart Lion`} description={`Consulte ${produto.nome} com a Smart Lion em Lages. Escolha versão e cor e fale pelo WhatsApp.`}><div class="pagina-produto light"><div class="container"><a class="voltar" href="/produtos">← Voltar ao catálogo</a><DetalhesProduto produto={produto}/></div></div></Layout>
+<Layout produto={produto} title={`${produto.nome} em Lages | Smart Lion`} description={`Consulte ${produto.nome} com a Smart Lion em Lages. Escolha versão e cor e fale pelo WhatsApp.`}><div class="pagina-produto grafite"><div class="container"><a class="voltar" href="/produtos">← Voltar ao catálogo</a><DetalhesProduto produto={produto}/></div></div></Layout>
 <script>
 import { iniciarProduto } from '../../scripts/produto';
 import { caminhoProduto } from '../../lib/catalogo';

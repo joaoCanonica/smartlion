@@ -158,7 +158,20 @@ Este contêiner **não tem GPU**: todo WebGL roda no SwiftShader, na CPU. Os fps
 
 ## Publicação (Vercel)
 
-{DEPLOY}
+- **Projeto:** Vercel `smartlion`, time "Joao Canonica's projects", ligado ao GitHub `joaoCanonica/smartlion`.
+- **Deploy de produção:** `dpl_BQaXFTvTiB8eeQ62ucV7utTwxXTH`, do commit `8e3a900` da branch `claude/great-shannon-lkkb9f`, publicado em `https://smartlion.vercel.app`. O build na Vercel gerou as 35 páginas em 32 s, sem erros.
+- **Variável de produção:** `SITE_URL=https://smartlion.vercel.app` (criada nesta sessão). `PUBLIC_INDEXABLE` **não** foi criada: aguarda a aprovação do João.
+- **Conferido em produção** em 16/11/2026, pela ferramenta da Vercel, porque a rede deste ambiente bloqueia `*.vercel.app`:
+
+| Item | Resultado |
+|---|---|
+| Home | 200; HTML da P8 com `<meta http-equiv="content-security-policy">` (36 hashes SHA-256) e `noindex,nofollow` |
+| canonical | `https://smartlion.vercel.app/` na home; `/sobre` → 301 → `/nossa-historia`, com canonical `https://smartlion.vercel.app/nossa-historia` |
+| Open Graph | `og:url` e `og:image` absolutos em `smartlion.vercel.app`; a imagem responde 200 `image/jpeg` |
+| sitemap.xml | 200, 24 URLs, todas em `https://smartlion.vercel.app/…`, sem rascunhos nem 404 |
+| robots.txt | `Disallow: /`, correto enquanto o site está noindex; vira `Allow` com `PUBLIC_INDEXABLE=true` |
+| Cabeçalhos (todas as respostas) | `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` · `Referrer-Policy: strict-origin-when-cross-origin` · `Permissions-Policy` (câmera, microfone, geolocalização, pagamento etc. fechados; giroscópio e acelerômetro só `self`) · `X-Content-Type-Options: nosniff` · `X-Frame-Options: DENY` · `Cross-Origin-Opener-Policy: same-origin` · `Content-Security-Policy: frame-ancestors 'none'; object-src 'none'; base-uri 'self'` |
+| Cache | HTML `max-age=0, must-revalidate`; `/_astro/*` `public, max-age=31536000, immutable` (conferido na imagem OG); `marca.svg` `max-age=3600, must-revalidate` |
 
 ## Pendências do cliente
 

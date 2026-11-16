@@ -45,7 +45,7 @@ function iniciar() {
     // carregamento fica no valor final (sem piscar). Sem JS, sempre o número final.
     if (el.hasAttribute('data-contador')) {
       const r = el.getBoundingClientRect();
-      if (r.top > innerHeight || r.bottom < 0) { el.dataset.animar = 'sim'; el.dataset.final = el.textContent ?? ''; el.textContent = formatar(0, Number(el.dataset.casas ?? 0), el.dataset.prefixo ?? '', el.dataset.sufixo ?? ''); }
+      if (r.top > innerHeight || r.bottom < 0) { el.style.minWidth = `${r.width}px`; el.dataset.animar = 'sim'; el.dataset.final = el.textContent ?? ''; el.textContent = formatar(0, Number(el.dataset.casas ?? 0), el.dataset.prefixo ?? '', el.dataset.sufixo ?? ''); }
     }
     observador.observe(el);
   }

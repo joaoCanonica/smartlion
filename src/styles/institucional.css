@@ -4,21 +4,24 @@
 .pagina-abertura nav a{color:var(--cor-texto-2)}
 .pagina-abertura nav a:hover{color:var(--cor-acento)}
 .pagina-abertura nav [aria-current]{color:var(--cor-texto)}
+/* A trilha fica numa linha só (o item atual corta com reticências): a quebra não muda na troca de fonte. */
+.pagina-abertura nav{flex-wrap:nowrap;white-space:nowrap;min-width:0}
+.pagina-abertura nav [aria-current]{overflow:hidden;text-overflow:ellipsis;min-width:0}
 .abertura-corpo:has(> figure),.abertura-corpo:has(> .abertura-visual){display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(2rem,5vw,5rem);align-items:center}
 .abertura-corpo figure{margin:0}
 .abertura-corpo figure img{width:100%;height:auto;aspect-ratio:5/4;object-fit:cover;border-radius:var(--raio-md)}
 .abertura-corpo figcaption{font:400 var(--texto-rotulo)/1.5 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-texto-2);padding-top:.7rem}
 .abertura-texto{display:grid;gap:18px;justify-items:start}
-.pagina-abertura h1{max-width:16ch;font-size:clamp(2.4rem,1.4rem + 3.6vw,4.75rem);line-height:1;letter-spacing:-.04em}
-.pagina-abertura .resposta{max-width:60ch;color:var(--cor-texto-2);font-size:var(--texto-lg)}
+.pagina-abertura h1{max-width:12.1em;font-size:clamp(2.4rem,1.4rem + 3.6vw,4.75rem);line-height:1;letter-spacing:-.04em}
+.pagina-abertura .resposta{max-width:34.68em;color:var(--cor-texto-2);font-size:var(--texto-lg)}
 
 /* Capítulos: Preto Leão (padrão) e Grafite (.grafite) alternados; Branco Gelo (.claro) em texto longo. */
 .pagina-bloco{padding-block:clamp(56px,7vw,104px);border-top:1px solid var(--cor-borda)}
 .pagina-bloco.claro{border-top:0}
 .pagina-bloco .duas-colunas{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,72px);align-items:start}
-.pagina-bloco h2{margin-bottom:22px;max-width:18ch}
+.pagina-bloco h2{margin-bottom:22px;max-width:13.61em}
 .pagina-bloco h3{font-size:var(--texto-h4);margin:28px 0 12px}
-.pagina-bloco p{color:var(--cor-texto-2);max-width:64ch}
+.pagina-bloco p{color:var(--cor-texto-2);max-width:36.99em}
 .pagina-bloco.claro p{color:var(--cor-texto-2-escuro)}
 .pagina-bloco p+p{margin-top:16px}
 .pagina-bloco ul,.pagina-bloco ol{padding-left:22px;line-height:1.9;color:var(--cor-texto-2)}
@@ -44,7 +47,7 @@
 .faq-lista summary::-webkit-details-marker{display:none}
 .faq-lista summary::after{content:'+';position:absolute;right:4px;top:12px;font:400 1.4rem/1 var(--fonte-rotulo);color:var(--cor-acento);transition:transform var(--duracao-media) var(--ease-saida)}
 .faq-lista details[open] summary::after{transform:rotate(45deg)}
-.faq-lista details p{line-height:1.75;padding:4px 0 18px;max-width:72ch;color:var(--cor-texto-2)}
+.faq-lista details p{line-height:1.75;padding:4px 0 18px;max-width:41.62em;color:var(--cor-texto-2)}
 
 /* Texto longo (privacidade, dicas): Branco Gelo, medida de leitura confortável. */
 .texto-longo{max-width:760px}

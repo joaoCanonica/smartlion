@@ -17,7 +17,6 @@ const fotos: Record<string, { src: ImageMetadata; alt: string }> = {
   acessorios: { src: midia.capas, alt: 'Capas de celular com textura de couro, fotografadas na loja' },
 };
 const linhas = categorias.filter(c => c.slug !== atual);
-const padroes = ['135deg', '90deg', '45deg', '120deg', '60deg', '160deg', '20deg'];
 ---
 <section class="linhas-vitrine" aria-labelledby="titulo-linhas-vitrine">
   <div class="linhas-cabecalho">
@@ -28,7 +27,7 @@ const padroes = ['135deg', '90deg', '45deg', '120deg', '60deg', '160deg', '20deg
     {linhas.map((c, i) => {
       const foto = fotos[c.slug];
       return (
-        <li class:list={['linha', { 'com-foto': !!foto }]} style={`--angulo:${padroes[i % padroes.length]}`}>
+        <li class:list={['linha', `padrao-${i % 7}`, { 'com-foto': !!foto }]}>
           <a href={caminhoCategoria(c.slug)}>
             {foto ? <Picture class="linha-foto" src={foto.src} alt={foto.alt} formats={['avif', 'webp']} widths={[400, 720]} sizes="(max-width: 700px) 100vw, 33vw" loading="lazy"/> : <span class="linha-padrao" aria-hidden="true"></span>}
             <span class="linha-texto">
@@ -48,6 +47,7 @@ const padroes = ['135deg', '90deg', '45deg', '120deg', '60deg', '160deg', '20deg
 .linhas-grade{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.5vw,20px)}
 .linha a{position:relative;isolation:isolate;display:grid;grid-template-rows:1fr auto;min-height:clamp(220px,22vw,320px);height:100%;overflow:hidden;border:1px solid var(--vidro-borda);border-radius:var(--raio-lg);background:var(--vidro-bg);-webkit-backdrop-filter:var(--vidro-desfoque);backdrop-filter:var(--vidro-desfoque);color:var(--cor-texto);transition:border-color .3s,transform .5s var(--ease-saida)}
 .linha a:hover{text-decoration:none;border-color:rgb(227 168 87 / .5)}
+.padrao-0{--angulo:135deg}.padrao-1{--angulo:90deg}.padrao-2{--angulo:45deg}.padrao-3{--angulo:120deg}.padrao-4{--angulo:60deg}.padrao-5{--angulo:160deg}.padrao-6{--angulo:20deg}
 .linha-padrao{position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(var(--angulo),rgb(154 158 166 / .09) 0 1px,transparent 1px 13px),radial-gradient(circle at 85% 15%,rgb(227 168 87 / .12),transparent 55%)}
 .linha :global(.linha-foto),.linha :global(.linha-foto img){position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover}
 .linha :global(.linha-foto img){filter:brightness(.62) saturate(.9);transition:filter .6s var(--ease-saida),transform .9s var(--ease-saida)}

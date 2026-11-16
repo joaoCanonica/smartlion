@@ -12,7 +12,6 @@ import { categorias, caminhoCategoria } from '../../config/categorias';
 import Rotulo from '../ui/Rotulo.astro';
 const fotos: Partial<Record<(typeof categorias)[number]['slug'], { src: ImageMetadata; alt: string }>> = {};
 // Variação do padrão por linha (ângulo e brilho), para que nenhum bloco seja igual ao outro.
-const padroes = ['135deg', '90deg', '45deg', '120deg', '60deg', '160deg', '20deg'];
 ---
 <section class="linhas" id="vitrine" aria-labelledby="titulo-linhas">
   <div class="container">
@@ -24,7 +23,7 @@ const padroes = ['135deg', '90deg', '45deg', '120deg', '60deg', '160deg', '20deg
       {categorias.map((c, i) => {
         const foto = fotos[c.slug];
         return (
-          <li class:list={['linha', { destaque: i === 0, 'com-foto': !!foto }]} style={`--angulo:${padroes[i % padroes.length]}`}>
+          <li class:list={['linha', `padrao-${i % 7}`, { destaque: i === 0, 'com-foto': !!foto }]}>
             <a href={caminhoCategoria(c.slug)}>
               {foto ? <Picture src={foto.src} alt={foto.alt} formats={['avif', 'webp']} widths={[360, 640]} sizes="(max-width: 800px) 50vw, 25vw" loading="lazy" class="linha-foto"/>
                 : <span class="linha-padrao" aria-hidden="true"></span>}
@@ -44,12 +43,13 @@ const padroes = ['135deg', '90deg', '45deg', '120deg', '60deg', '160deg', '20deg
 .linhas{padding-block:var(--espaco-secao)}
 .linhas-cabecalho{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:clamp(28px,4vw,48px)}
 .linhas-cabecalho h2{margin-top:14px}
-.linhas-cabecalho>p{max-width:40ch;color:var(--cor-texto-2)}
+.linhas-cabecalho>p{max-width:23.12em;color:var(--cor-texto-2)}
 .linhas-grade{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.2vw,16px);perspective:1200px}
 .linha{position:relative;min-width:0}
 .linha.destaque{grid-column:span 2}
 .linha a{position:relative;isolation:isolate;display:grid;align-content:end;gap:6px;min-height:clamp(180px,18vw,240px);height:100%;padding:clamp(16px,2vw,24px);overflow:hidden;border:1px solid var(--cor-borda);border-radius:var(--raio-md);background:var(--cor-superficie);color:var(--cor-texto);transform-style:preserve-3d;transition:transform .5s var(--ease-saida),border-color .3s,box-shadow .5s var(--ease-saida)}
 .linha a:hover{text-decoration:none}
+.padrao-0{--angulo:135deg}.padrao-1{--angulo:90deg}.padrao-2{--angulo:45deg}.padrao-3{--angulo:120deg}.padrao-4{--angulo:60deg}.padrao-5{--angulo:160deg}.padrao-6{--angulo:20deg}
 .linha-padrao{position:absolute;inset:0;z-index:-1;background:repeating-linear-gradient(var(--angulo),rgb(154 158 166 / .09) 0 1px,transparent 1px 13px),radial-gradient(circle at 85% 15%,rgb(227 168 87 / .12),transparent 55%)}
 .linha a :global(.linha-foto),.linha a :global(.linha-foto img){position:absolute;inset:0;z-index:-1;width:100%;height:100%;object-fit:cover;filter:brightness(.6)}
 .linha-indice{position:absolute;top:clamp(16px,2vw,24px);left:clamp(16px,2vw,24px);font:400 .75rem/1 var(--fonte-rotulo);letter-spacing:.16em;color:var(--cor-acento)}
@@ -63,5 +63,7 @@ const padroes = ['135deg', '90deg', '45deg', '120deg', '60deg', '160deg', '20deg
 .pendente{position:absolute;right:10px;top:10px;font-size:.7rem;background:#fff0c7;color:#633a00;padding:4px 8px}
 @media (max-width:1024px){.linhas-grade{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:700px){.linhas-cabecalho{display:block}.linhas-cabecalho>p{margin-top:14px}}
+/* Reflow (320 px ou zoom alto): uma coluna, para nenhum nome de linha ser cortado. */
+@media (max-width:379px){.linhas-grade{grid-template-columns:1fr}.linha.destaque{grid-column:auto}}
 @media (prefers-reduced-motion:reduce){.linha a:hover,.linha a:focus-visible{transform:none}}
 </style>

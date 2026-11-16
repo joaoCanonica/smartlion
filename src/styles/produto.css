@@ -11,7 +11,7 @@
 .produto-detalhes label.opcao:has(input:checked){border-color:var(--cor-acento);box-shadow:inset 0 0 0 1px var(--cor-acento);background:var(--cor-superficie-2)}
 .produto-detalhes label.opcao:has(input:focus-visible){outline:2px solid var(--cor-foco);outline-offset:3px}
 .produto-detalhes input[type=radio]{accent-color:var(--cor-acento);width:16px;height:16px;margin:0}
-.produto-detalhes .amostra-cor{display:block;width:15px;height:15px;background:var(--cor);border:1px solid var(--cor-linha);border-radius:50%}
+.produto-detalhes .amostra-cor{display:block;width:15px;height:15px;color:var(--cor-linha)}
 .produto-detalhes .resumo{margin:24px 0;display:grid;grid-template-columns:auto 1fr;gap:8px 16px;border-block:1px solid var(--cor-borda);padding:18px 0;font-size:.875rem}
 .produto-detalhes dt{color:var(--cor-texto-2)}
 .produto-detalhes dd{margin:0;overflow-wrap:anywhere}

@@ -4,14 +4,17 @@ import {resolve} from 'node:path';
 // Executar localmente com Chrome instalado e pnpm preview ativo. Não inicia servidor.
 // CHROME_PATH escolhe o navegador; LIGHTHOUSE_BIN usa um lighthouse já instalado em vez de `pnpm dlx`.
 // Em contêiner como root, QA_NO_SANDBOX=1 acrescenta --no-sandbox.
+// QA_LH_DESKTOP=1 mede com o preset desktop do Lighthouse (1350×940, sem throttling de CPU móvel)
+// e grava em qa/lighthouse/desktop/; o padrão é mobile 390×844, DPR 2.
+const desktop=!!process.env.QA_LH_DESKTOP;
 const base=new URL(process.argv[2]??'http://localhost:4321');
 const walk=p=>readdirSync(p,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(`${p}/${e.name}`):[`${p}/${e.name}`]);
 const rotas=walk('dist').filter(f=>f.endsWith('.html')).map(f=>f.slice(4).replace(/\/index.html$/,'/').replace(/index.html$/,''));
-const pasta=resolve('qa/lighthouse');mkdirSync(pasta,{recursive:true});
+const pasta=resolve(desktop?'qa/lighthouse/desktop':'qa/lighthouse');mkdirSync(pasta,{recursive:true});
 const linhas=['| Rota | Performance | Acessibilidade | Boas práticas | SEO | LCP ms | CLS |','|---|---:|---:|---:|---:|---:|---:|'];
 let falha=false;
 for(const [i,rota] of rotas.entries()){
- const arquivo=resolve(pasta,`${i}.json`);const flags=['--headless',...(process.env.QA_NO_SANDBOX?['--no-sandbox']:[])].join(' ');const cmd=process.env.LIGHTHOUSE_BIN?[process.env.LIGHTHOUSE_BIN,[]]:['pnpm',['dlx','lighthouse']];const r=spawnSync(cmd[0],[...cmd[1],new URL(rota,base).href,'--quiet',`--chrome-flags=${flags}`,'--screenEmulation.mobile=true','--screenEmulation.width=390','--screenEmulation.height=844','--screenEmulation.deviceScaleFactor=2','--output=json',`--output-path=${arquivo}`],{stdio:'inherit'});
+ const arquivo=resolve(pasta,`${i}.json`);const flags=['--headless',...(process.env.QA_NO_SANDBOX?['--no-sandbox']:[])].join(' ');const cmd=process.env.LIGHTHOUSE_BIN?[process.env.LIGHTHOUSE_BIN,[]]:['pnpm',['dlx','lighthouse']];const r=spawnSync(cmd[0],[...cmd[1],new URL(rota,base).href,'--quiet',`--chrome-flags=${flags}`,...(desktop?['--preset=desktop']:['--screenEmulation.mobile=true','--screenEmulation.width=390','--screenEmulation.height=844','--screenEmulation.deviceScaleFactor=2']),'--output=json',`--output-path=${arquivo}`],{stdio:'inherit'});
  if(r.status!==0){falha=true;linhas.push(`| ${rota} | ERRO | — | — | — | — | — |`);continue;}
  const lhr=JSON.parse(readFileSync(arquivo,'utf8'));if(lhr.runtimeError){falha=true;linhas.push(`| ${rota} | ERRO de navegação | — | — | — | — | — |`);continue;}
  const notas=['performance','accessibility','best-practices','seo'].map(k=>lhr.categories[k].score===null?null:Math.round(lhr.categories[k].score*100));
@@ -20,5 +23,5 @@ for(const [i,rota] of rotas.entries()){
  if(notas.some((n,i)=>n===null||n<(i===1?100:95))||lcp>=2000||cls>=.05)falha=true;
 }
 writeFileSync(resolve(pasta,'RESULTADOS.md'),linhas.join('\n')+'\n');
-console.log('Tabela salva em qa/lighthouse/RESULTADOS.md. 404 e noindex são exceções esperadas de SEO, sem ocultar notas. INP não é inferido do Lighthouse.');
+console.log(`Tabela salva em ${desktop?'qa/lighthouse/desktop':'qa/lighthouse'}/RESULTADOS.md.`+' 404 e noindex são exceções esperadas de SEO, sem ocultar notas. INP não é inferido do Lighthouse.');
 if(falha)process.exitCode=1;

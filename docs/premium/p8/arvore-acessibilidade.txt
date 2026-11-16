@@ -1,0 +1,1638 @@
+
+===== /
+- link "Pular para o conteúdo":
+  - /url: "#conteudo"
+- banner:
+  - link "Smart Lion — início":
+    - /url: /
+    - text: SMART LION LAGES · SC
+  - navigation "Navegação principal":
+    - list:
+      - listitem:
+        - link "A Loja":
+          - /url: /a-loja
+      - listitem:
+        - link "Nossa História":
+          - /url: /nossa-historia
+      - listitem:
+        - group: O que fazemos
+      - listitem:
+        - link "Avaliações":
+          - /url: /avaliacoes
+      - listitem:
+        - link "Visite-nos":
+          - /url: /visite-nos
+  - link "Instagram @smartlion.sc":
+    - /url: https://www.instagram.com/smartlion.sc/
+  - link "Fale conosco":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+- main:
+  - region "Tecnologia com procedência.":
+    - paragraph: Lages · SC
+    - heading "Tecnologia com procedência." [level=1]
+    - paragraph: Venda, assistência e ensino no Centro de Lages.
+    - link "Conheça a loja":
+      - /url: /a-loja
+    - link "Fale conosco":
+      - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - status: Fechado · abre hoje às 9h
+    - link "Ver horário completo":
+      - /url: "#contato"
+  - region "A Smart Lion em números":
+    - list:
+      - listitem:
+        - link "5,0 de 5 766 avaliações no Google Coleta de out/2026":
+          - /url: /avaliacoes
+      - listitem:
+        - link "IRP Apple Assistência técnica participante do programa Independent Repair Provider (IRP) da Apple":
+          - /url: /assistencia-tecnica
+      - listitem:
+        - link "6 meses de garantia da loja nos seminovos":
+          - /url: /seminovos
+  - region "Diferentes caminhos. O mesmo cuidado.":
+    - paragraph: O que fazemos
+    - heading "Diferentes caminhos. O mesmo cuidado." [level=2]
+    - paragraph: Queremos tornar a experiência com tecnologia segura e confiável. Procedência na escolha. Atendimento de perto. Suporte depois da compra.
+    - article:
+      - img "Fone de ouvido azul fotografado na loja Smart Lion"
+      - heading "Produtos para a sua rotina." [level=3]
+      - paragraph: Apple, Xiaomi e importados. A gente conversa sobre o que você procura e ajuda na escolha.
+      - link "Conheça os produtos":
+        - /url: /produtos
+    - article:
+      - heading "Seminovos com procedência." [level=3]
+      - paragraph: Nossos iPhones seminovos passam por avaliação técnica e têm 6 meses de garantia.
+      - link "Conheça os seminovos":
+        - /url: /seminovos
+    - article:
+      - img "Microscópio e ferramentas na bancada técnica da Smart Lion"
+      - heading "Cuidado técnico, de perto." [level=3]
+      - paragraph: Assistência técnica participante do programa Independent Repair Provider (IRP) da Apple.
+      - link "Conheça a assistência":
+        - /url: /assistencia-tecnica
+    - article:
+      - img "Bancadas individuais do Centro Técnico da Smart Lion"
+      - heading "Um espaço para aprender." [level=3]
+      - paragraph: Teoria e prática no Centro Técnico, com bancadas individuais para o treinamento de manutenção de celulares.
+      - link "Conheça o curso":
+        - /url: /curso-manutencao-celular
+  - region "Por dentro do reparo.":
+    - paragraph: Assistência técnica
+    - heading "Por dentro do reparo." [level=2]
+    - paragraph: Assistência técnica participante do programa Independent Repair Provider (IRP) da Apple. Escolha a parte do aparelho para ver o serviço e pedir um orçamento.
+    - tablist "Escolha a parte do aparelho":
+      - tab "Tela" [selected]
+      - tab "Bateria"
+      - tab "Tampa traseira"
+      - tab "Placa"
+    - tabpanel "Tela":
+      - paragraph: Tela
+      - heading "Troca de tela de iPhone" [level=3]
+      - paragraph: A tela quebrou ou o toque começou a falhar? Conte o modelo e o que aconteceu para iniciar a avaliação.
+      - link "Pedir orçamento":
+        - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Preciso%20de%20assist%C3%AAncia%20t%C3%A9cnica.%20Aparelho%3A%20.%20Problema%3A%20troca%20de%20tela.
+      - 'link "Saiba mais: Troca de tela de iPhone"':
+        - /url: /assistencia-tecnica/troca-de-tela-iphone
+        - text: Saiba mais ↗
+    - 'img "Ilustração das camadas de um celular, de cima para baixo: vidro, tela, bateria, placa e tampa traseira."': TAMPA TRASEIRA PLACA BATERIA TELA VIDRO
+    - link "Todos os serviços de assistência ↗":
+      - /url: /assistencia-tecnica
+  - region "Entre. Conheça nosso espaço.":
+    - paragraph: A loja
+    - heading "Entre. Conheça nosso espaço." [level=2]
+    - paragraph: Da loja ao laboratório, produtos, cuidado técnico e aprendizado fazem parte do nosso dia a dia.
+    - figure "01 · A loja":
+      - img "Interior da Smart Lion, com balcão de madeira e prateleiras iluminadas"
+      - text: 01 · A loja
+    - figure "02 · O balcão":
+      - img "Caixa de som portátil no balcão da Smart Lion"
+      - text: 02 · O balcão
+    - figure "03 · Acessórios":
+      - img "Capas de celular com textura de couro em três cores, na loja"
+      - text: 03 · Acessórios
+    - paragraph: Rua Hercílio Luz, 364 · Centro
+    - paragraph: Conheça de perto.
+    - link "Fazer o tour":
+      - /url: /a-loja
+  - region "O que você encontra aqui.":
+    - paragraph: Linhas de produto
+    - heading "O que você encontra aqui." [level=2]
+    - paragraph: Conheça nossas categorias. Para saber quais modelos estão disponíveis, fale com a equipe.
+    - list:
+      - listitem:
+        - link "iPhone Novos e seminovos":
+          - /url: /produtos/iphone
+      - listitem:
+        - link "Seminovos 6 meses de garantia":
+          - /url: /seminovos
+      - listitem:
+        - link "iPad, Mac e Watch E acessórios Apple":
+          - /url: /produtos/ipad-mac-watch
+      - listitem:
+        - link "Xiaomi POCO e Redmi":
+          - /url: /produtos/xiaomi
+      - listitem:
+        - link "Casa e games Tecnologia para sua rotina":
+          - /url: /produtos/casa-e-games
+      - listitem:
+        - link "Acessórios Proteção e praticidade":
+          - /url: /produtos/acessorios
+      - listitem:
+        - link "Perfumaria Importados":
+          - /url: /produtos/perfumaria
+    - link "Ver todos os produtos ↗":
+      - /url: /produtos
+  - region "A confiança tem muitas vozes.":
+    - paragraph: O que dizem
+    - paragraph: 5,0 de 5 no Google
+    - link "766 avaliações no Google":
+      - /url: https://www.google.com/maps?cid=8801259008937640586
+    - paragraph: Dados coletados em out/2026.
+    - heading "A confiança tem muitas vozes." [level=2]
+    - button "← Anterior"
+    - button "Pausar carrossel"
+    - button "Próxima →"
+    - region "Relatos de clientes; role horizontalmente para ler":
+      - article:
+        - strong: Karolina D.
+        - text: ★★★★★
+        - blockquote:
+          - paragraph: Excelente atendimento! Levei meu Apple Watch para verificarem e fui muito bem atendida. Fizeram uma limpeza no aparelho e nem cobraram pelo serviço. Foram muito atenciosos, prestativos e honestos. Com certeza recomendo e voltarei quando precisar!
+        - link "Avaliação no Google ↗":
+          - /url: https://www.google.com/maps?cid=8801259008937640586
+        - text: Publicada aproximadamente em
+        - time: 09/2026
+      - article:
+        - strong: Mariane V.
+        - text: ★★★★★
+        - blockquote:
+          - paragraph: Me tornei uma fã do trabalho da Smart Lion. Tive alguns problemas técnicos com meu celular no último mês e sempre que precisei eles forem extremamente solicitos, ágeis, dispostos a encontrar a melhor solução possível em todos os casos e sempre trazendo boas explicações técnicas para como resolver aquela questão. Recomendo muito a loja e agora espero voltar apenas para compras, mas sei que se algo acontecer vou poder contar com o bom trabalho deles!!
+        - link "Avaliação no Google ↗":
+          - /url: https://www.google.com/maps?cid=8801259008937640586
+        - text: Publicada aproximadamente em
+        - time: 08/2026
+      - article:
+        - strong: Paola C.
+        - text: ★★★★★
+        - blockquote:
+          - paragraph: Atendimento impecável, personalizado e de alto padrão. Os profissionais demonstram amplo conhecimento sobre os produtos, orientam com segurança e são extremamente atenciosos em cada etapa do atendimento. A experiência é diferenciada do início ao fim. Super satisfeita com a minha compra!!!
+        - link "Avaliação no Google ↗":
+          - /url: https://www.google.com/maps?cid=8801259008937640586
+        - text: Publicada aproximadamente em
+        - time: 07/2026
+      - article:
+        - strong: Pedro S.
+        - text: ★★★★★
+        - blockquote:
+          - paragraph: Fui à Smart Lion para reparar meu MacBook e meu iPad e saí genuinamente impressionado. Atendimento excelente, técnicos especializados. Os aparelhos retornaram impecáveis,como novos!! Um serviço que supera expectativas
+        - link "Avaliação no Google ↗":
+          - /url: https://www.google.com/maps?cid=8801259008937640586
+        - text: Publicada aproximadamente em
+        - time: 04/2026
+      - article:
+        - strong: Laís
+        - text: ★★★★★
+        - blockquote:
+          - paragraph: Loja especializada muito boa!! estava com problema na minha bateria e meu celular estava se desligando sozinho, agora esta com a saude 100% e o carregamento bem rapido e demora demais para descarregar, está como do jeito que eu comprei
+        - link "Avaliação no Google ↗":
+          - /url: https://www.google.com/maps?cid=8801259008937640586
+        - text: Publicada aproximadamente em
+        - time: 04/2026
+      - article:
+        - strong: Erica M.
+        - text: ★★★★★
+        - blockquote:
+          - paragraph: Fui super bem atendida!! Tava na dúvida entre iPhone e Xiaomi, mas as meninas me ajudaram e me explicaram as principais diferenças. Comprei o POCO X8 PRO e tô apaixonada já sai com tudo transferido e pronto. Atendimento impecável, recomendo muitooooo
+        - link "Avaliação no Google ↗":
+          - /url: https://www.google.com/maps?cid=8801259008937640586
+        - text: Publicada aproximadamente em
+        - time: 04/2026
+    - paragraph: Seleção de relatos literais. Experiências e prazos citados são individuais, da época da avaliação.
+    - link "Ler mais avaliações ↗":
+      - /url: /avaliacoes
+  - region "Marcas que a Smart Lion trabalha":
+    - heading "Marcas que a Smart Lion trabalha" [level=2]
+    - list:
+      - listitem: Apple
+      - listitem: Xiaomi
+      - listitem: POCO
+      - listitem: Redmi
+  - region "Da escolha ao cuidado. Sempre com gente por perto.":
+    - paragraph: Nossa história
+    - heading "Da escolha ao cuidado. Sempre com gente por perto." [level=2]
+    - paragraph: A Smart Lion nasceu com a ideia de tornar a experiência com tecnologia segura e confiável. Produtos novos e seminovos, procedência e suporte fazem parte dessa relação.
+    - paragraph: Com o tempo, esse cuidado também ganhou espaço na manutenção e no ensino. Hoje, nossa loja reúne venda de importados, assistência técnica e treinamento de manutenção de celulares.
+    - list "Marcos confirmados da Smart Lion":
+      - listitem:
+        - time: Fevereiro de 2026
+        - heading "Anúncio de participação no IRP" [level=3]
+        - paragraph: Anunciamos nossa participação no programa Independent Repair Provider (IRP) da Apple. A data se refere à divulgação, não ao início contratual no programa.
+      - listitem:
+        - time: "2026"
+        - heading "Aprendizado no Centro Técnico" [level=3]
+        - paragraph: Divulgamos turmas de manutenção de celulares no laboratório anexo à loja, com bancadas individuais. Este marco registra a divulgação das turmas, não uma data de inauguração.
+      - listitem:
+        - time: Outubro de 2026
+        - heading "A confiança segue registrada" [level=3]
+        - paragraph: A coleta de outubro registrou 766 avaliações e nota 5,0 na ficha da loja no Google.
+    - link "Conheça nossa história ↗":
+      - /url: /nossa-historia
+  - region "Acompanhe a Smart Lion.":
+    - paragraph: De perto, no seu feed
+    - heading "Acompanhe a Smart Lion." [level=2]
+    - link "@smartlion.sc":
+      - /url: https://www.instagram.com/smartlion.sc/
+    - paragraph:
+      - text: 10,5 mil seguidores em
+      - time: 28/10/2026
+      - text: .
+    - link "Seguir no Instagram ↗":
+      - /url: https://www.instagram.com/smartlion.sc/
+  - region "Visite-nos. Vamos conversar.":
+    - paragraph: Tem endereço. Tem gente.
+    - heading "Visite-nos. Vamos conversar." [level=2]
+    - text: Rua Hercílio Luz, 364 · Centro, Lages/SC CEP 88501-010
+    - heading "Quando visitar" [level=3]
+    - paragraph: Fechado · abre hoje às 9h
+    - table "Horário da loja em Lages":
+      - caption: Horário da loja em Lages
+      - rowgroup:
+        - row "Segunda a sexta 9h–12h e 13h30–18h30":
+          - rowheader "Segunda a sexta"
+          - cell "9h–12h e 13h30–18h30"
+        - row "Sábado 9h–13h":
+          - rowheader "Sábado"
+          - cell "9h–13h"
+        - row "Domingo Fechado":
+          - rowheader "Domingo"
+          - cell "Fechado"
+    - paragraph: Nos feriados, confirme o atendimento com a equipe.
+    - link "Google Maps ↗":
+      - /url: https://www.google.com/maps?cid=8801259008937640586
+    - link "Waze ↗":
+      - /url: https://www.waze.com/ul?ll=-27.8153637%2C-50.3290069&navigate=yes
+    - link "Fale conosco no WhatsApp":
+      - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - 'link "Telefone: (49) 99818-2996"':
+      - /url: tel:+5549998182996
+    - heading "Encontre a Smart Lion" [level=3]
+    - paragraph: Ao carregar o mapa, seu navegador se conecta ao Google, que pode usar cookies. Você pode continuar com o endereço e os links de rota sem carregar o mapa aqui.
+    - button "Carregar mapa do Google"
+    - button "Continuar sem mapa"
+- region "Preferências de privacidade":
+  - 'heading "Mapa do Google: você escolhe." [level=2]'
+  - paragraph: Não usamos publicidade ou analytics. O mapa é opcional e pode permitir cookies do Google. Aceitar autoriza esse recurso; ele só será carregado quando você clicar no mapa. Sua escolha fica nesta aba durante a sessão.
+  - button "Aceitar"
+  - button "Recusar"
+  - link "Entenda a privacidade":
+    - /url: /privacidade
+- contentinfo:
+  - img "Smart Lion · Lages/SC"
+  - paragraph: Tecnologia de verdade é sobre pessoas.
+  - region "Loja":
+    - heading "Loja" [level=2]
+    - text: Rua Hercílio Luz, 364 · Centro, Lages/SC CEP 88501-010
+    - list:
+      - listitem:
+        - link "Ver no Google Maps ↗":
+          - /url: https://www.google.com/maps?cid=8801259008937640586
+      - listitem:
+        - link "Instagram @smartlion.sc ↗":
+          - /url: https://www.instagram.com/smartlion.sc/
+  - region "Horário":
+    - heading "Horário" [level=2]
+    - paragraph: Fechado · abre hoje às 9h
+    - table "Horário de atendimento":
+      - caption: Horário de atendimento
+      - rowgroup:
+        - row "Segunda a sexta 9h–12h e 13h30–18h30":
+          - rowheader "Segunda a sexta"
+          - cell "9h–12h e 13h30–18h30"
+        - row "Sábado 9h–13h":
+          - rowheader "Sábado"
+          - cell "9h–13h"
+        - row "Domingo Fechado":
+          - rowheader "Domingo"
+          - cell "Fechado"
+    - paragraph: Nos feriados, consulte o atendimento.
+  - region "Contato":
+    - heading "Contato" [level=2]
+    - link "WhatsApp (49) 99926-8930":
+      - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - link "Telefone (49) 99818-2996":
+      - /url: tel:+5549998182996
+  - navigation "Páginas":
+    - heading "Páginas" [level=2]
+    - list:
+      - listitem:
+        - link "A Loja":
+          - /url: /a-loja
+      - listitem:
+        - link "Nossa História":
+          - /url: /nossa-historia
+      - listitem:
+        - link "Avaliações":
+          - /url: /avaliacoes
+      - listitem:
+        - link "Visite-nos":
+          - /url: /visite-nos
+      - listitem:
+        - link "Produtos":
+          - /url: /produtos
+      - listitem:
+        - link "Seminovos":
+          - /url: /seminovos
+      - listitem:
+        - link "Assistência técnica":
+          - /url: /assistencia-tecnica
+      - listitem:
+        - link "Curso":
+          - /url: /curso-manutencao-celular
+      - listitem:
+        - link "Perguntas frequentes":
+          - /url: /perguntas-frequentes
+      - listitem:
+        - link "Dicas":
+          - /url: /dicas
+      - listitem:
+        - link "Privacidade":
+          - /url: /privacidade
+  - region "Comprou ou consertou com a gente? Dá a sua nota.":
+    - paragraph: Sua experiência importa
+    - heading "Comprou ou consertou com a gente? Dá a sua nota." [level=2]
+    - paragraph: Conte como foi seu atendimento. Todas as notas seguem para o Google.
+    - group "Escolha de 1 a 5 estrelas":
+      - text: Escolha de 1 a 5 estrelas
+      - radio "1 estrela"
+      - text: 1 estrela
+      - radio "2 estrelas"
+      - text: 2 estrelas
+      - radio "3 estrelas"
+      - text: 3 estrelas
+      - radio "4 estrelas"
+      - text: 4 estrelas
+      - radio "5 estrelas"
+      - text: 5 estrelas
+    - link "Confirmar minha nota no Google ↗":
+      - /url: https://www.google.com/maps?cid=8801259008937640586
+    - paragraph: A seleção aqui não publica nem envia sua nota. Na ficha do Google, abra Avaliações e escolha Avaliar para confirmar.
+  - paragraph: Smart Lion · Lages/SC
+  - button "Preferências de privacidade"
+  - paragraph: Desenvolvido por WAXLO
+- complementary "Atendimento pelo WhatsApp":
+  - link "Conversar com a Smart Lion no WhatsApp":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - text: Fale conosco
+===== /assistencia-tecnica/
+- link "Pular para o conteúdo":
+  - /url: "#conteudo"
+- banner:
+  - link "Smart Lion — início":
+    - /url: /
+    - text: SMART LION LAGES · SC
+  - navigation "Navegação principal":
+    - list:
+      - listitem:
+        - link "A Loja":
+          - /url: /a-loja
+      - listitem:
+        - link "Nossa História":
+          - /url: /nossa-historia
+      - listitem:
+        - group: O que fazemos
+      - listitem:
+        - link "Avaliações":
+          - /url: /avaliacoes
+      - listitem:
+        - link "Visite-nos":
+          - /url: /visite-nos
+  - link "Instagram @smartlion.sc":
+    - /url: https://www.instagram.com/smartlion.sc/
+  - link "Fale conosco":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+- main:
+  - navigation "Caminho da página":
+    - link "Início":
+      - /url: /
+    - text: Assistência técnica em Lages
+  - paragraph: Assistência técnica · Lages
+  - heading "Assistência técnica em Lages" [level=1]
+  - paragraph: A Smart Lion oferece assistência técnica de celulares na Rua Hercílio Luz, 364 · Centro, Lages/SC. Conte o modelo e o problema pelo WhatsApp para conversar sobre avaliação e orçamento.
+  - link "Pedir orçamento ↗":
+    - /url: "#orcamento"
+  - region "Por dentro do reparo":
+    - heading "Por dentro do reparo" [level=2]
+    - paragraph: Escolha a parte do aparelho para ver o serviço e pedir um orçamento.
+    - tablist "Escolha a parte do aparelho":
+      - tab "Tela" [selected]
+      - tab "Bateria"
+      - tab "Tampa traseira"
+      - tab "Placa"
+    - tabpanel "Tela":
+      - paragraph: Tela
+      - heading "Troca de tela de iPhone" [level=3]
+      - paragraph: A tela quebrou ou o toque começou a falhar? Conte o modelo e o que aconteceu para iniciar a avaliação.
+      - link "Pedir orçamento":
+        - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Preciso%20de%20assist%C3%AAncia%20t%C3%A9cnica.%20Aparelho%3A%20.%20Problema%3A%20troca%20de%20tela.
+      - 'link "Saiba mais: Troca de tela de iPhone"':
+        - /url: /assistencia-tecnica/troca-de-tela-iphone
+        - text: Saiba mais ↗
+  - heading "Entenda o reparo antes de decidir." [level=2]
+  - paragraph: Assistência técnica participante do programa Independent Repair Provider (IRP) da Apple.
+  - paragraph: O programa dá acesso a treinamentos, ferramentas e peças originais para reparos elegíveis. Consulte a equipe sobre as peças e opções para o seu modelo.
+  - list:
+    - listitem:
+      - link "Troca de tela de iPhone":
+        - /url: /assistencia-tecnica/troca-de-tela-iphone
+    - listitem:
+      - link "Troca de bateria de iPhone":
+        - /url: /assistencia-tecnica/troca-de-bateria-iphone
+    - listitem:
+      - link "Reparo de tampa traseira":
+        - /url: /assistencia-tecnica/tampa-traseira
+    - listitem:
+      - link "Reparo de placa de celular":
+        - /url: /assistencia-tecnica/placa
+    - listitem:
+      - link "Assistência para Apple Watch e AirPods":
+        - /url: /assistencia-tecnica/apple-watch-airpods
+    - listitem:
+      - link "Assistência para MacBook e iPad":
+        - /url: /assistencia-tecnica/macbook-ipad
+  - figure "Bancada de assistência da Smart Lion.":
+    - img "Bancada técnica da Smart Lion com microscópio e equipamentos"
+    - text: Bancada de assistência da Smart Lion.
+  - heading "Do primeiro contato ao orçamento." [level=2]
+  - list:
+    - listitem: Informe o aparelho e descreva a falha.
+    - listitem: Converse com a equipe sobre a avaliação técnica.
+    - listitem: Confirme o serviço, as condições e o prazo antes de decidir.
+  - heading "Prazo conforme o diagnóstico" [level=3]
+  - paragraph: Muitos consertos são realizados no mesmo dia. Isso depende da avaliação, do serviço e da disponibilidade de peças.
+  - heading "Garantia do serviço" [level=3]
+  - paragraph: A garantia do reparo é oferecida pela loja. Peça as condições, a cobertura e o prazo aplicáveis ao seu orçamento.
+  - link "Tirar outras dúvidas ↗":
+    - /url: /perguntas-frequentes
+  - region "Consertar ou trocar?":
+    - paragraph: Uma conversa antes de decidir
+    - heading "Consertar ou trocar?" [level=2]
+    - paragraph: A gente analisa e mostra o que compensa mais. Conte o que aconteceu com seu aparelho e tire suas dúvidas sem pressão.
+    - link "Quero consertar":
+      - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Preciso%20de%20assist%C3%AAncia%20t%C3%A9cnica.%20Aparelho%3A%20.%20Problema%3A%20.
+    - link "Quero trocar de aparelho":
+      - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - paragraph: Trocar de aparelho significa escolher outro modelo. A aceitação de usado como parte do pagamento precisa ser consultada.
+  - region "Vamos entender o problema.":
+    - paragraph: Converse com quem vai cuidar do aparelho
+    - heading "Vamos entender o problema." [level=2]
+    - paragraph: Conte o modelo e o que aconteceu. A equipe conversa com você pelo WhatsApp sobre avaliação, prazo e orçamento.
+    - text: Modelo do aparelho (opcional)
+    - textbox "Modelo do aparelho (opcional)":
+      - /placeholder: Digite o modelo do seu aparelho
+    - text: O que aconteceu? (opcional)
+    - textbox "O que aconteceu? (opcional)":
+      - /placeholder: Descreva o problema
+    - paragraph: Os campos apenas preparam uma mensagem no seu navegador. Revise no WhatsApp antes de enviar. Não informe senhas, documentos ou dados bancários.
+    - button "Preparar conversa no WhatsApp ↗"
+    - paragraph:
+      - link "Como seus dados são tratados":
+        - /url: /privacidade
+- region "Preferências de privacidade":
+  - 'heading "Mapa do Google: você escolhe." [level=2]'
+  - paragraph: Não usamos publicidade ou analytics. O mapa é opcional e pode permitir cookies do Google. Aceitar autoriza esse recurso; ele só será carregado quando você clicar no mapa. Sua escolha fica nesta aba durante a sessão.
+  - button "Aceitar"
+  - button "Recusar"
+  - link "Entenda a privacidade":
+    - /url: /privacidade
+- contentinfo:
+  - img "Smart Lion · Lages/SC"
+  - paragraph: Tecnologia de verdade é sobre pessoas.
+  - region "Loja":
+    - heading "Loja" [level=2]
+    - text: Rua Hercílio Luz, 364 · Centro, Lages/SC CEP 88501-010
+    - list:
+      - listitem:
+        - link "Ver no Google Maps ↗":
+          - /url: https://www.google.com/maps?cid=8801259008937640586
+      - listitem:
+        - link "Instagram @smartlion.sc ↗":
+          - /url: https://www.instagram.com/smartlion.sc/
+  - region "Horário":
+    - heading "Horário" [level=2]
+    - paragraph: Fechado · abre hoje às 9h
+    - table "Horário de atendimento":
+      - caption: Horário de atendimento
+      - rowgroup:
+        - row "Segunda a sexta 9h–12h e 13h30–18h30":
+          - rowheader "Segunda a sexta"
+          - cell "9h–12h e 13h30–18h30"
+        - row "Sábado 9h–13h":
+          - rowheader "Sábado"
+          - cell "9h–13h"
+        - row "Domingo Fechado":
+          - rowheader "Domingo"
+          - cell "Fechado"
+    - paragraph: Nos feriados, consulte o atendimento.
+  - region "Contato":
+    - heading "Contato" [level=2]
+    - link "WhatsApp (49) 99926-8930":
+      - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - link "Telefone (49) 99818-2996":
+      - /url: tel:+5549998182996
+  - navigation "Páginas":
+    - heading "Páginas" [level=2]
+    - list:
+      - listitem:
+        - link "A Loja":
+          - /url: /a-loja
+      - listitem:
+        - link "Nossa História":
+          - /url: /nossa-historia
+      - listitem:
+        - link "Avaliações":
+          - /url: /avaliacoes
+      - listitem:
+        - link "Visite-nos":
+          - /url: /visite-nos
+      - listitem:
+        - link "Produtos":
+          - /url: /produtos
+      - listitem:
+        - link "Seminovos":
+          - /url: /seminovos
+      - listitem:
+        - link "Assistência técnica":
+          - /url: /assistencia-tecnica
+      - listitem:
+        - link "Curso":
+          - /url: /curso-manutencao-celular
+      - listitem:
+        - link "Perguntas frequentes":
+          - /url: /perguntas-frequentes
+      - listitem:
+        - link "Dicas":
+          - /url: /dicas
+      - listitem:
+        - link "Privacidade":
+          - /url: /privacidade
+  - region "Comprou ou consertou com a gente? Dá a sua nota.":
+    - paragraph: Sua experiência importa
+    - heading "Comprou ou consertou com a gente? Dá a sua nota." [level=2]
+    - paragraph: Conte como foi seu atendimento. Todas as notas seguem para o Google.
+    - group "Escolha de 1 a 5 estrelas":
+      - text: Escolha de 1 a 5 estrelas
+      - radio "1 estrela"
+      - text: 1 estrela
+      - radio "2 estrelas"
+      - text: 2 estrelas
+      - radio "3 estrelas"
+      - text: 3 estrelas
+      - radio "4 estrelas"
+      - text: 4 estrelas
+      - radio "5 estrelas"
+      - text: 5 estrelas
+    - link "Confirmar minha nota no Google ↗":
+      - /url: https://www.google.com/maps?cid=8801259008937640586
+    - paragraph: A seleção aqui não publica nem envia sua nota. Na ficha do Google, abra Avaliações e escolha Avaliar para confirmar.
+  - paragraph: Smart Lion · Lages/SC
+  - button "Preferências de privacidade"
+  - paragraph: Desenvolvido por WAXLO
+- complementary "Atendimento pelo WhatsApp":
+  - link "Conversar com a Smart Lion no WhatsApp":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - text: Fale conosco
+===== /avaliacoes/
+- link "Pular para o conteúdo":
+  - /url: "#conteudo"
+- banner:
+  - link "Smart Lion — início":
+    - /url: /
+    - text: SMART LION LAGES · SC
+  - navigation "Navegação principal":
+    - list:
+      - listitem:
+        - link "A Loja":
+          - /url: /a-loja
+      - listitem:
+        - link "Nossa História":
+          - /url: /nossa-historia
+      - listitem:
+        - group: O que fazemos
+      - listitem:
+        - link "Avaliações":
+          - /url: /avaliacoes
+      - listitem:
+        - link "Visite-nos":
+          - /url: /visite-nos
+  - link "Instagram @smartlion.sc":
+    - /url: https://www.instagram.com/smartlion.sc/
+  - link "Fale conosco":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+- main:
+  - paragraph: Experiências de quem conhece
+  - heading "Avaliações da Smart Lion em Lages." [level=1]
+  - paragraph: Veja relatos sobre compras e assistência técnica na Smart Lion, na Rua Hercílio Luz, 364 · Centro, Lages/SC. Para consultar um aparelho ou falar sobre um reparo, converse com nossa equipe pelo WhatsApp.
+  - link "Fale conosco":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+  - paragraph: 5,0 de 5 estrelas no Google
+  - link "766 avaliações no Google":
+    - /url: https://www.google.com/maps?cid=8801259008937640586
+  - paragraph:
+    - text: Atualizado em
+    - time: out/2026
+    - text: .
+  - list "Distribuição das notas no Google":
+    - 'listitem "5 estrelas: 763"': 5 763
+    - 'listitem "4 estrelas: 1"': 4 1
+    - 'listitem "3 estrelas: 0"': 3 0
+    - 'listitem "2 estrelas: 0"': 2 0
+    - 'listitem "1 estrela: 2"': 1 2
+  - region "Relatos de clientes.":
+    - paragraph: Arquivo de relatos
+    - heading "Relatos de clientes." [level=2]
+    - paragraph:
+      - text: Esta seleção reúne 56 depoimentos coletados do Google em outubro de 2026. Para consultar o conjunto completo e as avaliações mais recentes,
+      - link "acesse a ficha no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: . Preços, prazos e experiências citados são relatos individuais da época, não condições atuais da loja.
+    - group "Filtrar avaliações por tema":
+      - button "Todas" [pressed]
+      - button "Compra"
+      - button "Assistência"
+      - button "Seminovos"
+      - button "Atendimento"
+      - button "Clientes de outras cidades"
+    - status: 56 depoimentos
+    - article:
+      - strong: Karolina D.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Excelente atendimento! Levei meu Apple Watch para verificarem e fui muito bem atendida. Fizeram uma limpeza no aparelho e nem cobraram pelo serviço. Foram muito atenciosos, prestativos e honestos. Com certeza recomendo e voltarei quando precisar!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 09/2026
+    - article:
+      - strong: Carolina O.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Excelente atendimento do início ao fim! Ótimos preços e ótimos produtos!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 09/2026
+    - article:
+      - strong: Mariane V.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Me tornei uma fã do trabalho da Smart Lion. Tive alguns problemas técnicos com meu celular no último mês e sempre que precisei eles forem extremamente solicitos, ágeis, dispostos a encontrar a melhor solução possível em todos os casos e sempre trazendo boas explicações técnicas para como resolver aquela questão. Recomendo muito a loja e agora espero voltar apenas para compras, mas sei que se algo acontecer vou poder contar com o bom trabalho deles!!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 08/2026
+    - article:
+      - strong: Natália D.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Levei meu AirPods pro conserto na Smart Lion e fui muito bem atendida. O serviço foi rápido, de qualidade e resolveu meu problema.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 07/2026
+    - article:
+      - strong: São C.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Fomos muito bem atendidos, quem nós atendeu tem um conhecimento excepcional. Com certeza recomendamos
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 07/2026
+    - article:
+      - strong: Andréia L.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Sinceramente foi a melhor loja de assistencia técnica que encontrei até hoje. O atendimento foi maravilhoso, meu problema foi resolvido e o atendimento muito bom. Eu nunca conseguiria fazer o que foi feito e o profissionalismo impecável. Super recomendo e me fidelizou como cliente pra sempre.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 07/2026
+    - article:
+      - strong: Paola C.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Atendimento impecável, personalizado e de alto padrão. Os profissionais demonstram amplo conhecimento sobre os produtos, orientam com segurança e são extremamente atenciosos em cada etapa do atendimento. A experiência é diferenciada do início ao fim. Super satisfeita com a minha compra!!!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 07/2026
+    - article:
+      - strong: Keli O.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Atendimento muito bom, fui atendida pelo Vagner. Cotamos o aparelho no sábado e voltamos buscar hoje
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 07/2026
+    - article:
+      - strong: Verônica Z.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Eu tive uma ótima experiência com a loja. Desde o primeiro atendimento foram esclarecidos e atenciosos. Minha solicitação foi para assistência. Tive meu iPhone quebrado após um queda e eles trocaram a parte de trás do aparelho, e o serviço foi bem prestado. Recomendo muito.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 06/2026
+    - article:
+      - strong: Gorete O.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Comprei um iPhone 15 pra minha filha foi muito bem atendida vcs sao nota 10
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 06/2026
+    - article:
+      - strong: Paloma M.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Atendimento impecável e preço justo
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 06/2026
+    - article:
+      - strong: Rose A.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Minha indicação é que pode confiar. Adquiri um excelente Xioami novo. Atendimento maravilhoso pela Fabi, atenciosa. Recomendo.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 06/2026
+    - article:
+      - strong: Luan B.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Super atenciosos! Um ótimo lugar para realizar a compra de aparelhos! Diretamente de Cerro Negro - SC
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Crystian A.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Grato pelo ótimo atendimento carinho e atenção ! Vocês são excelentes no que fazem ! Iremos fechar muitos outros negócios ! Super indico ! Sérios e honestos parabéns . Smart Lion
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Elisangela S.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Levei o telefone da minha filha para reparo e me entregaram no mesmo dia com o melhor tempo de garantia da cidade
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Carmen N.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Eu comprei um robô aspirador da XIAOMI X20 MAX. Ainda estou em processo de mais descobertas em tudo o que ele pode fazer… mas do que vi até agora, é muito bom Aspira e passa o pano muito bem. Na realidade achei melhor do que esperava… Mas o excelente mesmo foi o atendimento da SABRINA. Super disponível, com bom conhecimento, e muito cordial. Dispôs da sua tarde de sábado para nos orientar… e sempre atende nas dúvidas
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Mateus S.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Muito bom,consegui pegar o meu celular no mesmo dia!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Thalia A.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Deixar aqui meu agradecimento de coração pelo atendimento perfeito que recebi desde o primeiro contato que tive por telefone com a loja, Gerente Sabrina e vendedora Amanda ,que atendimento maravilhoso. Muito queridas , me atenderam em horário diferenciado eu cheia de dúvidas meu primeiro iPhone e elas muito atenciosas tanto no pessoal quanto por telefone , sem dúvidas o melhor atendimento, fico grata de coração
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Ryan S.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Melhor assistência técnica de Lages!! Super indico, super rápidos e sinceros. O melhor tempo de garantia que tem em Lages.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Gabriel J.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Excelente atendimento e ótima experiência de compra. A equipe foi muito atenciosa, tirou todas as minhas dúvidas e me ajudou a escolher o celular ideal para o que eu precisava. O aparelho veio em perfeito estado, original e com garantia. O preço foi justo e o atendimento foi rápido e profissional. Estou muito satisfeito com a compra e com certeza voltarei a comprar nessa loja. Recomendo a todos que procuram confiança, qualidade e bom atendimento.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Victor E.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Muito bom, loja climatizada, comprei um iPhone e veio tudo perfeito, o atendimento é muito bom e atencioso
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Isadora X.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Excelente atendimento, deixei o celular com um curto total, me entregaram em menos de 1 semana. Indico e recomendo!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Cleci B.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: O melhor atendimento, sempre me socorrem no que precisar … super indico !!!!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Cortina C.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: O atendimento das meninas é ótimo, além de você se sentir bem dentro da loja. Volto sempre e indico!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Alana M.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Levei meu celular na Smart Lion depois de já ter passado por outra assistência e não ter tido uma boa experiência. Desde o primeiro contato senti muita confiança pela honestidade deles e principalmente pela garantia do serviço, que hoje em dia faz toda diferença. O atendimento foi impecável! Inclusive buscaram meu aparelho em Bom Retiro, o que já mostrou o cuidado e a preocupação com o cliente. O Vagner transmite muita segurança, explica tudo com paciência e dá pra ver que realmente se importa em entregar um trabalho bem feito. Eu tinha um prazo bem curto e eles cumpriram exatamente o combinado, sem enrolação. Serviço rápido, transparente e de extrema qualidade. Hoje posso dizer que confio de olhos fechados na Smart Lion. Recomendo demais!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Danielli M.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Um atendimento impecável! Paciência incrível … esclareceram todas as minhas dúvidas, já é a segunda vez que compro com eles, produtos originais, agradeço muito e parabéns pelo atendimento mais uma vez
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Alexandre S.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Fui muito bem atendido pela Sabrina da loja de Lages ,dei um iPhone 16 pro meu filho e ela foi impecável no atendimento meu e do meu filho ,ela está de parabéns.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Elisangela C.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Excelente atendimento, meninas atenciosas, recebemos todo o suporte necessário,ambiente acolhedor, recomendamos.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Xande
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Super atenciosas, recebi um iphone 16 perfeito. Excelente atendimento
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Gabrielle S.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: O atendimento é ótimo e eles entregaram na minha casa! Recomendo!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Renata B.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Excelente atendimento e ótimas condições! Valeu muito a pena, vim de outra cidade para comprar e fui muito bem atendida. Recomendo!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Amanda S.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Gostei muito da experiência na loja, foram super atenciosas comigo e me ajudou a encontrar exatamente o que eu precisava, desde a parte da pré venda, quando na finalização... Comprei um iPhone 13. Concerta voltarei e indicarei o serviço e produtos.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Maria R.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Comprei meu iPhone na loja smart lion quero agradecer o atendimento as meninas são maravilhosas muito atenciosas principalmente a Sabrina que me vendeu meu próximo vai ser aqui novamente obrigada por tanto carinho
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: This S.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Ótimo atendimento, Ótimos produtos controles ótimos, o preço do controle de xbox original foi de 450, recomendo muito
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Patricia S.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Ganhei de presente um iPhone comprado na loja e adorei, ótimo aparelho, atendimento pós venda maravilhoso.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Juliara C.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Sou de São Joaquim comprei iPhone 16 Pro prefeito supre indico atendimento excelente
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Fernanda E.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Muito prestativos, atendimento excelente e me passaram muita segurança durante a execução do serviço.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Camila L.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Atendimento da Sabrina ótimo, educada, ágil e melhor preço que encontrei.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 05/2026
+    - article:
+      - strong: Júnior V.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Comprei meu iPhone 17 Pro Max aí e gostei muito A Sabrina e a Amanda foram super queridas comigo, explicaram tudo direitinho. Atendimento muito bom, me senti bem atendido mesmo Recomendo!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Pedro S.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Fui à Smart Lion para reparar meu MacBook e meu iPad e saí genuinamente impressionado. Atendimento excelente, técnicos especializados. Os aparelhos retornaram impecáveis,como novos!! Um serviço que supera expectativas
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Joao R.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Sempre fui muito bem atendido, pessoal simpático e prestativo. Produtos e serviço de qualidade, recomendo muito. Fora o espaço que é lindo, Nota 10 !!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Laís
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Loja especializada muito boa!! estava com problema na minha bateria e meu celular estava se desligando sozinho, agora esta com a saude 100% e o carregamento bem rapido e demora demais para descarregar, está como do jeito que eu comprei
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Daiane R.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Já comprei um iPhone na Smart Lion um tempo atrás e gostei tanto que voltei agora pra comprar outro pra mim e um pro meu filho. O atendimento continua incrível, AMOOO A VENDEDORA SABRINA pessoal super querido, explica tudo direitinho e ajuda a escolher sem pressão. Também só compro os acessórios da X-One com eles, porque realmente são muito bons e duram bastante, compensa mesmo. Com certeza é uma loja que eu confio e volto sempre ++
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Árian M.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Ótima proposta para negócio na compra de um novo celular. Recomendo! Além de várias opções de capinhas para celular com garantia.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Paola C.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Atendimento ótimo e de excelência comprei meu iPhone 17 lilás.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Erica M.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Fui super bem atendida!! Tava na dúvida entre iPhone e Xiaomi, mas as meninas me ajudaram e me explicaram as principais diferenças. Comprei o POCO X8 PRO e tô apaixonada já sai com tudo transferido e pronto. Atendimento impecável, recomendo muitooooo
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Pamela O.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Ótimo atendimento e preços justos! A Amanda foi incrível, super atenciosa e prestativa do início ao fim. Atendimento assim faz a gente querer voltar!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Wellinton R.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Agradecido pelo atendimento. Estabelecimento com excelente ambiente, além de serviços e produtos com qualidade!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: M L.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Atendimento excelente, com valores acessiveis e profissionais capacitados, voltaremos a fazer negócio muito breve!
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Maiara O.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Atendentes super queridas no WhatsApp te dão todo suporte possível
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Carol D.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Melhor atendimento da cidade, preços ótimos, comprei um 16 pro Max, e depois um 17 pro Max, ambos com excelente preço e pós venda, experiência perfeita
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Victor K.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: A melhor da AMURES, recomendo 100%
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Nicole S.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: ótimo atendimento,estava a procura de produtos da Victoria Secrets,e encontrei de ótima qualidade,super indico
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 04/2026
+    - article:
+      - strong: Inacio F.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Fiz a troca da tela de um S9 FE+, concerto rápido e vem sucedido, com atualizações da loja sempre que precisava.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 03/2026
+    - article:
+      - strong: Eddy S.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Empresa excepcional. Meus smartphones e tablets — tanto de uso pessoal quanto profissional — são sempre muito bem cuidados. A Sabrina, como de costume, presta um atendimento impecável e demonstra grande atenção aos equipamentos. Recomendo com total confiança.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 03/2026
+    - article:
+      - strong: Camila B.
+      - text: ★★★★★
+      - blockquote:
+        - paragraph: Atendimento impecável. As meninas me auxiliaram em como usar o iPad e acessórios tbm. Tudo que precisei encontrei lá com ótimas condições.
+      - link "Avaliação no Google ↗":
+        - /url: https://www.google.com/maps?cid=8801259008937640586
+      - text: Publicada aproximadamente em
+      - time: 03/2026
+- region "Preferências de privacidade":
+  - 'heading "Mapa do Google: você escolhe." [level=2]'
+  - paragraph: Não usamos publicidade ou analytics. O mapa é opcional e pode permitir cookies do Google. Aceitar autoriza esse recurso; ele só será carregado quando você clicar no mapa. Sua escolha fica nesta aba durante a sessão.
+  - button "Aceitar"
+  - button "Recusar"
+  - link "Entenda a privacidade":
+    - /url: /privacidade
+- contentinfo:
+  - img "Smart Lion · Lages/SC"
+  - paragraph: Tecnologia de verdade é sobre pessoas.
+  - region "Loja":
+    - heading "Loja" [level=2]
+    - text: Rua Hercílio Luz, 364 · Centro, Lages/SC CEP 88501-010
+    - list:
+      - listitem:
+        - link "Ver no Google Maps ↗":
+          - /url: https://www.google.com/maps?cid=8801259008937640586
+      - listitem:
+        - link "Instagram @smartlion.sc ↗":
+          - /url: https://www.instagram.com/smartlion.sc/
+  - region "Horário":
+    - heading "Horário" [level=2]
+    - paragraph: Fechado · abre hoje às 9h
+    - table "Horário de atendimento":
+      - caption: Horário de atendimento
+      - rowgroup:
+        - row "Segunda a sexta 9h–12h e 13h30–18h30":
+          - rowheader "Segunda a sexta"
+          - cell "9h–12h e 13h30–18h30"
+        - row "Sábado 9h–13h":
+          - rowheader "Sábado"
+          - cell "9h–13h"
+        - row "Domingo Fechado":
+          - rowheader "Domingo"
+          - cell "Fechado"
+    - paragraph: Nos feriados, consulte o atendimento.
+  - region "Contato":
+    - heading "Contato" [level=2]
+    - link "WhatsApp (49) 99926-8930":
+      - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - link "Telefone (49) 99818-2996":
+      - /url: tel:+5549998182996
+  - navigation "Páginas":
+    - heading "Páginas" [level=2]
+    - list:
+      - listitem:
+        - link "A Loja":
+          - /url: /a-loja
+      - listitem:
+        - link "Nossa História":
+          - /url: /nossa-historia
+      - listitem:
+        - link "Avaliações":
+          - /url: /avaliacoes
+      - listitem:
+        - link "Visite-nos":
+          - /url: /visite-nos
+      - listitem:
+        - link "Produtos":
+          - /url: /produtos
+      - listitem:
+        - link "Seminovos":
+          - /url: /seminovos
+      - listitem:
+        - link "Assistência técnica":
+          - /url: /assistencia-tecnica
+      - listitem:
+        - link "Curso":
+          - /url: /curso-manutencao-celular
+      - listitem:
+        - link "Perguntas frequentes":
+          - /url: /perguntas-frequentes
+      - listitem:
+        - link "Dicas":
+          - /url: /dicas
+      - listitem:
+        - link "Privacidade":
+          - /url: /privacidade
+  - region "Comprou ou consertou com a gente? Dá a sua nota.":
+    - paragraph: Sua experiência importa
+    - heading "Comprou ou consertou com a gente? Dá a sua nota." [level=2]
+    - paragraph: Conte como foi seu atendimento. Todas as notas seguem para o Google.
+    - group "Escolha de 1 a 5 estrelas":
+      - text: Escolha de 1 a 5 estrelas
+      - radio "1 estrela"
+      - text: 1 estrela
+      - radio "2 estrelas"
+      - text: 2 estrelas
+      - radio "3 estrelas"
+      - text: 3 estrelas
+      - radio "4 estrelas"
+      - text: 4 estrelas
+      - radio "5 estrelas"
+      - text: 5 estrelas
+    - link "Confirmar minha nota no Google ↗":
+      - /url: https://www.google.com/maps?cid=8801259008937640586
+    - paragraph: A seleção aqui não publica nem envia sua nota. Na ficha do Google, abra Avaliações e escolha Avaliar para confirmar.
+  - paragraph: Smart Lion · Lages/SC
+  - button "Preferências de privacidade"
+  - paragraph: Desenvolvido por WAXLO
+- complementary "Atendimento pelo WhatsApp":
+  - link "Conversar com a Smart Lion no WhatsApp":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - text: Fale conosco
+===== /produtos/
+- link "Pular para o conteúdo":
+  - /url: "#conteudo"
+- banner:
+  - link "Smart Lion — início":
+    - /url: /
+    - text: SMART LION LAGES · SC
+  - navigation "Navegação principal":
+    - list:
+      - listitem:
+        - link "A Loja":
+          - /url: /a-loja
+      - listitem:
+        - link "Nossa História":
+          - /url: /nossa-historia
+      - listitem:
+        - group: O que fazemos
+      - listitem:
+        - link "Avaliações":
+          - /url: /avaliacoes
+      - listitem:
+        - link "Visite-nos":
+          - /url: /visite-nos
+  - link "Instagram @smartlion.sc":
+    - /url: https://www.instagram.com/smartlion.sc/
+  - link "Fale conosco":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+- main:
+  - paragraph: Produtos · Lages
+  - heading "Tecnologia que faz parte do seu dia." [level=1]
+  - paragraph: Na Smart Lion, reunimos Apple, Xiaomi, acessórios e importados no Centro de Lages. A gente conversa sobre o que você procura e ajuda na escolha pelo WhatsApp.
+  - link "Conheça também o espaço da loja ↗":
+    - /url: /a-loja
+  - figure "Fotografado na Smart Lion.":
+    - img "Fone de ouvido azul fotografado na loja Smart Lion"
+    - text: Fotografado na Smart Lion.
+  - region "Escolha por linha.":
+    - paragraph: Linhas de produto
+    - heading "Escolha por linha." [level=2]
+    - list:
+      - listitem:
+        - link "iPhone Novos e seminovos":
+          - /url: /produtos/iphone
+      - listitem:
+        - link "Seminovos 6 meses de garantia":
+          - /url: /seminovos
+      - listitem:
+        - link "iPad, Mac e Watch E acessórios Apple":
+          - /url: /produtos/ipad-mac-watch
+      - listitem:
+        - link "Xiaomi POCO e Redmi":
+          - /url: /produtos/xiaomi
+      - listitem:
+        - link "Caixa de som portátil no balcão da Smart Lion Casa e games Tecnologia para sua rotina":
+          - /url: /produtos/casa-e-games
+          - img "Caixa de som portátil no balcão da Smart Lion"
+          - text: Casa e games Tecnologia para sua rotina
+      - listitem:
+        - link "Capas de celular com textura de couro, fotografadas na loja Acessórios Proteção e praticidade":
+          - /url: /produtos/acessorios
+          - img "Capas de celular com textura de couro, fotografadas na loja"
+          - text: Acessórios Proteção e praticidade
+      - listitem:
+        - link "Perfumaria Importados":
+          - /url: /produtos/perfumaria
+  - navigation "Categorias de produtos":
+    - link "Todas":
+      - /url: /produtos
+    - link "iPhone":
+      - /url: /produtos/iphone
+    - link "Seminovos":
+      - /url: /seminovos
+    - link "iPad, Mac e Watch":
+      - /url: /produtos/ipad-mac-watch
+    - link "Xiaomi":
+      - /url: /produtos/xiaomi
+    - link "Casa e games":
+      - /url: /produtos/casa-e-games
+    - link "Acessórios":
+      - /url: /produtos/acessorios
+    - link "Perfumaria":
+      - /url: /produtos/perfumaria
+  - search "Buscar produtos":
+    - text: Qual modelo você procura?
+    - searchbox "Qual modelo você procura?"
+    - text: Condição
+    - combobox "Condição":
+      - option "Todas" [selected]
+      - option "Novo"
+      - option "Seminovo"
+    - button "Buscar"
+  - heading "Modelos do catálogo" [level=2]
+  - status: Modelos sob consulta
+  - text: Disponibilidade e condições pelo WhatsApp
+  - paragraph: Vamos encontrar seu próximo aparelho
+  - heading "Converse com a nossa equipe." [level=2]
+  - paragraph: Consulte os modelos e as condições pelo WhatsApp. Nossa equipe ajuda você a escolher.
+  - link "Tirar dúvida no WhatsApp":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+  - region "Planeje a próxima compra.":
+    - paragraph: Consulte as condições para o seu aparelho
+    - heading "Planeje a próxima compra." [level=2]
+    - paragraph:
+      - strong: Até 24x
+      - text: no cartão
+    - paragraph:
+      - strong: Até 36x
+      - text: no boleto, sujeito a análise de crédito
+    - paragraph: Consulte entrada, taxas, valor das parcelas e condições vigentes antes de fechar.
+    - link "Simular no WhatsApp":
+      - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Quero%20simular%20o%20parcelamento%20de%20um%20aparelho.
+- region "Preferências de privacidade":
+  - 'heading "Mapa do Google: você escolhe." [level=2]'
+  - paragraph: Não usamos publicidade ou analytics. O mapa é opcional e pode permitir cookies do Google. Aceitar autoriza esse recurso; ele só será carregado quando você clicar no mapa. Sua escolha fica nesta aba durante a sessão.
+  - button "Aceitar"
+  - button "Recusar"
+  - link "Entenda a privacidade":
+    - /url: /privacidade
+- contentinfo:
+  - img "Smart Lion · Lages/SC"
+  - paragraph: Tecnologia de verdade é sobre pessoas.
+  - region "Loja":
+    - heading "Loja" [level=2]
+    - text: Rua Hercílio Luz, 364 · Centro, Lages/SC CEP 88501-010
+    - list:
+      - listitem:
+        - link "Ver no Google Maps ↗":
+          - /url: https://www.google.com/maps?cid=8801259008937640586
+      - listitem:
+        - link "Instagram @smartlion.sc ↗":
+          - /url: https://www.instagram.com/smartlion.sc/
+  - region "Horário":
+    - heading "Horário" [level=2]
+    - paragraph: Fechado · abre hoje às 9h
+    - table "Horário de atendimento":
+      - caption: Horário de atendimento
+      - rowgroup:
+        - row "Segunda a sexta 9h–12h e 13h30–18h30":
+          - rowheader "Segunda a sexta"
+          - cell "9h–12h e 13h30–18h30"
+        - row "Sábado 9h–13h":
+          - rowheader "Sábado"
+          - cell "9h–13h"
+        - row "Domingo Fechado":
+          - rowheader "Domingo"
+          - cell "Fechado"
+    - paragraph: Nos feriados, consulte o atendimento.
+  - region "Contato":
+    - heading "Contato" [level=2]
+    - link "WhatsApp (49) 99926-8930":
+      - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - link "Telefone (49) 99818-2996":
+      - /url: tel:+5549998182996
+  - navigation "Páginas":
+    - heading "Páginas" [level=2]
+    - list:
+      - listitem:
+        - link "A Loja":
+          - /url: /a-loja
+      - listitem:
+        - link "Nossa História":
+          - /url: /nossa-historia
+      - listitem:
+        - link "Avaliações":
+          - /url: /avaliacoes
+      - listitem:
+        - link "Visite-nos":
+          - /url: /visite-nos
+      - listitem:
+        - link "Produtos":
+          - /url: /produtos
+      - listitem:
+        - link "Seminovos":
+          - /url: /seminovos
+      - listitem:
+        - link "Assistência técnica":
+          - /url: /assistencia-tecnica
+      - listitem:
+        - link "Curso":
+          - /url: /curso-manutencao-celular
+      - listitem:
+        - link "Perguntas frequentes":
+          - /url: /perguntas-frequentes
+      - listitem:
+        - link "Dicas":
+          - /url: /dicas
+      - listitem:
+        - link "Privacidade":
+          - /url: /privacidade
+  - region "Comprou ou consertou com a gente? Dá a sua nota.":
+    - paragraph: Sua experiência importa
+    - heading "Comprou ou consertou com a gente? Dá a sua nota." [level=2]
+    - paragraph: Conte como foi seu atendimento. Todas as notas seguem para o Google.
+    - group "Escolha de 1 a 5 estrelas":
+      - text: Escolha de 1 a 5 estrelas
+      - radio "1 estrela"
+      - text: 1 estrela
+      - radio "2 estrelas"
+      - text: 2 estrelas
+      - radio "3 estrelas"
+      - text: 3 estrelas
+      - radio "4 estrelas"
+      - text: 4 estrelas
+      - radio "5 estrelas"
+      - text: 5 estrelas
+    - link "Confirmar minha nota no Google ↗":
+      - /url: https://www.google.com/maps?cid=8801259008937640586
+    - paragraph: A seleção aqui não publica nem envia sua nota. Na ficha do Google, abra Avaliações e escolha Avaliar para confirmar.
+  - paragraph: Smart Lion · Lages/SC
+  - button "Preferências de privacidade"
+  - paragraph: Desenvolvido por WAXLO
+- complementary "Atendimento pelo WhatsApp":
+  - link "Conversar com a Smart Lion no WhatsApp":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - text: Fale conosco
+===== /404.html
+- link "Pular para o conteúdo":
+  - /url: "#conteudo"
+- banner:
+  - link "Smart Lion — início":
+    - /url: /
+    - text: SMART LION LAGES · SC
+  - navigation "Navegação principal":
+    - list:
+      - listitem:
+        - link "A Loja":
+          - /url: /a-loja
+      - listitem:
+        - link "Nossa História":
+          - /url: /nossa-historia
+      - listitem:
+        - group: O que fazemos
+      - listitem:
+        - link "Avaliações":
+          - /url: /avaliacoes
+      - listitem:
+        - link "Visite-nos":
+          - /url: /visite-nos
+  - link "Instagram @smartlion.sc":
+    - /url: https://www.instagram.com/smartlion.sc/
+  - link "Fale conosco":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+- main:
+  - paragraph: Erro 404
+  - heading "Página não encontrada." [level=1]
+  - paragraph: A página que você procurou não foi encontrada. Siga por um dos caminhos abaixo, volte ao início ou fale com a equipe.
+  - link "Voltar ao início":
+    - /url: /
+  - link "Fale conosco":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+  - navigation "Caminhos sugeridos":
+    - list:
+      - listitem:
+        - link "Produtos As linhas da loja e o convite para consultar pelo WhatsApp.":
+          - /url: /produtos
+      - listitem:
+        - link "Assistência técnica Os serviços da bancada e o pedido de orçamento.":
+          - /url: /assistencia-tecnica
+      - listitem:
+        - link "Visite a loja Endereço, horários e rotas no Centro de Lages.":
+          - /url: /visite-nos
+- region "Preferências de privacidade":
+  - 'heading "Mapa do Google: você escolhe." [level=2]'
+  - paragraph: Não usamos publicidade ou analytics. O mapa é opcional e pode permitir cookies do Google. Aceitar autoriza esse recurso; ele só será carregado quando você clicar no mapa. Sua escolha fica nesta aba durante a sessão.
+  - button "Aceitar"
+  - button "Recusar"
+  - link "Entenda a privacidade":
+    - /url: /privacidade
+- contentinfo:
+  - img "Smart Lion · Lages/SC"
+  - paragraph: Tecnologia de verdade é sobre pessoas.
+  - region "Loja":
+    - heading "Loja" [level=2]
+    - text: Rua Hercílio Luz, 364 · Centro, Lages/SC CEP 88501-010
+    - list:
+      - listitem:
+        - link "Ver no Google Maps ↗":
+          - /url: https://www.google.com/maps?cid=8801259008937640586
+      - listitem:
+        - link "Instagram @smartlion.sc ↗":
+          - /url: https://www.instagram.com/smartlion.sc/
+  - region "Horário":
+    - heading "Horário" [level=2]
+    - paragraph: Fechado · abre hoje às 9h
+    - table "Horário de atendimento":
+      - caption: Horário de atendimento
+      - rowgroup:
+        - row "Segunda a sexta 9h–12h e 13h30–18h30":
+          - rowheader "Segunda a sexta"
+          - cell "9h–12h e 13h30–18h30"
+        - row "Sábado 9h–13h":
+          - rowheader "Sábado"
+          - cell "9h–13h"
+        - row "Domingo Fechado":
+          - rowheader "Domingo"
+          - cell "Fechado"
+    - paragraph: Nos feriados, consulte o atendimento.
+  - region "Contato":
+    - heading "Contato" [level=2]
+    - link "WhatsApp (49) 99926-8930":
+      - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - link "Telefone (49) 99818-2996":
+      - /url: tel:+5549998182996
+  - navigation "Páginas":
+    - heading "Páginas" [level=2]
+    - list:
+      - listitem:
+        - link "A Loja":
+          - /url: /a-loja
+      - listitem:
+        - link "Nossa História":
+          - /url: /nossa-historia
+      - listitem:
+        - link "Avaliações":
+          - /url: /avaliacoes
+      - listitem:
+        - link "Visite-nos":
+          - /url: /visite-nos
+      - listitem:
+        - link "Produtos":
+          - /url: /produtos
+      - listitem:
+        - link "Seminovos":
+          - /url: /seminovos
+      - listitem:
+        - link "Assistência técnica":
+          - /url: /assistencia-tecnica
+      - listitem:
+        - link "Curso":
+          - /url: /curso-manutencao-celular
+      - listitem:
+        - link "Perguntas frequentes":
+          - /url: /perguntas-frequentes
+      - listitem:
+        - link "Dicas":
+          - /url: /dicas
+      - listitem:
+        - link "Privacidade":
+          - /url: /privacidade
+  - region "Comprou ou consertou com a gente? Dá a sua nota.":
+    - paragraph: Sua experiência importa
+    - heading "Comprou ou consertou com a gente? Dá a sua nota." [level=2]
+    - paragraph: Conte como foi seu atendimento. Todas as notas seguem para o Google.
+    - group "Escolha de 1 a 5 estrelas":
+      - text: Escolha de 1 a 5 estrelas
+      - radio "1 estrela"
+      - text: 1 estrela
+      - radio "2 estrelas"
+      - text: 2 estrelas
+      - radio "3 estrelas"
+      - text: 3 estrelas
+      - radio "4 estrelas"
+      - text: 4 estrelas
+      - radio "5 estrelas"
+      - text: 5 estrelas
+    - link "Confirmar minha nota no Google ↗":
+      - /url: https://www.google.com/maps?cid=8801259008937640586
+    - paragraph: A seleção aqui não publica nem envia sua nota. Na ficha do Google, abra Avaliações e escolha Avaliar para confirmar.
+  - paragraph: Smart Lion · Lages/SC
+  - button "Preferências de privacidade"
+  - paragraph: Desenvolvido por WAXLO
+- complementary "Atendimento pelo WhatsApp":
+  - link "Conversar com a Smart Lion no WhatsApp":
+    - /url: https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!%20Vim%20pelo%20site%20e%20queria%20atendimento.
+    - text: Fale conosco

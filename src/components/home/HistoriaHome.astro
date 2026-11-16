@@ -23,7 +23,7 @@ import Rotulo from '../ui/Rotulo.astro';
 <style>
 .historia{padding-block:var(--espaco-secao)}
 .historia-cabecalho{display:grid;gap:14px;margin-bottom:28px}
-.historia-cabecalho h2{max-width:18ch}
+.historia-cabecalho h2{max-width:13.61em}
 .historia-texto{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,64px);max-width:1100px;color:var(--cor-texto-2);font-size:var(--texto-lg)}
 /* Linha do tempo resumida: marcos lado a lado sobre uma linha, com ponto âmbar. */
 .historia-linha :global(.linha-do-tempo.resumida){display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(20px,3vw,40px);margin:clamp(40px,5vw,64px) 0 28px;border-top:1px solid var(--cor-borda)}
@@ -31,6 +31,6 @@ import Rotulo from '../ui/Rotulo.astro';
 .historia-linha :global(.linha-do-tempo.resumida li::before){content:'';position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:var(--cor-acento);box-shadow:0 0 0 4px rgb(227 168 87 / .15)}
 .historia-linha :global(.linha-do-tempo.resumida time){font:400 var(--texto-rotulo)/1.4 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-acento)}
 .historia-linha :global(.linha-do-tempo.resumida h3){font-size:var(--texto-h4);margin:0}
-.historia-linha :global(.linha-do-tempo.resumida p){color:var(--cor-texto-2);max-width:36ch}
+.historia-linha :global(.linha-do-tempo.resumida p){color:var(--cor-texto-2);max-width:20.81em}
 @media (max-width:700px){.historia-texto{grid-template-columns:1fr}}
 </style>

@@ -1,0 +1,46 @@
+
+### Teclado 390px (sessão nova, abertura ativa)
+abertura presente: true
+Tab 1 → button "Pular abertura" contorno=2px rgb(227, 168, 87)
+Enter no Pular → abertura presente: false
+Tab → a "Pular para o conteúdo" contorno=2px rgb(227, 168, 87)
+Enter no "Pular para o conteúdo" → main "(function () { try { var chave = 'smartlion-rugido" contorno=NÃO
+Tab → a "Conheça a loja" contorno=2px rgb(227, 168, 87)
+Tab → a "Fale conosco" contorno=2px rgb(227, 168, 87)
+Tab → a "Ver horário completo" contorno=2px rgb(227, 168, 87)
+menu → button "Menu" contorno=2px rgb(227, 168, 87)
+Enter abre: aria-expanded=true
+Tab dentro do painel → a "A Loja" contorno=2px rgb(227, 168, 87)
+Esc: aria-expanded=false; foco → button "Menu" contorno=2px rgb(227, 168, 87)
+reparo → button[tab] "Tela" contorno=2px rgb(227, 168, 87)
+→ button[tab] "Bateria" contorno=2px rgb(227, 168, 87)
+Enter: selecionada = BATERIA
+Tab até ação do painel → a "Pedir orçamento" contorno=2px rgb(227, 168, 87)
+WhatsApp flutuante → a "Conversar com a Smart Lion no WhatsApp" contorno=2px rgb(227, 168, 87) href https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!
+
+### Teclado 1440px (sessão nova, abertura ativa)
+abertura presente: true
+Tab 1 → button "Pular abertura" contorno=2px rgb(227, 168, 87)
+Enter no Pular → abertura presente: false
+Tab → a "Pular para o conteúdo" contorno=2px rgb(227, 168, 87)
+Enter no "Pular para o conteúdo" → main "(function () { try { var chave = 'smartlion-rugido" contorno=NÃO
+Tab → a "Conheça a loja" contorno=2px rgb(227, 168, 87)
+Tab → a "Fale conosco" contorno=2px rgb(227, 168, 87)
+Tab → a "Ver horário completo" contorno=2px rgb(227, 168, 87)
+reparo → button[tab] "Tela" contorno=2px rgb(227, 168, 87)
+→ button[tab] "Bateria" contorno=2px rgb(227, 168, 87)
+Enter: selecionada = BATERIA
+Tab até ação do painel → a "Pedir orçamento" contorno=2px rgb(227, 168, 87)
+WhatsApp flutuante → a "Conversar com a Smart Lion no WhatsApp" contorno=2px rgb(227, 168, 87) href https://wa.me/5549999268930?text=Ol%C3%A1%2C%20Smart%20Lion!
+
+árvore de acessibilidade salva (72832 caracteres)
+
+hierarquia de títulos: ok em 25 rotas
+
+reduced-motion (home 1440): {"abertura":false,"canvas":0,"animacoes":0,"motivo":"movimento reduzido"}; ilhas 3D baixadas: 0
+
+largura 640px (zoom 200% de 1280): sem rolagem horizontal nem texto cortado em 25 rotas
+
+largura 320px (reflow WCAG 1.4.10): sem rolagem horizontal nem texto cortado em 25 rotas
+
+sem JavaScript: h1, WhatsApp e títulos visíveis em 25 rotas

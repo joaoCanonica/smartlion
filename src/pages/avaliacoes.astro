@@ -13,7 +13,7 @@ import Rotulo from '../components/ui/Rotulo.astro';
  {[5,4,3,2,1].map(n => {
    const quantidade = resumoAvaliacoes.distribuicao[String(n) as keyof typeof resumoAvaliacoes.distribuicao];
    return <li aria-label={`${n} ${n === 1 ? 'estrela' : 'estrelas'}: ${quantidade}`}>
-     <span>{n}</span><span class="trilho" aria-hidden="true"><span style={`width:${100 * quantidade / resumoAvaliacoes.total}%`}></span></span><span>{quantidade}</span>
+     <span>{n}</span><svg class="trilho" aria-hidden="true" focusable="false" preserveAspectRatio="none"><rect width="100%" height="2" class="trilho-fundo"/><rect width={`${(100 * quantidade / resumoAvaliacoes.total).toFixed(2)}%`} height="2" class="trilho-valor"/></svg><span>{quantidade}</span>
    </li>;
  })}
 </ul></div></section>
@@ -25,14 +25,15 @@ import Rotulo from '../components/ui/Rotulo.astro';
 <style>
 .intro-avaliacoes{padding-block:clamp(48px,7vw,104px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(32px,6vw,100px);align-items:end}
 .intro-texto{display:grid;gap:18px;justify-items:start}
-.intro-avaliacoes h1{font-size:clamp(2.4rem,1.4rem + 3.6vw,4.75rem);line-height:1;letter-spacing:-.04em;max-width:14ch}
-.resposta{max-width:58ch;color:var(--cor-texto-2);font-size:var(--texto-lg)}
+.intro-avaliacoes h1{font-size:clamp(2.4rem,1.4rem + 3.6vw,4.75rem);line-height:1;letter-spacing:-.04em;max-width:10.58em}
+.resposta{max-width:33.52em;color:var(--cor-texto-2);font-size:var(--texto-lg)}
 .painel{display:grid;gap:28px}
 .painel ul{list-style:none;margin:0;padding:20px 0 0;border-top:1px solid var(--cor-borda);display:grid;gap:10px}
-.painel li{display:grid;grid-template-columns:2ch 1fr 4ch;gap:14px;align-items:center;font:400 .75rem/1 var(--fonte-rotulo);letter-spacing:.08em;color:var(--cor-texto-2);font-variant-numeric:tabular-nums}
+.painel li{display:grid;grid-template-columns:1.9em 1fr 3.8em;gap:14px;align-items:center;font:400 .75rem/1 var(--fonte-rotulo);letter-spacing:.08em;color:var(--cor-texto-2);font-variant-numeric:tabular-nums}
 .painel li>span:last-child{text-align:right;color:var(--cor-texto)}
-.trilho{height:2px;background:var(--cor-borda)}
-.trilho>span{background:var(--cor-acento);display:block;height:100%}
+.trilho{display:block;width:100%;height:2px}
+.trilho-fundo{fill:var(--cor-borda)}
+.trilho-valor{fill:var(--cor-acento)}
 .relatos{padding-block:clamp(56px,7vw,104px)}
 .relatos h2{margin-top:14px}
 .contexto{max-width:850px;margin:22px 0;font-size:var(--texto-sm);color:var(--cor-texto-2)}

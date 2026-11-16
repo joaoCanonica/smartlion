@@ -1,4 +1,7 @@
+import { createHash } from 'node:crypto';
 import { defineConfig } from 'astro/config';
+import { scriptAberturaInicio } from './src/lib/abertura-inicio.mjs';
+import { scriptMarcarJs } from './src/lib/marcar-js.mjs';
 
 /**
  * Origem pública do site (canonical, sitemap.xml, robots.txt, og:image, JSON-LD).
@@ -28,4 +31,31 @@ function resolverSite() {
   return url.origin;
 }
 
-export default defineConfig({ site: resolverSite(), output: 'static', server: { host: true } });
+/**
+ * CSP por hash (P8). O Astro calcula o hash de cada <script> e <style> que ele mesmo emite e
+ * escreve a política num <meta http-equiv> em cada página; não há 'unsafe-inline' em script
+ * nem em style, e o HTML não tem atributo style="" (cores, padrões e barras usam classe ou SVG).
+ * O 3D (WebGL/Three.js) não precisa de nada além de 'self': sem eval, sem wasm, sem worker,
+ * texturas geradas em <canvas>. O mapa do Google só entra por iframe depois do consentimento.
+ * frame-ancestors não vale em <meta>; vai no cabeçalho, em vercel.json.
+ */
+const hash = texto => `sha256-${createHash('sha256').update(texto).digest('base64')}`;
+const csp = {
+  algorithm: 'SHA-256',
+  scriptDirective: { hashes: [hash(scriptAberturaInicio), hash(scriptMarcarJs)] },
+  directives: [
+    "default-src 'self'",
+    "img-src 'self' data:",
+    "font-src 'self'",
+    "connect-src 'self'",
+    "frame-src https://www.google.com",
+    "manifest-src 'self'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "worker-src 'none'",
+    "upgrade-insecure-requests",
+  ],
+};
+
+export default defineConfig({ site: resolverSite(), output: 'static', server: { host: true }, security: { csp } });

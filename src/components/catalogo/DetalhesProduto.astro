@@ -20,7 +20,7 @@ const condicao = condicaoFisica(p);
   {p.garantia && <p class="garantia">{p.garantia}</p>}
   {p.saudeBateria && <p class="garantia">Saúde da bateria: {p.saudeBateria}</p>}
   {p.versoes.length > 0 && <fieldset><legend>Versão</legend><div class="escolhas">{p.versoes.map(v=><label class="opcao"><input type="radio" name={`versao-${p.slug}`} value={v.id} data-escolha="versao"/>{v.rotulo}</label>)}</div></fieldset>}
-  {p.cores.length > 0 && <fieldset><legend>Cor</legend><div class="escolhas">{p.cores.map(c=><label class="opcao"><input type="radio" name={`cor-${p.slug}`} value={c.id} data-escolha="cor"/><span class="amostra-cor" style={`--cor:${c.hex}`} aria-hidden="true"></span>{c.rotulo}</label>)}</div></fieldset>}
+  {p.cores.length > 0 && <fieldset><legend>Cor</legend><div class="escolhas">{p.cores.map(c=><label class="opcao"><input type="radio" name={`cor-${p.slug}`} value={c.id} data-escolha="cor"/><svg class="amostra-cor" viewBox="0 0 15 15" aria-hidden="true" focusable="false"><circle cx="7.5" cy="7.5" r="7" fill={c.hex} stroke="currentColor" stroke-opacity=".6"/></svg>{c.rotulo}</label>)}</div></fieldset>}
   <dl class="resumo"><dt>Modelo</dt><dd>{p.nome}</dd><dt>Versão</dt><dd data-resumo-versao>A escolher</dd><dt>Cor</dt><dd data-resumo-cor>A escolher</dd>{p.preco !== null && p.precoNota && <><dt>Preço</dt><dd>{formatarPreco(p)}</dd></>}</dl>
   {p.precoNota && <p class="preco-nota">{textoPrecoNota(p)}</p>}
   <a class="button button-wa consulta" data-consulta-produto href={consultaProduto(p,origem)}>{p.disponibilidade === 'esgotado' ? 'Avise-me quando chegar' : 'Tirar dúvida no WhatsApp'}</a>

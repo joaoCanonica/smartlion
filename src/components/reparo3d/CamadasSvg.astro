@@ -18,7 +18,7 @@ const camadas = [
 const X = 270, Y0 = 34, PASSO = 64; // posição de cada camada na vista explodida
 const M = 'matrix(0.9 0.45 -0.9 0.45 0 0)'; // projeção oblíqua do plano do aparelho (140 × 260)
 ---
-<svg class="reparo-camadas" viewBox="0 0 680 520" role="img" aria-labelledby={`${id}-titulo`}>
+<svg class="reparo-camadas" viewBox="0 0 680 520" width="680" height="520" role="img" aria-labelledby={`${id}-titulo`}>
         <title id={`${id}-titulo`}>Ilustração das camadas de um celular, de cima para baixo: vidro, tela, bateria, placa e tampa traseira.</title>
         <defs>
           <linearGradient id={`${id}-grad-tela`} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#222429"/><stop offset=".55" stop-color="#0B0B0C"/><stop offset="1" stop-color="#17181B"/></linearGradient>
@@ -27,7 +27,7 @@ const M = 'matrix(0.9 0.45 -0.9 0.45 0 0)'; // projeção oblíqua do plano do a
         {[...camadas].reverse().map((c, i) => {
           const y = Y0 + (camadas.length - 1 - i) * PASSO;
           return (
-            <g class={`camada camada-${c.id}`} style={`--dy:${(Y0 + 2 * PASSO + (camadas.length - 1 - i - 2) * 14) - y}px`}>
+            <g class={`camada camada-${c.id} camada-pos-${i}`}>
               <g transform={`translate(${X} ${y})`}><g transform={M}>
                 {c.id === 'tampa' && <>
                   <rect width="140" height="260" rx="22" fill="#17181B" stroke="#9A9EA6" stroke-opacity=".55"/>

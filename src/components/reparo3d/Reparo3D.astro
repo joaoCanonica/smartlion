@@ -31,7 +31,7 @@ const abas = mapa.map(a => {
 ---
 <div class:list={['reparo3d', classe]} data-reparo3d id={id}>
   <div class="reparo3d-controle">
-    <div class="reparo3d-abas" role="tablist" aria-label="Escolha a parte do aparelho" hidden data-abas>
+    <div class="reparo3d-abas" role="tablist" aria-label="Escolha a parte do aparelho" data-abas>
       {abas.map((a, i) => (
         <button type="button" role="tab" id={`${id}-aba-${a.camada}`} aria-selected={i === 0 ? 'true' : 'false'} aria-controls={`${id}-painel-${a.camada}`} tabindex={i === 0 ? 0 : -1} data-camada={a.camada}>{a.rotulo}</button>
       ))}
@@ -60,6 +60,10 @@ const abas = mapa.map(a => {
 .reparo3d{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:center}
 .reparo3d-controle{display:grid;gap:20px;align-content:start}
 .reparo3d-abas{display:flex;flex-wrap:wrap;gap:8px}
+/* Na faixa de duas colunas em que as 4 abas não cabem numa linha (a coluna tem 327–537 px e as
+   abas pedem ~520 px em Michroma), a grade 2×2 é fixa: a quebra não depende mais de a fonte web
+   já ter chegado (antes, o fallback cabia numa linha e a troca de fonte deslocava o painel). */
+@media (min-width:901px) and (max-width:1439px){.reparo3d-abas{display:grid;grid-template-columns:repeat(2,max-content)}.reparo3d-abas button{white-space:nowrap}.reparo3d-painel h3{min-height:2lh}}
 .reparo3d-abas button{min-height:44px;padding:0 16px;background:transparent;color:var(--cor-texto);border:1px solid var(--vidro-borda);border-radius:var(--raio-sm);font:400 .72rem/1 var(--fonte-rotulo);letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:border-color var(--duracao-curta),background-color var(--duracao-curta),color var(--duracao-curta)}
 .reparo3d-abas button:hover{border-color:var(--cor-texto-2)}
 .reparo3d-abas button[aria-selected="true"]{background:var(--cor-acento);color:var(--cor-fundo);border-color:var(--cor-acento)}
@@ -67,10 +71,14 @@ const abas = mapa.map(a => {
 .reparo3d-painel:focus-visible{outline:2px solid var(--cor-foco);outline-offset:3px}
 .reparo3d-parte{font:400 var(--texto-rotulo)/1.4 var(--fonte-rotulo);letter-spacing:var(--tracking-rotulo);text-transform:uppercase;color:var(--cor-acento)}
 .reparo3d-painel h3{font-size:var(--texto-h3)}
-.reparo3d-resumo{color:var(--cor-texto-2);max-width:46ch}
+.reparo3d-resumo{color:var(--cor-texto-2);max-width:26.59em}
 .reparo3d-prazo{color:var(--cor-texto);font-size:var(--texto-sm)}
 .reparo3d-acoes{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:4px}
 /* Com JS: só o painel escolhido aparece. Sem JS: os quatro, um embaixo do outro. */
+/* Sem JS (html sem .js): abas ocultas e os 4 painéis empilhados. Com JS, o estado final já vale
+   desde a primeira pintura (html.js é marcado no <head>), sem deslocamento quando o módulo roda. */
+:global(html:not(.js)) .reparo3d-abas{display:none}
+:global(.js) .reparo3d:not([data-js]) .reparo3d-painel:not([data-inicial]){display:none}
 .reparo3d[data-js] .reparo3d-painel:not([data-ativo]){display:none}
 
 /* Aparelho: caixa reservada (o canvas 3D ocupa a mesma). */
@@ -85,6 +93,8 @@ const abas = mapa.map(a => {
 .reparo3d-visual[data-modo="3d"] .reparo3d-dica{opacity:1}
 
 /* Ilustração em CSS: montada (cada camada desce/sobe até o centro) e explodida; a escolhida acende. */
+/* Deslocamento de cada camada montada: (posição − 2) × (PASSO − 14) = múltiplos de 50 px (sem atributo style, por causa da CSP). */
+.reparo3d-visual :global(.camada-pos-0){--dy:-100px}.reparo3d-visual :global(.camada-pos-1){--dy:-50px}.reparo3d-visual :global(.camada-pos-2){--dy:0px}.reparo3d-visual :global(.camada-pos-3){--dy:50px}.reparo3d-visual :global(.camada-pos-4){--dy:100px}
 .reparo3d-visual :global(.camada){transform:translateY(var(--dy));transition:transform .8s cubic-bezier(.65,0,.35,1)}
 .reparo3d-visual[data-explodido] :global(.camada){transform:none}
 .reparo3d-visual :global(.camada :is(rect,path,circle)){transition:stroke .4s,stroke-opacity .4s}

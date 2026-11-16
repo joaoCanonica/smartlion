@@ -8,36 +8,11 @@
  * passou nesta sessão (sessionStorage, com try/catch).
  * O hero continua no HTML e é pintado por baixo; o SVG e a animação chegam depois,
  * pela parte 2 (AberturaModelo.astro), colocada depois do hero.
+ * O código fica em src/lib/abertura-inicio.mjs (o hash dele entra na CSP em astro.config.mjs).
  */
+import { scriptAberturaInicio } from '../../lib/abertura-inicio.mjs';
 ---
-<script is:inline>
-(function () {
-  try {
-    var chave = 'smartlion-rugido-v1', html = document.documentElement;
-    if (!window.matchMedia || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    try { if (sessionStorage.getItem(chave)) return; sessionStorage.setItem(chave, '1'); } catch (e) { /* sem armazenamento: roda e segue */ }
-    var raiz = document.createElement('div');
-    raiz.className = 'rugido';
-    raiz.setAttribute('data-rugido', '');
-    raiz.setAttribute('data-t0', String(performance.now()));
-    raiz.innerHTML = '<div class="rugido-fundo"></div><button type="button" class="rugido-pular" data-rugido-pular>Pular<span class="sr-only"> abertura</span></button>';
-    document.body.insertBefore(raiz, document.body.firstChild);
-    html.classList.add('rugido-ativo');
-    var pular = function () {
-      if (window.__slAberturaPular) return window.__slAberturaPular();
-      if (raiz.parentNode) raiz.parentNode.removeChild(raiz);
-      html.classList.remove('rugido-ativo');
-    };
-    // Clique, toque, tecla ou rolagem pulam. Tab e modificadoras não: Tab leva ao "Pular".
-    raiz.addEventListener('click', pular);
-    addEventListener('keydown', function (e) { if (raiz.parentNode && !/^(Tab|Shift|Control|Alt|Meta|CapsLock)$/.test(e.key)) pular(); });
-    addEventListener('wheel', function () { if (raiz.parentNode) pular(); }, { passive: true });
-    addEventListener('touchmove', function () { if (raiz.parentNode) pular(); }, { passive: true });
-    // Segurança: se a animação não começar (script bloqueado/erro), a camada some.
-    setTimeout(function () { if (!raiz.hasAttribute('data-iniciada')) pular(); }, 3500);
-  } catch (e) { /* abertura é decorativa: qualquer erro mantém a página como está */ }
-})();
-</script>
+<script is:inline set:html={scriptAberturaInicio}></script>
 <style is:global>
 .rugido{position:fixed;inset:0;z-index:100;display:grid;place-items:center;color:var(--cor-texto);overflow:hidden;cursor:pointer}
 .rugido-fundo{position:absolute;inset:0;background:var(--cor-fundo)}

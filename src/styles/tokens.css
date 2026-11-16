@@ -20,10 +20,16 @@
 /* --- Fallbacks métricos (P1) ---------------------------------------------
    Arial/Liberation Sans ajustada às medidas de cada fonte (largura média de
    um texto em português + ascendente/descendente), para que a troca de fonte
-   não empurre o layout (CLS). Calculado com fontTools; ver docs/premium/P1.md. */
-@font-face{font-family:'Sora Fallback';src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');font-weight:600;size-adjust:107.46%;ascent-override:90.26%;descent-override:26.99%;line-gap-override:0%}
+   não empurre o layout (CLS). Calculado com fontTools; ver docs/premium/P1.md.
+   Larguras de texto em `em`, não em `ch` (P8): o "0" das fontes web é bem mais largo que o
+   do fallback (Sora 0,756 em × 0,598 em; Inter Tight 0,578 × 0,536), então `max-width: Nch`
+   mudava a quebra de linha na troca de fonte. Conversão: títulos (Sora) N × 0,756 em;
+   texto (Inter Tight) N × 0,578 em; Michroma N × 0,951 em — a mesma largura final.
+   size-adjust da Sora 600 e da Inter Tight 400 recalibrados na P8 pela largura média dos 98
+   títulos reais do site nas duas fontes (fallback estava 0,8% mais largo). */
+@font-face{font-family:'Sora Fallback';src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');font-weight:600;size-adjust:106.59%;ascent-override:90.26%;descent-override:26.99%;line-gap-override:0%}
 @font-face{font-family:'Sora Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');font-weight:400;size-adjust:113.08%;ascent-override:85.78%;descent-override:25.64%;line-gap-override:0%}
-@font-face{font-family:'Inter Tight Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');font-weight:400;size-adjust:96.45%;ascent-override:100.44%;descent-override:25.01%;line-gap-override:0%}
+@font-face{font-family:'Inter Tight Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');font-weight:400;size-adjust:95.74%;ascent-override:100.44%;descent-override:25.01%;line-gap-override:0%}
 @font-face{font-family:'Inter Tight Fallback';src:local('Arial Bold'),local('Arial-BoldMT'),local('Liberation Sans Bold');font-weight:600;size-adjust:94.81%;ascent-override:102.18%;descent-override:25.44%;line-gap-override:0%}
 @font-face{font-family:'Michroma Fallback';src:local('Arial'),local('ArialMT'),local('Liberation Sans');size-adjust:142.12%;ascent-override:81.36%;descent-override:18.69%;line-gap-override:0%}
 
@@ -81,7 +87,7 @@
   --espaco-secao:clamp(4rem,3rem + 6vw,9rem);
   --margem-lateral:clamp(1rem,.5rem + 3vw,3rem); /* 16 px no celular */
   --largura-max:1320px;
-  --largura-texto:66ch;
+  --largura-texto:38.15em;
 
   /* ---- Raios (pequenos) ---- */
   --raio-sm:4px;

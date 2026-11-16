@@ -14,7 +14,8 @@ const pasta=resolve('qa/axe');mkdirSync(pasta,{recursive:true});
 const navegador=await chromium.launch(process.env.CHROME_PATH?{executablePath:process.env.CHROME_PATH}:{});
 const linhas=['| Rota | Largura | Violações | Regras |','|---|---:|---:|---|'];let falha=false;
 for(const largura of [390,1440]){
- const contexto=await navegador.newContext({viewport:{width:largura,height:900}});
+ // bypassCSP: só para injetar o axe-core; a CSP do site (P8) bloquearia o script de teste.
+ const contexto=await navegador.newContext({viewport:{width:largura,height:900},bypassCSP:true});
  for(const [i,rota] of rotas.entries()){
   const pagina=await contexto.newPage();
   await pagina.goto(new URL(rota,base).href,{waitUntil:'networkidle'});
